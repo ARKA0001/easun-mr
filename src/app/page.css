@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Home Page navbar CSS */
+
+.main-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 2rem;
+  border-bottom: 0.5px solid rgba(230, 230, 230, 0.5);
+}
+
+.main-navbar button {
+  background-color: var(--primary-blue);
+  padding: 7px 20px;
+  color: var(--primary-white);
+  display: flex;
+  align-items: center;
+  border-radius: 25px;
+  font-weight: bold;
+}
+.main-navbar button .logout-icon {
+  font-size: 17px;
+  margin: 5px;
+}
+.main-navbar button:hover {
+  background-color: var(--primary-white);
+  color: var(--primary-blue);
+  transition: 0.5s ease;
+}
+
+@media only screen and (max-width: 450px) {
+  .main-navbar button p {
+    display: none;
+  }
+  .main-navbar .easun-logo img {
+    height: auto;
+    width: 50%;
+  }
+  .main-navbar button {
+    padding: 2px;
+    background-color: transparent;
+    border: 1px solid var(--primary-blue);
+    color: var(--primary-blue);
+    border-radius: 5px;
+  }
+  .main-navbar button .logout-icon {
+    font-size: 15px;
+  }
+}
+
+/* Home Page navbar CSS ends here */
+
+/* Home Page main css */
+
+.easun-main {
+  padding: 1rem 2rem;
+}
+.redirect-easun-form {
+  padding: 25px;
+  background-color: var(--secondary-white);
+  border: none;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+}
+.redirect-easun-form p {
+  text-align: left;
+}
+.redirect-easun-form .next-icon {
+  font-size: 16px;
+}
+.redirect-easun-form:hover {
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+  transition: 0.5s ease;
+}
+.login-page-log-out {
+  display: none;
+}
+/* Home Page main css ends here */
+
+/* Login Page CSS */
+.easun-login-page {
+  height: 100vh;
+  overflow: hidden;
+}
+.login-info {
+  height: 100%;
+  display: flex;
+}
+.left-login-section {
+  background-image: url("../../public/login-image2.png");
+  background-position: center;
+  background-size: cover;
+  flex: 1;
+  background-repeat: no-repeat;
+}
+.right-login-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 3rem;
+}
+.right-login-section img{
+    height:auto;
+    width: 25%;
+    margin:15px 0;
+}
+.login-description {
+  color: var(--primary-grey);
+  padding:10px 0 25px 0;
+}
+.input-field {
+  width: 100%;
+  padding: 18px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 18px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  margin:15px 0;
+}
+.input-icon{
+    margin:0 5px;
+}
+.input-field input{
+    border:none;
+    background-color: transparent;
+    width: 100%;
+    font-size: 16px;
+}
+.input-field input:focus {
+    border: none;
+    outline: none;
+}
+.show-password{
+    display: flex;
+    margin:15px 0;
+}
+.show-password input{
+    margin:0 5px;
+}
+.login-submit{
+    width: 100%;
+    padding:15px;
+    background-color: var(--primary-blue);
+    color: var(--primary-white);
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width:1024px){
+    .login-info{
+        flex-direction: column;
+    }
+    .login-info .left-login-section{
+        background-image: none;
+        background-color: var(--dark-grey);
+    }
+    .login-info .right-login-section{
+        padding: 2rem;
+        border-radius: 25px 25px 0 0 !important;
+        flex: 80%;
+    }
+}
+/* Login Page CSS ends here */
