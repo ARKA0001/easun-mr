@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import Section1 from "@/components/Section1";
@@ -14,13 +14,24 @@ import FormNavbar from "@/components/FormNavbar";
 import "../../page.css";
 import { useRecoilState } from "recoil";
 import { activeSection } from "@/store/Section";
+import TestSection1 from "@/components/TestSection1";
+import TestSection2 from "@/components/TestSection2";
 
 export default function Page() {
-
   const currentDate = new Date();
   const monthNames = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
   const currentDay = currentDate.getDate();
   const currentMonthIndex = currentDate.getMonth();
@@ -32,6 +43,10 @@ export default function Page() {
 
   const renderSection = () => {
     switch (currentActiveSection) {
+      case "testSection1":
+        return <TestSection1 />;
+      case "testSection2":
+        return <TestSection2 />;
       case 1:
         return <Section1 />;
       case 2:
@@ -65,11 +80,14 @@ export default function Page() {
 
         <div className="right-main-side">
           <h3>
-            OLTC DRIVE MECHANISM AUTOMATED TEST
-            <span>{currentDay}{" "}{currentMonth},{currentYear}</span>
+            <span> OLTC DRIVE MECHANISM AUTOMATED TEST</span>
+
+            <span className="date-data">
+              {currentDay} {currentMonth},{currentYear}
+            </span>
           </h3>
           {renderSection()}
-          </div>
+        </div>
       </div>
     </div>
   );

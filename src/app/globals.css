@@ -1,7 +1,9 @@
-:root{
-  --primary-blue:#273951;
-  --primary-white:#FFFFFF;
-  --secondary-white:#F9F9F9;
-  --primary-grey : #818181;
-  --dark-grey:#656565;
+:root {
+  --primary-blue: #273951;
+  --primary-white: #ffffff;
+  --secondary-white: #f9f9f9;
+  --primary-grey: #818181;
+  --dark-grey: #656565;
+
+  --secondary-white: #f3f3f3;
 }
