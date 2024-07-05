@@ -6,8 +6,8 @@ export async function POST(req) {
   const data = await req.json();
   const username = data.username;
   const password = data.password;
-  if (encryptCredentialsAndCompare(username, password)) {
-    cookies().set("user",crypto.createHash("sha256").update(username).digest("hex"));
+  if (username==="easunmr"&&password==="easunmr@1234") {
+    cookies().set("user",username);
     return NextResponse.json({ message: "OK", data }, { status: 200 });
   } else {
     return NextResponse.json(
