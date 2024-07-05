@@ -30,16 +30,16 @@ export default function TestSection1() {
     const testDataPayload = {
       serialNumber: data.field1,
       testType: data.field2,
-      cycles: data.field3,
-      underVoltageCycles: data.field4,
-      nominalVoltageCycles: data.field5,
-      highVoltageCycles: data.field6,
-      tapPositionMax: data.field7,
-      tapPositionIndicators: data.field8,
-      upperLimitInput: data.field9,
-      lowerLimitInput: data.field10,
-      tapChangeDelayIndication: data.field11,
-      tapChangeProgressIndication: data.field12,
+      cycles: parseInt(data.field3),
+      underVoltageCycles: parseInt(data.field4),
+      nominalVoltageCycles: parseInt(data.field5),
+      highVoltageCycles: parseInt(data.field6),
+      tapPositionMax: parseInt(data.field7),
+      tapPositionIndicators: parseInt(data.field8),
+      upperLimitInput: parseInt(data.field9),
+      lowerLimitInput: parseInt(data.field10),
+      tapChangeDelayIndication: parseInt(data.field11),
+      tapChangeProgressIndication: parseInt(data.field12),
     };
     console.log(testDataPayload);
     setTestSectionData(testDataPayload);
