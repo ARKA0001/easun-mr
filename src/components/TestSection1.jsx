@@ -90,7 +90,7 @@ export default function TestSection1() {
               No of Cycles
             </label>
             <input
-              type="text"
+              type="number"
               name="field3"
               id="field3"
               className="user-value"
@@ -102,7 +102,7 @@ export default function TestSection1() {
               Under Voltage Cycles
             </label>
             <input
-              type="text"
+              type="number"
               name="field4"
               id="field4"
               className="user-value"
@@ -116,7 +116,7 @@ export default function TestSection1() {
               Nominal Voltage Cycles
             </label>
             <input
-              type="text"
+              type="number"
               name="field5"
               id="field5"
               className="user-value"
@@ -128,7 +128,7 @@ export default function TestSection1() {
               High Voltage Cycles
             </label>
             <input
-              type="text"
+              type="number"
               name="field6"
               id="field6"
               className="user-value"
@@ -142,7 +142,7 @@ export default function TestSection1() {
               Maximum Tap Position
             </label>
             <input
-              type="text"
+              type="number"
               name="field7"
               id="field7"
               className="user-value"
@@ -154,7 +154,7 @@ export default function TestSection1() {
               No of Tap Position Indicators
             </label>
             <input
-              type="text"
+              type="number"
               name="field8"
               id="field8"
               className="user-value"
@@ -168,7 +168,7 @@ export default function TestSection1() {
               No. Upper Limit Reached Input
             </label>
             <input
-              type="text"
+              type="number"
               name="field9"
               id="field9"
               className="user-value"
@@ -180,7 +180,7 @@ export default function TestSection1() {
               No. Lower Limit Reached Input
             </label>
             <input
-              type="text"
+              type="number"
               name="field10"
               id="field10"
               className="user-value"
@@ -194,7 +194,7 @@ export default function TestSection1() {
               No. Tap Change delay/Struck up Indication
             </label>
             <input
-              type="text"
+              type="number"
               name="field11"
               id="field11"
               className="user-value"
@@ -206,7 +206,7 @@ export default function TestSection1() {
               No. Tap Change in progress indications
             </label>
             <input
-              type="text"
+              type="number"
               name="field12"
               id="field12"
               className="user-value"

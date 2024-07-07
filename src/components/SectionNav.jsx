@@ -10,14 +10,18 @@ export default function SectionNav() {
     <div className="section-nav">
       <div
         className={
-          currentActiveSection === "testSection1" ? "section-label active" : "section-label"
+          currentActiveSection === "testSection1"
+            ? "section-label active"
+            : "section-label"
         }
       >
-       Automated Test Data
+        Automated Test Data
       </div>
       <div
         className={
-          currentActiveSection === "testSection2" ? "section-label active" : "section-label"
+          currentActiveSection === "testSection2"
+            ? "section-label active"
+            : "section-label"
         }
       >
         OLTC Test Process

@@ -8,10 +8,12 @@ export default function TestSection2() {
 
   const [loading, setLoading] = useState(true);
   const [response, setResponse] = useState(null);
+  const [startActive, setStartActive] = useState(true) 
 
   const handlePutRequest = async () => {
     setLoading(true);
     setResponse(null);
+    setStartActive(false)
 
     try {
       const res = await fetch("http://localhost:8080/device/testData/1234", {
@@ -68,113 +70,135 @@ export default function TestSection2() {
         <div className="box test-status">
           <div className="status">Test Status</div>
           <div className="actions">
-            <button className="start" onClick={handlePutRequest}>
+            <button className="start" onClick={handlePutRequest} disabled={!startActive}>
               Start
             </button>
-            <button className="pause">Pause</button>
-            <button className="restart">Restart</button>
+            <button className="pause" disabled={startActive}>Pause</button>
+            <button className="restart" disabled={startActive}>Restart</button>
           </div>
         </div>
       </div>
 
-      <div className="section steps">
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">1. Upper Limit Reached Indication 1</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">2. Upper Limit Reached Indication 2</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">3. Lower Limit Reached Indication 1</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">4. Lower Limit Reached Indication 2</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">5. MPR Trip Indication 1</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">6. MPR Trip Indication 2</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">7. Tap Change in Progress Indications 1</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">8. Tap Change in Progress Indication 2</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">9. Tap Change delay/struck up 1</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">10. Tap Change delay/strcuk up 1</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">11. Local Indication</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">12. Remote Indication</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">13. ODD Indication</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">14. EVEN Indication</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">15. SPP Potential Free Indication</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">16. Control Supply Free Indication</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">17. Control Supply Unhealthy Indication</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">18. Power Supply 415V Helathy Condition</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">19. Power Supply 415V Unhealthy</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">20. AC Supply Fail</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">21. ILC (Interlocking) Circuit Indicators</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">22. Proximity Switch Healthy Indications</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">23. Tap Changer Healthy Monitoring</label>
-        </div>
-        <div className="automation-step">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">22. TDR Potential Free</label>
-        </div>
-      </div>
+      <table className="section steps">
+        <tr>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">1. Upper Limit Reached Indication 1</label>
+          </td>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">2. Upper Limit Reached Indication 2</label>
+          </td>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">3. Lower Limit Reached Indication 1</label>
+          </td>
+        </tr>
+        <tr>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">4. Lower Limit Reached Indication 2</label>
+          </td>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">5. MPR Trip Indication 1</label>
+          </td>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">6. MPR Trip Indication 2</label>
+          </td>
+        </tr>
+
+        <tr>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">7. Tap Change in Progress Indications 1</label>
+          </td>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">8. Tap Change in Progress Indication 2</label>
+          </td>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">9. Tap Change delay/struck up 1</label>
+          </td>
+        </tr>
+
+        <tr>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">10. Tap Change delay/strcuk up 1</label>
+          </td>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">11. Local Indication</label>
+          </td>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">12. Remote Indication</label>
+          </td>
+        </tr>
+
+        <tr>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">13. ODD Indication</label>
+          </td>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">14. EVEN Indication</label>
+          </td>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">15. SPP Potential Free Indication</label>
+          </td>
+        </tr>
+
+        <tr>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">16. Control Supply Free Indication</label>
+          </td>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">17. Control Supply Unhealthy Indication</label>
+          </td>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">18. Power Supply 415V Helathy Condition</label>
+          </td>
+        </tr>
+
+        <tr>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">19. Power Supply 415V Unhealthy</label>
+          </td>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">20. AC Supply Fail</label>
+          </td>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">21. ILC (Interlocking) Circuit Indicators</label>
+          </td>
+        </tr>
+
+        <tr>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">22. Proximity Switch Healthy Indications</label>
+          </td>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">23. Tap Changer Healthy Monitoring</label>
+          </td>
+          <td className="automation-step">
+            <input type="radio" name="" id="" />
+            <label htmlFor="">22. TDR Potential Free</label>
+          </td>
+        </tr>
+      </table>
 
       <button className="report-download" disabled={loading}>
         Download Report
