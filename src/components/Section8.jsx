@@ -1,9 +1,12 @@
+"use client";
+
 import React from "react";
 import moveSection from "@/utils/SectionMove";
 import { useRecoilState } from "recoil";
 import { activeSection } from "@/store/Section";
+import { useForm } from "react-hook-form";
 
-export default function Section2() {
+export default function Section8() {
   const [currentActiveSection, setCurrentActiveSection] =
     useRecoilState(activeSection);
 
@@ -12,12 +15,50 @@ export default function Section2() {
     setCurrentActiveSection(moveSection(currentSection, moveAction));
   };
 
-  const handleSave = (sectionId) => {};
+  const { required, handleSubmit } = useForm();
+  const onSubmit = () => {};
+
   return (
-    <div>
-      This is section8
-      <button onClick={() => handleSectionMove(8, 0)}>Back</button>
-      <button onClick={() => handleSave(8)}>Save</button>
+    <div className="form-section">
+      <form onSubmit={handleSubmit(onSubmit())}>
+        <div className="form-row">
+          <div className="user-input">
+            <label htmlFor="field1" className="field-label">
+              Perform under voltage test for one complete cycle
+            </label>
+            <label htmlFor="">
+              UV
+              <input type="text" name="" id="field1" className="user-value" />V
+            </label>
+          </div>
+        </div>
+        <div className="form-row">
+          <div className="user-input">
+            <label htmlFor="field1" className="field-label">
+              Perform over voltage test for one complete cycle
+            </label>
+            <label htmlFor="">
+              UV
+              <input type="text" name="" id="field1" className="user-value" />V
+            </label>
+          </div>
+        </div>
+        <div className="form-row">
+          <div className="user-input">
+            <label htmlFor="field1" className="field-label">
+              Perform normal voltage test for 8 complete cycle of operation
+            </label>
+            <label htmlFor="">
+              UV
+              <input type="text" name="" id="field1" className="user-value" />V
+            </label>
+          </div>
+        </div>
+      </form>
+
+      <button onClick={() => handleSectionMove(1, 1)} className="action-button">
+        Save & Next
+      </button>
     </div>
   );
 }

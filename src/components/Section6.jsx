@@ -410,7 +410,7 @@ export default function Section6() {
         </table>
       </form>
 
-      <button onClick={() => handleSectionMove(4, 1)} className="action-button">
+      <button onClick={() => handleSectionMove(6, 1)} className="action-button">
         Save & Next
       </button>
     </div>

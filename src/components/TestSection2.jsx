@@ -2,6 +2,7 @@ import React from "react";
 import { testDataSection1 } from "@/store/Section";
 import { useRecoilState } from "recoil";
 import { useState } from "react";
+import { activeSection } from "@/store/Section";
 
 export default function TestSection2() {
   const [testData, setTestData] = useRecoilState(testDataSection1);
@@ -9,6 +10,7 @@ export default function TestSection2() {
   const [loading, setLoading] = useState(true);
   const [response, setResponse] = useState(null);
   const [startActive, setStartActive] = useState(true) 
+  const [moveNextSection, setMoveNextSection] = useRecoilState(activeSection)
 
   const handlePutRequest = async () => {
     setLoading(true);
@@ -34,6 +36,11 @@ export default function TestSection2() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleSectionMove = (currentSection, moveAction) => {
+    console.log(moveAction);
+    setMoveNextSection(1);
   };
 
   return (
@@ -202,6 +209,9 @@ export default function TestSection2() {
 
       <button className="report-download" disabled={loading}>
         Download Report
+      </button>
+      <button className="action-button" onClick={handleSectionMove("testSection2", 2)}>
+        Save and Next
       </button>
     </div>
   );
