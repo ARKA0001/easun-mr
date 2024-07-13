@@ -2,8 +2,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 10px 0;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
 /* Home Page navbar CSS */
 
 .main-navbar {
@@ -194,6 +205,12 @@
   overflow-y: scroll;
 }
 
+@media only screen and (max-width: 1024px) {
+  .form-row {
+    flex-wrap: wrap;
+  }
+}
+
 /* Form Navbar CSS */
 
 .form-navbar {
@@ -268,49 +285,44 @@
   border-radius: 10px;
 }
 
+@media only screen and (max-width: 1024px) {
+  .form-page .form-main-content {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .section-nav,
+  .left-main-side {
+    display: none;
+  }
+  .right-main-side {
+    width: 100%;
+  }
+}
+
 /* Section Nav CSS ends here */
 
-
-
 /* right main side CSS */
-.right-main-side{
+.right-main-side {
   overflow-y: scroll;
-  padding:0 0 15rem 0;
+  padding: 0 0 15rem 0;
   display: flex;
   flex-direction: column;
 }
-.right-main-side h3{
+.right-main-side h3 {
   display: flex;
   justify-content: space-between;
-  padding:4rem 4rem 1rem 4rem;
+  padding: 4rem 4rem 1rem 4rem;
   align-items: center;
 }
-.date-data{
+.date-data {
   color: var(--primary-grey);
   font-weight: 500;
   font-size: 16px;
 }
 
-
-
-
-
 /* right main side CSS ends here */
 
 /* Form Page CSS ends here */
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .left-main-side::-webkit-scrollbar {
   width: 12px; /* Width of the scrollbar */

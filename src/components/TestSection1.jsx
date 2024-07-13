@@ -14,11 +14,6 @@ export default function TestSection1() {
   const [testSectionData, setTestSectionData] =
     useRecoilState(testDataSection1);
 
-  const handleSectionMove = (currentSection, moveAction) => {
-    console.log(currentSection);
-    setCurrentActiveSection(moveSection(currentSection, moveAction));
-  };
-
   const handleTestDataMove = () => {
     console.log("Test Data is moved now");
     setCurrentActiveSection("testSection2");

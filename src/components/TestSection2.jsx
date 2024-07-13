@@ -1,5 +1,5 @@
 import React from "react";
-import { testDataSection1 } from "@/store/Section";
+import { testDataSection1, testId } from "@/store/Section";
 import { useRecoilState } from "recoil";
 import { useState } from "react";
 import { activeSection } from "@/store/Section";
@@ -10,7 +10,8 @@ export default function TestSection2() {
   const [loading, setLoading] = useState(true);
   const [response, setResponse] = useState(null);
   const [startActive, setStartActive] = useState(true) 
-  const [moveNextSection, setMoveNextSection] = useRecoilState(activeSection)
+  const [moveNextSection, setMoveNextSection] = useRecoilState(activeSection);
+  const [tesIdResponse, setTestIdResponse] = useRecoilState(testId);
 
   const handlePutRequest = async () => {
     setLoading(true);
@@ -30,7 +31,9 @@ export default function TestSection2() {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
       const result = await res.json();
-      setResponse(result);
+      setResponse(null);
+      setTestIdResponse(result.testId);
+      handleSectionMove("testSection2", 1)
     } catch (error) {
       setResponse({ error: error.message });
     } finally {
@@ -44,6 +47,11 @@ export default function TestSection2() {
   };
 
   return (
+    <>
+    {response?
+    <div className="error-message">
+      {response}
+    </div>:
     <div className="form-section data-section TestDataSection2">
       <div className="section">
         <div className="box count">
@@ -210,9 +218,11 @@ export default function TestSection2() {
       <button className="report-download" disabled={loading}>
         Download Report
       </button>
-      <button className="action-button" onClick={handleSectionMove("testSection2", 2)}>
+      <button className="action-button" onClick={()=>handleSectionMove("testSection2", 2)}>
         Save and Next
       </button>
     </div>
+    }
+    </>
   );
 }

@@ -9,3 +9,9 @@ export const testDataSection1 = atom({
   key: "testDataSection1",
   default: null,
 });
+
+
+export const testId = atom({
+  key:"testId",
+  default:null
+})

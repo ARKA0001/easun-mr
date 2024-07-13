@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import moveSection from "@/utils/SectionMove";
 import { useRecoilState } from "recoil";
 import { activeSection } from "@/store/Section";
@@ -13,271 +13,493 @@ export default function Section2() {
     setCurrentActiveSection(moveSection(currentSection, moveAction));
   };
 
-  const { required, handleSubmit } = useForm();
-  const onSubmit = () => {};
+  const [frontSideOptions, setFrontSideOptions] = useState([]);
+  const [backSideOptions, setBackSideOptions] = useState([]);
+  const [leftSideOptions, setLeftSideOptions] = useState([]);
+  const [rightSideOptions, setRightSideOptions] = useState([]);
+  const [topSideOptions, setTopSideOptions] = useState([]);
+  const [bottomSideOptions, setBottomSideOptions] = useState([]);
+
+  const handleFrontSideOptions = (event) => {
+    const { value, checked } = event.target;
+    setFrontSideOptions((prevItems) => {
+      if (checked) {
+        return [...prevItems, value];
+      } else {
+        return prevItems.filter((item) => item !== value);
+      }
+    });
+  };
+  const handleBackSideOptions = (event) => {
+    const { value, checked } = event.target;
+    setBackSideOptions((prevItems) => {
+      if (checked) {
+        return [...prevItems, value];
+      } else {
+        return prevItems.filter((item) => item !== value);
+      }
+    });
+  };
+  const handleLeftSideOptions = (event) => {
+    const { value, checked } = event.target;
+    setLeftSideOptions((prevItems) => {
+      if (checked) {
+        return [...prevItems, value];
+      } else {
+        return prevItems.filter((item) => item !== value);
+      }
+    });
+  };
+  const handleRightSideOptions = (event) => {
+    const { value, checked } = event.target;
+    setRightSideOptions((prevItems) => {
+      if (checked) {
+        return [...prevItems, value];
+      } else {
+        return prevItems.filter((item) => item !== value);
+      }
+    });
+  };
+  const handleTopSideOptions = (event) => {
+    const { value, checked } = event.target;
+    setTopSideOptions((prevItems) => {
+      if (checked) {
+        return [...prevItems, value];
+      } else {
+        return prevItems.filter((item) => item !== value);
+      }
+    });
+  };
+  const handleBottomSideOptions = (event) => {
+    const { value, checked } = event.target;
+    setBottomSideOptions((prevItems) => {
+      if (checked) {
+        return [...prevItems, value];
+      } else {
+        return prevItems.filter((item) => item !== value);
+      }
+    });
+  };
+
+  const { register, handleSubmit } = useForm();
+  const onSubmit = async (data) => {
+    console.log("This is section 1 data");
+    const section2Data = {
+      field18: data.field18,
+      field19: data.field19,
+      field20: data.field20,
+      field21: data.field21,
+      field22: data.field22,
+      field23: data.field23,
+      field24: data.field24,
+      field25: data.field25,
+      field26: data.field26,
+      field27: data.field27,
+      field28: data.field28,
+      field29: frontSideOptions,
+      field30: backSideOptions,
+      field31: leftSideOptions,
+      field32: rightSideOptions,
+      field33: topSideOptions,
+      field34: bottomSideOptions,
+      field35: data.field35,
+      field36: data.field36,
+      field37: data.field37,
+      field38: data.field38,
+      field39: data.field39,
+      field40: data.field40,
+      field41: data.field41,
+      field42: data.field42,
+    };
+
+    console.log(section2Data);
+    handleSectionMove(2, 1);
+
+    // try {
+    //   const res = await fetch("http://localhost:8080/device/testData/1/"+{testIdResponse}, {
+    //     method: "PUT",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(section1Data),
+    //   });
+
+    //   if (!res.ok) {
+    //     throw new Error(`HTTP error! status: ${res.status}`);
+    //   }
+    //   setResponse(null);
+    //   handleSectionMove(1,1)
+    // } catch (error) {
+    //   setResponse({ error: error.message });
+    // } finally {
+    //   setLoading(false);
+    // }
+  };
 
   return (
     <div className="form-section">
-      <form onSubmit={handleSubmit(onSubmit())}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-row">
           <div className="user-input">
-            <label htmlFor="field1" className="field-label">
+            <label htmlFor="field18" className="field-label">
               Serial No
             </label>
-            <input type="text" name="" id="field1" className="user-value" />
+            <input
+              type="text"
+              name="field18"
+              id="field18"
+              className="user-value"
+              {...register("field18")}
+            />
           </div>
         </div>
         <div className="section-title">Verification of Name Plate</div>
         <div className="form-row">
           <div className="user-input">
-            <label htmlFor="field1" className="field-label">
+            <label htmlFor="field19" className="field-label">
               Description
             </label>
-            <input type="text" name="" id="field1" className="user-value" />
+            <input
+              type="text"
+              name="field19"
+              id="field19"
+              className="user-value"
+              {...register("field19")}
+            />
           </div>
           <div className="user-input">
-            <label htmlFor="field1" className="field-label">
+            <label htmlFor="field20" className="field-label">
               Motor Voltage
             </label>
-            <input type="text" name="" id="field1" className="user-value" />
+            <input
+              type="text"
+              name="field20"
+              id="field20"
+              className="user-value"
+              {...register("field20")}
+            />
           </div>
         </div>
         <div className="form-row">
           <div className="user-input">
-            <label htmlFor="field1" className="field-label">
+            <label htmlFor="field21" className="field-label">
               Control Voltage
             </label>
-            <input type="text" name="" id="field1" className="user-value" />
+            <input
+              type="text"
+              name="field21"
+              id="field21"
+              className="user-value"
+              {...register("field21")}
+            />
           </div>
           <div className="user-input">
-            <label htmlFor="field1" className="field-label">
+            <label htmlFor="field22" className="field-label">
               Frequency
             </label>
-            <input type="text" name="" id="field1" className="user-value" />
+            <input
+              type="text"
+              name="field22"
+              id="field22"
+              className="user-value"
+              {...register("field22")}
+            />
           </div>
         </div>
         <div className="form-row">
           <div className="user-input">
-            <label htmlFor="field1" className="field-label">
+            <label htmlFor="field23" className="field-label">
               Tr. Resistance Value
             </label>
-            <input type="text" name="" id="field1" className="user-value" />
+            <input
+              type="text"
+              name="field23"
+              id="field23"
+              className="user-value"
+              {...register("field23")}
+            />
           </div>
           <div className="user-input">
-            <label htmlFor="field1" className="field-label">
+            <label htmlFor="field24" className="field-label">
               Year of MFG
             </label>
-            <input type="text" name="" id="field1" className="user-value" />
+            <input
+              type="text"
+              name="field24"
+              id="field24"
+              className="user-value"
+              {...register("field24")}
+            />
           </div>
         </div>
         <div className="form-row">
           <div className="user-input">
-            <label htmlFor="field1" className="field-label">
+            <label htmlFor="field25" className="field-label">
               Schematic Diagram No
             </label>
-            <input type="text" name="" id="field1" className="user-value" />
+            <input
+              type="text"
+              name="field25"
+              id="field25"
+              className="user-value"
+              {...register("field25")}
+            />
           </div>
           <div className="user-input">
-            <label htmlFor="field1" className="field-label">
+            <label htmlFor="field26" className="field-label">
               DM Paint Shade External
             </label>
-            <input type="text" name="" id="field1" className="user-value" />
+            <input
+              type="text"
+              name="field26"
+              id="field26"
+              className="user-value"
+              {...register("field26")}
+            />
           </div>
         </div>
         <div className="form-row">
           <div className="user-input">
-            <label htmlFor="field1" className="field-label">
+            <label htmlFor="field27" className="field-label">
               DM Paint Shade Internal
             </label>
-            <input type="text" name="" id="field1" className="user-value" />
+            <input
+              type="text"
+              name="field27"
+              id="field27"
+              className="user-value"
+              {...register("field27")}
+            />
           </div>
           <div className="user-input">
-            <label htmlFor="field1" className="field-label">
+            <label htmlFor="field28" className="field-label">
               Paint Thickness
             </label>
-            <input type="text" name="" id="field1" className="user-value" />
+            <input
+              type="text"
+              name="field28"
+              id="field28"
+              className="user-value"
+              {...register("field28")}
+            />
           </div>
         </div>
         <div className="section-title">Paint Scratches / Finishing</div>
         <div className="form-row">
           <div className="user-input">
-            <label
-              htmlFor="section1-reports"
-              className="field-label check-label"
-            >
+            <label htmlFor="" className="field-label check-label">
               Front Side
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-1"
-                id="check-1"
+                name="front-1"
+                id="front-1"
                 className="user-value"
+                value="No Scratches"
+                checked={frontSideOptions.includes("No Scratches")}
+                onChange={handleFrontSideOptions}
               />
-              <label htmlFor="check-1">No Scratches</label>
+              <label htmlFor="front-1">No Scratches</label>
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-2"
-                id="check-2"
+                name="front-2"
+                id="front-2"
                 className="user-value"
+                value="Line Mark"
+                checked={frontSideOptions.includes("Line Mark")}
+                onChange={handleFrontSideOptions}
               />
-              <label htmlFor="check-2">Line Mark</label>
+              <label htmlFor="front-2">Line Mark</label>
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-3"
-                id="check-3"
+                name="front-3"
+                id="front-3"
                 className="user-value"
+                value="Painting Peel Off"
+                checked={frontSideOptions.includes("Painting Peel Off")}
+                onChange={handleFrontSideOptions}
               />
-              <label htmlFor="check-3">Painting Peel Off</label>
+              <label htmlFor="front-3">Painting Peel Off</label>
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-4"
-                id="check-4"
+                name="front-4"
+                id="front-4"
                 className="user-value"
+                value="Paint Fade"
+                checked={frontSideOptions.includes("Paint Fade")}
+                onChange={handleFrontSideOptions}
               />
-              <label htmlFor="check-4">Paint Fade</label>
+              <label htmlFor="front-4">Paint Fade</label>
             </label>
           </div>
         </div>
         <div className="form-row">
           <div className="user-input">
-            <label
-              htmlFor="section1-reports"
-              className="field-label check-label"
-            >
+            <label htmlFor="" className="field-label check-label">
               Back Side
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-5"
-                id="check-5"
+                name="back-1"
+                id="back-1"
                 className="user-value"
+                value="No Scratches"
+                checked={backSideOptions.includes("No Scratches")}
+                onChange={handleBackSideOptions}
               />
-              <label htmlFor="check-5">No Scratches</label>
+              <label htmlFor="back-1">No Scratches</label>
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-6"
-                id="check-6"
+                name="back-2"
+                id="back-2"
                 className="user-value"
+                value="Line Mark"
+                checked={backSideOptions.includes("Line Mark")}
+                onChange={handleBackSideOptions}
               />
-              <label htmlFor="check-6">Line Mark</label>
+              <label htmlFor="back-2">Line Mark</label>
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-7"
-                id="check-7"
+                name="back-3"
+                id="back-3"
                 className="user-value"
+                value="Painting Peel Off"
+                checked={backSideOptions.includes("Painting Peel Off")}
+                onChange={handleBackSideOptions}
               />
-              <label htmlFor="check-7">Painting Peel Off</label>
+              <label htmlFor="back-3">Painting Peel Off</label>
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-8"
-                id="check-8"
+                name="back-4"
+                id="back-4"
                 className="user-value"
+                value="Paint Fade"
+                checked={backSideOptions.includes("Paint Fade")}
+                onChange={handleBackSideOptions}
               />
-              <label htmlFor="check-8">Paint Fade</label>
+              <label htmlFor="back-4">Paint Fade</label>
             </label>
           </div>
         </div>
         <div className="form-row">
           <div className="user-input">
-            <label
-              htmlFor="section1-reports"
-              className="field-label check-label"
-            >
+            <label htmlFor="" className="field-label check-label">
               Left Side
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-9"
-                id="check-9"
+                name="left-1"
+                id="left-1"
                 className="user-value"
+                value="No Scratches"
+                checked={leftSideOptions.includes("No Scratches")}
+                onChange={handleLeftSideOptions}
               />
-              <label htmlFor="check-9">No Scratches</label>
+              <label htmlFor="left-1">No Scratches</label>
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-10"
-                id="check-10"
+                name="left-2"
+                id="left-2"
                 className="user-value"
+                value="Line Mark"
+                checked={leftSideOptions.includes("Line Mark")}
+                onChange={handleLeftSideOptions}
               />
-              <label htmlFor="check-10">Line Mark</label>
+              <label htmlFor="left-2">Line Mark</label>
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-11"
-                id="check-11"
+                name="left-3"
+                id="left-3"
                 className="user-value"
+                value="Painting Peel Off"
+                checked={leftSideOptions.includes("Painting Peel Off")}
+                onChange={handleLeftSideOptions}
               />
-              <label htmlFor="check-11">Painting Peel Off</label>
+              <label htmlFor="left-3">Painting Peel Off</label>
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-12"
-                id="check-12"
+                name="left-4"
+                id="left-4"
                 className="user-value"
+                value="Paint Fade"
+                checked={leftSideOptions.includes("Paint Fade")}
+                onChange={handleLeftSideOptions}
               />
-              <label htmlFor="check-12">Paint Fade</label>
+              <label htmlFor="left-4">Paint Fade</label>
             </label>
           </div>
         </div>
         <div className="form-row">
           <div className="user-input">
-            <label
-              htmlFor="section1-reports"
-              className="field-label check-label"
-            >
+            <label htmlFor="" className="field-label check-label">
               Right Side
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-13"
-                id="check-13"
+                name="right-1"
+                id="right-1"
                 className="user-value"
+                value="No Scratches"
+                checked={rightSideOptions.includes("No Scratches")}
+                onChange={handleRightSideOptions}
               />
-              <label htmlFor="check-13">No Scratches</label>
+              <label htmlFor="right-1">No Scratches</label>
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-14"
-                id="check-14"
+                name="right-2"
+                id="right-2"
                 className="user-value"
+                value="Line Mark"
+                checked={rightSideOptions.includes("Line Mark")}
+                onChange={handleRightSideOptions}
               />
-              <label htmlFor="check-14">Line Mark</label>
+              <label htmlFor="right-2">Line Mark</label>
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-15"
-                id="check-15"
+                name="right-3"
+                id="right-3"
                 className="user-value"
+                value="Painting Peel Off"
+                checked={rightSideOptions.includes("Painting Peel Off")}
+                onChange={handleRightSideOptions}
               />
-              <label htmlFor="check-15">Painting Peel Off</label>
+              <label htmlFor="right-3">Painting Peel Off</label>
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-16"
-                id="check-16"
+                name="right-4"
+                id="right-4"
                 className="user-value"
+                value="Paint Fade"
+                checked={rightSideOptions.includes("Paint Fade")}
+                onChange={handleRightSideOptions}
               />
               <label htmlFor="check-16">Paint Fade</label>
             </label>
@@ -285,93 +507,111 @@ export default function Section2() {
         </div>
         <div className="form-row">
           <div className="user-input">
-            <label
-              htmlFor="section1-reports"
-              className="field-label check-label"
-            >
+            <label htmlFor="" className="field-label check-label">
               Top Side
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-17"
-                id="check-17"
+                name="top-1"
+                id="top-1"
                 className="user-value"
+                value="No Scratches"
+                checked={topSideOptions.includes("No Scratches")}
+                onChange={handleTopSideOptions}
               />
-              <label htmlFor="check-17">No Scratches</label>
+              <label htmlFor="top-1">No Scratches</label>
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-18"
-                id="check-18"
+                name="top-2"
+                id="top-2"
                 className="user-value"
+                value="Line Mark"
+                checked={topSideOptions.includes("Line Mark")}
+                onChange={handleTopSideOptions}
               />
-              <label htmlFor="check-18">Line Mark</label>
+              <label htmlFor="top-2">Line Mark</label>
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-19"
-                id="check-19"
+                name="top-3"
+                id="top-3"
                 className="user-value"
+                value="Painting Peel Off"
+                checked={topSideOptions.includes("Painting Peel Off")}
+                onChange={handleTopSideOptions}
               />
-              <label htmlFor="check-19">Painting Peel Off</label>
+              <label htmlFor="top-3">Painting Peel Off</label>
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-20"
-                id="check-20"
+                name="top-4"
+                id="top-4"
                 className="user-value"
+                value="Paint Fade"
+                checked={topSideOptions.includes("Paint Fade")}
+                onChange={handleTopSideOptions}
               />
-              <label htmlFor="check-20">Paint Fade</label>
+              <label htmlFor="top-4">Paint Fade</label>
             </label>
           </div>
         </div>
         <div className="form-row">
           <div className="user-input">
-            <label
-              htmlFor="section1-reports"
-              className="field-label check-label"
-            >
+            <label htmlFor="" className="field-label check-label">
               Bottom Side
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-21"
-                id="check-21"
+                name="bottom-1"
+                id="bottom-1"
                 className="user-value"
+                value="No Scratches"
+                checked={bottomSideOptions.includes("No Scratches")}
+                onChange={handleBottomSideOptions}
               />
-              <label htmlFor="check-21">No Scratches</label>
+              <label htmlFor="bottom-1">No Scratches</label>
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-22"
-                id="check-22"
+                name="bottom-2"
+                id="bottom-2"
                 className="user-value"
+                value="Line Mark"
+                checked={bottomSideOptions.includes("Line Mark")}
+                onChange={handleBottomSideOptions}
               />
-              <label htmlFor="check-22">Line Mark</label>
+              <label htmlFor="bottom-2">Line Mark</label>
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-23"
-                id="check-23"
+                name="bottom-3"
+                id="bottom-3"
                 className="user-value"
+                value="Painting Peel Off"
+                checked={bottomSideOptions.includes("Painting Peel Off")}
+                onChange={handleBottomSideOptions}
               />
-              <label htmlFor="check-23">Painting Peel Off</label>
+              <label htmlFor="bottom-3">Painting Peel Off</label>
             </label>
             <label htmlFor="" className="check">
               <input
                 type="checkbox"
-                name="check-24"
-                id="check-24"
+                name="bottom-4"
+                id="bottom-4"
                 className="user-value"
+                value="Paint Fade"
+                checked={bottomSideOptions.includes("Paint Fade")}
+                onChange={handleBottomSideOptions}
               />
-              <label htmlFor="check-24">Paint Fade</label>
+              <label htmlFor="bottom-4">Paint Fade</label>
             </label>
           </div>
         </div>
@@ -383,42 +623,52 @@ export default function Section2() {
             >
               Power Voltage (motor)
             </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-power"
-                id="section2-power-1"
-                className="user-value"
-              />
-              <label htmlFor="section2-power-1">380 AC/DC</label>
-            </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-power"
-                id="section2-power-2"
-                className="user-value"
-              />
-              <label htmlFor="section2-power-2">400 AC/DC</label>
-            </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-power"
-                id="section2-power-3"
-                className="user-value"
-              />
-              <label htmlFor="section2-power-3">415 AC/DC</label>
-            </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-power"
-                id="section2-power-4"
-                className="user-value"
-              />
-              <label htmlFor="section2-power-4">430 AC/DC</label>
-            </label>
+            <div className="radio-input">
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-power"
+                  id="section2-power-1"
+                  className="user-value"
+                  value="380 AC/DC"
+                  {...register("field35")}
+                />
+                <label htmlFor="section2-power-1">380 AC/DC</label>
+              </label>
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-power"
+                  id="section2-power-2"
+                  className="user-value"
+                  value="400 AC/DC"
+                  {...register("field35")}
+                />
+                <label htmlFor="section2-power-2">400 AC/DC</label>
+              </label>
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-power"
+                  id="section2-power-3"
+                  className="user-value"
+                  value="415 AC/DC"
+                  {...register("field35")}
+                />
+                <label htmlFor="section2-power-3">415 AC/DC</label>
+              </label>
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-power"
+                  id="section2-power-4"
+                  className="user-value"
+                  value="430 AC/DC"
+                  {...register("field35")}
+                />
+                <label htmlFor="section2-power-4">430 AC/DC</label>
+              </label>
+            </div>
           </div>
         </div>
         <div className="form-row">
@@ -426,24 +676,30 @@ export default function Section2() {
             <label htmlFor="" className="field-label radio-label">
               Control Voltage
             </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-voltage"
-                id="section2-voltage-1"
-                className="user-value"
-              />
-              <label htmlFor="section2-voltage-1">110 VAC/DC</label>
-            </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-voltage"
-                id="section2-voltage-2"
-                className="user-value"
-              />
-              <label htmlFor="section2-voltage-2">230 VAC/DC</label>
-            </label>
+            <div className="radio-input">
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-voltage"
+                  id="section2-voltage-1"
+                  className="user-value"
+                  value="110 VAC/DC"
+                  {...register("field36")}
+                />
+                <label htmlFor="section2-voltage-1">110 VAC/DC</label>
+              </label>
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-voltage"
+                  id="section2-voltage-2"
+                  className="user-value"
+                  value="230 VAC/DC"
+                  {...register("field36")}
+                />
+                <label htmlFor="section2-voltage-2">230 VAC/DC</label>
+              </label>
+            </div>
           </div>
         </div>
         <div className="form-row">
@@ -451,33 +707,41 @@ export default function Section2() {
             <label htmlFor="" className="field-label radio-label">
               DM Material
             </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-material"
-                id="section2-material-1"
-                className="user-value"
-              />
-              <label htmlFor="section2-material-1">MS</label>
-            </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-material"
-                id="section2-material-2"
-                className="user-value"
-              />
-              <label htmlFor="section2-material-2">SS</label>
-            </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-material"
-                id="section2-material-3"
-                className="user-value"
-              />
-              <label htmlFor="section2-material-3">Aluminum</label>
-            </label>
+            <div className="radio-input">
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-material"
+                  id="section2-material-1"
+                  className="user-value"
+                  value="MS"
+                  {...register("field37")}
+                />
+                <label htmlFor="section2-material-1">MS</label>
+              </label>
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-material"
+                  id="section2-material-2"
+                  className="user-value"
+                  value="SS"
+                  {...register("field37")}
+                />
+                <label htmlFor="section2-material-2">SS</label>
+              </label>
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-material"
+                  id="section2-material-3"
+                  className="user-value"
+                  value="Aluminum"
+                  {...register("field37")}
+                />
+                <label htmlFor="section2-material-3">Aluminum</label>
+              </label>
+            </div>
           </div>
         </div>
         <div className="form-row">
@@ -485,24 +749,30 @@ export default function Section2() {
             <label htmlFor="" className="field-label radio-label">
               DM Door Hinge
             </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-door-hinge"
-                id="section2-door-hinge-1"
-                className="user-value"
-              />
-              <label htmlFor="section2-door-hinge-1">Left</label>
-            </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-door-hinge"
-                id="section2-door-hinge-2"
-                className="user-value"
-              />
-              <label htmlFor="section2-door-hinge-2">Right</label>
-            </label>
+            <div className="radio-input">
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-door-hinge"
+                  id="section2-door-hinge-1"
+                  className="user-value"
+                  value="Left"
+                  {...register("field38")}
+                />
+                <label htmlFor="section2-door-hinge-1">Left</label>
+              </label>
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-door-hinge"
+                  id="section2-door-hinge-2"
+                  className="user-value"
+                  value="Right"
+                  {...register("field38")}
+                />
+                <label htmlFor="section2-door-hinge-2">Right</label>
+              </label>
+            </div>
           </div>
         </div>
         <div className="form-row">
@@ -510,60 +780,74 @@ export default function Section2() {
             <label htmlFor="" className="field-label radio-label">
               No Of Push Button Holes
             </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-buttons"
-                id="section2-buttons-1"
-                className="user-value"
-              />
-              <label htmlFor="section2-buttons-1">3</label>
-            </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-buttons"
-                id="section2-buttons-2"
-                className="user-value"
-              />
-              <label htmlFor="section2-buttons-2">4</label>
-            </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-buttons"
-                id="section2-buttons-3"
-                className="user-value"
-              />
-              <label htmlFor="section2-buttons-3">5</label>
-            </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-buttons"
-                id="section2-buttons-5"
-                className="user-value"
-              />
-              <label htmlFor="section2-buttons-5">6</label>
-            </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-buttons"
-                id="section2-buttons-6"
-                className="user-value"
-              />
-              <label htmlFor="section2-buttons-6">7</label>
-            </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-buttons"
-                id="section2-buttons-7"
-                className="user-value"
-              />
-              <label htmlFor="section2-buttons-7">8</label>
-            </label>
+            <div className="radio-input">
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-buttons"
+                  id="section2-buttons-1"
+                  className="user-value"
+                  value="3"
+                  {...register("field39")}
+                />
+                <label htmlFor="section2-buttons-1">3</label>
+              </label>
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-buttons"
+                  id="section2-buttons-2"
+                  className="user-value"
+                  value="4"
+                  {...register("field39")}
+                />
+                <label htmlFor="section2-buttons-2">4</label>
+              </label>
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-buttons"
+                  id="section2-buttons-3"
+                  className="user-value"
+                  value="5"
+                  {...register("field39")}
+                />
+                <label htmlFor="section2-buttons-3">5</label>
+              </label>
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-buttons"
+                  id="section2-buttons-5"
+                  className="user-value"
+                  value="6"
+                  {...register("field39")}
+                />
+                <label htmlFor="section2-buttons-5">6</label>
+              </label>
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-buttons"
+                  id="section2-buttons-6"
+                  className="user-value"
+                  value="7"
+                  {...register("field39")}
+                />
+                <label htmlFor="section2-buttons-6">7</label>
+              </label>
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-buttons"
+                  id="section2-buttons-7"
+                  className="user-value"
+                  value="8"
+                  {...register("field39")}
+                />
+                <label htmlFor="section2-buttons-7">8</label>
+              </label>
+            </div>
           </div>
         </div>
         <div className="form-row">
@@ -571,7 +855,13 @@ export default function Section2() {
             <label htmlFor="field1" className="field-label">
               No of ADS
             </label>
-            <input type="text" name="" id="field1" className="user-value" />
+            <input
+              type="text"
+              name=""
+              id="field9"
+              className="user-value"
+              {...register("field40")}
+            />
           </div>
         </div>
         <div className="form-row">
@@ -579,24 +869,30 @@ export default function Section2() {
             <label htmlFor="" className="field-label radio-label">
               Type of TPI Resistance
             </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-tpi"
-                id="section2-tpi-1"
-                className="user-value"
-              />
-              <label htmlFor="section2-tpi-1">1K Ohms</label>
-            </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-tpi"
-                id="section2-tpi-2"
-                className="user-value"
-              />
-              <label htmlFor="section2-tpi-2">100K Ohms</label>
-            </label>
+            <div className="radio-input">
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-tpi"
+                  id="section2-tpi-1"
+                  className="user-value"
+                  value="1K Ohms"
+                  {...register("field41")}
+                />
+                <label htmlFor="section2-tpi-1">1K Ohms</label>
+              </label>
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-tpi"
+                  id="section2-tpi-2"
+                  className="user-value"
+                  value="100K Ohms"
+                  {...register("field41")}
+                />
+                <label htmlFor="section2-tpi-2">100K Ohms</label>
+              </label>
+            </div>
           </div>
         </div>
         <div className="form-row">
@@ -604,31 +900,36 @@ export default function Section2() {
             <label htmlFor="" className="field-label radio-label">
               Quantity
             </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-quantity"
-                id="section2-quantity-1"
-                className="user-value"
-              />
-              <label htmlFor="section2-quantity-1">11</label>
-            </label>
-            <label htmlFor="" className="radio">
-              <input
-                type="radio"
-                name="section2-quantity"
-                id="section2-quantity-2"
-                className="user-value"
-              />
-              <label htmlFor="section2-quantity-2">2</label>
-            </label>
+            <div className="radio-input">
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-quantity"
+                  id="section2-quantity-1"
+                  className="user-value"
+                  value="1"
+                  {...register("field42")}
+                />
+                <label htmlFor="section2-quantity-1">1</label>
+              </label>
+              <label htmlFor="" className="radio">
+                <input
+                  type="radio"
+                  name="section2-quantity"
+                  id="section2-quantity-2"
+                  className="user-value"
+                  value="2"
+                  {...register("field42")}
+                />
+                <label htmlFor="section2-quantity-2">2</label>
+              </label>
+            </div>
           </div>
         </div>
+        <button type="submit" className="action-button">
+          Save & Next
+        </button>
       </form>
-
-      <button onClick={() => handleSectionMove(2, 1)} className="action-button">
-        Save & Next
-      </button>
     </div>
   );
 }
