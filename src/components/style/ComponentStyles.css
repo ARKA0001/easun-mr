@@ -38,6 +38,15 @@ body {
 .user-input {
   margin: 0 2rem;
 }
+.row-input{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.row-input input[type="text"]{
+  width:250px;
+}
 .form-row * {
   flex: 1;
 }

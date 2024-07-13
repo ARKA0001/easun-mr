@@ -20,16 +20,16 @@ export default function Section8() {
 
   return (
     <div className="form-section">
-      <form onSubmit={handleSubmit(onSubmit())}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-row">
           <div className="user-input">
             <label htmlFor="field1" className="field-label">
               Perform under voltage test for one complete cycle
             </label>
-            <label htmlFor="">
+            <div className="row-input">
               UV
               <input type="text" name="" id="field1" className="user-value" />V
-            </label>
+            </div>
           </div>
         </div>
         <div className="form-row">
@@ -37,10 +37,10 @@ export default function Section8() {
             <label htmlFor="field1" className="field-label">
               Perform over voltage test for one complete cycle
             </label>
-            <label htmlFor="">
+            <div className="row-input">
               UV
               <input type="text" name="" id="field1" className="user-value" />V
-            </label>
+            </div>
           </div>
         </div>
         <div className="form-row">
@@ -48,10 +48,10 @@ export default function Section8() {
             <label htmlFor="field1" className="field-label">
               Perform normal voltage test for 8 complete cycle of operation
             </label>
-            <label htmlFor="">
+            <div className="row-input">
               UV
               <input type="text" name="" id="field1" className="user-value" />V
-            </label>
+            </div>
           </div>
         </div>
       </form>

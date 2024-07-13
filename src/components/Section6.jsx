@@ -18,22 +18,25 @@ export default function Section6() {
 
   return (
     <div className="form-section">
-      <form onSubmit={handleSubmit(onSubmit())}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <table className="toggle-table">
-          <div className="toggle-section">
-            <div className="section-title">IR Test</div>
+          <tbody>
+            <tr className="section-title">
+              <td className="user-input user-toggle">IR Test</td>
+              <td className="user-input user-toggle"></td>
+            </tr>
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-1" className="field-label">
                   Perform IR test before HV test and Note down the value
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-1" class="toggle-input" />
-                <label for="toggle-1" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-1" className="toggle-input" />
+                <label htmlFor="toggle-1" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
@@ -43,30 +46,31 @@ export default function Section6() {
                   Perform IR test after HV test and Note down the value
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-2" class="toggle-input" />
-                <label for="toggle-2" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-2" className="toggle-input" />
+                <label htmlFor="toggle-2" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
-          </div>
-          <div className="toggle-section">
-            <div className="section-title">HV Test</div>
+
+            <tr className="section-title">
+              <td className="user-input user-toggle">HV Test</td>
+            </tr>
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-3" className="field-label">
                   Perform IR test before HV Test and note down the value
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-3" class="toggle-input" />
-                <label for="toggle-3" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-3" className="toggle-input" />
+                <label htmlFor="toggle-3" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
@@ -76,18 +80,20 @@ export default function Section6() {
                   Perform IR test after HV test and Note down the value
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-4" class="toggle-input" />
-                <label for="toggle-4" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-4" className="toggle-input" />
+                <label htmlFor="toggle-4" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
-          </div>
-          <div className="toggle-section">
-            <div className="section-title">Revolution</div>
+
+            <tr className="section-title">
+              <td className="user-toggle user-input">Revolution</td>
+              <td className="user-toggle user-input"></td>
+            </tr>
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-4" className="field-label">
@@ -95,36 +101,36 @@ export default function Section6() {
                   direction two taps
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-4" class="toggle-input" />
-                <label for="toggle-4" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-4" className="toggle-input" />
+                <label htmlFor="toggle-4" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
-          </div>
-          <div className="toggle-section">
-            <div className="section-title">Voltage</div>
+            <tr className="section-title">
+              <td className="user-toggle user-input">Voltage</td>
+            </tr>
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-7" className="field-label">
                   Ensure control and power voltage as per the schematic diagram
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-7" class="toggle-input" />
-                <label for="toggle-7" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-7" className="toggle-input" />
+                <label htmlFor="toggle-7" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
-          </div>
-          <div className="toggle-section">
-            <div className="section-title">HC Safety Switch</div>
+            <tr className="section-title">
+              <td className="user-toggle user-input">HC Safety Switch</td>
+            </tr>
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-8" className="field-label">
@@ -132,18 +138,18 @@ export default function Section6() {
                   S2 raise
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-8" class="toggle-input" />
-                <label for="toggle-8" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-8" className="toggle-input" />
+                <label htmlFor="toggle-8" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
-          </div>
-          <div className="toggle-section">
-            <div className="section-title">TPI</div>
+            <tr className="section-title">
+              <td className="user-toggle user-input">TPI</td>
+            </tr>
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-9" className="field-label">
@@ -151,12 +157,12 @@ export default function Section6() {
                   wheel w.r.t tap no in
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-9" class="toggle-input" />
-                <label for="toggle-9" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-9" className="toggle-input" />
+                <label htmlFor="toggle-9" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
@@ -167,30 +173,31 @@ export default function Section6() {
                   check
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-10" class="toggle-input" />
-                <label for="toggle-10" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-10" className="toggle-input" />
+                <label htmlFor="toggle-10" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
-          </div>
-          <div className="toggle-section">
-            <div className="section-title">Pulse</div>
+            <tr className="section-title">
+              <td className="user-toggle user-input">Pulse</td>
+            </tr>
+
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-11" className="field-label">
                   Perform that test - Single pulse via push button raise
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-11" class="toggle-input" />
-                <label for="toggle-11" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-11" className="toggle-input" />
+                <label htmlFor="toggle-11" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
@@ -200,12 +207,12 @@ export default function Section6() {
                   Continous pulse via pushbutton raise or lower
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-12" class="toggle-input" />
-                <label for="toggle-12" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-12" className="toggle-input" />
+                <label htmlFor="toggle-12" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
@@ -215,36 +222,38 @@ export default function Section6() {
                   press and hold the push button either raise
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-12" class="toggle-input" />
-                <label for="toggle-12" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-12" className="toggle-input" />
+                <label htmlFor="toggle-12" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
-          </div>
-          <div className="toggle-section">
-            <div className="section-title">Path sequence</div>
+            <tr className="section-title">
+              <td className="user-toggle user-input">Path sequence</td>
+            </tr>
+
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-12" className="field-label">
                   Perform phase sequence test - Change the motor phase
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-12" class="toggle-input" />
-                <label for="toggle-12" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-12" className="toggle-input" />
+                <label htmlFor="toggle-12" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
-          </div>
-          <div className="toggle-section">
-            <div className="section-title">Counter pulse</div>
+            <tr className="section-title">
+              <td className="user-toggle user-input">Counter Pulse</td>
+            </tr>
+
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-13" className="field-label">
@@ -252,18 +261,19 @@ export default function Section6() {
                   LEPB (MPR)
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-13" class="toggle-input" />
-                <label for="toggle-13" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-13" className="toggle-input" />
+                <label htmlFor="toggle-13" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
-          </div>
-          <div className="toggle-section">
-            <div className="section-title">Electrical Limit lower</div>
+            <tr className="section-title">
+              <td className="user-toggle user-input">Electrical Limit lower</td>
+            </tr>
+
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-14" className="field-label">
@@ -271,18 +281,19 @@ export default function Section6() {
                   not pick
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-14" class="toggle-input" />
-                <label for="toggle-14" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-14" className="toggle-input" />
+                <label htmlFor="toggle-14" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
-          </div>
-          <div className="toggle-section">
-            <div className="section-title">Mechanical End Limit</div>
+            <tr className="section-title">
+              <td className="user-toggle user-input">Mechanical End Limit</td>
+            </tr>
+
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-15" className="field-label">
@@ -290,12 +301,12 @@ export default function Section6() {
                   to mechanical
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-15" class="toggle-input" />
-                <label for="toggle-15" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-15" className="toggle-input" />
+                <label htmlFor="toggle-15" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
@@ -306,18 +317,19 @@ export default function Section6() {
                   to mechanical limit
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-16" class="toggle-input" />
-                <label for="toggle-16" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-16" className="toggle-input" />
+                <label htmlFor="toggle-16" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
-          </div>
-          <div className="toggle-section">
-            <div className="section-title">Electrical Limit Raise</div>
+            <tr className="section-title">
+              <td className="user-toggle user-input">Electrical Limit Raise</td>
+            </tr>
+
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-17" className="field-label">
@@ -325,18 +337,19 @@ export default function Section6() {
                   push button switch
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-17" class="toggle-input" />
-                <label for="toggle-17" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-17" className="toggle-input" />
+                <label htmlFor="toggle-17" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
-          </div>
-          <div className="toggle-section">
-            <div className="section-title">TBs Check</div>
+            <tr className="section-title">
+              <td className="user-toggle user-input">TBs Check</td>
+            </tr>
+
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-18" className="field-label">
@@ -344,12 +357,12 @@ export default function Section6() {
                   list
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-18" class="toggle-input" />
-                <label for="toggle-18" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-18" className="toggle-input" />
+                <label htmlFor="toggle-18" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
@@ -360,18 +373,19 @@ export default function Section6() {
                   except 1.5
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-19" class="toggle-input" />
-                <label for="toggle-19" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-19" className="toggle-input" />
+                <label htmlFor="toggle-19" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
-          </div>
-          <div className="toggle-section">
-            <div className="section-title">Door switch</div>
+            <tr className="section-title">
+              <td className="user-toggle user-input">Door Switch</td>
+            </tr>
+
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-21" className="field-label">
@@ -379,34 +393,35 @@ export default function Section6() {
                   door
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-20" class="toggle-input" />
-                <label for="toggle-20" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Yes</span>
-                  <span class="toggle-text off">No</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-20" className="toggle-input" />
+                <label htmlFor="toggle-20" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
                 </label>
               </td>
             </tr>
-          </div>
-          <div className="toggle-section">
-            <div className="section-title">Raise</div>
+            <tr className="section-title">
+              <td className="user-toggle user-input">Raise</td>
+            </tr>
+
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-21" className="field-label">
                   Mechanical end limit revolution
                 </label>
               </td>
-              <td class="toggle-container">
-                <input type="checkbox" id="toggle-21" class="toggle-input" />
-                <label for="toggle-21" class="toggle-label">
-                  <span class="toggle-switch"></span>
-                  <span class="toggle-text on">Raise</span>
-                  <span class="toggle-text off">No Raise</span>
+              <td className="toggle-container">
+                <input type="checkbox" id="toggle-21" className="toggle-input" />
+                <label htmlFor="toggle-21" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Raise</span>
+                  <span className="toggle-text off">No Raise</span>
                 </label>
               </td>
             </tr>
-          </div>
+          </tbody>
         </table>
       </form>
 

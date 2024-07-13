@@ -15,7 +15,7 @@ export default function Section5() {
     setCurrentActiveSection(moveSection(currentSection, moveAction));
   };
 
-  const { required, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {
     console.log("This is section 5 data");
     const section4Data = {
