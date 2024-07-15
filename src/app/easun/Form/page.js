@@ -16,6 +16,7 @@ import { useRecoilState } from "recoil";
 import { activeSection } from "@/store/Section";
 import TestSection1 from "@/components/TestSection1";
 import TestSection2 from "@/components/TestSection2";
+import DownloadReport from "@/components/DownloadReport";
 
 export default function Page() {
   const currentDate = new Date();
@@ -47,6 +48,8 @@ export default function Page() {
         return <TestSection1 />;
       case "testSection2":
         return <TestSection2 />;
+      case "download-report":
+        return <DownloadReport />
       case 1:
         return <Section1 />;
       case 2:

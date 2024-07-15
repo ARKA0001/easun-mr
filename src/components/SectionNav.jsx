@@ -28,12 +28,19 @@ export default function SectionNav() {
       </div>
       <div
         className={
+          currentActiveSection === "download-report" ? "section-label active" : "section-label"
+        }
+      >
+        Download Report
+      </div>
+      {/* <div
+        className={
           currentActiveSection === 1 ? "section-label active" : "section-label"
         }
       >
         Test Order Details Observation
-      </div>
-      <div
+      </div> */}
+      {/* <div
         className={
           currentActiveSection === 2 ? "section-label active" : "section-label"
         }
@@ -81,7 +88,7 @@ export default function SectionNav() {
         }
       >
         Application Test Requirements
-      </div>
+      </div> */}
     </div>
   );
 }

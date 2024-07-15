@@ -258,8 +258,11 @@ input[type="checkbox"] {
 }
 .TestDataSection2 .section:first-child {
   display: flex;
-  gap: 2rem;
-  align-content: stretch;
+  width: 100%;
+  justify-content: space-around;
+}
+.TestDataSection2 .section .data{
+  height: 210px;
 }
 .TestDataSection2 .section .count {
   background-color: var(--primary-blue);
@@ -270,7 +273,7 @@ input[type="checkbox"] {
   padding: 2rem;
   border-radius: 25px;
   color: var(--primary-white);
-  width: 150px;
+  width: 300px;
 }
 .count .count-no {
   font-weight: 600;
@@ -328,11 +331,11 @@ input[type="checkbox"] {
   margin: 15px 0;
   font-size: 14px;
 }
-.report-download {
+.download-report {
   padding: 15px 30px;
   background-color: var(--primary-blue);
   color: var(--primary-white);
-  float: right;
+  margin:2rem;
 }
 .report-download:disabled,
 button:disabled {

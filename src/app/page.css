@@ -269,7 +269,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   margin: 2rem 1rem 5rem 1rem;
 }
 
@@ -347,4 +347,39 @@
 .left-main-side {
   scrollbar-width: thin; /* Scrollbar width: auto, thin, or none */
   scrollbar-color: #888 #f1f1f1; /* Thumb color and track color */
+}
+
+
+.TestDataSection2{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-info{
+  padding:1rem 0;
+}
+.progress-container {
+  width: 100%;
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 2rem 4rem;
+}
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #4caf50;
+  animation: loading 2s linear infinite;
+}
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
