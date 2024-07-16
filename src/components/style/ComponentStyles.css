@@ -256,15 +256,16 @@ input[type="checkbox"] {
 .TestDataSection2 {
   padding: 1rem 4rem;
 }
-.TestDataSection2 .section:first-child {
+.TestDataSection2 .section-info {
   display: flex;
   width: 100%;
   justify-content: space-around;
+  flex-direction: row;
 }
-.TestDataSection2 .section .data{
+.TestDataSection2 .section-info .data{
   height: 210px;
 }
-.TestDataSection2 .section .count {
+.TestDataSection2 .section-info .count {
   background-color: var(--primary-blue);
   display: flex;
   flex-direction: column;
@@ -284,7 +285,7 @@ input[type="checkbox"] {
   text-align: center;
 }
 
-.section .box:nth-child(2),
+.section-info .box:nth-child(2),
 .box:nth-child(3) {
   display: flex;
   flex-direction: column;
@@ -293,7 +294,7 @@ input[type="checkbox"] {
   padding: 25px;
 }
 
-.section .box tr td:first-child {
+.section-info .box tr td:first-child {
   font-weight: bold;
 }
 
@@ -343,3 +344,47 @@ button:disabled {
   color: var(--dark-grey);
 }
 /* Test Data Styling ends here */
+
+
+/* Modal Styling */
+
+.modal-container{
+  position:absolute;
+  top:0;
+  left:0;
+  height:100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.modal{
+  height:300px;
+  background-color: var(--primary-white);
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal .message{
+  background-color: var(--primary-blue);
+  width: 100%;
+  color:var(--primary-white);
+  text-align: center;
+  padding: 1rem;
+}
+.modal .info{
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+.modal .actions{
+  padding:1rem 0;
+}
+.modal .actions button{
+  padding:10px 30px;
+}
+/* Modal Styling CSS ends here */

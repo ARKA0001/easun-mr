@@ -3,16 +3,18 @@ import { testDataSection1, testId } from "@/store/Section";
 import { useRecoilState } from "recoil";
 import { useState } from "react";
 import { activeSection } from "@/store/Section";
+import TestSuccessful from "./modals/TestSuccessful";
 
 export default function TestSection2() {
   const [testData, setTestData] = useRecoilState(testDataSection1);
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
   const [startActive, setStartActive] = useState(true);
   const [moveNextSection, setMoveNextSection] = useRecoilState(activeSection);
   const [tesIdResponse, setTestIdResponse] = useRecoilState(testId);
   const [checks, setChecks] = useState([]);
+  const [testSuccessfulModal, setTestSuccessfulModal] = useState(false);
 
   const handlePutRequest = async () => {
     setLoading(true);
@@ -35,8 +37,9 @@ export default function TestSection2() {
       setChecks(result.data.checkedFields);
       setTestIdResponse(result.testId);
       handleSectionMove("testSection2", 1);
+      setTestSuccessfulModal(true)
     } catch (error) {
-      setResponse({ error: error.message });
+      setResponse(error.message);
     } finally {
       setLoading(false);
     }
@@ -47,12 +50,24 @@ export default function TestSection2() {
     setMoveNextSection("download-report");
   };
 
+  const closeTestSuccessModal = () => {
+    console.log("Modal Close is pressed")
+    setTestSuccessfulModal(false)
+  }
+
+  const restartTest = () => {
+    setStartActive(true)
+  }
+
   return (
     <>
+      {testSuccessfulModal && (
+        <TestSuccessful showModal={testSuccessfulModal} closeModal={closeTestSuccessModal}/>
+      )}
       <div className="form-section data-section TestDataSection2">
         {response && <div className="error-message">{response}</div>}
 
-        <div className="section">
+        <div className="section section-info">
           <div className="box count data">
             <div className="count-no">12</div>
             <div className="info">Current Tap Position</div>
@@ -94,7 +109,7 @@ export default function TestSection2() {
               <button className="pause" disabled={startActive}>
                 Pause
               </button>
-              <button className="restart" disabled={startActive}>
+              <button className="restart" disabled={startActive} onClick={restartTest}>
                 Restart
               </button>
             </div>
@@ -102,7 +117,9 @@ export default function TestSection2() {
         </div>
         {loading && (
           <div className="progress-container">
-            <p className="loading-info">Please wait while data is fetched from device...</p>
+            <p className="loading-info">
+              Please wait while data is fetched from device...
+            </p>
             <div className="progress-bar"></div>
           </div>
         )}
