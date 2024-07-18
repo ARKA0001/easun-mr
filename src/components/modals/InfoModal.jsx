@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function InfoModal({showModal, closeModal, modalMessage}) {
+export default function InfoModal({showModal, closeModal, modalMessage, downloadAction}) {
   return (
     showModal &&
     <div className='modal-container'>
@@ -12,7 +12,7 @@ export default function InfoModal({showModal, closeModal, modalMessage}) {
            {modalMessage}
         </div>
         <div className="actions">
-            <button onClick={closeModal}>Start Testing</button>
+            <button onClick={downloadAction}>Download Now</button>
         </div>
       </div>
     </div>
