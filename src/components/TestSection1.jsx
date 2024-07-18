@@ -45,7 +45,7 @@ export default function TestSection1() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: testDataPayload
+        body: JSON.stringify(testDataPayload)
       });
 
       if (!res.ok) {
