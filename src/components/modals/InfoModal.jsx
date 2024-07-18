@@ -1,15 +1,15 @@
 import React from 'react'
 
-export default function TestSuccessful({showModal, closeModal}) {
+export default function InfoModal({showModal, closeModal, modalMessage}) {
   return (
     showModal &&
     <div className='modal-container'>
       <div className="modal">
         <div className="message">
-            Testing
+            Information
         </div>
         <div className="info">
-           Start ADS LED Testing
+           {modalMessage}
         </div>
         <div className="actions">
             <button onClick={closeModal}>Start Testing</button>

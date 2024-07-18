@@ -21,7 +21,7 @@ export default function TestSection1() {
 
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const testDataPayload = {
       serialNumber: data.field1,
       testType: data.field2,
@@ -38,6 +38,27 @@ export default function TestSection1() {
     };
     console.log(testDataPayload);
     setTestSectionData(testDataPayload);
+
+    try {
+      const res = await fetch("http://localhost:8080/device/testData/1", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: testDataPayload
+      });
+
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      const result = await res.json();
+      handleTestDataMove();
+    } catch (error) {
+      throw new Error(`HTTP error! status:`,error);
+    } finally {
+        console.log("Sending process completed")
+        handleTestDataMove();
+    }
     handleTestDataMove();
   };
 

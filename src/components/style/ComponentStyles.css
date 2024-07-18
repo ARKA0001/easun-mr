@@ -303,6 +303,16 @@ input[type="checkbox"] {
   padding: 5px 25px;
 }
 
+table.steps{
+  width: 100%;
+}
+table.steps tr td.success{
+  background-color: #E8F5E9;
+}
+table.steps tr td.failure{
+  background-color: #FFEBEE ;
+}
+
 .test-status button {
   width: 100%;
   padding: 7px 15px;
@@ -325,11 +335,14 @@ input[type="checkbox"] {
 
 .steps {
   margin: 35px 0;
+  border-collapse: separate; /* Ensure cells have separate borders */
+  border-spacing: 10px; /* Adjust the spacing between cells */
 }
+
 .automation-step {
-  padding: 25px;
+  padding:25px;
   background-color: var(--secondary-white);
-  margin: 15px 0;
+  margin: 30px 0;
   font-size: 14px;
 }
 .download-report {
@@ -357,6 +370,7 @@ button:disabled {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #00000041;
   
 }
 .modal{
@@ -388,3 +402,10 @@ button:disabled {
   padding:10px 30px;
 }
 /* Modal Styling CSS ends here */
+
+
+.resume-button{
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+  margin-left: 15px;
+}
