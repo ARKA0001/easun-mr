@@ -31,7 +31,7 @@ export default function TestSection2() {
   const [info, setInfo] = useState(null);
   const [action, setAction] = useState(null);
   const [start, setStart] = useState(null);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState();
   const [trueCheck, setTrueCheck] = useState([]);
   const [falseCheck, setFalseCheck] = useState([]);
 
@@ -86,8 +86,16 @@ export default function TestSection2() {
 
   const sendMessage = () => {
     if (socket) {
+      console.log("Data is sent", input)
       socket.send(input);
-      setInput("");
+      // setInput("");
+    }
+  };
+  const sendInitialMessage = (value) => {
+    if (socket) {
+      console.log("Data is sent", value)
+      socket.send(value);
+      // setInput("");
     }
   };
 
@@ -134,11 +142,11 @@ export default function TestSection2() {
     sendMessage();
   };
 
+
   const runAction = () => {
     console.log("Run button is pressed");
-    setInput("START_LV");
     console.log("START_LV");
-    sendMessage();
+    sendInitialMessage("START_LV");
     setStartModal(false);
   };
 

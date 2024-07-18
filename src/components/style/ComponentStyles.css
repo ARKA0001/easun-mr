@@ -15,7 +15,7 @@ body {
 .form-row {
   display: flex;
   width: 100%;
-  padding: 3rem 0 0 0;
+  padding: 1rem 0 0 0;
 }
 .form-group {
   background-color: var(--secondary-white);
