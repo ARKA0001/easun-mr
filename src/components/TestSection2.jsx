@@ -62,6 +62,7 @@ export default function TestSection2() {
         case "action":
           setAction(value);
           break;
+
         case "F":
           const newFailedArray = value.split(",").map((item) => item.trim());
           setFalseCheck((prevArray) => [...prevArray, ...newFailedArray]);
@@ -135,8 +136,8 @@ export default function TestSection2() {
     setStartActive(true);
   };
 
-  const resumeAction = (value) => {+
-    console.log(value)
+  const resumeAction = (value) => {
+    +console.log(value);
     sendMessage(value);
     setAction(null);
   };
@@ -210,6 +211,16 @@ export default function TestSection2() {
     return rows;
   };
 
+  const messageAction = (value) => {
+    console.log(value);
+    if (value === "DONE_HV") {
+      setMoveNextSection("download-report");
+    } else {
+      sendMessage(value);
+    }
+    setInfo(null);
+  };
+
   return (
     <>
       {infoModal && (
@@ -217,7 +228,7 @@ export default function TestSection2() {
           showModal={infoModal}
           closeModal={closeInfoModal}
           modalMessage={info}
-          downloadAction={downloadAction}
+          messageAction={messageAction}
         />
       )}
       {errorModal && (
