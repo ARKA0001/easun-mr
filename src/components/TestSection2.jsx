@@ -84,23 +84,21 @@ export default function TestSection2() {
     };
   }, []);
 
-  const sendMessage = () => {
+  const sendMessage = (value) => {
     if (socket) {
-      console.log("Data is sent", input)
-      socket.send(input);
+      console.log("Data is sent", input);
+      socket.send(value);
       // setInput("");
     }
   };
   const sendInitialMessage = (value) => {
     if (socket) {
-      console.log("Data is sent", value)
+      console.log("Data is sent", value);
       socket.send(value);
-      // setInput("");
     }
   };
 
   const handleStartRequest = () => {
-    // setLoading(true);
     setResponse(null);
     setStartActive(false);
     setStartModal(true);
@@ -137,11 +135,11 @@ export default function TestSection2() {
     setStartActive(true);
   };
 
-  const resumeAction = () => {
-    setInput("RESUME");
-    sendMessage();
+  const resumeAction = (value) => {+
+    console.log(value)
+    sendMessage(value);
+    setAction(null);
   };
-
 
   const runAction = () => {
     console.log("Run button is pressed");
