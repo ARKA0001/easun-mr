@@ -9,12 +9,12 @@ export default function ActionModal({
   const [actionMessage, setActionMessage] = useState(null);
 
   const renderModalMessage = (message) => {
-    if (message === "HV") {
-      setActionMessage("START_HV");
-      return "Set Higher Voltage and click Run";
-    } else if (message === "NV") {
+    if (message === "DONE_LV") {
       setActionMessage("START_NV");
       return "Set Nominal Voltage and click Run";
+    } else if (message === "DONE_NV") {
+      setActionMessage("START_HV");
+      return "Set High Voltage and click Run";
     } else {
       setActionMessage("RESUME");
       return message;
@@ -33,7 +33,7 @@ export default function ActionModal({
                 onClick={resumeAction(actionMessage)}
                 className="resume-button"
               >
-                {actionMessage === "HV" || actionMessage === "NV"
+                {actionMessage === "START_HV" || actionMessage === "START_NV"
                   ? "Run"
                   : "Resume"}
               </button>
