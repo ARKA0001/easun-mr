@@ -88,7 +88,7 @@ export default function TestSection2() {
 
   const handleInfo = (value) => {
     setInfo(value);
-    info && setInfoModal(true);
+    setInfoModal(true);
   };
 
   const sendMessage = (value) => {
