@@ -45,7 +45,8 @@ export default function TestSection2() {
     ws.onmessage = (event) => {
       const message = event.data;
       const [key, value] = message.split(":").map((str) => str.trim());
-
+      console.log("This is key", key);
+      console.log("This is value", value);
       switch (key) {
         case "tapPosition":
           handleTapPositionChange(value);
@@ -57,7 +58,7 @@ export default function TestSection2() {
           setError(value);
           break;
         case "info":
-          setInfo(value);
+          handleInfo(value);
           break;
         case "action":
           setAction(value);
@@ -84,6 +85,11 @@ export default function TestSection2() {
       ws.close();
     };
   }, []);
+
+  const handleInfo = (value) => {
+    setInfo(value);
+    setInfoModal(true);
+  };
 
   const sendMessage = (value) => {
     if (socket) {

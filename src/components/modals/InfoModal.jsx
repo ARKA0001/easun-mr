@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function InfoModal({ showModal, closeModal, modalMessage }) {
+export default function InfoModal({ showModal, closeModal, modalMessage, messageAction }) {
   const [infoMessage, setInfoMessage] = useState(null);
 
   const renderModalMessage = (message) => {
