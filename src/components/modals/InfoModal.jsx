@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 
 export default function InfoModal({ showModal, closeModal, modalMessage, messageAction }) {
   const [infoMessage, setInfoMessage] = useState(null);

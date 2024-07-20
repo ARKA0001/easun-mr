@@ -225,6 +225,7 @@ export default function TestSection2() {
       sendMessage(value);
     }
     setInfo(null);
+    setInfoModal(false);
   };
 
   return (
