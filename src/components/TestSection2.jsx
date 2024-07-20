@@ -88,7 +88,7 @@ export default function TestSection2() {
 
   const handleInfo = (value) => {
     setInfo(value);
-    setInfoModal(true);
+    info && setInfoModal(true);
   };
 
   const sendMessage = (value) => {
@@ -143,7 +143,7 @@ export default function TestSection2() {
   };
 
   const resumeAction = (value) => {
-    +console.log(value);
+    console.log(value);
     sendMessage(value);
     setAction(null);
   };
