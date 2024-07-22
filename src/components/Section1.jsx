@@ -3,7 +3,7 @@
 import React from "react";
 import moveSection from "@/utils/SectionMove";
 import { useRecoilState } from "recoil";
-import { activeSection, testId } from "@/store/Section";
+import { activeSection, savedSection, testId } from "@/store/Section";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
@@ -11,9 +11,12 @@ export default function Section1() {
   const [currentActiveSection, setCurrentActiveSection] =
     useRecoilState(activeSection);
 
-  const handleSectionMove = (currentSection, moveAction) => {
-    console.log(currentSection);
-    setCurrentActiveSection(moveSection(currentSection, moveAction));
+  const [savedSectionCount, setSavedSectionCount] =
+    useRecoilState(savedSection);
+
+  const handleSectionMove = () => {
+    setCurrentActiveSection(3);
+    setSavedSectionCount(2);
   };
 
   const [loading, setLoading] = useState(true);
@@ -46,7 +49,7 @@ export default function Section1() {
     };
 
     console.log(section1Data);
-    handleSectionMove(1, 1);
+    handleSectionMove();
 
     // try {
     //   const res = await fetch("http://localhost:8080/device/testData/1/"+{testIdResponse}, {

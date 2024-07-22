@@ -4,7 +4,7 @@ export default function DownloadReport() {
   const [responseMessage, setResponseMessage] = useState();
   const [loading, setLoading] = useState(false);
   const downloadReport = async () => {
-    setLoading(true)
+    setLoading(true);
     console.log("Download Report is pressed");
     try {
       const res = await fetch("http://localhost:8080/device/runTest", {
@@ -18,8 +18,8 @@ export default function DownloadReport() {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
       const result = await res.json();
-      setLoading(false)
-      setResponseMessage(result)
+      setLoading(false);
+      setResponseMessage(result);
     } catch (error) {
       throw new Error(`HTTP error! status:`, error);
     } finally {
@@ -29,15 +29,18 @@ export default function DownloadReport() {
 
   return (
     <div className="form-section data-section dowload-section">
-      {responseMessage}
+      {responseMessage && (
+        <div className="success-container">{responseMessage}</div>
+      )}
+
       {loading && (
-          <div className="progress-container">
-            <p className="loading-info">
-              Please wait while your file is being downloaded...
-            </p>
-            <div className="progress-bar"></div>
-          </div>
-        )}
+        <div className="progress-container">
+          <p className="loading-info">
+            Please wait while your file is being downloaded...
+          </p>
+          <div className="progress-bar"></div>
+        </div>
+      )}
       <button className="download-report" onClick={downloadReport}>
         Download Report
       </button>

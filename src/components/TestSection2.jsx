@@ -1,5 +1,5 @@
 import React from "react";
-import { testDataSection1, testId } from "@/store/Section";
+import { testDataSection1, testId, savedSection } from "@/store/Section";
 import { useRecoilState } from "recoil";
 import { useState, useEffect } from "react";
 import { activeSection } from "@/store/Section";
@@ -14,9 +14,12 @@ export default function TestSection2() {
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
   const [startActive, setStartActive] = useState(true);
-  const [moveNextSection, setMoveNextSection] = useRecoilState(activeSection);
+  const [currentActiveSection, setCurrentActiveSection] =
+    useRecoilState(activeSection);
   const [tesIdResponse, setTestIdResponse] = useRecoilState(testId);
   const [checks, setChecks] = useState([]);
+  const [savedSectionCount, setSavedSectionCount] =
+    useRecoilState(savedSection);
 
   //Modal related state variables
   const [infoModal, setInfoModal] = useState(false);
@@ -27,7 +30,9 @@ export default function TestSection2() {
   // We socket related state variables
   const [socket, setSocket] = useState(null);
   const [tapPosition, setTapPosition] = useState(0);
-  const [error, setError] = useState(null);
+  const [ma, setMa] = useState(0);
+  const [motorMa, setMotorMa] = useState(0);
+  const [error, setError] = useState([]);
   const [info, setInfo] = useState(null);
   const [action, setAction] = useState(null);
   const [start, setStart] = useState(null);
@@ -55,7 +60,7 @@ export default function TestSection2() {
           handleChecks(value);
           break;
         case "error":
-          setError(value);
+          handleError(value);
           break;
         case "info":
           handleInfo(value);
@@ -63,13 +68,6 @@ export default function TestSection2() {
         case "action":
           setAction(value);
           break;
-
-        case "F":
-          const newFailedArray = value.split(",").map((item) => item.trim());
-          setFalseCheck((prevArray) => [...prevArray, ...newFailedArray]);
-        case "S":
-          const newSuccessArray = value.split(",").map((item) => item.trim());
-          setTrueCheck((prevArray) => [...prevArray, ...newSuccessArray]);
         default:
           console.log("Unknown message type:", key);
       }
@@ -81,14 +79,25 @@ export default function TestSection2() {
 
     setSocket(ws);
 
-    return () => {
-      ws.close();
-    };
+    // return () => {
+    //   ws.close();
+    // };
   }, []);
+
+  useEffect(() => {
+    setTrueCheck([]);
+    setFalseCheck([]);
+  }, [tapPosition]);
 
   const handleInfo = (value) => {
     setInfo(value);
     setInfoModal(true);
+  };
+
+  const handleError = (errors) => {
+    const errorList = errors.split(",").map((str) => str.trim());
+    setError(errorList);
+    setErrorModal(true);
   };
 
   const sendMessage = (value) => {
@@ -112,9 +121,10 @@ export default function TestSection2() {
     setStart("Set Lower Voltage and click Run");
   };
 
-  const handleSectionMove = (currentSection, moveAction) => {
-    console.log(moveAction);
-    setMoveNextSection("download-report");
+  const handleSectionMove = () => {
+    console.log("Section is going to be moved from 1 to 2");
+    setCurrentActiveSection(2);
+    setSavedSectionCount(1);
   };
 
   const handleChecks = (value) => {
@@ -155,14 +165,13 @@ export default function TestSection2() {
     setStartModal(false);
   };
 
-  const downloadAction = () => {
-    setMoveNextSection("download-report");
-  };
-
   const handleTapPositionChange = (value) => {
+    const tapList = value.split(",").map((str) => str.trim());
     setTrueCheck([]);
     setFalseCheck([]);
-    setTapPosition(value);
+    setTapPosition(tapList[0]);
+    setMa(tapList[1]);
+    setMotorMa(tapList[2]);
   };
 
   const [nameArray, setNameArray] = useState([
@@ -228,6 +237,12 @@ export default function TestSection2() {
     setInfoModal(false);
   };
 
+  const errorAction = () => {
+    socket.send("CONTINUE");
+    setError(null);
+    setErrorModal(false);
+  };
+
   return (
     <>
       {infoModal && (
@@ -243,6 +258,7 @@ export default function TestSection2() {
           showModal={errorModal}
           closeModal={closeErrorModal}
           modalMessage={error}
+          errorAction={errorAction}
         />
       )}
       {actionModal && (
@@ -266,8 +282,20 @@ export default function TestSection2() {
 
         <div className="section section-info">
           <div className="box count data">
-            <div className="count-no">{tapPosition}</div>
-            <div className="info">Current Tap Position</div>
+            <table>
+              <tr>
+                <td>Tap Position</td>
+                <td>{tapPosition}</td>
+              </tr>
+              <tr>
+                <td> mA- Signal1</td>
+                <td>{ma}</td>
+              </tr>
+              <tr>
+                <td>mA - Motor Signal</td>
+                <td>{motorMa}</td>
+              </tr>
+            </table>
           </div>
           <div className="box data">
             <table>
@@ -324,284 +352,296 @@ export default function TestSection2() {
             <div className="progress-bar"></div>
           </div>
         )} */}
-        {/* <table className="section steps">
+        <table className="section steps">
           <tr>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field1"
-                id="check-field1"
-                checked={checks.includes("field1")}
-              />
-              <label htmlFor="check-field1">
-                1. Upper Limit Reached Indication 1
-              </label>
+            <td
+              className={
+                trueCheck.includes("b40001_15")
+                  ? "success automation-step"
+                  : falseCheck.includes("b40001_15")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field1">Upper Limit Reached - 1</label>
             </td>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field2"
-                id="check-field2"
-                checked={checks.includes("field2")}
-              />
-              <label htmlFor="check-field2">
-                2. Upper Limit Reached Indication 2
-              </label>
+            <td
+              className={
+                trueCheck.includes("b40001_14")
+                  ? "success automation-step"
+                  : falseCheck.includes("b40001_14")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field2">Upper Limit Reached - 2</label>
             </td>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field3"
-                id="check-field3"
-                checked={checks.includes("field3")}
-              />
-              <label htmlFor="check-field3">
-                3. Lower Limit Reached Indication 1
-              </label>
+            <td
+              className={
+                trueCheck.includes("b40001_13")
+                  ? "success automation-step"
+                  : falseCheck.includes("b40001_13")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field3">Lower Limit Reached - 1</label>
             </td>
           </tr>
           <tr>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field4"
-                id="check-field4"
-                checked={checks.includes("field4")}
-              />
-              <label htmlFor="check-field4">
-                4. Lower Limit Reached Indication 2
-              </label>
+            <td
+              className={
+                trueCheck.includes("b40001_12")
+                  ? "success automation-step"
+                  : falseCheck.includes("b40001_12")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field4">Lower Limit Reached - 2</label>
             </td>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field5"
-                id="check-field5"
-                checked={checks.includes("field5")}
-              />
-              <label htmlFor="check-field5">5. MPR Trip Indication 1</label>
+            <td
+              className={
+                falseCheck.includes("b40001_11")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field5">MPR Trip - 1</label>
             </td>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field6"
-                id="check-field6"
-                checked={checks.includes("field6")}
-              />
-              <label htmlFor="check-field6">6. MPR Trip Indication 2</label>
-            </td>
-          </tr>
-
-          <tr>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field7"
-                id="check-field7"
-                checked={checks.includes("field7")}
-              />
-              <label htmlFor="check-field7">
-                7. Tap Change in Progress Indications 1
-              </label>
-            </td>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field8"
-                id="check-field8"
-                checked={checks.includes("field8")}
-              />
-              <label htmlFor="check-field8">
-                8. Tap Change in Progress Indication 2
-              </label>
-            </td>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field9"
-                id="check-field9"
-                checked={checks.includes("field9")}
-              />
-              <label htmlFor="check-field9">
-                9. Tap Change delay/struck up 1
-              </label>
+            <td
+              className={
+                falseCheck.includes("b40001_10")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field6">MPR Trip - 2</label>
             </td>
           </tr>
 
           <tr>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field10"
-                id="check-field10"
-                checked={checks.includes("field10")}
-              />
-              <label htmlFor="check-field10">
-                10. Tap Change delay/strcuk up 1
-              </label>
+            <td
+              className={
+                trueCheck.includes("b40001_9")
+                  ? "success automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field7">Tap Change in Progress - 1</label>
             </td>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field11"
-                id="check-field11"
-                checked={checks.includes("field11")}
-              />
-              <label htmlFor="check-field11">11. Local Indication</label>
+            <td
+              className={
+                trueCheck.includes("b40001_8")
+                  ? "success automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field8">Tap Change in Progress - 2</label>
             </td>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field12"
-                id="check-field12"
-                checked={checks.includes("field12")}
-              />
-              <label htmlFor="check-field12">12. Remote Indication</label>
+            <td
+              className={
+                falseCheck.includes("b40001_7")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field9">Tap Change delay - 1</label>
             </td>
           </tr>
 
           <tr>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field13"
-                id="check-field13"
-                checked={checks.includes("field13")}
-              />
-              <label htmlFor="check-field13">13. ODD Indication</label>
+            <td
+              className={
+                falseCheck.includes("b40001_6")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field10">Tap Change delay - 2</label>
             </td>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field14"
-                id="check-field214"
-                checked={checks.includes("field14")}
-              />
-              <label htmlFor="check-field14">14. EVEN Indication</label>
+            <td
+              className={
+                trueCheck.includes("b40001_5")
+                  ? "success automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field11">Local - 1</label>
             </td>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field15"
-                id="check-field15"
-                checked={checks.includes("field15")}
-              />
-              <label htmlFor="check-field15">
-                15. SPP Potential Free Indication
-              </label>
+            <td
+              className={
+                trueCheck.includes("b40001_5")
+                  ? "success automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field12">Remote - 1</label>
             </td>
           </tr>
 
           <tr>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field16"
-                id="check-field16"
-                checked={checks.includes("field16")}
-              />
-              <label htmlFor="check-field16">
-                16. Control Supply Free Indication
-              </label>
+            <td
+              className={
+                trueCheck.includes("b40001_4")
+                  ? "success automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field13">Local - 2</label>
             </td>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field17"
-                id="check-field17"
-                checked={checks.includes("field17")}
-              />
-              <label htmlFor="check-field17">
-                17. Control Supply Unhealthy Indication
-              </label>
+            <td
+              className={
+                trueCheck.includes("b40001_4")
+                  ? "success automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field14">Remote - 2</label>
             </td>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field18"
-                id="check-field18"
-                checked={checks.includes("field18")}
-              />
-              <label htmlFor="check-field18">
-                18. Power Supply 415V Helathy Condition
-              </label>
+            <td
+              className={
+                falseCheck.includes("b40001_3")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field15">SPP</label>
             </td>
           </tr>
 
           <tr>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field19"
-                id="check-field19"
-                checked={checks.includes("field19")}
-              />
-              <label htmlFor="check-field19">
-                19. Power Supply 415V Unhealthy
-              </label>
+            <td
+              className={
+                trueCheck.includes("b40001_2")
+                  ? "success automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field16">Control Supply Healthy</label>
             </td>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field20"
-                id="check-field20"
-                checked={checks.includes("field20")}
-              />
-              <label htmlFor="check-field20">20. AC Supply Fail</label>
+            <td
+              className={
+                falseCheck.includes("b40001_1")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field17">Control Supply Unhealthy</label>
             </td>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field21"
-                id="check-field21"
-                checked={checks.includes("field21")}
-              />
-              <label htmlFor="check-field21">
-                21. ILC (Interlocking) Circuit Indicators
-              </label>
+            <td
+              className={
+                trueCheck.includes("b40001_0")
+                  ? "success automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field18">Power Supply 415V Helathy</label>
             </td>
           </tr>
 
           <tr>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field22"
-                id="check-field22"
-                checked={checks.includes("field22")}
-              />
+            <td
+              className={
+                falseCheck.includes("b40002_0")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field19">Power Supply 415V Unhealthy</label>
+            </td>
+            <td
+              className={
+                trueCheck.includes("b40002_1")
+                  ? "success automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field20">Interlocking Circuit</label>
+            </td>
+            <td
+              className={
+                trueCheck.includes("b40002_2")
+                  ? "success automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field21">Proximity Switch Healthy</label>
+            </td>
+          </tr>
+
+          <tr>
+            <td
+              className={
+                trueCheck.includes("b40002_3")
+                  ? "success automation-step"
+                  : "automation-step"
+              }
+            >
               <label htmlFor="check-field22">
-                22. Proximity Switch Healthy Indications
+                Tap Changer Healthy Monitoring
               </label>
             </td>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field23"
-                id="check-field23"
-                checked={checks.includes("field23")}
-              />
-              <label htmlFor="check-field23">
-                23. Tap Changer Healthy Monitoring
-              </label>
+            <td
+              className={
+                trueCheck.includes("b40002_5")
+                  ? "success automation-step"
+                  : falseCheck.includes("b40002_5")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field23">OOD Tap</label>
             </td>
-            <td className="automation-step">
-              <input
-                type="checkbox"
-                name="check-field24"
-                id="check-field24"
-                checked={checks.includes("field24")}
-              />
-              <label htmlFor="check-field24">24. TDR Potential Free</label>
+            <td
+              className={
+                trueCheck.includes("b40002_6")
+                  ? "success automation-step"
+                  : falseCheck.includes("b40002_6")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field24">Even Tap</label>
             </td>
           </tr>
-        </table> */}
-        <table className="section steps">{renderRows()}</table>
-        <button
-          className="action-button"
-          onClick={() => handleSectionMove("testSection2", 2)}
-        >
-          Save and Next
+          <tr>
+            <td
+              className={
+                trueCheck.includes("b40002_7")
+                  ? "success automation-step"
+                  : falseCheck.includes("b40002_7")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field25">OOD Tap Indication</label>
+            </td>
+            <td
+              className={
+                trueCheck.includes("b40002_8")
+                  ? "success automation-step"
+                  : falseCheck.includes("b40002_8")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field26">Even Tap Indication</label>
+            </td>
+            <td
+              className={
+                falseCheck.includes("b40002_9")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field27">TDR Switch</label>
+            </td>
+          </tr>
+        </table>
+        {/* <table className="section steps">{renderRows()}</table> */}
+        <button className="action-button" onClick={() => handleSectionMove()}>
+          Fill Form
         </button>
       </div>
     </>

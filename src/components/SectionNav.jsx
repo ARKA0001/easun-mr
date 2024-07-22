@@ -1,94 +1,113 @@
 import React, { useEffect, useRef } from "react";
-import { activeSection } from "@/store/Section";
+import { activeSection, savedSection } from "@/store/Section";
 import { useRecoilState } from "recoil";
 
 export default function SectionNav() {
   const [currentActiveSection, setCurrentActiveSection] =
     useRecoilState(activeSection);
 
+  const [savedSectionCount, setSavedSectionCount] =
+    useRecoilState(savedSection);
+
+  const handleSectionMove = (toMoveSection) => {
+    if(savedSection===0){
+      return null;
+    }
+    else if (toMoveSection <= savedSectionCount) {
+      setCurrentActiveSection(toMoveSection);
+    }
+  };
+
   return (
     <div className="section-nav">
-      <div
+      <button
         className={
-          currentActiveSection === "testSection1"
-            ? "section-label active"
-            : "section-label"
+          currentActiveSection === 0 ? "section-label active" : "section-label"
         }
+        onClick={() => handleSectionMove(0)}
       >
         Automated Test Data
-      </div>
-      <div
-        className={
-          currentActiveSection === "testSection2"
-            ? "section-label active"
-            : "section-label"
-        }
-      >
-        OLTC Test Process
-      </div>
-      <div
-        className={
-          currentActiveSection === "download-report" ? "section-label active" : "section-label"
-        }
-      >
-        Download Report
-      </div>
-      {/* <div
+      </button>
+      <button
         className={
           currentActiveSection === 1 ? "section-label active" : "section-label"
         }
+        onClick={() => handleSectionMove(1)}
       >
-        Test Order Details Observation
-      </div> */}
-      {/* <div
+        OLTC Test Process
+      </button>
+      <button
         className={
           currentActiveSection === 2 ? "section-label active" : "section-label"
         }
+        onClick={() => handleSectionMove(2)}
       >
-        Observation on Visual /Aesthetic Requirements Checks - Manual Entry
-      </div>
-      <div
+        Test Order Details Observation
+      </button>
+      <button
         className={
           currentActiveSection === 3 ? "section-label active" : "section-label"
         }
+        onClick={() => handleSectionMove(3)}
       >
-        General / Standard Requirements
-      </div>
-      <div
+        Observation on Visual /Aesthetic Requirements Checks - Manual Entry
+      </button>
+      <button
         className={
           currentActiveSection === 4 ? "section-label active" : "section-label"
         }
+        onClick={() => handleSectionMove(4)}
       >
-        General / Stickers / Caution / Attention Requirements
-      </div>
-      <div
+        General / Standard Requirements
+      </button>
+      <button
         className={
           currentActiveSection === 5 ? "section-label active" : "section-label"
         }
+        onClick={() => handleSectionMove(5)}
       >
-        Legend EBOM Requirements
-      </div>
-      <div
+        General / Stickers / Caution / Attention Requirements
+      </button>
+      <button
         className={
           currentActiveSection === 6 ? "section-label active" : "section-label"
         }
+        onClick={() => handleSectionMove(6)}
       >
-        Performance and Application Test Requirements
-      </div>
-      <div
+        Legend EBOM Requirements
+      </button>
+      <button
         className={
           currentActiveSection === 7 ? "section-label active" : "section-label"
         }
+        onClick={() => handleSectionMove(7)}
       >
-        CAM Sequence Test Requirements
-      </div>
-      <div
+        Performance and Application Test Requirements
+      </button>
+      <button
         className={
           currentActiveSection === 8 ? "section-label active" : "section-label"
         }
+        onClick={() => handleSectionMove(8)}
+      >
+        CAM Sequence Test Requirements
+      </button>
+      <button
+        className={
+          currentActiveSection === 9 ? "section-label active" : "section-label"
+        }
+        onClick={() => handleSectionMove(9)}
       >
         Application Test Requirements
-      </div> */}
+      </button>
+      <button
+        className={
+          currentActiveSection === 10 ? "section-label active" : "section-label"
+        }
+        onClick={() => handleSectionMove(10)}
+      >
+        Download Report
+      </button>
     </div>
   );
 }

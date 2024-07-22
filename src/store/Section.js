@@ -2,7 +2,7 @@ import { atom } from "recoil";
 
 export const activeSection = atom({
   key: "activeSection",
-  default: "testSection1",
+  default: 0,
 });
 
 export const testDataSection1 = atom({
@@ -10,8 +10,12 @@ export const testDataSection1 = atom({
   default: null,
 });
 
-
 export const testId = atom({
-  key:"testId",
-  default:null
-})
+  key: "testId",
+  default: null,
+});
+
+export const savedSection = atom({
+  key: "savedSection",
+  default: 0,
+});

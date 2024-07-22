@@ -1,20 +1,25 @@
 import React from "react";
 import moveSection from "@/utils/SectionMove";
 import { useRecoilState } from "recoil";
-import { activeSection } from "@/store/Section";
+import { activeSection, savedSection } from "@/store/Section";
 import { useForm } from "react-hook-form";
 
 export default function Section6() {
   const [currentActiveSection, setCurrentActiveSection] =
     useRecoilState(activeSection);
 
-  const handleSectionMove = (currentSection, moveAction) => {
-    console.log(currentSection);
-    setCurrentActiveSection(moveSection(currentSection, moveAction));
+  const [savedSectionCount, setSavedSectionCount] =
+    useRecoilState(savedSection);
+
+  const handleSectionMove = () => {
+    setCurrentActiveSection(8);
+    setSavedSectionCount(7);
   };
 
   const { required, handleSubmit } = useForm();
-  const onSubmit = () => {};
+  const onSubmit = () => {
+    handleSectionMove();
+  };
 
   return (
     <div className="form-section">
@@ -174,7 +179,11 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-10" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-10"
+                  className="toggle-input"
+                />
                 <label htmlFor="toggle-10" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -193,7 +202,11 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-11" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-11"
+                  className="toggle-input"
+                />
                 <label htmlFor="toggle-11" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -208,7 +221,11 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-12" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-12"
+                  className="toggle-input"
+                />
                 <label htmlFor="toggle-12" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -223,7 +240,11 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-12" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-12"
+                  className="toggle-input"
+                />
                 <label htmlFor="toggle-12" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -242,7 +263,11 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-12" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-12"
+                  className="toggle-input"
+                />
                 <label htmlFor="toggle-12" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -262,7 +287,11 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-13" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-13"
+                  className="toggle-input"
+                />
                 <label htmlFor="toggle-13" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -282,7 +311,11 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-14" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-14"
+                  className="toggle-input"
+                />
                 <label htmlFor="toggle-14" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -302,7 +335,11 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-15" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-15"
+                  className="toggle-input"
+                />
                 <label htmlFor="toggle-15" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -318,7 +355,11 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-16" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-16"
+                  className="toggle-input"
+                />
                 <label htmlFor="toggle-16" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -338,7 +379,11 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-17" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-17"
+                  className="toggle-input"
+                />
                 <label htmlFor="toggle-17" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -358,7 +403,11 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-18" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-18"
+                  className="toggle-input"
+                />
                 <label htmlFor="toggle-18" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -374,7 +423,11 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-19" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-19"
+                  className="toggle-input"
+                />
                 <label htmlFor="toggle-19" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -394,7 +447,11 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-20" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-20"
+                  className="toggle-input"
+                />
                 <label htmlFor="toggle-20" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -413,7 +470,11 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-21" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-21"
+                  className="toggle-input"
+                />
                 <label htmlFor="toggle-21" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Raise</span>
@@ -423,11 +484,13 @@ export default function Section6() {
             </tr>
           </tbody>
         </table>
+        <button
+          onClick={() => handleSectionMove()}
+          className="action-button"
+        >
+          Save & Next
+        </button>
       </form>
-
-      <button onClick={() => handleSectionMove(6, 1)} className="action-button">
-        Save & Next
-      </button>
     </div>
   );
 }

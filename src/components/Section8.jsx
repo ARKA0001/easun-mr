@@ -3,16 +3,18 @@
 import React from "react";
 import moveSection from "@/utils/SectionMove";
 import { useRecoilState } from "recoil";
-import { activeSection } from "@/store/Section";
+import { activeSection, savedSection } from "@/store/Section";
 import { useForm } from "react-hook-form";
 
 export default function Section8() {
   const [currentActiveSection, setCurrentActiveSection] =
     useRecoilState(activeSection);
+  const [savedSectionCount, setSavedSectionCount] =
+    useRecoilState(savedSection);
 
-  const handleSectionMove = (currentSection, moveAction) => {
-    console.log(currentSection);
-    setCurrentActiveSection(moveSection(currentSection, moveAction));
+  const handleSectionMove = () => {
+    setCurrentActiveSection(10);
+    setSavedSectionCount(9);
   };
 
   const { required, handleSubmit } = useForm();
@@ -54,11 +56,10 @@ export default function Section8() {
             </div>
           </div>
         </div>
+        <button onClick={() => handleSectionMove()} className="action-button">
+          Save & Next
+        </button>
       </form>
-
-      <button onClick={() => handleSectionMove(1, 1)} className="action-button">
-        Save & Next
-      </button>
     </div>
   );
 }

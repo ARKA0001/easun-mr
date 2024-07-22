@@ -1,9 +1,8 @@
 "use client";
 
 import React from "react";
-import moveSection from "@/utils/SectionMove";
 import { useRecoilState } from "recoil";
-import { activeSection, testDataSection1 } from "@/store/Section";
+import { activeSection, savedSection, testDataSection1, testId } from "@/store/Section";
 import { useForm } from "react-hook-form";
 import "./style/ComponentStyles.css";
 
@@ -14,9 +13,14 @@ export default function TestSection1() {
   const [testSectionData, setTestSectionData] =
     useRecoilState(testDataSection1);
 
+  const [savedSectionCount, setSavedSectionCount] = useRecoilState(savedSection);
+
+  const [formId, setFormId] = useRecoilState(testId);
+
   const handleTestDataMove = () => {
-    console.log("Test Data is moved now");
-    setCurrentActiveSection("testSection2");
+    console.log("Section is going to be moved from 0 to 1");
+    setCurrentActiveSection(1);
+    setSavedSectionCount(0)
   };
 
   const { register, handleSubmit } = useForm();
@@ -40,7 +44,7 @@ export default function TestSection1() {
     setTestSectionData(testDataPayload);
 
     try {
-      const res = await fetch("http://localhost:8080/device/testData/1", {
+      const res = await fetch("http://localhost:8080/device/testData/", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -52,6 +56,8 @@ export default function TestSection1() {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
       const result = await res.json();
+      console.log("Form Id from response",result)
+      setFormId(result);
       handleTestDataMove();
     } catch (error) {
       throw new Error(`HTTP error! status:`,error);
@@ -59,7 +65,6 @@ export default function TestSection1() {
         console.log("Sending process completed")
         handleTestDataMove();
     }
-    handleTestDataMove();
   };
 
   return (

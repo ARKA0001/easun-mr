@@ -32,20 +32,23 @@ body {
   margin-bottom: 1rem !important;
 }
 
-.form-group textarea, .form-group input[type="text"], select, option{
+.form-group textarea,
+.form-group input[type="text"],
+select,
+option {
   background-color: transparent;
 }
 .user-input {
   margin: 0 2rem;
 }
-.row-input{
+.row-input {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
 }
-.row-input input[type="text"]{
-  width:250px;
+.row-input input[type="text"] {
+  width: 250px;
 }
 .form-row * {
   flex: 1;
@@ -262,7 +265,7 @@ input[type="checkbox"] {
   justify-content: space-around;
   flex-direction: row;
 }
-.TestDataSection2 .section-info .data{
+.TestDataSection2 .section-info .data {
   height: 210px;
 }
 .TestDataSection2 .section-info .count {
@@ -303,14 +306,14 @@ input[type="checkbox"] {
   padding: 5px 25px;
 }
 
-table.steps{
+table.steps {
   width: 100%;
 }
-table.steps tr td.success{
-  background-color: #E8F5E9;
+table.steps tr td.success {
+  background-color: #e8f5e9;
 }
-table.steps tr td.failure{
-  background-color: #FFEBEE ;
+table.steps tr td.failure {
+  background-color: #ffebee;
 }
 
 .test-status button {
@@ -340,7 +343,7 @@ table.steps tr td.failure{
 }
 
 .automation-step {
-  padding:25px;
+  padding: 25px;
   background-color: var(--secondary-white);
   margin: 30px 0;
   font-size: 14px;
@@ -349,7 +352,7 @@ table.steps tr td.failure{
   padding: 15px 30px;
   background-color: var(--primary-blue);
   color: var(--primary-white);
-  margin:2rem;
+  margin: 2rem;
 }
 .report-download:disabled,
 button:disabled {
@@ -358,23 +361,21 @@ button:disabled {
 }
 /* Test Data Styling ends here */
 
-
 /* Modal Styling */
 
-.modal-container{
-  position:absolute;
-  top:0;
-  left:0;
-  height:100%;
+.modal-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #00000041;
-  
 }
-.modal{
-  height:300px;
+.modal {
+  height: 300px;
   background-color: var(--primary-white);
   width: 500px;
   display: flex;
@@ -382,30 +383,59 @@ button:disabled {
   align-items: center;
   justify-content: space-between;
 }
-.modal .message{
+.modal .message {
   background-color: var(--primary-blue);
   width: 100%;
-  color:var(--primary-white);
+  color: var(--primary-white);
   text-align: center;
   padding: 1rem;
 }
-.modal .info{
+.modal .info {
   width: 100%;
   text-align: center;
   padding: 1rem;
   font-size: 1.5rem;
 }
-.modal .actions{
-  padding:1rem 0;
+.modal .actions {
+  padding: 1rem 0;
 }
-.modal .actions button{
-  padding:10px 30px;
+.modal .actions button {
+  padding: 10px 30px;
 }
 /* Modal Styling CSS ends here */
 
-
-.resume-button{
+.resume-button {
   background-color: var(--primary-blue);
   color: var(--primary-white);
   margin-left: 15px;
+}
+
+.error-list {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+.error-item {
+  background-color: #ffcccc;
+  color: #b30000;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  width: 100%;
+  text-align: left;
+}
+.success-container {
+  margin: 2rem;
+  padding: 15px 20px;
+  border-radius: 8px;
+  background-color: #e6ffe6; /* Light green background */
+  color: #006600; /* Dark green text */
+  border: 1px solid #b3ffb3; /* Border to complement the background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  text-align: left;
+  line-height: 1.4;
 }

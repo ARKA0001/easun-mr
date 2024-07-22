@@ -44,28 +44,28 @@ export default function Page() {
 
   const renderSection = () => {
     switch (currentActiveSection) {
-      case "testSection1":
+      case 0:
         return <TestSection1 />;
-      case "testSection2":
-        return <TestSection2 />;
-      case "download-report":
-        return <DownloadReport />
       case 1:
-        return <Section1 />;
+        return <TestSection2 />;
       case 2:
-        return <Section2 />;
+        return <Section1 />;
       case 3:
-        return <Section3 />;
+        return <Section2 />;
       case 4:
-        return <Section4 />;
+        return <Section3 />;
       case 5:
-        return <Section5 />;
+        return <Section4 />;
       case 6:
-        return <Section6 />;
+        return <Section5 />;
       case 7:
-        return <Section7 />;
+        return <Section6 />;
       case 8:
+        return <Section7 />;
+      case 9:
         return <Section8 />;
+      case 10:
+        return <DownloadReport />;
       default:
         return null;
     }

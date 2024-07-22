@@ -275,6 +275,11 @@
 
 .section-nav .section-label {
   padding: 15px;
+  margin: 5px 0;
+  background-color: transparent;
+  border: none;
+  color: var(--primary-white);
+  text-align: left;
 }
 .section-label:hover {
   background-color: rgba(255, 255, 255, 0.3);
@@ -349,16 +354,15 @@
   scrollbar-color: #888 #f1f1f1; /* Thumb color and track color */
 }
 
-
-.TestDataSection2{
+.TestDataSection2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.loading-info{
-  padding:1rem 0;
+.loading-info {
+  padding: 1rem 0;
 }
 .progress-container {
   width: 100%;

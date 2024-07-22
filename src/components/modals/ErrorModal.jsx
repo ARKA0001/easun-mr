@@ -1,21 +1,30 @@
-import React from 'react'
+import React from "react";
 
-export default function ErrorModal({showModal, closeModal, ModalMessage}) {
+export default function ErrorModal({
+  showModal,
+  closeModal,
+  modalMessage,
+  errorAction,
+}) {
   return (
-    showModal &&
-    <div className='modal-container'>
-      <div className="modal">
-        <div className="message">
-            Error
-        </div>
-        <div className="info">
-           {ModalMessage}
-        </div>
-        <div className="actions">
-            <button onClick={closeModal}>Resume</button>
-            <button onClick={closeModal}>Restart</button>
+    showModal && (
+      <div className="modal-container">
+        <div className="modal">
+          <div className="message">Error</div>
+          <div className="info">
+            <ul className="error-list">
+              {modalMessage.map((error, index) => (
+                <li key={index} className="error-item">
+                  {error}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="actions">
+            <button onClick={errorAction} className="resume-button">Continue</button>
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  );
 }
