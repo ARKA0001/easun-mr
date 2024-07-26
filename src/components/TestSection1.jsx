@@ -2,7 +2,12 @@
 
 import React from "react";
 import { useRecoilState } from "recoil";
-import { activeSection, savedSection, testDataSection1, testId } from "@/store/Section";
+import {
+  activeSection,
+  savedSection,
+  testDataSection1,
+  testId,
+} from "@/store/Section";
 import { useForm } from "react-hook-form";
 import "./style/ComponentStyles.css";
 
@@ -13,14 +18,15 @@ export default function TestSection1() {
   const [testSectionData, setTestSectionData] =
     useRecoilState(testDataSection1);
 
-  const [savedSectionCount, setSavedSectionCount] = useRecoilState(savedSection);
+  const [savedSectionCount, setSavedSectionCount] =
+    useRecoilState(savedSection);
 
   const [formId, setFormId] = useRecoilState(testId);
 
   const handleTestDataMove = () => {
     console.log("Section is going to be moved from 0 to 1");
     setCurrentActiveSection(1);
-    setSavedSectionCount(0)
+    setSavedSectionCount(0);
   };
 
   const { register, handleSubmit } = useForm();
@@ -44,26 +50,26 @@ export default function TestSection1() {
     setTestSectionData(testDataPayload);
 
     try {
-      const res = await fetch("http://localhost:8080/device/testData/", {
+      const res = await fetch("http://localhost:8080/device/testData", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(testDataPayload)
+        body: JSON.stringify(testDataPayload),
       });
 
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
       const result = await res.json();
-      console.log("Form Id from response",result)
+      console.log("Form Id from response", result);
       setFormId(result);
       handleTestDataMove();
     } catch (error) {
-      throw new Error(`HTTP error! status:`,error);
+      throw new Error(`HTTP error! status:`, error);
     } finally {
-        console.log("Sending process completed")
-        handleTestDataMove();
+      console.log("Sending process completed");
+      handleTestDataMove();
     }
   };
 

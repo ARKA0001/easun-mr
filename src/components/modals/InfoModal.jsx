@@ -47,7 +47,7 @@ export default function InfoModal({ showModal, closeModal, modalMessage, message
               >
                 {infoMessage === "START_HV" || infoMessage === "START_NV"
                   ? "Run"
-                  : "Go to Download"}
+                  : "Save & Next"}
               </button>
             )}
           </div>

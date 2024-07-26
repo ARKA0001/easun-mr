@@ -30,7 +30,8 @@ export default function TestSection2() {
   // We socket related state variables
   const [socket, setSocket] = useState(null);
   const [tapPosition, setTapPosition] = useState(0);
-  const [ma, setMa] = useState(0);
+  const [ma1, setMa1] = useState(0);
+  const [ma2, setMa2] = useState(0);
   const [motorMa, setMotorMa] = useState(0);
   const [error, setError] = useState([]);
   const [info, setInfo] = useState(null);
@@ -38,7 +39,7 @@ export default function TestSection2() {
   const [start, setStart] = useState(null);
   const [input, setInput] = useState();
   const [trueCheck, setTrueCheck] = useState([]);
-  const [falseCheck, setFalseCheck] = useState([]);
+  const [falseCheck, setFalseCheck] = useState(["b40002_5"]);
 
   useEffect(() => {
     const ws = new WebSocket("ws://localhost:8080/controller-test");
@@ -59,7 +60,7 @@ export default function TestSection2() {
         case "checks":
           handleChecks(value);
           break;
-        case "error":
+        case "errors":
           handleError(value);
           break;
         case "info":
@@ -170,8 +171,9 @@ export default function TestSection2() {
     setTrueCheck([]);
     setFalseCheck([]);
     setTapPosition(tapList[0]);
-    setMa(tapList[1]);
-    setMotorMa(tapList[2]);
+    setMa1(tapList[1]);
+    setMa2(tapList[2]);
+    setMotorMa(tapList[3]);
   };
 
   const [nameArray, setNameArray] = useState([
@@ -229,7 +231,7 @@ export default function TestSection2() {
   const messageAction = (value) => {
     console.log(value);
     if (value === "DONE_HV") {
-      setMoveNextSection("download-report");
+      handleSectionMove();
     } else {
       sendMessage(value);
     }
@@ -279,7 +281,30 @@ export default function TestSection2() {
       )}
       <div className="form-section data-section TestDataSection2">
         {response && <div className="error-message">{response}</div>}
-
+        <div className="test-status">
+          <button
+            className="start"
+            onClick={handleStartRequest}
+            disabled={!startActive}
+          >
+            Start
+          </button>
+          <button
+            className="pause"
+            // disabled={startActive}
+            disabled={true}
+          >
+            Pause
+          </button>
+          <button
+            className="restart"
+            // disabled={startActive}
+            disabled={true}
+            onClick={restartTest}
+          >
+            Restart
+          </button>
+        </div>
         <div className="section section-info">
           <div className="box count data">
             <table>
@@ -289,10 +314,14 @@ export default function TestSection2() {
               </tr>
               <tr>
                 <td> mA- Signal1</td>
-                <td>{ma}</td>
+                <td>{ma1}</td>
               </tr>
               <tr>
-                <td>mA - Motor Signal</td>
+                <td> mA- Signal2</td>
+                <td>{ma2}</td>
+              </tr>
+              <tr>
+                <td>Motor Current</td>
                 <td>{motorMa}</td>
               </tr>
             </table>
@@ -321,7 +350,7 @@ export default function TestSection2() {
               </tr>
             </table>
           </div>
-          <div className="box test-status data">
+          {/* <div className="box test-status data">
             <div className="status">Test Status</div>
             <div className="actions">
               <button
@@ -342,23 +371,16 @@ export default function TestSection2() {
                 Restart
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
-        {/* {loading && (
-          <div className="progress-container">
-            <p className="loading-info">
-              Please wait while data is fetched from device...
-            </p>
-            <div className="progress-bar"></div>
-          </div>
-        )} */}
+
         <table className="section steps">
           <tr>
             <td
               className={
-                trueCheck.includes("b40001_15")
+                trueCheck.includes("b40001_0")
                   ? "success automation-step"
-                  : falseCheck.includes("b40001_15")
+                  : falseCheck.includes("b40001_0")
                   ? "failure automation-step"
                   : "automation-step"
               }
@@ -367,9 +389,9 @@ export default function TestSection2() {
             </td>
             <td
               className={
-                trueCheck.includes("b40001_14")
+                trueCheck.includes("b40001_1")
                   ? "success automation-step"
-                  : falseCheck.includes("b40001_14")
+                  : falseCheck.includes("b40001_1")
                   ? "failure automation-step"
                   : "automation-step"
               }
@@ -378,31 +400,31 @@ export default function TestSection2() {
             </td>
             <td
               className={
-                trueCheck.includes("b40001_13")
+                trueCheck.includes("b40001_2")
                   ? "success automation-step"
-                  : falseCheck.includes("b40001_13")
+                  : falseCheck.includes("b40001_2")
                   ? "failure automation-step"
                   : "automation-step"
               }
             >
               <label htmlFor="check-field3">Lower Limit Reached - 1</label>
             </td>
-          </tr>
-          <tr>
             <td
               className={
-                trueCheck.includes("b40001_12")
+                trueCheck.includes("b40001_3")
                   ? "success automation-step"
-                  : falseCheck.includes("b40001_12")
+                  : falseCheck.includes("b40001_3")
                   ? "failure automation-step"
                   : "automation-step"
               }
             >
               <label htmlFor="check-field4">Lower Limit Reached - 2</label>
             </td>
+          </tr>
+          <tr>
             <td
               className={
-                falseCheck.includes("b40001_11")
+                falseCheck.includes("b40001_4")
                   ? "failure automation-step"
                   : "automation-step"
               }
@@ -411,19 +433,16 @@ export default function TestSection2() {
             </td>
             <td
               className={
-                falseCheck.includes("b40001_10")
+                falseCheck.includes("b40001_5")
                   ? "failure automation-step"
                   : "automation-step"
               }
             >
               <label htmlFor="check-field6">MPR Trip - 2</label>
             </td>
-          </tr>
-
-          <tr>
             <td
               className={
-                trueCheck.includes("b40001_9")
+                trueCheck.includes("b40001_6")
                   ? "success automation-step"
                   : "automation-step"
               }
@@ -432,28 +451,28 @@ export default function TestSection2() {
             </td>
             <td
               className={
-                trueCheck.includes("b40001_8")
+                trueCheck.includes("b40001_7")
                   ? "success automation-step"
                   : "automation-step"
               }
             >
               <label htmlFor="check-field8">Tap Change in Progress - 2</label>
             </td>
+          </tr>
+
+          <tr>
             <td
               className={
-                falseCheck.includes("b40001_7")
+                falseCheck.includes("b40001_8")
                   ? "failure automation-step"
                   : "automation-step"
               }
             >
               <label htmlFor="check-field9">Tap Change delay - 1</label>
             </td>
-          </tr>
-
-          <tr>
             <td
               className={
-                falseCheck.includes("b40001_6")
+                falseCheck.includes("b40001_9")
                   ? "failure automation-step"
                   : "automation-step"
               }
@@ -462,7 +481,7 @@ export default function TestSection2() {
             </td>
             <td
               className={
-                trueCheck.includes("b40001_5")
+                trueCheck.includes("b40001_10L1")
                   ? "success automation-step"
                   : "automation-step"
               }
@@ -471,7 +490,7 @@ export default function TestSection2() {
             </td>
             <td
               className={
-                trueCheck.includes("b40001_5")
+                trueCheck.includes("b40001_10R1")
                   ? "success automation-step"
                   : "automation-step"
               }
@@ -483,7 +502,7 @@ export default function TestSection2() {
           <tr>
             <td
               className={
-                trueCheck.includes("b40001_4")
+                trueCheck.includes("b40001_11L2")
                   ? "success automation-step"
                   : "automation-step"
               }
@@ -492,7 +511,7 @@ export default function TestSection2() {
             </td>
             <td
               className={
-                trueCheck.includes("b40001_4")
+                trueCheck.includes("b40001_11R2")
                   ? "success automation-step"
                   : "automation-step"
               }
@@ -501,28 +520,28 @@ export default function TestSection2() {
             </td>
             <td
               className={
-                falseCheck.includes("b40001_3")
+                falseCheck.includes("b40001_12")
                   ? "failure automation-step"
                   : "automation-step"
               }
             >
               <label htmlFor="check-field15">SPP</label>
             </td>
-          </tr>
-
-          <tr>
             <td
               className={
-                trueCheck.includes("b40001_2")
+                trueCheck.includes("b40001_13")
                   ? "success automation-step"
                   : "automation-step"
               }
             >
               <label htmlFor="check-field16">Control Supply Healthy</label>
             </td>
+          </tr>
+
+          <tr>
             <td
               className={
-                falseCheck.includes("b40001_1")
+                falseCheck.includes("b40001_14")
                   ? "failure automation-step"
                   : "automation-step"
               }
@@ -531,16 +550,13 @@ export default function TestSection2() {
             </td>
             <td
               className={
-                trueCheck.includes("b40001_0")
+                trueCheck.includes("b40001_15")
                   ? "success automation-step"
                   : "automation-step"
               }
             >
               <label htmlFor="check-field18">Power Supply 415V Helathy</label>
             </td>
-          </tr>
-
-          <tr>
             <td
               className={
                 falseCheck.includes("b40002_0")
@@ -559,6 +575,9 @@ export default function TestSection2() {
             >
               <label htmlFor="check-field20">Interlocking Circuit</label>
             </td>
+          </tr>
+
+          <tr>
             <td
               className={
                 trueCheck.includes("b40002_2")
@@ -568,9 +587,6 @@ export default function TestSection2() {
             >
               <label htmlFor="check-field21">Proximity Switch Healthy</label>
             </td>
-          </tr>
-
-          <tr>
             <td
               className={
                 trueCheck.includes("b40002_3")
@@ -605,6 +621,7 @@ export default function TestSection2() {
               <label htmlFor="check-field24">Even Tap</label>
             </td>
           </tr>
+
           <tr>
             <td
               className={
@@ -640,9 +657,9 @@ export default function TestSection2() {
           </tr>
         </table>
         {/* <table className="section steps">{renderRows()}</table> */}
-        <button className="action-button" onClick={() => handleSectionMove()}>
+        {/* <button className="action-button" onClick={() => handleSectionMove()}>
           Fill Form
-        </button>
+        </button> */}
       </div>
     </>
   );
