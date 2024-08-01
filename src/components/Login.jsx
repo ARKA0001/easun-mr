@@ -40,7 +40,7 @@ export default function Login() {
     const result = await response.json();
     if (result.message === "OK") {
       console.log("User is now logged in");
-      router.push('./easun/Home')
+      router.push('../easun/Home')
     }
   };
   return (

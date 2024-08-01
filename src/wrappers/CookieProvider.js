@@ -15,7 +15,7 @@ export default function CookieProvider({ children }) {
     if (userCookie) {
       setLoading(false); // Allow rendering if the cookie is valid
     } else {
-      router.push('/Login'); // Redirect if the cookie is invalid
+      router.push('/auth/Login'); // Redirect if the cookie is invalid
     }
   }, [router]);
 

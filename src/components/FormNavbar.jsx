@@ -14,7 +14,7 @@ export default function FormNavbar() {
     const result = await response.json();
     if (result.message === "OK") {
       console.log("Logged out");
-      router.push("/Login");
+      router.push("/auth/Login");
     }
   };
 
