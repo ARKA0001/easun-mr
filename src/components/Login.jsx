@@ -26,7 +26,7 @@ export default function Login() {
     const username = data.username;
     const password = data.password;
 
-    const response = await fetch("/api/Login", {
+    const response = await fetch("/api/easun/Login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

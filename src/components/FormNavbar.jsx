@@ -10,7 +10,7 @@ export default function FormNavbar() {
 
   const handleLogOut = async () => {
     console.log("Log out is pressed");
-    const response = await fetch("/api/Login");
+    const response = await fetch("/api/easun/Login");
     const result = await response.json();
     if (result.message === "OK") {
       console.log("Logged out");
