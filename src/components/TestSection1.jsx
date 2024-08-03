@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import {
   activeSection,
@@ -8,7 +8,7 @@ import {
   testDataSection1,
   testId,
 } from "@/store/Section";
-import { useForm } from "react-hook-form";
+import { useForm, setValue } from "react-hook-form";
 import "./style/ComponentStyles.css";
 
 export default function TestSection1() {
@@ -87,6 +87,7 @@ export default function TestSection1() {
               id="field1"
               className="user-value"
               {...register("field1")}
+              required
             />
           </div>
           <div className="user-input">
@@ -98,6 +99,7 @@ export default function TestSection1() {
               id="field2"
               {...register("field2")}
               defaultValue={""}
+              required
             >
               <option value="" disabled>
                 Select Variant
@@ -122,6 +124,7 @@ export default function TestSection1() {
               id="field3"
               className="user-value"
               {...register("field3")}
+              required
             />
           </div>
           <div className="user-input">
@@ -134,6 +137,7 @@ export default function TestSection1() {
               id="field4"
               className="user-value"
               {...register("field4")}
+              required
             />
           </div>
         </div>
@@ -148,6 +152,7 @@ export default function TestSection1() {
               id="field5"
               className="user-value"
               {...register("field5")}
+              required
             />
           </div>
           <div className="user-input">
@@ -160,6 +165,7 @@ export default function TestSection1() {
               id="field6"
               className="user-value"
               {...register("field6")}
+              required
             />
           </div>
         </div>
@@ -174,6 +180,7 @@ export default function TestSection1() {
               id="field7"
               className="user-value"
               {...register("field7")}
+              required
             />
           </div>
           <div className="user-input">
@@ -186,6 +193,7 @@ export default function TestSection1() {
               id="field8"
               className="user-value"
               {...register("field8")}
+              required
             />
           </div>
         </div>
@@ -200,6 +208,7 @@ export default function TestSection1() {
               id="field9"
               className="user-value"
               {...register("field9")}
+              required
             />
           </div>
           <div className="user-input">
@@ -212,6 +221,7 @@ export default function TestSection1() {
               id="field10"
               className="user-value"
               {...register("field10")}
+              required
             />
           </div>
         </div>
@@ -226,6 +236,7 @@ export default function TestSection1() {
               id="field11"
               className="user-value"
               {...register("field11")}
+              required
             />
           </div>
           <div className="user-input">
@@ -238,6 +249,7 @@ export default function TestSection1() {
               id="field12"
               className="user-value"
               {...register("field12")}
+              required
             />
           </div>
         </div>
