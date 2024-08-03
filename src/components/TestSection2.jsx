@@ -309,7 +309,11 @@ export default function TestSection2() {
           <div className="box count data">
             <table>
               <tr>
-                <td>Tap Position</td>
+                <td>Current Tap Position</td>
+                <td>{tapPosition}</td>
+              </tr>
+              <tr>
+                <td>Next Tap Position</td>
                 <td>{tapPosition}</td>
               </tr>
               <tr>
@@ -350,28 +354,30 @@ export default function TestSection2() {
               </tr>
             </table>
           </div>
-          {/* <div className="box test-status data">
-            <div className="status">Test Status</div>
-            <div className="actions">
-              <button
-                className="start"
-                onClick={handleStartRequest}
-                disabled={!startActive}
-              >
-                Start
-              </button>
-              <button className="pause" disabled={startActive}>
-                Pause
-              </button>
-              <button
-                className="restart"
-                disabled={startActive}
-                onClick={restartTest}
-              >
-                Restart
-              </button>
-            </div>
-          </div> */}
+          <div className="box data">
+            <table>
+              <tr>
+                <td>Raise Direction</td>
+                <td>
+                  <input type="radio" name="" id="" />
+                </td>
+              </tr>
+              <tr>
+                <td>Lower Direction</td>
+                <td>
+                  <input type="radio" name="" id="" />
+                </td>
+              </tr>
+              <tr>
+                <td>Cycles</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>Operations</td>
+                <td>0</td>
+              </tr>
+            </table>
+          </div>
         </div>
 
         <table className="section steps">

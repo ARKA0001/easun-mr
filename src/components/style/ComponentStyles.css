@@ -267,8 +267,11 @@ input[type="checkbox"] {
   gap: 25px;
 }
 .TestDataSection2 .section-info .data {
-  height: 210px;
+  height: auto;
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .TestDataSection2 .section-info .count {
   background-color: var(--primary-blue);
@@ -289,7 +292,8 @@ input[type="checkbox"] {
   text-align: center;
 }
 
-.section-info .box:nth-child(2){
+.section-info .box:nth-child(2),
+.box:nth-child(3) {
   display: flex;
   flex-direction: column;
   background-color: var(--secondary-white);
@@ -297,8 +301,9 @@ input[type="checkbox"] {
   padding: 25px;
 }
 
-.section-info .box tr td:first-child {
+.section-info .box tr td {
   font-weight: bold;
+  font-size: 18px;
 }
 
 .section .box table td {
@@ -322,15 +327,15 @@ table.steps tr td.failure {
   margin: 10px 0;
   border: none;
   flex: 1;
-
 }
-.test-status{
+.test-status {
   display: flex;
   flex-direction: row;
   width: 100%;
-  gap:25px;
-  padding:2rem;
+  gap: 25px;
+  padding: 2rem;
 }
+
 
 .start {
   background-color: green;
@@ -352,9 +357,9 @@ table.steps tr td.failure {
 }
 
 .automation-step {
-  padding: 25px;
+  padding: 15px;
   background-color: var(--secondary-white);
-  margin: 30px 0;
+  margin: 15px 0;
   font-size: 14px;
 }
 .download-report {
@@ -449,14 +454,14 @@ button:disabled {
   line-height: 1.4;
 }
 
-.start-test{
+.start-test {
   display: flex;
   width: 100%;
   align-items: center;
   font-weight: bold;
 }
-.start-test .start{
-padding:10px 25px;
-border:none;
-margin: 0.5rem 2rem;
+.start-test .start {
+  padding: 10px 25px;
+  border: none;
+  margin: 0.5rem 2rem;
 }

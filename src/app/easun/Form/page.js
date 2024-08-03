@@ -82,7 +82,7 @@ export default function Page() {
         </div>
 
         <div className="right-main-side">
-          <h3>
+          <h3 className={currentActiveSection===1?"remove-heading":""}>
             <span> OLTC DRIVE MECHANISM AUTOMATED TEST</span>
 
             <span className="date-data">
