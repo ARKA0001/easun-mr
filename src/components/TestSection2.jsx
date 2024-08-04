@@ -24,7 +24,7 @@ export default function TestSection2() {
   //Modal related state variables
   const [infoModal, setInfoModal] = useState(false);
   const [actionModal, setActionModal] = useState(false);
-  const [errorModal, setErrorModal] = useState(true);
+  const [errorModal, setErrorModal] = useState(false);
   const [startModal, setStartModal] = useState(false);
 
   // We socket related state variables
@@ -33,7 +33,7 @@ export default function TestSection2() {
   const [ma1, setMa1] = useState(0);
   const [ma2, setMa2] = useState(0);
   const [motorMa, setMotorMa] = useState(0);
-  const [error, setError] = useState(["Error1", "Error2", "Error3", "Error4", "Erorr5", "Error6"]);
+  const [error, setError] = useState([]);
   const [info, setInfo] = useState(null);
   const [action, setAction] = useState(null);
   const [start, setStart] = useState(null);
