@@ -336,7 +336,6 @@ table.steps tr td.failure {
   padding: 2rem;
 }
 
-
 .start {
   background-color: green;
   color: var(--primary-white);
@@ -409,6 +408,7 @@ button:disabled {
   text-align: center;
   padding: 1rem;
   font-size: 1.5rem;
+  overflow-y: auto;
 }
 .modal .actions {
   padding: 1rem 0;
