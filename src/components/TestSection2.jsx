@@ -194,6 +194,7 @@ export default function TestSection2() {
     setDirection(tapList[1]);
     setCycles(tapList[2]);
     setOperations(tapList[3]);
+    setTestVoltage(tapList[4])
   };
   const handlePowerInfoChange = (value) => {
     const powerList = value.split(",").map((str) => str.trim());
