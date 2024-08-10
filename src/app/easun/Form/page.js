@@ -17,12 +17,22 @@ import {
   actionMessageStore,
   actionModalStore,
   activeSection,
+  cycleStore,
+  directionStore,
   errorMessageStore,
   errorModalStore,
   infoMessageStore,
   infoModalStore,
+  maSignal1Store,
+  maSignal2Store,
+  motorCurrentStore,
+  operationStore,
+  oVariantStore,
+  serialNoStore,
   startMessageStore,
   startModalStore,
+  tapPositionStore,
+  testVoltageStore,
 } from "@/store/Section";
 import TestSection1 from "@/components/TestSection1";
 import TestSection2 from "@/components/TestSection2";
@@ -91,6 +101,16 @@ export default function Page() {
   const [actionModal, setActionModal] = useRecoilState(actionModalStore);
   const [startModal, setStartModal] = useRecoilState(startModalStore);
 
+  const [tapPosition, setTapPosition] = useRecoilState(tapPositionStore);
+  const [direction, setDirection] = useRecoilState(directionStore);
+  const [cycles, setCycles] = useRecoilState(cycleStore);
+  const [operations, setOperations] = useRecoilState(operationStore);
+  const [serialNo, setSerialNo] = useRecoilState(serialNoStore);
+  const [oVariant, setoVariant] = useRecoilState(oVariantStore);
+  const [testVoltage, setTestVoltage] = useRecoilState(testVoltageStore);
+  const [ma1, setMa1] = useRecoilState(maSignal1Store);
+  const [ma2, setMa2] = useRecoilState(maSignal2Store);
+  const [mCurrent, setMCurrent] = useRecoilState(motorCurrentStore);
 
   const [info, setInfo] = useRecoilState(infoMessageStore);
   const [error, setError] = useRecoilState(errorMessageStore);
@@ -144,10 +164,9 @@ export default function Page() {
     if (socket) {
       console.log("Data is sent", value);
       socket.send(value);
-      setStartModal(false)
+      setStartModal(false);
     }
   };
-
 
   return (
     <>
@@ -206,19 +225,19 @@ export default function Page() {
                     <table>
                       <tr>
                         <td>Tap Position</td>
-                        <td>0</td>
+                        <td>{tapPosition}</td>
                       </tr>
                       <tr>
                         <td>Direction</td>
-                        <td>0</td>
+                        <td>{direction}</td>
                       </tr>
                       <tr>
                         <td>Cycles</td>
-                        <td>0</td>
+                        <td>{cycles}</td>
                       </tr>
                       <tr>
                         <td>Operations</td>
-                        <td>0</td>
+                        <td>{operations}</td>
                       </tr>
                     </table>
                   </div>
@@ -226,15 +245,15 @@ export default function Page() {
                     <table>
                       <tr>
                         <td>Serial No</td>
-                        <td>0</td>
+                        <td>{serialNo}</td>
                       </tr>
                       <tr>
                         <td>OLTC Variant</td>
-                        <td>0</td>
+                        <td>{oVariant}</td>
                       </tr>
                       <tr>
                         <td>Test Voltage</td>
-                        <td>0</td>
+                        <td>{testVoltage}</td>
                       </tr>
                     </table>
                   </div>
@@ -242,15 +261,15 @@ export default function Page() {
                     <table>
                       <tr>
                         <td>mA-Signal 1</td>
-                        <td>0.0</td>
+                        <td>{ma1}</td>
                       </tr>
                       <tr>
                         <td>mA-Signal 2</td>
-                        <td>0.0</td>
+                        <td>{ma2}</td>
                       </tr>
                       <tr>
                         <td>Motor Current</td>
-                        <td>0</td>
+                        <td>{mCurrent}</td>
                       </tr>
                     </table>
                   </div>

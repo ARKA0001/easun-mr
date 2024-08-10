@@ -55,7 +55,7 @@ export default function TestSection2() {
   const [start, setStart] = useRecoilState(startMessageStore);
   const [input, setInput] = useState();
   const [trueCheck, setTrueCheck] = useState([]);
-  const [falseCheck, setFalseCheck] = useState(["b40002_5"]);
+  const [falseCheck, setFalseCheck] = useState([]);
   const [disableDropdown, setDisableDropdown] = useState(false);
   const [transmission, setTransmission] = useState("Automatic");
   const [testType, setTestType] = useState();
@@ -63,7 +63,7 @@ export default function TestSection2() {
   // Default data display
   const [tapPosition, setTapPosition] = useRecoilState(tapPositionStore);
   const [direction, setDirection] = useRecoilState(directionStore);
-  const [cycles, setCyckes] = useRecoilState(cycleStore);
+  const [cycles, setCycles] = useRecoilState(cycleStore);
   const [operations, setOperations] = useRecoilState(operationStore);
   const [serialNo, setSerialNo] = useRecoilState(serialNoStore);
   const [oVariant, setOVariant] = useRecoilState(oVariantStore);
@@ -73,6 +73,8 @@ export default function TestSection2() {
   const [motorCurrent, setMotorCurrent] = useRecoilState(motorCurrentStore);
 
   useEffect(() => {
+    setSerialNo(testDataSection1.serialNumber);
+    setOVariant(testDataSection1.testType);
     const ws = new WebSocket("ws://localhost:8080/controller-test");
 
     ws.onopen = () => {
@@ -99,6 +101,9 @@ export default function TestSection2() {
           break;
         case "action":
           setAction(value);
+          break;
+        case "powerInfo":
+          handlePowerInfoChange(value);
           break;
         default:
           console.log("Unknown message type:", key);
@@ -186,9 +191,15 @@ export default function TestSection2() {
     setTrueCheck([]);
     setFalseCheck([]);
     setTapPosition(tapList[0]);
-    setMa1(tapList[1]);
-    setMa2(tapList[2]);
-    setMotorMa(tapList[3]);
+    setDirection(tapList[1]);
+    setCycles(tapList[2]);
+    setOperations(tapList[3]);
+  };
+  const handlePowerInfoChange = (value) => {
+    const powerList = value.split(",").map((str) => str.trim());
+    setMa1(powerList[0]);
+    setMa2(powerList[1]);
+    setMotorCurrent(powerList[2]);
   };
 
   // const messageAction = (value) => {

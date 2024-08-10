@@ -35,16 +35,9 @@ export default function TestSection1() {
     const testDataPayload = {
       serialNumber: data.field1,
       testType: data.field2,
-      cycles: parseInt(data.field3),
-      underVoltageCycles: parseInt(data.field4),
-      nominalVoltageCycles: parseInt(data.field5),
-      highVoltageCycles: parseInt(data.field6),
-      tapPositionMax: parseInt(data.field7),
-      tapPositionIndicators: parseInt(data.field8),
-      upperLimitInput: parseInt(data.field9),
-      lowerLimitInput: parseInt(data.field10),
-      tapChangeDelayIndication: parseInt(data.field11),
-      tapChangeProgressIndication: parseInt(data.field12),
+      tapPositionIndicators: parseInt(data.field3),
+      endLimits: parseInt(data.field4),
+      progressIndicators: parseInt(data.field5),
     };
     console.log(testDataPayload);
     setTestSectionData(testDataPayload);
@@ -113,10 +106,11 @@ export default function TestSection1() {
             </select>
           </div>
         </div>
+
         <div className="form-row">
           <div className="user-input">
             <label htmlFor="field3" className="field-label">
-              No of Cycles
+              No of Tap Position Indicators
             </label>
             <input
               type="number"
@@ -129,7 +123,7 @@ export default function TestSection1() {
           </div>
           <div className="user-input">
             <label htmlFor="field4" className="field-label">
-              Under Voltage Cycles
+              No of End Limits
             </label>
             <input
               type="number"
@@ -141,10 +135,11 @@ export default function TestSection1() {
             />
           </div>
         </div>
+
         <div className="form-row">
           <div className="user-input">
             <label htmlFor="field5" className="field-label">
-              Nominal Voltage Cycles
+              No. Tap Change in progress indications
             </label>
             <input
               type="number"
@@ -152,103 +147,6 @@ export default function TestSection1() {
               id="field5"
               className="user-value"
               {...register("field5")}
-              required
-            />
-          </div>
-          <div className="user-input">
-            <label htmlFor="field6" className="field-label">
-              High Voltage Cycles
-            </label>
-            <input
-              type="number"
-              name="field6"
-              id="field6"
-              className="user-value"
-              {...register("field6")}
-              required
-            />
-          </div>
-        </div>
-        <div className="form-row">
-          <div className="user-input">
-            <label htmlFor="field7" className="field-label">
-              Maximum Tap Position
-            </label>
-            <input
-              type="number"
-              name="field7"
-              id="field7"
-              className="user-value"
-              {...register("field7")}
-              required
-            />
-          </div>
-          <div className="user-input">
-            <label htmlFor="field8" className="field-label">
-              No of Tap Position Indicators
-            </label>
-            <input
-              type="number"
-              name="field8"
-              id="field8"
-              className="user-value"
-              {...register("field8")}
-              required
-            />
-          </div>
-        </div>
-        <div className="form-row">
-          <div className="user-input">
-            <label htmlFor="field9" className="field-label">
-              No. Upper Limit Reached Input
-            </label>
-            <input
-              type="number"
-              name="field9"
-              id="field9"
-              className="user-value"
-              {...register("field9")}
-              required
-            />
-          </div>
-          <div className="user-input">
-            <label htmlFor="field10" className="field-label">
-              No. Lower Limit Reached Input
-            </label>
-            <input
-              type="number"
-              name="field10"
-              id="field10"
-              className="user-value"
-              {...register("field10")}
-              required
-            />
-          </div>
-        </div>
-        <div className="form-row">
-          <div className="user-input">
-            <label htmlFor="field11" className="field-label">
-              No. Tap Change delay/Struck up Indication
-            </label>
-            <input
-              type="number"
-              name="field11"
-              id="field11"
-              className="user-value"
-              {...register("field11")}
-              required
-            />
-          </div>
-          <div className="user-input">
-            <label htmlFor="field12" className="field-label">
-              No. Tap Change in progress indications
-            </label>
-            <input
-              type="number"
-              name="field12"
-              id="field12"
-              className="user-value"
-              {...register("field12")}
               required
             />
           </div>

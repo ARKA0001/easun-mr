@@ -2,7 +2,7 @@ import { atom } from "recoil";
 
 export const activeSection = atom({
   key: "activeSection",
-  default: 1,
+  default: 0,
 });
 
 export const testDataSection1 = atom({
@@ -60,7 +60,7 @@ export const startMessageStore = atom({
 
 export const tapPositionStore = atom({
   key: "tapPositionStore",
-  default: 0,
+  default: [],
 });
 export const directionStore = atom({
   key: "directionStore",
@@ -98,3 +98,9 @@ export const motorCurrentStore = atom({
   key: "motorCurrentStore",
   default: 0,
 });
+export const powerInfoStore = atom({
+  key: "powerInfoStore",
+  default: [],
+});
+
+
