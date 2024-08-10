@@ -32,6 +32,7 @@ import {
   startMessageStore,
   startModalStore,
   tapPositionStore,
+  testDataSection1,
   testVoltageStore,
 } from "@/store/Section";
 import TestSection1 from "@/components/TestSection1";
@@ -116,6 +117,7 @@ export default function Page() {
   const [error, setError] = useRecoilState(errorMessageStore);
   const [action, setAction] = useRecoilState(actionMessageStore);
   const [start, setStart] = useRecoilState(startMessageStore);
+  const [testData, setTestData] = useRecoilState(testDataSection1);
 
   const resumeAction = (value) => {
     console.log(value);
@@ -245,11 +247,11 @@ export default function Page() {
                     <table>
                       <tr>
                         <td>Serial No</td>
-                        <td>{serialNo}</td>
+                        <td>{testData.serialNo}</td>
                       </tr>
                       <tr>
                         <td>OLTC Variant</td>
-                        <td>{oVariant}</td>
+                        <td>{testData.testType}</td>
                       </tr>
                       <tr>
                         <td>Test Voltage</td>
