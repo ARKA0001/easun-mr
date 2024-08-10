@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function StartModal({showModal, closeModal, modalMessage, runAction}) {
+export default function StartModal({showModal, modalMessage, runAction}) {
   return (
     showModal &&
     <div className='modal-container'>

@@ -13,10 +13,25 @@ import SectionNav from "@/components/SectionNav";
 import FormNavbar from "@/components/FormNavbar";
 import "../../page.css";
 import { useRecoilState } from "recoil";
-import { activeSection } from "@/store/Section";
+import {
+  actionMessageStore,
+  actionModalStore,
+  activeSection,
+  errorMessageStore,
+  errorModalStore,
+  infoMessageStore,
+  infoModalStore,
+  startMessageStore,
+  startModalStore,
+} from "@/store/Section";
 import TestSection1 from "@/components/TestSection1";
 import TestSection2 from "@/components/TestSection2";
 import DownloadReport from "@/components/DownloadReport";
+import "../../../components/style/ComponentStyles.css";
+import InfoModal from "@/components/modals/InfoModal";
+import ErrorModal from "@/components/modals/ErrorModal";
+import ActionModal from "@/components/modals/ActionModal";
+import StartModal from "@/components/modals/StartModal";
 
 export default function Page() {
   const currentDate = new Date();
@@ -71,27 +86,181 @@ export default function Page() {
     }
   };
 
+  const [infoModal, setInfoModal] = useRecoilState(infoModalStore);
+  const [errorModal, setErrorModal] = useRecoilState(errorModalStore);
+  const [actionModal, setActionModal] = useRecoilState(actionModalStore);
+  const [startModal, setStartModal] = useRecoilState(startModalStore);
+
+
+  const [info, setInfo] = useRecoilState(infoMessageStore);
+  const [error, setError] = useRecoilState(errorMessageStore);
+  const [action, setAction] = useRecoilState(actionMessageStore);
+  const [start, setStart] = useRecoilState(startMessageStore);
+
+  const resumeAction = (value) => {
+    console.log(value);
+    sendMessage(value);
+    setAction(null);
+  };
+
+  const runAction = () => {
+    console.log("Run button is pressed");
+    console.log("START_LV");
+    sendInitialMessage("START_LV");
+    setStartModal(false);
+  };
+
+  const handleSectionMove = () => {
+    console.log("Section is going to be moved from 1 to 2");
+    setCurrentActiveSection(2);
+    setSavedSectionCount(1);
+  };
+
+  const messageAction = (value) => {
+    console.log(value);
+    if (value === "DONE_NV") {
+      handleSectionMove();
+    } else {
+      sendMessage(value);
+    }
+    setInfo(null);
+    setInfoModal(false);
+  };
+
+  const errorAction = () => {
+    socket.send("CONTINUE");
+    setError(null);
+    setErrorModal(false);
+  };
+
+  const sendMessage = (value) => {
+    if (socket) {
+      console.log("Data is sent", input);
+      socket.send(value);
+      // setInput("");
+    }
+  };
+  const sendInitialMessage = (value) => {
+    if (socket) {
+      console.log("Data is sent", value);
+      socket.send(value);
+      setStartModal(false)
+    }
+  };
+
+
   return (
-    <div className="form-page">
-      <div className="main-navbar">
-        <FormNavbar />
-      </div>
-      <div className="form-main-content">
-        <div className="left-main-side">
-          <SectionNav />
+    <>
+      {infoModal && (
+        <InfoModal
+          showModal={infoModal}
+          modalMessage={info}
+          messageAction={messageAction}
+        />
+      )}
+      {errorModal && (
+        <ErrorModal
+          showModal={errorModal}
+          modalMessage={error}
+          errorAction={errorAction}
+        />
+      )}
+      {actionModal && (
+        <ActionModal
+          showModal={actionModal}
+          modalMessage={action}
+          resumeAction={resumeAction}
+        />
+      )}
+      {startModal && (
+        <StartModal
+          showModal={startModal}
+          modalMessage={start}
+          runAction={runAction}
+        />
+      )}
+      <div className="form-page">
+        <div className="main-navbar">
+          <FormNavbar />
         </div>
+        <div className="form-main-content">
+          <div className="left-main-side">
+            <SectionNav />
+          </div>
 
-        <div className="right-main-side">
-          <h3 className={currentActiveSection===1?"remove-heading":""}>
-            <span> OLTC DRIVE MECHANISM AUTOMATED TEST</span>
+          <div className="right-main-side">
+            {currentActiveSection === 0 && (
+              <h3>
+                <span> OLTC DRIVE MECHANISM AUTOMATED TEST</span>
 
-            <span className="date-data">
-              {currentDay} {currentMonth},{currentYear}
-            </span>
-          </h3>
-          {renderSection()}
+                <span className="date-data">
+                  {currentDay} {currentMonth},{currentYear}
+                </span>
+              </h3>
+            )}
+
+            {currentActiveSection != 0 && (
+              <div className="TestDataSection2">
+                <div className="section section-info">
+                  <div className="box count data">
+                    <table>
+                      <tr>
+                        <td>Tap Position</td>
+                        <td>0</td>
+                      </tr>
+                      <tr>
+                        <td>Direction</td>
+                        <td>0</td>
+                      </tr>
+                      <tr>
+                        <td>Cycles</td>
+                        <td>0</td>
+                      </tr>
+                      <tr>
+                        <td>Operations</td>
+                        <td>0</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div className="box data">
+                    <table>
+                      <tr>
+                        <td>Serial No</td>
+                        <td>0</td>
+                      </tr>
+                      <tr>
+                        <td>OLTC Variant</td>
+                        <td>0</td>
+                      </tr>
+                      <tr>
+                        <td>Test Voltage</td>
+                        <td>0</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div className="box data">
+                    <table>
+                      <tr>
+                        <td>mA-Signal 1</td>
+                        <td>0.0</td>
+                      </tr>
+                      <tr>
+                        <td>mA-Signal 2</td>
+                        <td>0.0</td>
+                      </tr>
+                      <tr>
+                        <td>Motor Current</td>
+                        <td>0</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            )}
+            {renderSection()}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

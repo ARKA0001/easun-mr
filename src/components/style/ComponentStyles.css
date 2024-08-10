@@ -328,13 +328,6 @@ table.steps tr td.failure {
   border: none;
   flex: 1;
 }
-.test-status {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  gap: 25px;
-  padding: 2rem;
-}
 
 .start {
   background-color: green;
@@ -386,6 +379,7 @@ button:disabled {
   justify-content: center;
   align-items: center;
   background-color: #00000041;
+  z-index: 999;
 }
 .modal {
   height: 300px;
@@ -464,4 +458,24 @@ button:disabled {
   padding: 10px 25px;
   border: none;
   margin: 0.5rem 2rem;
+}
+
+.test-mode {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+}
+.test-status {
+  width: 100%;
+  margin: 3rem 1rem 0rem 1rem;
+}
+.automatic-transmission,
+.manual-transmission {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+}
+.raise, .lower{
+  background-color: var(--primary-blue) !important;
+  color: var(--primary-white) !important;
 }

@@ -9,13 +9,8 @@ export default function SectionNav() {
   const [savedSectionCount, setSavedSectionCount] =
     useRecoilState(savedSection);
 
-  const handleSectionMove = (toMoveSection) => {
-    if(savedSection===0){
-      return null;
-    }
-    else if (toMoveSection <= savedSectionCount) {
-      setCurrentActiveSection(toMoveSection);
-    }
+  const handleSectionMove = (currentSection) => {
+    setCurrentActiveSection(currentSection);
   };
 
   return (
@@ -24,7 +19,7 @@ export default function SectionNav() {
         className={
           currentActiveSection === 0 ? "section-label active" : "section-label"
         }
-        onClick={() => handleSectionMove(0)}
+        // onClick={() => handleSectionMove(0)}
       >
         Automated Test Data
       </button>

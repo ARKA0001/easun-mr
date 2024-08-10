@@ -1,12 +1,30 @@
 import React from "react";
-import { testDataSection1, testId, savedSection } from "@/store/Section";
+import {
+  testDataSection1,
+  testId,
+  savedSection,
+  tapPositionStore,
+  directionStore,
+  cycleStore,
+  operationStore,
+  serialNoStore,
+  oVariantStore,
+  testVoltageStore,
+  maSignal1Store,
+  maSignal2Store,
+  motorCurrentStore,
+  infoModalStore,
+  actionModalStore,
+  errorModalStore,
+  startModalStore,
+  infoMessageStore,
+  errorMessageStore,
+  actionMessageStore,
+  startMessageStore,
+} from "@/store/Section";
 import { useRecoilState } from "recoil";
 import { useState, useEffect } from "react";
 import { activeSection } from "@/store/Section";
-import InfoModal from "./modals/InfoModal";
-import ErrorModal from "./modals/ErrorModal";
-import ActionModal from "./modals/ActionModal";
-import StartModal from "./modals/StartModal";
 
 export default function TestSection2() {
   const [testData, setTestData] = useRecoilState(testDataSection1);
@@ -22,24 +40,37 @@ export default function TestSection2() {
     useRecoilState(savedSection);
 
   //Modal related state variables
-  const [infoModal, setInfoModal] = useState(false);
-  const [actionModal, setActionModal] = useState(false);
-  const [errorModal, setErrorModal] = useState(false);
-  const [startModal, setStartModal] = useState(false);
+  const [infoModal, setInfoModal] = useRecoilState(infoModalStore);
+  const [actionModal, setActionModal] = useRecoilState(actionModalStore);
+  const [errorModal, setErrorModal] = useRecoilState(errorModalStore);
+  const [startModal, setStartModal] = useRecoilState(startModalStore);
 
   // We socket related state variables
   const [socket, setSocket] = useState(null);
-  const [tapPosition, setTapPosition] = useState(0);
-  const [ma1, setMa1] = useState(0);
-  const [ma2, setMa2] = useState(0);
+
   const [motorMa, setMotorMa] = useState(0);
-  const [error, setError] = useState([]);
-  const [info, setInfo] = useState(null);
-  const [action, setAction] = useState(null);
-  const [start, setStart] = useState(null);
+  const [error, setError] = useRecoilState(errorMessageStore);
+  const [info, setInfo] = useRecoilState(infoMessageStore);
+  const [action, setAction] = useRecoilState(actionMessageStore);
+  const [start, setStart] = useRecoilState(startMessageStore);
   const [input, setInput] = useState();
   const [trueCheck, setTrueCheck] = useState([]);
   const [falseCheck, setFalseCheck] = useState(["b40002_5"]);
+  const [disableDropdown, setDisableDropdown] = useState(false);
+  const [transmission, setTransmission] = useState("Automatic");
+  const [testType, setTestType] = useState();
+
+  // Default data display
+  const [tapPosition, setTapPosition] = useRecoilState(tapPositionStore);
+  const [direction, setDirection] = useRecoilState(directionStore);
+  const [cycles, setCyckes] = useRecoilState(cycleStore);
+  const [operations, setOperations] = useRecoilState(operationStore);
+  const [serialNo, setSerialNo] = useRecoilState(serialNoStore);
+  const [oVariant, setOVariant] = useRecoilState(oVariantStore);
+  const [testVoltage, setTestVoltage] = useRecoilState(testVoltageStore);
+  const [ma1, setMa1] = useRecoilState(maSignal1Store);
+  const [ma2, setMa2] = useRecoilState(maSignal2Store);
+  const [motorCurrent, setMotorCurrent] = useRecoilState(motorCurrentStore);
 
   useEffect(() => {
     const ws = new WebSocket("ws://localhost:8080/controller-test");
@@ -79,10 +110,6 @@ export default function TestSection2() {
     };
 
     setSocket(ws);
-
-    // return () => {
-    //   ws.close();
-    // };
   }, []);
 
   useEffect(() => {
@@ -116,6 +143,7 @@ export default function TestSection2() {
   };
 
   const handleStartRequest = () => {
+    setDisableDropdown(true);
     setResponse(null);
     setStartActive(false);
     setStartModal(true);
@@ -136,35 +164,22 @@ export default function TestSection2() {
     setFalseCheck(falseChecks);
   };
 
-  const closeInfoModal = () => {
-    console.log("Info Modal Close is pressed");
-    setInfoModal(false);
-  };
-  const closeErrorModal = () => {
-    console.log("Error Modal Close is pressed");
-    setErrorModal(false);
-  };
-  const closeActionModal = () => {
-    console.log("Error Modal Close is pressed");
-    setActionModal(false);
-  };
-
   const restartTest = () => {
     setStartActive(true);
   };
 
-  const resumeAction = (value) => {
-    console.log(value);
-    sendMessage(value);
-    setAction(null);
-  };
+  // const resumeAction = (value) => {
+  //   console.log(value);
+  //   sendMessage(value);
+  //   setAction(null);
+  // };
 
-  const runAction = () => {
-    console.log("Run button is pressed");
-    console.log("START_LV");
-    sendInitialMessage("START_LV");
-    setStartModal(false);
-  };
+  // const runAction = () => {
+  //   console.log("Run button is pressed");
+  //   console.log("START_LV");
+  //   sendInitialMessage("START_LV");
+  //   setStartModal(false);
+  // };
 
   const handleTapPositionChange = (value) => {
     const tapList = value.split(",").map((str) => str.trim());
@@ -176,78 +191,39 @@ export default function TestSection2() {
     setMotorMa(tapList[3]);
   };
 
-  const [nameArray, setNameArray] = useState([
-    "Name 1",
-    "Name 2",
-    "Name 3",
-    "Name 4",
-    "Name 5",
-    "Name 6",
-    "Name 7",
-    "Name 8",
-    "Name 9",
-    "Name 10",
-    // Add more names as needed
-  ]);
+  // const messageAction = (value) => {
+  //   console.log(value);
+  //   if (value === "DONE_HV") {
+  //     handleSectionMove();
+  //   } else {
+  //     sendMessage(value);
+  //   }
+  //   setInfo(null);
+  //   setInfoModal(false);
+  // };
 
-  const [newNameArray, setNewNameArray] = useState([
-    "New Name 1",
-    "New Name 2",
-    "New Name 3",
-    // Add more new names as needed
-  ]);
+  // const errorAction = () => {
+  //   socket.send("CONTINUE");
+  //   setError(null);
+  //   setErrorModal(false);
+  // };
 
-  const renderRows = () => {
-    // const combinedArray = [...nameArray, ...newNameArray]; // Combine both arrays
-    const combinedArray = [...trueCheck, ...falseCheck]; // Combine both arrays
-    const numRows = Math.ceil(combinedArray.length / 3); // Calculate number of rows needed
-
-    const rows = [];
-    for (let i = 0; i < numRows; i++) {
-      const row = [];
-      for (let j = 0; j < 3; j++) {
-        const index = i * 3 + j;
-        if (index < combinedArray.length) {
-          // const className = index < nameArray.length ? 'success automation-step' : 'failure automation-step';
-          const className =
-            index < trueCheck.length
-              ? "success automation-step"
-              : "failure automation-step";
-          row.push(
-            <td key={`cell-${index}`} className={className}>
-              {combinedArray[index]}
-            </td>
-          );
-        } else {
-          row.push(<td key={`empty-${i}-${j}`}></td>);
-        }
-      }
-      rows.push(<tr key={`row-${i}`}>{row}</tr>);
-    }
-
-    return rows;
+  const handleTransmission = (event) => {
+    setTransmission(event.target.value);
   };
 
-  const messageAction = (value) => {
-    console.log(value);
-    if (value === "DONE_HV") {
-      handleSectionMove();
-    } else {
-      sendMessage(value);
-    }
-    setInfo(null);
-    setInfoModal(false);
+  const handleTestType = (event) => {
+    setTestType(event.target.value);
   };
 
-  const errorAction = () => {
-    socket.send("CONTINUE");
-    setError(null);
-    setErrorModal(false);
-  };
+
+  const manualAction = (value) => {
+    sendMessage(value)
+  }
 
   return (
     <>
-      {infoModal && (
+      {/* {infoModal && (
         <InfoModal
           showModal={infoModal}
           closeModal={closeInfoModal}
@@ -278,106 +254,78 @@ export default function TestSection2() {
           modalMessage={start}
           runAction={runAction}
         />
-      )}
+      )} */}
       <div className="form-section data-section TestDataSection2">
         {response && <div className="error-message">{response}</div>}
-        <div className="test-status">
-          <button
-            className="start"
-            onClick={handleStartRequest}
-            disabled={!startActive}
+        <div className="section test-mode">
+          <select
+            name=""
+            id=""
+            disabled={disableDropdown}
+            onChange={handleTransmission}
+            value={transmission}
           >
-            Start
-          </button>
-          <button
-            className="pause"
-            // disabled={startActive}
-            disabled={true}
+            <option value="Manual">Manual</option>
+            <option value="Automatic">Automatic</option>
+          </select>
+          <select
+            name=""
+            id=""
+            disabled={disableDropdown}
+            onChange={handleTestType}
+            value={testType}
           >
-            Pause
-          </button>
-          <button
-            className="restart"
-            // disabled={startActive}
-            disabled={true}
-            onClick={restartTest}
-          >
-            Restart
-          </button>
+            <option value="Standard">Standard</option>
+            <option value="Short">Short</option>
+          </select>
         </div>
-        <div className="section section-info">
-          <div className="box count data">
-            <table>
-              <tr>
-                <td>Current Tap Position</td>
-                <td>{tapPosition}</td>
-              </tr>
-              <tr>
-                <td>Next Tap Position</td>
-                <td>{tapPosition}</td>
-              </tr>
-              <tr>
-                <td> mA- Signal1</td>
-                <td>{ma1}</td>
-              </tr>
-              <tr>
-                <td> mA- Signal2</td>
-                <td>{ma2}</td>
-              </tr>
-              <tr>
-                <td>Motor Current</td>
-                <td>{motorMa}</td>
-              </tr>
-            </table>
-          </div>
-          <div className="box data">
-            <table>
-              <tr>
-                <td>Serial No</td>
-                <td>{testData.serialNumber}</td>
-              </tr>
-              <tr>
-                <td>Test Type</td>
-                <td>{testData.testType}</td>
-              </tr>
-              <tr>
-                <td>Test Voltage</td>
-                <td>Nominal</td>
-              </tr>
-              <tr>
-                <td>Cycle No</td>
-                <td>{testData.cycles}</td>
-              </tr>
-              <tr>
-                <td>Maximum Tap Positions</td>
-                <td>{testData.tapPositionMax}</td>
-              </tr>
-            </table>
-          </div>
-          <div className="box data">
-            <table>
-              <tr>
-                <td>Raise Direction</td>
-                <td>
-                  <input type="radio" name="" id="" />
-                </td>
-              </tr>
-              <tr>
-                <td>Lower Direction</td>
-                <td>
-                  <input type="radio" name="" id="" />
-                </td>
-              </tr>
-              <tr>
-                <td>Cycles</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>Operations</td>
-                <td>0</td>
-              </tr>
-            </table>
-          </div>
+        <div className="test-status">
+          {transmission === "Automatic" && (
+            <div className="automatic-transmission">
+              <button
+                className="start"
+                onClick={handleStartRequest}
+                disabled={!startActive}
+              >
+                Start
+              </button>
+              <button
+                className="pause"
+                // disabled={startActive}
+                disabled={true}
+              >
+                Pause
+              </button>
+              <button
+                className="restart"
+                // disabled={startActive}
+                disabled={true}
+                onClick={restartTest}
+              >
+                Restart
+              </button>
+            </div>
+          )}
+          {transmission === "Manual" && (
+            <div className="manual-transmission">
+              <button
+                className="raise"
+                // disabled={startActive}
+                disabled={true}
+                onClick={manualAction}
+              >
+                Raise
+              </button>
+              <button
+                className="lower"
+                // disabled={startActive}
+                disabled={true}
+                onClick={manualAction}
+              >
+                Lower
+              </button>
+            </div>
+          )}
         </div>
 
         <table className="section steps">
@@ -662,10 +610,6 @@ export default function TestSection2() {
             </td>
           </tr>
         </table>
-        {/* <table className="section steps">{renderRows()}</table> */}
-        {/* <button className="action-button" onClick={() => handleSectionMove()}>
-          Fill Form
-        </button> */}
       </div>
     </>
   );

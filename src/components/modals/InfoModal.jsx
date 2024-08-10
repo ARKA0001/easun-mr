@@ -1,7 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-export default function InfoModal({ showModal, closeModal, modalMessage, messageAction }) {
+export default function InfoModal({
+  showModal,
+  modalMessage,
+  messageAction,
+}) {
   const [infoMessage, setInfoMessage] = useState(null);
   const [modalText, setModalText] = useState("");
 
@@ -18,20 +22,6 @@ export default function InfoModal({ showModal, closeModal, modalMessage, message
     }
   }, [modalMessage]);
 
-
-  // const renderModalMessage = (message) => {
-  //   if (message === "DONE_LV") {
-  //     setInfoMessage("START_NV");
-  //     return "Set Nominal Voltage and click Run";
-  //   } else if (message === "DONE_NV") {
-  //     setInfoMessage("START_HV");
-  //     return "Set High Voltage and click Run";
-  //   } else if (message === "DONE_HV") {
-  //     setInfoMessage("DONE_HV");
-  //     return "Testing completed for LV, NV, HV. Please Download report";
-  //   }
-  // };
-
   return (
     showModal && (
       <div className="modal-container">
@@ -42,7 +32,7 @@ export default function InfoModal({ showModal, closeModal, modalMessage, message
             <button>Close</button>
             {infoMessage && (
               <button
-                onClick={()=>messageAction(infoMessage)}
+                onClick={() => messageAction(infoMessage)}
                 className="resume-button"
               >
                 {infoMessage === "START_HV" || infoMessage === "START_NV"

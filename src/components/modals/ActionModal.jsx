@@ -1,20 +1,15 @@
 import React, { useState } from "react";
 
-export default function ActionModal({
-  showModal,
-  closeModal,
-  modalMessage,
-  resumeAction,
-}) {
+export default function ActionModal({ showModal, modalMessage, resumeAction }) {
   const [actionMessage, setActionMessage] = useState(null);
 
   const renderModalMessage = (message) => {
     if (message === "DONE_LV") {
-      setActionMessage("START_NV");
-      return "Set Nominal Voltage and click Run";
-    } else if (message === "DONE_NV") {
       setActionMessage("START_HV");
       return "Set High Voltage and click Run";
+    } else if (message === "DONE_HV") {
+      setActionMessage("START_NV");
+      return "Set Nominal Voltage and click Run";
     } else {
       setActionMessage("RESUME");
       return message;
