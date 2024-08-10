@@ -216,10 +216,9 @@ export default function TestSection2() {
     setTestType(event.target.value);
   };
 
-
   const manualAction = (value) => {
-    sendMessage(value)
-  }
+    sendMessage(value);
+  };
 
   return (
     <>
@@ -509,11 +508,11 @@ export default function TestSection2() {
                   : "automation-step"
               }
             >
-              <label htmlFor="check-field18">Power Supply 415V Helathy</label>
+              <label htmlFor="check-field18">Power Supply 415V Healthy</label>
             </td>
             <td
               className={
-                falseCheck.includes("b40002_0")
+                falseCheck.includes("b40002_7")
                   ? "failure automation-step"
                   : "automation-step"
               }
@@ -522,7 +521,7 @@ export default function TestSection2() {
             </td>
             <td
               className={
-                trueCheck.includes("b40002_1")
+                trueCheck.includes("b40002_0")
                   ? "success automation-step"
                   : "automation-step"
               }
@@ -534,7 +533,7 @@ export default function TestSection2() {
           <tr>
             <td
               className={
-                trueCheck.includes("b40002_2")
+                trueCheck.includes("b40002_1")
                   ? "success automation-step"
                   : "automation-step"
               }
@@ -543,7 +542,7 @@ export default function TestSection2() {
             </td>
             <td
               className={
-                trueCheck.includes("b40002_3")
+                trueCheck.includes("b40002_2")
                   ? "success automation-step"
                   : "automation-step"
               }
@@ -554,7 +553,16 @@ export default function TestSection2() {
             </td>
             <td
               className={
-                trueCheck.includes("b40002_5")
+                trueCheck.includes("b40002_3")
+                  ? "success automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field22">Hand Cranck Switch</label>
+            </td>
+            <td
+              className={
+                trueCheck.includes("b40002_4")
                   ? "success automation-step"
                   : falseCheck.includes("b40002_5")
                   ? "failure automation-step"
@@ -565,7 +573,7 @@ export default function TestSection2() {
             </td>
             <td
               className={
-                trueCheck.includes("b40002_6")
+                trueCheck.includes("b40002_5")
                   ? "success automation-step"
                   : falseCheck.includes("b40002_6")
                   ? "failure automation-step"
@@ -579,7 +587,7 @@ export default function TestSection2() {
           <tr>
             <td
               className={
-                trueCheck.includes("b40002_7")
+                trueCheck.includes("b40002_6")
                   ? "success automation-step"
                   : falseCheck.includes("b40002_7")
                   ? "failure automation-step"
@@ -590,7 +598,7 @@ export default function TestSection2() {
             </td>
             <td
               className={
-                trueCheck.includes("b40002_8")
+                trueCheck.includes("b40002_15")
                   ? "success automation-step"
                   : falseCheck.includes("b40002_8")
                   ? "failure automation-step"
@@ -607,6 +615,24 @@ export default function TestSection2() {
               }
             >
               <label htmlFor="check-field27">TDR Switch</label>
+            </td>
+            <td
+              className={
+                falseCheck.includes("b40002_9")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field27">Emergency Stop</label>
+            </td>
+            <td
+              className={
+                trueCheck.includes("b40002_10")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field27">TPI Indication</label>
             </td>
           </tr>
         </table>
