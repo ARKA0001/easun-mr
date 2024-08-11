@@ -248,7 +248,7 @@ export default function Page() {
                     <table>
                       <tr>
                         <td>Serial No</td>
-                        <td>{testData.serialNo}</td>
+                        <td>{testData.serialNumber}</td>
                       </tr>
                       <tr>
                         <td>OLTC Variant</td>
