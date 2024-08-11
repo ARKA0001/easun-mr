@@ -260,7 +260,7 @@ export default function Page() {
                       </tr>
                     </table>
                   </div>
-                  <div className="box data">
+                  <div className="box data count">
                     <table>
                       <tr>
                         <td>mA-Signal 1</td>

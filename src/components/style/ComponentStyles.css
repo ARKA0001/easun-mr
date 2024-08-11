@@ -308,6 +308,7 @@ input[type="checkbox"] {
 
 .section .box table td {
   padding: 2.5px 20px;
+  border-radius: 15px;
 }
 
 table.steps {
@@ -352,6 +353,7 @@ table.steps tr td.failure {
   background-color: var(--secondary-white);
   margin: 15px 0;
   font-size: 14px;
+  border-radius:10px;
 }
 .download-report {
   padding: 15px 30px;
