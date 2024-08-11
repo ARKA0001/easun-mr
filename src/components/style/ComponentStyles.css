@@ -461,8 +461,9 @@ button:disabled {
 
 .test-mode {
   display: flex;
+  flex-direction: column;
   width: 100%;
-  gap: 2rem;
+  gap: 1rem;
 }
 .test-status {
   width: 100%;
@@ -474,7 +475,8 @@ button:disabled {
   width: 100%;
   gap: 2rem;
 }
-.raise, .lower{
+.raise,
+.lower {
   background-color: var(--primary-blue) !important;
   color: var(--primary-white) !important;
 }
