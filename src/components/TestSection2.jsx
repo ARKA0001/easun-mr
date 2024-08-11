@@ -189,8 +189,8 @@ export default function TestSection2() {
 
   const handleTapPositionChange = (value) => {
     const tapList = value.split(",").map((str) => str.trim());
-    setTrueCheck([]);
-    setFalseCheck([]);
+    // setTrueCheck([]);
+    // setFalseCheck([]);
     setTapPosition(tapList[0]);
     setDirection(tapList[1]);
     setCycles(tapList[2]);
@@ -270,6 +270,7 @@ export default function TestSection2() {
       <div className="form-section data-section TestDataSection2">
         {response && <div className="error-message">{response}</div>}
         <div className="section test-mode">
+          Test Type
           <select
             name=""
             id=""
