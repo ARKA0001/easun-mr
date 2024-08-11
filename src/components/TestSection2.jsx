@@ -269,11 +269,11 @@ export default function TestSection2() {
       )} */}
       <div className="form-section data-section TestDataSection2">
         {response && <div className="error-message">{response}</div>}
+        <label htmlFor="transmission" className="transmission-label">Test Type</label>
         <div className="section test-mode">
-          Test Type
           <select
-            name=""
-            id=""
+            name="transmission"
+            id="transmission"
             disabled={disableDropdown}
             onChange={handleTransmission}
             value={transmission}
@@ -281,54 +281,54 @@ export default function TestSection2() {
             <option value="Manual">Manual</option>
             <option value="Automatic">Automatic</option>
           </select>
-        </div>
-        <div className="test-status">
-          {transmission === "Automatic" && (
-            <div className="automatic-transmission">
-              <button
-                className="start"
-                onClick={handleStartRequest}
-                disabled={!startActive}
-              >
-                Start
-              </button>
-              <button
-                className="pause"
-                // disabled={startActive}
-                disabled={true}
-              >
-                Pause
-              </button>
-              <button
-                className="restart"
-                // disabled={startActive}
-                disabled={true}
-                onClick={restartTest}
-              >
-                Restart
-              </button>
-            </div>
-          )}
-          {transmission === "Manual" && (
-            <div className="manual-transmission">
-              <button
-                className="raise"
-                // disabled={startActive}
-                disabled={true}
-                onClick={manualAction}
-              >
-                Raise
-              </button>
-              <button
-                className="lower"
-                // disabled={startActive}
-                disabled={true}
-                onClick={manualAction}
-              >
-                Lower
-              </button>
-            </div>
-          )}
+          <div className="test-status">
+            {transmission === "Automatic" && (
+              <div className="automatic-transmission">
+                <button
+                  className="start"
+                  onClick={handleStartRequest}
+                  disabled={!startActive}
+                >
+                  Start
+                </button>
+                <button
+                  className="pause"
+                  // disabled={startActive}
+                  disabled={true}
+                >
+                  Pause
+                </button>
+                <button
+                  className="restart"
+                  // disabled={startActive}
+                  disabled={true}
+                  onClick={restartTest}
+                >
+                  Restart
+                </button>
+              </div>
+            )}
+            {transmission === "Manual" && (
+              <div className="manual-transmission">
+                <button
+                  className="raise"
+                  // disabled={startActive}
+                  disabled={true}
+                  onClick={manualAction}
+                >
+                  Raise
+                </button>
+                <button
+                  className="lower"
+                  // disabled={startActive}
+                  disabled={true}
+                  onClick={manualAction}
+                >
+                  Lower
+                </button>
+              </div>
+            )}
+          </div>
         </div>
 
         <table className="section steps">

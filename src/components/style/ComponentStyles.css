@@ -347,7 +347,11 @@ table.steps tr td.failure {
   border-collapse: separate; /* Ensure cells have separate borders */
   border-spacing: 10px; /* Adjust the spacing between cells */
 }
-
+.transmission-label{
+  text-align: left;
+  width: 100%;
+  margin:5px;
+}
 .automation-step {
   padding: 15px;
   background-color: var(--secondary-white);
@@ -463,13 +467,17 @@ button:disabled {
 
 .test-mode {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
   gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.test-mode button{
+  border-radius: 10px;
 }
 .test-status {
   width: 100%;
-  margin: 3rem 1rem 0rem 1rem;
 }
 .automatic-transmission,
 .manual-transmission {

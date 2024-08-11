@@ -121,7 +121,9 @@ export default function Page() {
 
   const resumeAction = (value) => {
     console.log(value);
-    sendMessage(value);
+    if (value != "CLOSE") {
+      sendMessage(value);
+    }
     setAction(null);
     setActionModal(false);
   };
@@ -187,7 +189,7 @@ export default function Page() {
           errorAction={errorAction}
         />
       )}
-      {actionModal && (
+      {actionModal && action && (
         <ActionModal
           showModal={actionModal}
           modalMessage={action}

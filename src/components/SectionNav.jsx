@@ -101,7 +101,7 @@ export default function SectionNav() {
         className={
           currentActiveSection === 10 ? "section-label active" : "section-label"
         }
-        // onClick={() => handleSectionMove(10)}
+        onClick={() => handleSectionMove(10)}
       >
         Download Report
       </button>

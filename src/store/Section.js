@@ -103,11 +103,8 @@ export const powerInfoStore = atom({
   default: [],
 });
 
-
 // Socket Data
 export const socketStore = atom({
   key: "socketStore",
   default: null,
 });
-
-
