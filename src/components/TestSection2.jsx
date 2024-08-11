@@ -21,6 +21,7 @@ import {
   errorMessageStore,
   actionMessageStore,
   startMessageStore,
+  socketStore,
 } from "@/store/Section";
 import { useRecoilState } from "recoil";
 import { useState, useEffect } from "react";
@@ -46,7 +47,7 @@ export default function TestSection2() {
   const [startModal, setStartModal] = useRecoilState(startModalStore);
 
   // We socket related state variables
-  const [socket, setSocket] = useState(null);
+  const [socket, setSocket] = useRecoilState(socketStore);
 
   const [motorMa, setMotorMa] = useState(0);
   const [error, setError] = useRecoilState(errorMessageStore);
@@ -194,7 +195,7 @@ export default function TestSection2() {
     setDirection(tapList[1]);
     setCycles(tapList[2]);
     setOperations(tapList[3]);
-    setTestVoltage(tapList[4])
+    setTestVoltage(tapList[4]);
   };
   const handlePowerInfoChange = (value) => {
     const powerList = value.split(",").map((str) => str.trim());
@@ -278,16 +279,6 @@ export default function TestSection2() {
           >
             <option value="Manual">Manual</option>
             <option value="Automatic">Automatic</option>
-          </select>
-          <select
-            name=""
-            id=""
-            disabled={disableDropdown}
-            onChange={handleTestType}
-            value={testType}
-          >
-            <option value="Standard">Standard</option>
-            <option value="Short">Short</option>
           </select>
         </div>
         <div className="test-status">
@@ -583,17 +574,6 @@ export default function TestSection2() {
             >
               <label htmlFor="check-field23">OOD Tap</label>
             </td>
-            <td
-              className={
-                trueCheck.includes("b40002_5")
-                  ? "success automation-step"
-                  : falseCheck.includes("b40002_6")
-                  ? "failure automation-step"
-                  : "automation-step"
-              }
-            >
-              <label htmlFor="check-field24">Even Tap</label>
-            </td>
           </tr>
 
           <tr>
@@ -637,6 +617,8 @@ export default function TestSection2() {
             >
               <label htmlFor="check-field27">Emergency Stop</label>
             </td>
+          </tr>
+          <tr>
             <td
               className={
                 trueCheck.includes("b40002_10")
@@ -645,6 +627,17 @@ export default function TestSection2() {
               }
             >
               <label htmlFor="check-field27">TPI Indication</label>
+            </td>
+            <td
+              className={
+                trueCheck.includes("b40002_5")
+                  ? "success automation-step"
+                  : falseCheck.includes("b40002_6")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field24">Even Tap</label>
             </td>
           </tr>
         </table>

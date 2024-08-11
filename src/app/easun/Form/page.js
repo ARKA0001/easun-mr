@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Section1 from "@/components/Section1";
 import Section2 from "@/components/Section2";
 import Section3 from "@/components/Section3";
@@ -27,8 +27,7 @@ import {
   maSignal2Store,
   motorCurrentStore,
   operationStore,
-  oVariantStore,
-  serialNoStore,
+  socketStore,
   startMessageStore,
   startModalStore,
   tapPositionStore,
@@ -103,11 +102,12 @@ export default function Page() {
   const [startModal, setStartModal] = useRecoilState(startModalStore);
 
   const [tapPosition, setTapPosition] = useRecoilState(tapPositionStore);
+
+  // const [tapPosition, setTapPosition] = useState("9 << 12");
   const [direction, setDirection] = useRecoilState(directionStore);
   const [cycles, setCycles] = useRecoilState(cycleStore);
   const [operations, setOperations] = useRecoilState(operationStore);
-  const [serialNo, setSerialNo] = useRecoilState(serialNoStore);
-  const [oVariant, setoVariant] = useRecoilState(oVariantStore);
+  const [socket, setSocket] = useRecoilState(socketStore);
   const [testVoltage, setTestVoltage] = useRecoilState(testVoltageStore);
   const [ma1, setMa1] = useRecoilState(maSignal1Store);
   const [ma2, setMa2] = useRecoilState(maSignal2Store);
@@ -123,6 +123,7 @@ export default function Page() {
     console.log(value);
     sendMessage(value);
     setAction(null);
+    setActionModal(false);
   };
 
   const runAction = () => {

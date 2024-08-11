@@ -10,7 +10,9 @@ export default function SectionNav() {
     useRecoilState(savedSection);
 
   const handleSectionMove = (currentSection) => {
-    setCurrentActiveSection(currentSection);
+    if (currentActiveSection != 0) {
+      setCurrentActiveSection(currentSection);
+    }
   };
 
   return (
@@ -99,7 +101,7 @@ export default function SectionNav() {
         className={
           currentActiveSection === 10 ? "section-label active" : "section-label"
         }
-        onClick={() => handleSectionMove(10)}
+        // onClick={() => handleSectionMove(10)}
       >
         Download Report
       </button>

@@ -38,6 +38,7 @@ export default function TestSection1() {
       tapPositionIndicators: parseInt(data.field3),
       endLimits: parseInt(data.field4),
       progressIndicators: parseInt(data.field5),
+      testType: parseInt(data.field6),
     };
     console.log(testDataPayload);
     setTestSectionData(testDataPayload);
@@ -149,6 +150,15 @@ export default function TestSection1() {
               {...register("field5")}
               required
             />
+          </div>
+          <div className="user-input">
+            <label htmlFor="field6" className="field-label">
+              Test Type
+            </label>
+            <select className="user-value" {...register("field6")} required>
+              <option value="Standard">Standard</option>
+              <option value="Short">Short</option>
+            </select>
           </div>
         </div>
         <button type="submit" className="action-button">
