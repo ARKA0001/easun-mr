@@ -271,14 +271,14 @@ input[type="checkbox"] {
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 }
 .TestDataSection2 .section-info .count {
   background-color: var(--primary-blue);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
+  /* align-items: center; */
   padding: 2rem;
   border-radius: 25px;
   color: var(--primary-white);
