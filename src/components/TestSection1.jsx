@@ -92,7 +92,6 @@ export default function TestSection1() {
               name="field2"
               id="field2"
               {...register("field2")}
-              defaultValue={""}
               required
             >
               <option value="" disabled>

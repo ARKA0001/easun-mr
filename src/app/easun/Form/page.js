@@ -144,7 +144,8 @@ export default function Page() {
   const messageAction = (value) => {
     console.log(value);
     if (value === "DONE_NV") {
-      handleSectionMove();
+      // handleSectionMove();
+      
     } else {
       sendMessage(value);
     }

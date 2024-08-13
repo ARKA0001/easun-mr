@@ -1,10 +1,6 @@
 import React from "react";
 
-export default function ErrorModal({
-  showModal,
-  modalMessage,
-  errorAction,
-}) {
+export default function ErrorModal({ showModal, modalMessage, errorAction }) {
   return (
     showModal && (
       <div className="modal-container">
@@ -20,7 +16,9 @@ export default function ErrorModal({
             </ul>
           </div>
           <div className="actions">
-            <button onClick={errorAction} className="resume-button">Continue</button>
+            <button onClick={errorAction} className="resume-button">
+              Continue
+            </button>
           </div>
         </div>
       </div>

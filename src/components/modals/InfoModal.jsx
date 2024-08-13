@@ -14,7 +14,7 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
       setModalText("Set Nominal Voltage and click Run");
     } else if (modalMessage === "DONE_NV") {
       setInfoMessage("DONE_NV");
-      setModalText("Testing completed for LV, NV, HV. Please Download report");
+      setModalText("Testing completed. Please Download report from report section");
     }
   }, [modalMessage]);
 
@@ -25,7 +25,7 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
           <div className="message">Information</div>
           <div className="info">{modalText}</div>
           <div className="actions">
-            <button>Close</button>
+            {/* <button>Close</button> */}
             {infoMessage && (
               <button
                 onClick={() => messageAction(infoMessage)}
@@ -33,7 +33,7 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
               >
                 {infoMessage === "START_HV" || infoMessage === "START_NV"
                   ? "Run"
-                  : "Save & Next"}
+                  : "Ok"}
               </button>
             )}
           </div>
