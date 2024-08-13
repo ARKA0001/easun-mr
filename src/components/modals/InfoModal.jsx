@@ -1,23 +1,19 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-export default function InfoModal({
-  showModal,
-  modalMessage,
-  messageAction,
-}) {
+export default function InfoModal({ showModal, modalMessage, messageAction }) {
   const [infoMessage, setInfoMessage] = useState(null);
   const [modalText, setModalText] = useState("");
 
   useEffect(() => {
     if (modalMessage === "DONE_LV") {
-      setInfoMessage("START_NV");
-      setModalText("Set Nominal Voltage and click Run");
-    } else if (modalMessage === "DONE_NV") {
       setInfoMessage("START_HV");
       setModalText("Set High Voltage and click Run");
     } else if (modalMessage === "DONE_HV") {
-      setInfoMessage("DONE_HV");
+      setInfoMessage("START_HV");
+      setModalText("Set Nominal Voltage and click Run");
+    } else if (modalMessage === "DONE_HV") {
+      setInfoMessage("DONE_NV");
       setModalText("Testing completed for LV, NV, HV. Please Download report");
     }
   }, [modalMessage]);

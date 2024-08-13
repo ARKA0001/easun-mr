@@ -160,7 +160,7 @@ export default function Page() {
 
   const sendMessage = (value) => {
     if (socket) {
-      console.log("Data is sent", input);
+      console.log("Data is sent", value);
       socket.send(value);
       // setInput("");
     }
