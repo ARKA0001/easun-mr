@@ -28,28 +28,13 @@ export default function Login() {
   const onSubmit = async (data) => {
     const username = data.username;
     const password = data.password;
-    const correctUser = await LoginCall(username, password)
+    const correctUser = await LoginCall(username, password);
     if (correctUser) {
       console.log("User is now logged in");
       router.push("../easun/Home");
     } else {
       throw new Error("Invalid Username and Password");
     }
-
-    // const response = await fetch("/api/easun/Login", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     username: username,
-    //     password: password,
-    //   }),
-    // });
-
-    // const result = await response.json();
-    // if (result.message === "OK") {
-    // }
   };
   return (
     <div className="easun-login-page">
