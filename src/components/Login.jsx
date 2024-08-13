@@ -6,7 +6,8 @@ import { FiUser } from "react-icons/fi";
 import { MdLockOutline } from "react-icons/md";
 import { useForm } from "react-hook-form";
 import "../app/page.css";
-import { cookies } from "next/headers";
+
+import LoginCall from "@/app/easun/LoginCall";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState("password");
@@ -27,11 +28,10 @@ export default function Login() {
   const onSubmit = async (data) => {
     const username = data.username;
     const password = data.password;
-
-    if (username === "easunmr" && password === "easunmr@1234") {
-      cookies().set("user", username);
+    const correctUser = await LoginCall(username, password)
+    if (correctUser) {
       console.log("User is now logged in");
-      router.push("../../easun/Home");
+      router.push("../easun/Home");
     } else {
       throw new Error("Invalid Username and Password");
     }
