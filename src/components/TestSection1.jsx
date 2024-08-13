@@ -34,7 +34,7 @@ export default function TestSection1() {
   const onSubmit = async (data) => {
     const testDataPayload = {
       serialNumber: data.field1,
-      testType: data.field2,
+      oVariant: data.field2,
       tapPositionIndicators: parseInt(data.field3),
       endLimits: parseInt(data.field4),
       progressIndicators: parseInt(data.field5),

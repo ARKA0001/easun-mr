@@ -6,6 +6,7 @@ import { FiUser } from "react-icons/fi";
 import { MdLockOutline } from "react-icons/md";
 import { useForm } from "react-hook-form";
 import "../app/page.css";
+import { cookies } from "next/headers";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState("password");
@@ -15,6 +16,7 @@ export default function Login() {
     setShowPassword(showPassword === "password" ? "text" : "password");
     setIsChecked(!isChecked);
   };
+
   const {
     register,
     handleSubmit,
@@ -26,22 +28,28 @@ export default function Login() {
     const username = data.username;
     const password = data.password;
 
-    const response = await fetch("/api/easun/Login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-      }),
-    });
-
-    const result = await response.json();
-    if (result.message === "OK") {
+    if (username === "easunmr" && password === "easunmr@1234") {
+      cookies().set("user", username);
       console.log("User is now logged in");
-      router.push('../easun/Home')
+      router.push("../../easun/Home");
+    } else {
+      throw new Error("Invalid Username and Password");
     }
+
+    // const response = await fetch("/api/easun/Login", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     username: username,
+    //     password: password,
+    //   }),
+    // });
+
+    // const result = await response.json();
+    // if (result.message === "OK") {
+    // }
   };
   return (
     <div className="easun-login-page">

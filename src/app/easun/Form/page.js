@@ -255,7 +255,7 @@ export default function Page() {
                       </tr>
                       <tr>
                         <td>OLTC Variant</td>
-                        <td>{testData.testType}</td>
+                        <td>{testData.oVariant}</td>
                       </tr>
                       <tr>
                         <td>Test Voltage</td>
