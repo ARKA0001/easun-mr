@@ -4,8 +4,8 @@
   box-sizing: border-box;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-.remove-heading{
-  display:none !important;
+.remove-heading {
+  display: none !important;
 }
 .error-message {
   background-color: #f8d7da;
