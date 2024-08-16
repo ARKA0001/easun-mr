@@ -38,7 +38,7 @@ export default function TestSection1() {
       tapPositionIndicators: parseInt(data.field3),
       endLimits: parseInt(data.field4),
       progressIndicators: parseInt(data.field5),
-      testType: parseInt(data.field6),
+      testingCycle: data.field6,
     };
     console.log(testDataPayload);
     setTestSectionData(testDataPayload);
@@ -97,12 +97,12 @@ export default function TestSection1() {
               <option value="" disabled>
                 Select Variant
               </option>
-              <option value="Variant 1-5-9">Variant 1-5-9</option>
-              <option value="Variant 1-9b-17">Variant 1-9b-17</option>
-              <option value="Variant 1-9-17">Variant 1-9-17</option>
-              <option value="Variant 1-11b-21">Variant 1-11b-21</option>
-              <option value="Variant 1-14b-27">Variant 1-14b-27</option>
-              <option value="Variant 1-17b-35">Variant 1-17b-35</option>
+              <option value="1-5-9">Variant 1-5-9</option>
+              <option value="1-9b-17">Variant 1-9b-17</option>
+              <option value="1-9-17">Variant 1-9-17</option>
+              <option value="1-11b-21">Variant 1-11b-21</option>
+              <option value="1-14b-27">Variant 1-14b-27</option>
+              <option value="1-17b-35">Variant 1-17b-35</option>
             </select>
           </div>
         </div>
@@ -152,7 +152,7 @@ export default function TestSection1() {
           </div>
           <div className="user-input">
             <label htmlFor="field6" className="field-label">
-              Test Type
+              Testing Cycle
             </label>
             <select className="user-value" {...register("field6")} required>
               <option value="Standard">Standard</option>

@@ -269,7 +269,7 @@ export default function TestSection2() {
       )} */}
       <div className="form-section data-section TestDataSection2">
         {response && <div className="error-message">{response}</div>}
-        <label htmlFor="transmission" className="transmission-label">Test Type</label>
+        <label htmlFor="transmission" className="transmission-label">Testing Mode</label>
         <div className="section test-mode">
           <select
             name="transmission"
