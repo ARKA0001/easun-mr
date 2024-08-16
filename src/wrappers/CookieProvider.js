@@ -10,12 +10,12 @@ export default function CookieProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const userCookie = Cookies.get("user");
+    const userCookie = Cookies.get("easun-mr-user");
 
     if (userCookie) {
-      setLoading(false); // Allow rendering if the cookie is valid
+      setLoading(false); // Allow rendering if the cookie exists
     } else {
-      router.push('/auth/Login'); // Redirect if the cookie is invalid
+      router.push('/auth/Login'); // Redirect if the cookie is not found
     }
   }, [router]);
 

@@ -137,11 +137,13 @@
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: #f8f8f8;
+  background-color: transparent;
   font-size: 18px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   margin: 15px 0;
+  justify-content: center;
+  align-items: center;
 }
 .input-icon {
   margin: 0 5px;
