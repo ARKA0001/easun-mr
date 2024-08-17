@@ -35,10 +35,10 @@ export default function TestSection1() {
     const testDataPayload = {
       serialNumber: data.field1,
       oVariant: data.field2,
-      tapPositionIndicators: parseInt(data.field3),
-      endLimits: parseInt(data.field4),
-      progressIndicators: parseInt(data.field5),
-      testType: parseInt(data.field6),
+      tapPositionIndicators: data.field3,
+      endLimits: data.field4,
+      progressIndicators: data.field5,
+      testingCycle: data.field6,
     };
     console.log(testDataPayload);
     setTestSectionData(testDataPayload);
@@ -88,12 +88,7 @@ export default function TestSection1() {
             <label htmlFor="field2" className="field-label">
               Test Type
             </label>
-            <select
-              name="field2"
-              id="field2"
-              {...register("field2")}
-              required
-            >
+            <select name="field2" id="field2" {...register("field2")} required>
               <option value="" disabled>
                 Select Variant
               </option>
@@ -152,7 +147,7 @@ export default function TestSection1() {
           </div>
           <div className="user-input">
             <label htmlFor="field6" className="field-label">
-              Test Type
+              Testing cycle
             </label>
             <select className="user-value" {...register("field6")} required>
               <option value="Standard">Standard</option>

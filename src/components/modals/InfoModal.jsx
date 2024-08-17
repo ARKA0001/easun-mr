@@ -14,7 +14,9 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
       setModalText("Set Nominal Voltage and click Run");
     } else if (modalMessage === "DONE_NV") {
       setInfoMessage("DONE_NV");
-      setModalText("Testing completed. Please Download report from report section");
+      setModalText(
+        "Testing completed. Please Download report from report section"
+      );
     }
   }, [modalMessage]);
 
@@ -31,10 +33,27 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
                 onClick={() => messageAction(infoMessage)}
                 className="resume-button"
               >
-                {infoMessage === "START_HV" || infoMessage === "START_NV"
+                {(infoMessage === "START_HV" || infoMessage === "START_NV") &&
+                infoMessage != "DONE_NV"
                   ? "Run"
                   : "Ok"}
               </button>
+            )}
+            {infoMessage === "DONE_NV" && (
+              <>
+                <button
+                  onClick={() => messageAction("DONE_NV")}
+                  className="resume-button"
+                >
+                  Ok
+                </button>
+                <button
+                  onClick={() => messageAction("START_NEW")}
+                  className="resume-button"
+                >
+                 Start New Test
+                </button>
+              </>
             )}
           </div>
         </div>

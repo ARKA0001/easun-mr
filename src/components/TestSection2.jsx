@@ -174,23 +174,8 @@ export default function TestSection2() {
     setStartActive(true);
   };
 
-  // const resumeAction = (value) => {
-  //   console.log(value);
-  //   sendMessage(value);
-  //   setAction(null);
-  // };
-
-  // const runAction = () => {
-  //   console.log("Run button is pressed");
-  //   console.log("START_LV");
-  //   sendInitialMessage("START_LV");
-  //   setStartModal(false);
-  // };
-
   const handleTapPositionChange = (value) => {
     const tapList = value.split(",").map((str) => str.trim());
-    // setTrueCheck([]);
-    // setFalseCheck([]);
     setTapPosition(tapList[0]);
     setDirection(tapList[1]);
     setCycles(tapList[2]);
@@ -203,23 +188,6 @@ export default function TestSection2() {
     setMa2(powerList[1]);
     setMotorCurrent(powerList[2]);
   };
-
-  // const messageAction = (value) => {
-  //   console.log(value);
-  //   if (value === "DONE_HV") {
-  //     handleSectionMove();
-  //   } else {
-  //     sendMessage(value);
-  //   }
-  //   setInfo(null);
-  //   setInfoModal(false);
-  // };
-
-  // const errorAction = () => {
-  //   socket.send("CONTINUE");
-  //   setError(null);
-  //   setErrorModal(false);
-  // };
 
   const handleTransmission = (event) => {
     setTransmission(event.target.value);
@@ -235,41 +203,11 @@ export default function TestSection2() {
 
   return (
     <>
-      {/* {infoModal && (
-        <InfoModal
-          showModal={infoModal}
-          closeModal={closeInfoModal}
-          modalMessage={info}
-          messageAction={messageAction}
-        />
-      )}
-      {errorModal && (
-        <ErrorModal
-          showModal={errorModal}
-          closeModal={closeErrorModal}
-          modalMessage={error}
-          errorAction={errorAction}
-        />
-      )}
-      {actionModal && (
-        <ActionModal
-          showModal={actionModal}
-          closeModal={closeActionModal}
-          modalMessage={action}
-          resumeAction={resumeAction}
-        />
-      )}
-      {startModal && (
-        <StartModal
-          showModal={startModal}
-          closeModal={closeActionModal}
-          modalMessage={start}
-          runAction={runAction}
-        />
-      )} */}
       <div className="form-section data-section TestDataSection2">
         {response && <div className="error-message">{response}</div>}
-        <label htmlFor="transmission" className="transmission-label">Test Type</label>
+        <label htmlFor="transmission" className="transmission-label">
+          Test Type
+        </label>
         <div className="section test-mode">
           <select
             name="transmission"
@@ -314,7 +252,7 @@ export default function TestSection2() {
                   className="raise"
                   // disabled={startActive}
                   disabled={true}
-                  onClick={manualAction}
+                  onClick={manualAction("RAISE")}
                 >
                   Raise
                 </button>
@@ -322,7 +260,7 @@ export default function TestSection2() {
                   className="lower"
                   // disabled={startActive}
                   disabled={true}
-                  onClick={manualAction}
+                  onClick={manualAction("LOW")}
                 >
                   Lower
                 </button>

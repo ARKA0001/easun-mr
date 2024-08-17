@@ -145,7 +145,8 @@ export default function Page() {
     console.log(value);
     if (value === "DONE_NV") {
       // handleSectionMove();
-      
+    } else if (value === "START_NEW") {
+      window.location.reload();
     } else {
       sendMessage(value);
     }
@@ -260,6 +261,10 @@ export default function Page() {
                       <tr>
                         <td>Test Voltage</td>
                         <td>{testVoltage}</td>
+                      </tr>
+                      <tr>
+                        <td>Testing Cycle</td>
+                        <td>{testData.testingCycle}</td>
                       </tr>
                     </table>
                   </div>
