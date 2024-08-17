@@ -92,12 +92,12 @@ export default function TestSection1() {
               <option value="" disabled>
                 Select Variant
               </option>
-              <option value="Variant 1-5-9">Variant 1-5-9</option>
-              <option value="Variant 1-9b-17">Variant 1-9b-17</option>
-              <option value="Variant 1-9-17">Variant 1-9-17</option>
-              <option value="Variant 1-11b-21">Variant 1-11b-21</option>
-              <option value="Variant 1-14b-27">Variant 1-14b-27</option>
-              <option value="Variant 1-17b-35">Variant 1-17b-35</option>
+              <option value="1-5-9">Variant 1-5-9</option>
+              <option value="1-9b-17">Variant 1-9b-17</option>
+              <option value="1-9-17">Variant 1-9-17</option>
+              <option value="1-11b-21">Variant 1-11b-21</option>
+              <option value="1-14b-27">Variant 1-14b-27</option>
+              <option value="1-17b-35">Variant 1-17b-35</option>
             </select>
           </div>
         </div>
