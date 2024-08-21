@@ -178,7 +178,7 @@ export default function TestSection2() {
 
   const manualAction = (value) => {
     console.log("Data to socket:", value);
-    // sendMessage(value);
+    sendMessage(value);
     setManualButtonState(true);
   };
 
