@@ -23,6 +23,7 @@ import {
   startMessageStore,
   socketStore,
   manualButtonStateStore,
+  transmissionStore,
 } from "@/store/Section";
 import { useRecoilState } from "recoil";
 import { useState, useEffect } from "react";
@@ -128,8 +129,12 @@ export default function TestSection2() {
   }, [tapPosition]);
 
   const handleInfo = (value) => {
-    setInfo(value);
-    setInfoModal(true);
+    if (value === "DONE") {
+      manualButtonState(false);
+    } else {
+      setInfo(value);
+      setInfoModal(true);
+    }
   };
 
   const handleError = (errors) => {
@@ -186,11 +191,11 @@ export default function TestSection2() {
     <>
       <div className="form-section data-section TestDataSection2">
         {response && <div className="error-message">{response}</div>}
-       
+
         <div className="section test-mode">
-        <label htmlFor="transmission" className="transmission-label">
-          Test Type
-        </label>
+          <label htmlFor="transmission" className="transmission-label">
+            Test Type
+          </label>
           <select
             name="transmission"
             id="transmission"
