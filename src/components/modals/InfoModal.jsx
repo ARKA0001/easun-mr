@@ -12,7 +12,7 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
     } else if (modalMessage === "DONE_HV") {
       setInfoMessage("START_NV");
       setModalText("Set Nominal Voltage and click Run");
-    } else if (modalMessage === "DONE_NV") {
+    } else if (modalMessage === "DONE_NV" || modalMessage === "DONE") {
       setInfoMessage("DONE_NV");
       setModalText(
         "Testing completed. Please Download report from report section"
