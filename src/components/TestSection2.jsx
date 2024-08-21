@@ -130,7 +130,7 @@ export default function TestSection2() {
 
   const handleInfo = (value) => {
     if (value === "DONE") {
-      manualButtonState(false);
+      setManualButtonState(false);
     } else {
       setInfo(value);
       setInfoModal(true);
