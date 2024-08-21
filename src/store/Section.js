@@ -108,3 +108,9 @@ export const socketStore = atom({
   key: "socketStore",
   default: null,
 });
+
+
+export const manualButtonStateStore = atom({
+  key: "manualButtonStateStore",
+  default: false,
+});

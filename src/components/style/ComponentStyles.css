@@ -349,7 +349,7 @@ table.steps tr td.failure {
 }
 .transmission-label{
   text-align: left;
-  width: 100%;
+  width: 50%;
   margin:5px;
 }
 .automation-step {
@@ -531,9 +531,14 @@ button:disabled {
 }
 
 .raise:disabled, .lower:disabled{
-  background-color: var(--secondary-white);
+  background-color: var(--secondary-white) !important;
+  color: var(--dark-grey) !important;
 }
 .lower{
   background-color: #B10007 !important;
 
+}
+
+button{
+  cursor: pointer !important;
 }

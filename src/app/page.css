@@ -392,3 +392,8 @@
     transform: translateX(100%);
   }
 }
+
+
+button{
+  cursor: pointer !important;
+}

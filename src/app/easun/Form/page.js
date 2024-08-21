@@ -33,6 +33,7 @@ import {
   tapPositionStore,
   testDataSection1,
   testVoltageStore,
+  manualButtonStateStore
 } from "@/store/Section";
 import TestSection1 from "@/components/TestSection1";
 import TestSection2 from "@/components/TestSection2";
@@ -63,6 +64,7 @@ export default function Page() {
   const currentMonthIndex = currentDate.getMonth();
   const currentMonth = monthNames[currentMonthIndex];
   const currentYear = currentDate.getFullYear();
+  const [manualButtonState, setManualButtonState] = useRecoilState(manualButtonStateStore)
 
   const [currentActiveSection, setCurrentActiveSection] =
     useRecoilState(activeSection);
@@ -145,6 +147,7 @@ export default function Page() {
     console.log(value);
     if (value === "DONE_NV") {
       // handleSectionMove();
+      setManualButtonState(false)
     } else if (value === "START_NEW") {
       window.location.reload();
     } else {
