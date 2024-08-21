@@ -145,7 +145,7 @@ export default function Page() {
 
   const messageAction = (value) => {
     console.log(value);
-    if (value === "DONE_NV") {
+    if (value === "DONE_NV" || value === "DONE") {
       // handleSectionMove();
       setManualButtonState(false)
     } else if (value === "START_NEW") {

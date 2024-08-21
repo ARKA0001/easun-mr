@@ -27,14 +27,13 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
           <div className="message">Information</div>
           <div className="info">{modalText}</div>
           <div className="actions">
-            {/* <button>Close</button> */}
             {infoMessage && (
               <button
                 onClick={() => messageAction(infoMessage)}
                 className="resume-button"
               >
                 {(infoMessage === "START_HV" || infoMessage === "START_NV") &&
-                infoMessage != "DONE_NV"
+                infoMessage != "DONE_NV" || infoMessage != "DONE"
                   ? "Run"
                   : "Ok"}
               </button>
@@ -51,7 +50,7 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
                   onClick={() => messageAction("START_NEW")}
                   className="resume-button"
                 >
-                 Start New Test
+                  Start New Test
                 </button>
               </>
             )}
