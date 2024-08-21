@@ -39,6 +39,7 @@ export default function TestSection2() {
   const [checks, setChecks] = useState([]);
   const [savedSectionCount, setSavedSectionCount] =
     useRecoilState(savedSection);
+    const [manualButtonState, setManualButtonState] = useState(false)
 
   //Modal related state variables
   const [infoModal, setInfoModal] = useRecoilState(infoModalStore);
@@ -138,29 +139,9 @@ export default function TestSection2() {
     if (socket) {
       console.log("Data is sent", input);
       socket.send(value);
-      // setInput("");
-    }
-  };
-  const sendInitialMessage = (value) => {
-    if (socket) {
-      console.log("Data is sent", value);
-      socket.send(value);
     }
   };
 
-  const handleStartRequest = () => {
-    setDisableDropdown(true);
-    setResponse(null);
-    setStartActive(false);
-    setStartModal(true);
-    setStart("Set Lower Voltage and click Run");
-  };
-
-  const handleSectionMove = () => {
-    console.log("Section is going to be moved from 1 to 2");
-    setCurrentActiveSection(2);
-    setSavedSectionCount(1);
-  };
 
   const handleChecks = (value) => {
     const [checksA, checksB] = value.split("||").map((str) => str.trim());
@@ -193,12 +174,10 @@ export default function TestSection2() {
     setTransmission(event.target.value);
   };
 
-  const handleTestType = (event) => {
-    setTestType(event.target.value);
-  };
-
   const manualAction = (value) => {
+    console.log("Data to socket:", value);
     sendMessage(value);
+    setManualButtonState(true)
   };
 
   return (
@@ -222,20 +201,8 @@ export default function TestSection2() {
           <div className="test-status">
             {transmission === "Automatic" && (
               <div className="automatic-transmission">
-                <button
-                  className="start"
-                  onClick={handleStartRequest}
-                  disabled={!startActive}
-                >
-                  Start
-                </button>
-                <button
-                  className="pause"
-                  // disabled={startActive}
-                  disabled={true}
-                >
-                  Pause
-                </button>
+                <button className="start">Start</button>
+                <button className="pause" disabled>Pause</button>
                 <button
                   className="restart"
                   // disabled={startActive}
@@ -248,20 +215,10 @@ export default function TestSection2() {
             )}
             {transmission === "Manual" && (
               <div className="manual-transmission">
-                <button
-                  className="raise"
-                  // disabled={startActive}
-                  disabled={true}
-                  onClick={manualAction("RAISE")}
-                >
+                <button className="raise" disabled={manualButtonState} onClick={() => manualAction("RAISE")}>
                   Raise
                 </button>
-                <button
-                  className="lower"
-                  // disabled={startActive}
-                  disabled={true}
-                  onClick={manualAction("LOW")}
-                >
+                <button className="lower" disabled={manualButtonState} onClick={() => manualAction("LOW")}>
                   Lower
                 </button>
               </div>

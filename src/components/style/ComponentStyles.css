@@ -529,3 +529,11 @@ button:disabled {
 .dropdown-menu li a:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
+
+.raise:disabled, .lower:disabled{
+  background-color: var(--secondary-white);
+}
+.lower{
+  background-color: #B10007 !important;
+
+}
