@@ -27,16 +27,17 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
           <div className="message">Information</div>
           <div className="info">{modalText}</div>
           <div className="actions">
-            {infoMessage && (
+            {infoMessage === "START_HV" || infoMessage === "START_NV" ? (
               <button
                 onClick={() => messageAction(infoMessage)}
                 className="resume-button"
               >
-                {(infoMessage === "START_HV" || infoMessage === "START_NV") &&
-                infoMessage != "DONE_NV" || infoMessage != "DONE"
+                {(infoMessage === "START_HV" || infoMessage === "START_NV") 
                   ? "Run"
                   : "Ok"}
               </button>
+            ) : (
+              <></>
             )}
             {infoMessage === "DONE_NV" && (
               <>
