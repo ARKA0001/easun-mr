@@ -534,10 +534,10 @@ button:disabled {
   background-color: var(--secondary-white) !important;
   color: var(--dark-grey) !important;
 }
-.lower{
+/* .lower{
   background-color: #B10007 !important;
 
-}
+} */
 
 button{
   cursor: pointer !important;
