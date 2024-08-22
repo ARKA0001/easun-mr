@@ -204,6 +204,14 @@ export default function TestSection2() {
     setCurrentActiveSection(2);
     setSavedSectionCount(1);
   };
+
+  const sendInitialMessage = (value) => {
+    if (socket) {
+      console.log("Data is sent", value);
+      socket.send(value);
+    }
+  };
+
   return (
     <>
       <div className="form-section data-section TestDataSection2">
