@@ -130,7 +130,7 @@ export default function TestSection2() {
 
   const handleInfo = (value) => {
     if (value === "DONE") {
-      manualButtonState(false);
+      setManualButtonState(false);
     } else {
       setInfo(value);
       setInfoModal(true);
@@ -187,6 +187,23 @@ export default function TestSection2() {
     setManualButtonState(true);
   };
 
+  const handleTestType = (event) => {
+    setTestType(event.target.value);
+  };
+
+  const handleStartRequest = () => {
+    setDisableDropdown(true);
+    setResponse(null);
+    setStartActive(false);
+    setStartModal(true);
+    setStart("Set Lower Voltage and click Run");
+  };
+
+  const handleSectionMove = () => {
+    console.log("Section is going to be moved from 1 to 2");
+    setCurrentActiveSection(2);
+    setSavedSectionCount(1);
+  };
   return (
     <>
       <div className="form-section data-section TestDataSection2">
@@ -209,8 +226,18 @@ export default function TestSection2() {
           <div className="test-status">
             {transmission === "Automatic" && (
               <div className="automatic-transmission">
-                <button className="start">Start</button>
-                <button className="pause" disabled>
+                  <button
+                  className="start"
+                  onClick={handleStartRequest}
+                  disabled={!startActive}
+                >
+                  Start
+                </button>
+                <button
+                  className="pause"
+                  // disabled={startActive}
+                  disabled={true}
+                >
                   Pause
                 </button>
                 <button
