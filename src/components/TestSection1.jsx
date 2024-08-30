@@ -35,7 +35,7 @@ export default function TestSection1() {
     const testDataPayload = {
       serialNumber: data.field1,
       oVariant: data.field2,
-      tapPositionIndicators: data.field3,
+      tapPositionIndicationInput: data.field3,
       endLimits: data.field4,
       progressIndicators: data.field5,
       testingCycle: data.field6,
@@ -105,16 +105,23 @@ export default function TestSection1() {
         <div className="form-row">
           <div className="user-input">
             <label htmlFor="field3" className="field-label">
-              No of Tap Position Indicators
+              Tap Position Indication Input
             </label>
-            <input
+            <select name="field3" id="field3" {...register("field3")} required>
+              <option value="" disabled>
+                Input Type
+              </option>
+              <option value="0">Resistance</option>
+              <option value="1">4-20mA</option>
+            </select>
+            {/* <input
               type="number"
               name="field3"
               id="field3"
               className="user-value"
               {...register("field3")}
               required
-            />
+            /> */}
           </div>
           <div className="user-input">
             <label htmlFor="field4" className="field-label">

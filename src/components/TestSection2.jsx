@@ -386,7 +386,7 @@ export default function TestSection2() {
             </td>
             <td
               className={
-                trueCheck.includes("b40001_10L1")
+                trueCheck.includes("b40001_10")
                   ? "success automation-step"
                   : "automation-step"
               }
@@ -395,7 +395,7 @@ export default function TestSection2() {
             </td>
             <td
               className={
-                trueCheck.includes("b40001_10R1")
+                trueCheck.includes("b40001_11")
                   ? "success automation-step"
                   : "automation-step"
               }
@@ -407,7 +407,7 @@ export default function TestSection2() {
           <tr>
             <td
               className={
-                trueCheck.includes("b40001_11L2")
+                trueCheck.includes("b40001_13")
                   ? "success automation-step"
                   : "automation-step"
               }
@@ -416,7 +416,7 @@ export default function TestSection2() {
             </td>
             <td
               className={
-                trueCheck.includes("b40001_11R2")
+                trueCheck.includes("b40001_14")
                   ? "success automation-step"
                   : "automation-step"
               }
@@ -434,24 +434,27 @@ export default function TestSection2() {
             </td>
             <td
               className={
-                trueCheck.includes("b40001_13")
-                  ? "success automation-step"
-                  : "automation-step"
-              }
-            >
-              <label htmlFor="check-field16">Control Supply Healthy</label>
-            </td>
-          </tr>
-
-          <tr>
-            <td
-              className={
-                falseCheck.includes("b40001_14")
+                falseCheck.includes("b40002_9")
                   ? "failure automation-step"
                   : "automation-step"
               }
             >
-              <label htmlFor="check-field17">Control Supply Unhealthy</label>
+              <label htmlFor="check-field27">Emergency Stop</label>
+            </td>
+          </tr>
+
+          <tr>
+          
+            <td
+              className={
+                trueCheck.includes("b40002_5")
+                  ? "success automation-step"
+                  : falseCheck.includes("b40002_5")
+                  ? "failure automation-step"
+                  : "automation-step"
+              }
+            >
+              <label htmlFor="check-field24">Even Tap</label>
             </td>
             <td
               className={
@@ -516,7 +519,7 @@ export default function TestSection2() {
               className={
                 trueCheck.includes("b40002_4")
                   ? "success automation-step"
-                  : falseCheck.includes("b40002_5")
+                  : falseCheck.includes("b40002_4")
                   ? "failure automation-step"
                   : "automation-step"
               }
@@ -530,7 +533,7 @@ export default function TestSection2() {
               className={
                 trueCheck.includes("b40002_6")
                   ? "success automation-step"
-                  : falseCheck.includes("b40002_7")
+                  : falseCheck.includes("b40002_6")
                   ? "failure automation-step"
                   : "automation-step"
               }
@@ -541,7 +544,7 @@ export default function TestSection2() {
               className={
                 trueCheck.includes("b40002_15")
                   ? "success automation-step"
-                  : falseCheck.includes("b40002_8")
+                  : falseCheck.includes("b40002_15")
                   ? "failure automation-step"
                   : "automation-step"
               }
@@ -550,44 +553,17 @@ export default function TestSection2() {
             </td>
             <td
               className={
-                falseCheck.includes("b40002_9")
+                falseCheck.includes("b40002_8")
                   ? "failure automation-step"
                   : "automation-step"
               }
             >
               <label htmlFor="check-field27">TDR Switch</label>
             </td>
-            <td
-              className={
-                falseCheck.includes("b40002_9")
-                  ? "failure automation-step"
-                  : "automation-step"
-              }
-            >
-              <label htmlFor="check-field27">Emergency Stop</label>
-            </td>
+            
           </tr>
           <tr>
-            <td
-              className={
-                trueCheck.includes("b40002_10")
-                  ? "failure automation-step"
-                  : "automation-step"
-              }
-            >
-              <label htmlFor="check-field27">TPI Indication</label>
-            </td>
-            <td
-              className={
-                trueCheck.includes("b40002_5")
-                  ? "success automation-step"
-                  : falseCheck.includes("b40002_6")
-                  ? "failure automation-step"
-                  : "automation-step"
-              }
-            >
-              <label htmlFor="check-field24">Even Tap</label>
-            </td>
+            
           </tr>
         </table>
       </div>
