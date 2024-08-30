@@ -9,7 +9,7 @@ export default function ActionModal({ showModal, modalMessage, resumeAction }) {
     const getModalMessage = (message) => {
       if (message === "DONE_LV") {
         setActionMessage("START_HV");
-        return "Set High Voltage, if tap position 2 present, please select tap position 2 in TPI switch and click Run";
+        return "Set High Voltage and click Run";
       } else if (message === "DONE_HV") {
         setActionMessage("START_NV");
         return "Set Nominal Voltage and click Run";
