@@ -6,6 +6,7 @@ import { useRecoilState } from "recoil";
 import { activeSection, savedSection, testId } from "@/store/Section";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import html2canvas from "html2canvas";
 
 export default function Section1() {
   const [currentActiveSection, setCurrentActiveSection] =
@@ -49,31 +50,42 @@ export default function Section1() {
     };
 
     console.log(section1Data);
-    handleSectionMove();
 
-    // try {
-    //   const res = await fetch("http://localhost:8080/device/testData/1/"+{testIdResponse}, {
-    //     method: "PUT",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(section1Data),
-    //   });
+    const section = document.getElementById("section1-form");
+    const canvas = await html2canvas(section);
+    const imgData = canvas.toDataURL("image/png");
 
-    //   if (!res.ok) {
-    //     throw new Error(`HTTP error! status: ${res.status}`);
-    //   }
-    //   setResponse(null);
-    //   handleSectionMove(1,1)
-    // } catch (error) {
-    //   setResponse({ error: error.message });
-    // } finally {
-    //   setLoading(false);
-    // }
+    // Convert the base64 image data to a blob
+    const blob = await (await fetch(imgData)).blob();
+
+    // Use the File System Access API to save the file
+    if ("showSaveFilePicker" in window) {
+      try {
+        const fileHandle = await window.showSaveFilePicker({
+          suggestedName: testId+""+"section1-form.png",
+          types: [
+            {
+              description: "PNG Image",
+              accept: { "image/png": [".png"] },
+            },
+          ],
+        });
+
+        const writableStream = await fileHandle.createWritable();
+        await writableStream.write(blob);
+        await writableStream.close();
+        console.log("Image saved successfully");
+        handleSectionMove();
+      } catch (error) {
+        console.error("Save operation was cancelled or failed:", error);
+      }
+    } else {
+      alert("Your browser does not support the File System Access API.");
+    }
   };
 
   return (
-    <div className="form-section">
+    <div className="form-section" id="section1-form">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-row">
           <div className="user-input">

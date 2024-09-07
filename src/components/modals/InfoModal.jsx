@@ -32,7 +32,7 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
                 onClick={() => messageAction(infoMessage)}
                 className="resume-button"
               >
-                {(infoMessage === "START_HV" || infoMessage === "START_NV") 
+                {infoMessage === "START_HV" || infoMessage === "START_NV"
                   ? "Run"
                   : "Ok"}
               </button>

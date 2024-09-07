@@ -31,7 +31,8 @@ import { activeSection } from "@/store/Section";
 
 export default function TestSection2() {
   const [testData, setTestData] = useRecoilState(testDataSection1);
-
+  const [raiseValues, setRaiseValues] = useState([]);
+  const [lowerValues, setLowerValues] = useState([]);
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
   const [startActive, setStartActive] = useState(true);
@@ -111,6 +112,10 @@ export default function TestSection2() {
         case "powerInfo":
           handlePowerInfoChange(value);
           break;
+        case "raise":
+          handleRaiseTableValues(value);
+        case "lower":
+          handleLowerTableValues(value);
         default:
           console.log("Unknown message type:", key);
       }
@@ -169,6 +174,16 @@ export default function TestSection2() {
     setCycles(tapList[2]);
     setOperations(tapList[3]);
     setTestVoltage(tapList[4]);
+  };
+
+  const handleRaiseTableValues = (value) => {
+    const raiseSet = value.split(",").map((str) => str.trim());
+    setRaiseValues(raiseSet);
+  };
+
+  const handleLowerTableValues = (value) => {
+    const lowerSet = value.split(",").map((str) => str.trim());
+    setLowerValues(lowerSet);
   };
   const handlePowerInfoChange = (value) => {
     const powerList = value.split(",").map((str) => str.trim());
@@ -234,7 +249,7 @@ export default function TestSection2() {
           <div className="test-status">
             {transmission === "Automatic" && (
               <div className="automatic-transmission">
-                  <button
+                <button
                   className="start"
                   onClick={handleStartRequest}
                   disabled={!startActive}
@@ -590,6 +605,191 @@ export default function TestSection2() {
             </td>
           </tr>
         </table>
+
+        <div className="cam-table">
+          <div>
+            <h5>Lower Check through Oscilloscope</h5>
+            <table className="lower-check-table cms-table">
+              <thead>
+                <th>Sl No</th>
+                <th>Description</th>
+                <th>FAC</th>
+                <th>Observed Value</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>
+                    O <sub>MD</sub>- C <sub>s13</sub>
+                  </td>
+                  <td>620 to 775 ms</td>
+                  <td>
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      value={lowerValues[0]}
+                      disabled
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>
+                    O <sub>MD</sub>- C <sub>s12</sub>
+                  </td>
+                  <td>656 to 853 ms</td>
+                  <td>
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      value={lowerValues[1]}
+                      disabled
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>
+                    O <sub>MD</sub>- C <sub>LLS</sub>
+                  </td>
+                  <td>4.5 to 5.0 sec</td>
+                  <td>
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      value={lowerValues[2]}
+                      disabled
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>
+                    O <sub>MD</sub>- C <sub>s12</sub>
+                  </td>
+                  <td>5.1 to 5.3 sec</td>
+                  <td>
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      value={lowerValues[3]}
+                      disabled
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>
+                    C <sub>s12</sub>- C <sub>s13</sub>
+                  </td>
+                  <td>620 to 775 ms</td>
+                  <td>
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      value={lowerValues[4]}
+                      disabled
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>
+                    O <sub>S12</sub>- O <sub>S13</sub>
+                  </td>
+                  <td>Min 10ms</td>
+                  <td>
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      value={lowerValues[5]}
+                      disabled
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h5>Raise Check through Oscilloscope</h5>
+            <table className="raise-check-table cms-table">
+              <thead>
+                <th>Sl No</th>
+                <th>Description</th>
+                <th>FAC</th>
+                <th>Observed Value</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>
+                    O <sub>MD</sub>- C <sub>S14</sub>
+                  </td>
+                  <td>620 to 775 ms</td>
+                  <td>
+                    <input type="text" name="" id="" value={raiseValues[0]} disabled/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>
+                    O <sub>MD</sub>- C <sub>S13</sub>
+                  </td>
+                  <td>656 to 853 ms</td>
+                  <td>
+                    <input type="text" name="" id="" value={raiseValues[1]} disabled />
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>
+                    O <sub>MD</sub>- C <sub>RLS</sub>(Control)
+                  </td>
+                  <td>4.5 to 5.0 sec</td>
+                  <td>
+                    <input type="text" name="" id="" value={raiseValues[2]} disabled />
+                  </td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>
+                    O <sub>MD</sub>- C <sub>S14</sub>
+                  </td>
+                  <td>5.1 to 5.3 sec</td>
+                  <td>
+                    <input type="text" name="" id="" value={raiseValues[3]} disabled/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>
+                    C <sub>S14</sub>- C <sub>S13</sub>
+                  </td>
+                  <td>36 to 75 ms</td>
+                  <td>
+                    <input type="text" name="" id="" value={raiseValues[4]} disabled/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>
+                    O <sub>S14</sub>- O <sub>S13</sub>
+                  </td>
+                  <td>Min 10ms</td>
+                  <td>
+                    <input type="text" name="" id="" value={raiseValues[5]} disabled/>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </>
   );
