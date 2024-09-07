@@ -11,9 +11,29 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
       setModalText("Set High Voltage and click Run");
     } else if (modalMessage === "DONE_HV") {
       setInfoMessage("START_NV");
-      setModalText("Set Nominal Voltage and Tap position 2 in TPI switch (if present) and click Run");
-    } else if (modalMessage === "DONE_NV" || modalMessage === "DONE") {
-      setInfoMessage("DONE_NV");
+      setModalText(
+        "Set Nominal Voltage and Tap position 2 in TPI switch (if present) and click Run"
+      );
+    }
+    // else if (modalMessage === "DONE_NV" || modalMessage === "DONE") {
+    //   setInfoMessage("DONE_NV");
+    //   setModalText(
+    //     "Testing completed. Please Download report from report section"
+    //   );
+    // }
+    else if (modalMessage === "DONE_NV") {
+      setInfoMessage("START_HC");
+      setModalText(
+        "Insert IL. You can click run to continue or skip this step"
+      );
+    } else if (modalMessage === "DONE_IL") {
+      setInfoMessage("START_PR");
+      setModalText(
+        "Insert PR. You can click run to continue or skip this step"
+      );
+    }
+    else if (modalMessage === "DONE_PR") {
+      setInfoMessage("DONE");
       setModalText(
         "Testing completed. Please Download report from report section"
       );
@@ -42,16 +62,58 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
             {infoMessage === "DONE_NV" && (
               <>
                 <button
-                  onClick={() => messageAction("DONE_NV")}
+                  onClick={() => messageAction("SKIP_HC")}
                   className="resume-button"
                 >
-                  Ok
+                  Skip
                 </button>
                 <button
-                  onClick={() => messageAction("START_NEW")}
+                  onClick={() => messageAction("START_HC")}
                   className="resume-button"
                 >
-                  Start New Test
+                  Proceed Next
+                </button>
+              </>
+            )}
+            {infoMessage === "DONE_HC" && (
+              <>
+                <button
+                  onClick={() => messageAction("SKIP_IL")}
+                  className="resume-button"
+                >
+                  Skip
+                </button>
+                <button
+                  onClick={() => messageAction("START_IL")}
+                  className="resume-button"
+                >
+                  Proceed Next
+                </button>
+              </>
+            )}
+            {infoMessage === "DONE_IL" && (
+              <>
+                <button
+                  onClick={() => messageAction("SKIP_IL")}
+                  className="resume-button"
+                >
+                  Skip
+                </button>
+                <button
+                  onClick={() => messageAction("START_PR")}
+                  className="resume-button"
+                >
+                  Proceed Next
+                </button>
+              </>
+            )}
+            {infoMessage === "DONE_PR" && (
+              <>
+                <button
+                  onClick={() => messageAction("DONE")}
+                  className="resume-button"
+                >
+                  Download Report
                 </button>
               </>
             )}

@@ -347,17 +347,17 @@ table.steps tr td.failure {
   border-collapse: separate; /* Ensure cells have separate borders */
   border-spacing: 10px; /* Adjust the spacing between cells */
 }
-.transmission-label{
+.transmission-label {
   text-align: left;
   width: 50%;
-  margin:5px;
+  margin: 5px;
 }
 .automation-step {
   padding: 15px;
   background-color: var(--secondary-white);
   margin: 15px 0;
   font-size: 14px;
-  border-radius:10px;
+  border-radius: 10px;
 }
 .download-report {
   padding: 15px 30px;
@@ -473,7 +473,7 @@ button:disabled {
   align-items: center;
   justify-content: center;
 }
-.test-mode button{
+.test-mode button {
   border-radius: 10px;
 }
 .test-status {
@@ -490,10 +490,6 @@ button:disabled {
   background-color: var(--primary-blue) !important;
   color: var(--primary-white) !important;
 }
-
-
-
-
 
 .nav-item {
   cursor: pointer;
@@ -524,13 +520,12 @@ button:disabled {
   flex-direction: column;
 }
 
-
-
 .dropdown-menu li a:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-.raise:disabled, .lower:disabled{
+.raise:disabled,
+.lower:disabled {
   background-color: var(--secondary-white) !important;
   color: var(--dark-grey) !important;
 }
@@ -539,12 +534,9 @@ button:disabled {
 
 } */
 
-button{
+button {
   cursor: pointer !important;
 }
-
-
-
 
 /* CMS table check */
 
@@ -555,11 +547,12 @@ button{
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
-.cms-table{
-  width:750px !important;
+.cms-table {
+  width: 750px !important;
 }
 /* Basic Table Styling */
-table.lower-check-table, table.raise-check-table {
+table.lower-check-table,
+table.raise-check-table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
@@ -594,10 +587,61 @@ table.lower-check-table, table.raise-check-table {
 /* Responsive Adjustments */
 @media screen and (max-width: 600px) {
   .cms-table table {
-      font-size: 16px; /* Adjust font size for smaller screens */
+    font-size: 16px; /* Adjust font size for smaller screens */
   }
 
-  .cms-table th, td {
-      padding: 8px; /* Adjust padding for smaller screens */
+  .cms-table th,
+  td {
+    padding: 8px; /* Adjust padding for smaller screens */
   }
+}
+
+/* Check Box Table */
+table.checkbox-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+}
+
+/* Table Header */
+.checkbox-table th {
+  background-color: #4caf50; /* Green background */
+  color: white; /* White text */
+  padding: 12px; /* Padding inside cells */
+  border: 1px solid #ddd; /* Light gray border */
+}
+
+/* Table Data Cells */
+.checkbox-table td {
+  padding: 12px; /* Padding inside cells */
+  border: 1px solid #ddd; /* Light gray border */
+}
+
+/* Alternate Row Colors */
+.checkbox-table tr:nth-child(even) {
+  background-color: #f2f2f2; /* Light gray background for even rows */
+}
+
+/* Hover Effect on Rows */
+.checkbox-table tr:hover {
+  background-color: #ddd; /* Slightly darker gray on hover */
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 600px) {
+  table.checkbox-table {
+    font-size: 16px; /* Adjust font size for smaller screens */
+  }
+
+  .checkbox-table th,
+  .checkbox-table td {
+    padding: 8px; /* Adjust padding for smaller screens */
+  }
+}
+
+.tap-no {
+  display: flex;
+  
 }

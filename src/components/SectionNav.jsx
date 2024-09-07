@@ -54,6 +54,16 @@ export default function SectionNav() {
           >
             OLTC Test Process
           </button>
+          <button
+            className={
+              currentActiveSection === 11
+                ? "section-label active"
+                : "section-label"
+            }
+            onClick={() => handleSectionMove(11)}
+          >
+            Potential Free Check
+          </button>
         </ul>
       )}
 

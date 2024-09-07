@@ -33,7 +33,7 @@ import {
   tapPositionStore,
   testDataSection1,
   testVoltageStore,
-  manualButtonStateStore
+  manualButtonStateStore,
 } from "@/store/Section";
 import TestSection1 from "@/components/TestSection1";
 import TestSection2 from "@/components/TestSection2";
@@ -43,6 +43,7 @@ import InfoModal from "@/components/modals/InfoModal";
 import ErrorModal from "@/components/modals/ErrorModal";
 import ActionModal from "@/components/modals/ActionModal";
 import StartModal from "@/components/modals/StartModal";
+import PotentialFreeCheck from "@/components/PotentialFreeCheck";
 
 export default function Page() {
   const currentDate = new Date();
@@ -64,7 +65,9 @@ export default function Page() {
   const currentMonthIndex = currentDate.getMonth();
   const currentMonth = monthNames[currentMonthIndex];
   const currentYear = currentDate.getFullYear();
-  const [manualButtonState, setManualButtonState] = useRecoilState(manualButtonStateStore)
+  const [manualButtonState, setManualButtonState] = useRecoilState(
+    manualButtonStateStore
+  );
 
   const [currentActiveSection, setCurrentActiveSection] =
     useRecoilState(activeSection);
@@ -93,6 +96,8 @@ export default function Page() {
         return <Section8 />;
       case 10:
         return <DownloadReport />;
+      case 11:
+        return <PotentialFreeCheck />;
       default:
         return null;
     }
@@ -145,9 +150,9 @@ export default function Page() {
 
   const messageAction = (value) => {
     console.log(value);
-    if (value === "DONE_NV" || value === "DONE") {
+    if (value === "DONE") {
       // handleSectionMove();
-      setManualButtonState(false)
+      setManualButtonState(false);
     } else if (value === "START_NEW") {
       window.location.reload();
     } else {
