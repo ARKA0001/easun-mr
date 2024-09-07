@@ -11,7 +11,7 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
       setModalText("Set High Voltage and click Run");
     } else if (modalMessage === "DONE_HV") {
       setInfoMessage("START_NV");
-      setModalText("Set Nominal Voltage and click Run");
+      setModalText("Set Nominal Voltage and Tap position 2 in TPI switch (if present) and click Run");
     } else if (modalMessage === "DONE_NV" || modalMessage === "DONE") {
       setInfoMessage("DONE_NV");
       setModalText(
