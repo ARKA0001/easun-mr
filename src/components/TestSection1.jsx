@@ -10,6 +10,7 @@ import {
 } from "@/store/Section";
 import { useForm, setValue } from "react-hook-form";
 import "./style/ComponentStyles.css";
+import html2canvas from "html2canvas";
 
 export default function TestSection1() {
   const [currentActiveSection, setCurrentActiveSection] =
@@ -30,6 +31,42 @@ export default function TestSection1() {
   };
 
   const { register, handleSubmit } = useForm();
+
+  const takeScreenshort = async (sectionId, testId) => {
+    const section = document.getElementById(sectionId);
+    const canvas = await html2canvas(section);
+    const imgData = canvas.toDataURL("image/png");
+
+    // Convert the base64 image data to a blob
+    const blob = await (await fetch(imgData)).blob();
+
+    // Use the File System Access API to save the file
+    if ("showSaveFilePicker" in window) {
+      try {
+        const fileHandle = await window.showSaveFilePicker({
+          suggestedName: testId
+            ? testId + "-" + sectionId + ".png"
+            : sectionId + ".png",
+          types: [
+            {
+              description: "PNG Image",
+              accept: { "image/png": [".png"] },
+            },
+          ],
+        });
+
+        const writableStream = await fileHandle.createWritable();
+        await writableStream.write(blob);
+        await writableStream.close();
+        console.log("Image saved successfully");
+        return true;
+      } catch (error) {
+        console.error("Save operation was cancelled or failed:", error);
+      }
+    } else {
+      alert("Your browser does not support the File System Access API.");
+    }
+  };
 
   const onSubmit = async (data) => {
     const testDataPayload = {
@@ -58,18 +95,31 @@ export default function TestSection1() {
       const result = await res.json();
       console.log("Form Id from response", result);
       setFormId(result);
-      handleTestDataMove();
+
+      if (takeScreenshort("testSection1", result)) {
+        handleTestDataMove();
+      } else {
+        alert(
+          "There is an error while saving the image. Please contact support team"
+        );
+      }
     } catch (error) {
       throw new Error(`HTTP error! status:`, error);
     } finally {
       console.log("Sending process completed");
-      handleTestDataMove();
+      if (takeScreenshort("testSection1", null)) {
+        handleTestDataMove();
+      } else {
+        alert(
+          "There is an error while saving the image. Please contact support team"
+        );
+      }
     }
   };
 
   return (
     <div className="form-section data-section">
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} id="testSection1">
         <div className="form-row">
           <div className="user-input">
             <label htmlFor="field1" className="field-label">
@@ -114,14 +164,6 @@ export default function TestSection1() {
               <option value="0">Resistance</option>
               <option value="1">4-20mA</option>
             </select>
-            {/* <input
-              type="number"
-              name="field3"
-              id="field3"
-              className="user-value"
-              {...register("field3")}
-              required
-            /> */}
           </div>
           <div className="user-input">
             <label htmlFor="field4" className="field-label">

@@ -62,7 +62,7 @@ export default function Section1() {
     if ("showSaveFilePicker" in window) {
       try {
         const fileHandle = await window.showSaveFilePicker({
-          suggestedName: testId+""+"section1-form.png",
+          suggestedName: testId + "" + "section1-form.png",
           types: [
             {
               description: "PNG Image",

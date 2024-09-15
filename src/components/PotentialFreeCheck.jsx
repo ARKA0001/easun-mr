@@ -1,12 +1,66 @@
 import React from "react";
+import { useRecoilState } from "recoil";
+import { potentialFreeCheckStore } from "@/store/FormData";
+import html2canvas from "html2canvas";
 
 export default function PotentialFreeCheck() {
+  const [checkBoxData, setCheckBoxData] = useRecoilState(
+    potentialFreeCheckStore
+  );
+  const takeScreenshort = async (sectionId, testId) => {
+    console.log(sectionId + "started screenshort processing");
+    const section = document.getElementById(sectionId);
+    const canvas = await html2canvas(section);
+    const imgData = canvas.toDataURL("image/png");
+
+    // Convert the base64 image data to a blob
+    const blob = await (await fetch(imgData)).blob();
+
+    // Use the File System Access API to save the file
+    if ("showSaveFilePicker" in window) {
+      try {
+        const fileHandle = await window.showSaveFilePicker({
+          suggestedName: testId
+            ? testId + "-" + sectionId + ".png"
+            : sectionId + ".png",
+          types: [
+            {
+              description: "PNG Image",
+              accept: { "image/png": [".png"] },
+            },
+          ],
+        });
+
+        const writableStream = await fileHandle.createWritable();
+        await writableStream.write(blob);
+        await writableStream.close();
+        console.log("Image saved successfully");
+        return true;
+      } catch (error) {
+        console.error("Save operation was cancelled or failed:", error);
+      }
+    } else {
+      alert("Your browser does not support the File System Access API.");
+    }
+  };
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+    setCheckBoxData((prevState) => ({
+      ...prevState,
+      checkboxes: {
+        ...prevState.checkboxes,
+        [name]: checked,
+      },
+    }));
+    console.log(checkBoxData);
+  };
+
   return (
     <div className="check-box-check form-section">
       <h4>
         Start recording of ADS potential free indication checks-Potential Free
       </h4>
-      <table className="checkbox-table">
+      <table className="checkbox-table" id="potentialFreeCheck">
         <tbody>
           <tr>
             <td>Actual Tap</td>
@@ -89,7 +143,13 @@ export default function PotentialFreeCheck() {
           <tr>
             <td>LED Indiacation Actual Tap</td>
             <td>
-              <input type="checkbox" name="check-tap-1" id="check-tap-1" />
+              <input
+                type="checkbox"
+                name="check-tap-1"
+                id="check-tap-1"
+                checked={checkBoxData.checkboxes["check-tap-1"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
               <input type="checkbox" name="check-tap-2" id="check-tap-2" />
@@ -308,6 +368,13 @@ export default function PotentialFreeCheck() {
           </tr>
         </tbody>
       </table>
+      <button
+        type="submit"
+        className="action-button"
+        onClick={() => takeScreenshort("potentialFreeCheck", null)}
+      >
+        Save Data
+      </button>
     </div>
   );
 }
