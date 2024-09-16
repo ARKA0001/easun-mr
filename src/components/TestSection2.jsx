@@ -114,8 +114,10 @@ export default function TestSection2() {
           break;
         case "raise":
           handleRaiseTableValues(value);
+          break;
         case "lower":
           handleLowerTableValues(value);
+          break;
         default:
           console.log("Unknown message type:", key);
       }
