@@ -114,7 +114,7 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
                 </button>
               </>
             )}
-            {infoMessage === "DONE_PR" && (
+            {infoMessage === "DONE" && (
               <>
                 <button
                   onClick={() => messageAction("DONE")}
