@@ -1234,6 +1234,8 @@ export default function Section5() {
                     name="section5-field-make-lower"
                     id="section5-lower-field1"
                     className="user-value"
+                    {...register("fieldE35")}
+                    value="pyros"
                   />
                   <label htmlFor="section5-lower-field1">Pyros</label>
                 </label>
@@ -1243,6 +1245,8 @@ export default function Section5() {
                     name="section5-field-make-lower"
                     id="section5-field1"
                     className="user-value"
+                     {...register("fieldE35")}
+                    value="pyros"
                   />
                   <label htmlFor="section5-field1">Ashoka</label>
                 </label>

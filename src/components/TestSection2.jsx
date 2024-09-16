@@ -596,14 +596,7 @@ export default function TestSection2() {
                   </td>
                   <td>620 to 775 ms</td>
                   <td className="width-auto">
-                    {/* <input
-                      type="text"
-                      name=""
-                      id=""
-                      value={lowerValues[0]}
-                      disabled
-                      className="cms-input"
-                    /> */}
+                    {lowerValues[0]}
                   </td>
                 </tr>
                 <tr>
