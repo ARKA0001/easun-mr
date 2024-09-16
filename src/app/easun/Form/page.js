@@ -150,16 +150,31 @@ export default function Page() {
 
   const messageAction = (value) => {
     console.log(value);
+
+    if (value == "SKIP_HC") {
+      setInfo("START_IL");
+      setInfoModal(true);
+    }
+    if (value == "SKIP_IL") {
+      setInfo("START_PR");
+      setInfoModal(true);
+    }
+    if (value == "SKIP_PR") {
+      setInfo("DONE_PR");
+      setInfoModal(false);
+    }
     if (value === "DONE") {
       // handleSectionMove();
       setManualButtonState(false);
+      setInfo(null);
+      setInfoModal(false);
     } else if (value === "START_NEW") {
       window.location.reload();
     } else {
       sendMessage(value);
+      setInfo(null);
+      setInfoModal(false);
     }
-    setInfo(null);
-    setInfoModal(false);
   };
 
   const errorAction = () => {

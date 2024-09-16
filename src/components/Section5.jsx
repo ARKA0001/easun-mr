@@ -123,6 +123,8 @@ export default function Section5() {
                     name="section5-field-raise"
                     id="section5-field2"
                     className="user-value"
+                    value="415"
+                    {...register("fieldE2")}
                   />
                   <label htmlFor="section5-field2">415 VAC/DC</label>
                 </label>
@@ -132,6 +134,8 @@ export default function Section5() {
                     name="section5-field-raise"
                     id="section5-field3"
                     className="user-value"
+                    value="220"
+                    {...register("fieldE2")}
                   />
                   <label htmlFor="section5-field3">220 VAC/DC</label>
                 </label>
@@ -141,6 +145,8 @@ export default function Section5() {
                     name="section5-field-raise"
                     id="section5-field4"
                     className="user-value"
+                    value="110"
+                    {...register("fieldE2")}
                   />
                   <label htmlFor="section5-field4">110 VAC/DC</label>
                 </label>
@@ -152,7 +158,11 @@ export default function Section5() {
               <label htmlFor="section5-field5" className="field-label">
                 Actual Observation with label identification
               </label>
-              <textarea id="section5-field5" className="user-value"></textarea>
+              <textarea
+                id="section5-field5"
+                className="user-value"
+                {...register("fieldE3")}
+              ></textarea>
             </div>
           </div>
         </div>
@@ -170,6 +180,8 @@ export default function Section5() {
                     name="section5-field-make-lower"
                     id="section5-lower-field1"
                     className="user-value"
+                    value="Seimens"
+                    {...register("fieldE4")}
                   />
                   <label htmlFor="section5-lower-field1">Seimens</label>
                 </label>
@@ -179,6 +191,8 @@ export default function Section5() {
                     name="section5-field-make-lower"
                     id="section5-field1"
                     className="user-value"
+                    value="Schneider"
+                    {...register("fieldE4")}
                   />
                   <label htmlFor="section5-field1">Schneider</label>
                 </label>
@@ -197,6 +211,7 @@ export default function Section5() {
                     name="section5-field-lower"
                     id="section5-lower-field2"
                     className="user-value"
+                    {...register("fieldE5")}
                   />
                   <label htmlFor="section5-lower-field2">415 VAC/DC</label>
                 </label>
@@ -206,6 +221,8 @@ export default function Section5() {
                     name="section5-field-lower"
                     id="section5-lower-field3"
                     className="user-value"
+                    value="415"
+                    {...register("fieldE5")}
                   />
                   <label htmlFor="section5-lower-field3">220 VAC/DC</label>
                 </label>
@@ -215,6 +232,7 @@ export default function Section5() {
                     name="section5-field-lower"
                     id="section5-lower-field4"
                     className="user-value"
+                    {...register("fieldE5")}
                   />
                   <label htmlFor="section5-lower-field4">110 VAC/DC</label>
                 </label>

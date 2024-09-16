@@ -24,12 +24,19 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
     else if (modalMessage === "DONE_NV") {
       setInfoMessage("START_HC");
       setModalText(
-        "Insert IL. You can click run to continue or skip this step"
+        "Insert Hand Cranck."
       );
-    } else if (modalMessage === "DONE_IL") {
-      setInfoMessage("START_PR");
+    }
+    else if (modalMessage === "DONE_HC") {
+      setInfoMessage("DONE_IL");
       setModalText(
-        "Insert PR. You can click run to continue or skip this step"
+        "Insert InterLocking."
+      );
+    }
+    else if (modalMessage === "DONE_IL") {
+      setInfoMessage("DONE_PR");
+      setModalText(
+        "Insert Proximity."
       );
     }
     else if (modalMessage === "DONE_PR") {
@@ -94,7 +101,7 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
             {infoMessage === "DONE_IL" && (
               <>
                 <button
-                  onClick={() => messageAction("SKIP_IL")}
+                  onClick={() => messageAction("SKIP_PR")}
                   className="resume-button"
                 >
                   Skip
