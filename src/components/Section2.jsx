@@ -159,7 +159,7 @@ export default function Section2() {
   }, [watchedFields, setSection2FormData]);
 
   return (
-    <div className="form-section">
+    <div className="form-section" id="section2-form">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-row">
           <div className="user-input">

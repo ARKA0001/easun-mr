@@ -1,10 +1,12 @@
 "use client";
 
-import React from "react";
-import moveSection from "@/utils/SectionMove";
+import React, { useEffect } from "react";
+
 import { useRecoilState } from "recoil";
-import { activeSection, savedSection } from "@/store/Section";
-import { useForm } from "react-hook-form";
+import { activeSection, savedSection, testId } from "@/store/Section";
+import { useForm, useWatch } from "react-hook-form";
+import html2canvas from "html2canvas";
+import { Section8DataStore } from "@/store/FormData";
 
 export default function Section8() {
   const [currentActiveSection, setCurrentActiveSection] =
@@ -12,16 +14,64 @@ export default function Section8() {
   const [savedSectionCount, setSavedSectionCount] =
     useRecoilState(savedSection);
 
-  const handleSectionMove = () => {
-    setCurrentActiveSection(10);
-    setSavedSectionCount(9);
+  const [section8FormData, setSection8FormData] =
+    useRecoilState(Section8DataStore);
+
+  const [testIdResponse, setTestIdResponse] = useRecoilState(testId);
+
+  const { register, handleSubmit, setValue, control } = useForm();
+  const watchedFields = useWatch({ control });
+
+  const onSubmit = async (data) => {
+    console.log("This is section 8 data");
+    console.log(section8FormData);
+    const section = document.getElementById("section8-form");
+    const canvas = await html2canvas(section);
+    const imgData = canvas.toDataURL("image/png");
+
+    // Convert the base64 image data to a blob
+    const blob = await (await fetch(imgData)).blob();
+
+    // Use the File System Access API to save the file
+    if ("showSaveFilePicker" in window) {
+      try {
+        const fileHandle = await window.showSaveFilePicker({
+          suggestedName: testId + "" + "section8-form.png",
+          types: [
+            {
+              description: "PNG Image",
+              accept: { "image/png": [".png"] },
+            },
+          ],
+        });
+
+        const writableStream = await fileHandle.createWritable();
+        await writableStream.write(blob);
+        await writableStream.close();
+        console.log("Image saved successfully");
+        handleSectionMove();
+      } catch (error) {
+        console.error("Save operation was cancelled or failed:", error);
+      }
+    } else {
+      alert("Your browser does not support the File System Access API.");
+    }
   };
 
-  const { required, handleSubmit } = useForm();
-  const onSubmit = () => {};
+  useEffect(() => {
+    if (section8FormData && Object.keys(section8FormData).length > 0) {
+      Object.keys(section8FormData).forEach((field) => {
+        setValue(field, section8FormData[field]);
+      });
+    }
+  }, [setSection8FormData, setValue]);
+
+  useEffect(() => {
+    setSection8FormData(watchedFields);
+  }, [watchedFields, setSection8FormData]);
 
   return (
-    <div className="form-section">
+    <div className="form-section" id="section8-form">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-row">
           <div className="user-input">
@@ -30,7 +80,14 @@ export default function Section8() {
             </label>
             <div className="row-input">
               UV
-              <input type="text" name="" id="field1" className="user-value" />V
+              <input
+                type="text"
+                name=""
+                id="field1"
+                className="user-value"
+                {...register("fieldH1")}
+              />
+              V
             </div>
           </div>
         </div>
@@ -41,7 +98,14 @@ export default function Section8() {
             </label>
             <div className="row-input">
               UV
-              <input type="text" name="" id="field1" className="user-value" />V
+              <input
+                type="text"
+                name=""
+                id="field1"
+                className="user-value"
+                {...register("fieldH2")}
+              />
+              V
             </div>
           </div>
         </div>
@@ -52,11 +116,18 @@ export default function Section8() {
             </label>
             <div className="row-input">
               UV
-              <input type="text" name="" id="field1" className="user-value" />V
+              <input
+                type="text"
+                name=""
+                id="field1"
+                className="user-value"
+                {...register("fieldH3")}
+              />
+              V
             </div>
           </div>
         </div>
-        <button onClick={() => handleSectionMove()} className="action-button">
+        <button type="submit" className="action-button">
           Save & Next
         </button>
       </form>

@@ -1,16 +1,17 @@
 "use client";
 
-import React from "react";
-import moveSection from "@/utils/SectionMove";
+import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { activeSection, savedSection } from "@/store/Section";
-import { useForm } from "react-hook-form";
+import { activeSection, savedSection, testId } from "@/store/Section";
+import { useForm, useWatch } from "react-hook-form";
+import html2canvas from "html2canvas";
+import { Section5DataStore } from "@/store/FormData";
 
 export default function Section5() {
   const [currentActiveSection, setCurrentActiveSection] =
     useRecoilState(activeSection);
 
-    const [savedSectionCount, setSavedSectionCount] =
+  const [savedSectionCount, setSavedSectionCount] =
     useRecoilState(savedSection);
 
   const handleSectionMove = () => {
@@ -18,39 +19,64 @@ export default function Section5() {
     setSavedSectionCount(6);
   };
 
-  const { register, handleSubmit } = useForm();
+  const [section5FormData, setSection5FormData] =
+    useRecoilState(Section5DataStore);
+
+  const [testIdResponse, setTestIdResponse] = useRecoilState(testId);
+
+  const { register, handleSubmit, setValue, control } = useForm();
+  const watchedFields = useWatch({ control });
+
   const onSubmit = async (data) => {
     console.log("This is section 5 data");
-    const section4Data = {
-      field57: data.field57,
-    };
+    console.log(section5FormData);
+    const section = document.getElementById("section5-form");
+    const canvas = await html2canvas(section);
+    const imgData = canvas.toDataURL("image/png");
 
-    console.log(section4Data);
-    handleSectionMove();
+    // Convert the base64 image data to a blob
+    const blob = await (await fetch(imgData)).blob();
 
-    // try {
-    //   const res = await fetch("http://localhost:8080/device/testData/1/"+{testIdResponse}, {
-    //     method: "PUT",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(section1Data),
-    //   });
+    // Use the File System Access API to save the file
+    if ("showSaveFilePicker" in window) {
+      try {
+        const fileHandle = await window.showSaveFilePicker({
+          suggestedName: testId + "" + "section5-form.png",
+          types: [
+            {
+              description: "PNG Image",
+              accept: { "image/png": [".png"] },
+            },
+          ],
+        });
 
-    //   if (!res.ok) {
-    //     throw new Error(`HTTP error! status: ${res.status}`);
-    //   }
-    //   setResponse(null);
-    //   handleSectionMove(1,1)
-    // } catch (error) {
-    //   setResponse({ error: error.message });
-    // } finally {
-    //   setLoading(false);
-    // }
+        const writableStream = await fileHandle.createWritable();
+        await writableStream.write(blob);
+        await writableStream.close();
+        console.log("Image saved successfully");
+        handleSectionMove();
+      } catch (error) {
+        console.error("Save operation was cancelled or failed:", error);
+      }
+    } else {
+      alert("Your browser does not support the File System Access API.");
+    }
   };
 
+  useEffect(() => {
+    if (section5FormData && Object.keys(section5FormData).length > 0) {
+      Object.keys(section5FormData).forEach((field) => {
+        setValue(field, section5FormData[field]);
+      });
+    }
+  }, [setSection5FormData, setValue]);
+
+  useEffect(() => {
+    setSection5FormData(watchedFields);
+  }, [watchedFields, setSection5FormData]);
+
   return (
-    <div className="form-section">
+    <div className="form-section" id="section5-form">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
           <div className="section-title">Raise Contractor</div>
@@ -67,7 +93,7 @@ export default function Section5() {
                     id="section5-field1"
                     className="user-value"
                     value="Seimens"
-                    {...register("field69")}
+                    {...register("fieldE1")}
                   />
                   <label htmlFor="section5-field1">Seimens</label>
                 </label>
@@ -78,6 +104,7 @@ export default function Section5() {
                     id="section5-field1"
                     className="user-value"
                     value="Schenider"
+                    {...register("fieldE1")}
                   />
                   <label htmlFor="section5-field1">Schneider</label>
                 </label>
@@ -2573,11 +2600,10 @@ export default function Section5() {
             </div>
           </div>
         </div>
+        <button type="submit" className="action-button">
+          Save & Next
+        </button>
       </form>
-
-      <button onClick={() => handleSectionMove(5, 1)} className="action-button">
-        Save & Next
-      </button>
     </div>
   );
 }

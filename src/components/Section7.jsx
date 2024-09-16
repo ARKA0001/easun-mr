@@ -1,8 +1,13 @@
-import React from "react";
-import moveSection from "@/utils/SectionMove";
+import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { activeSection, savedSection } from "@/store/Section";
-import { useForm } from "react-hook-form";
+import { activeSection, savedSection, testId } from "@/store/Section";
+import { useForm, useWatch } from "react-hook-form";
+import html2canvas from "html2canvas";
+import {
+  Section1DataStore,
+  Section2DataStore,
+  Section7DataStore,
+} from "@/store/FormData";
 
 export default function Section7() {
   const [currentActiveSection, setCurrentActiveSection] =
@@ -16,13 +21,63 @@ export default function Section7() {
     setSavedSectionCount(8);
   };
 
-  const { required, handleSubmit } = useForm();
-  const onSubmit = () => {
-    handleSectionMove();
+  const [section7FormData, setSection7FormData] =
+    useRecoilState(Section7DataStore);
+
+  const [testIdResponse, setTestIdResponse] = useRecoilState(testId);
+
+  const { register, handleSubmit, setValue, control } = useForm();
+  const watchedFields = useWatch({ control });
+
+  const onSubmit = async (data) => {
+    console.log("This is section 1 data");
+    console.log(section7FormData);
+    const section = document.getElementById("section7-form");
+    const canvas = await html2canvas(section);
+    const imgData = canvas.toDataURL("image/png");
+
+    // Convert the base64 image data to a blob
+    const blob = await (await fetch(imgData)).blob();
+
+    // Use the File System Access API to save the file
+    if ("showSaveFilePicker" in window) {
+      try {
+        const fileHandle = await window.showSaveFilePicker({
+          suggestedName: testId + "" + "section7-form.png",
+          types: [
+            {
+              description: "PNG Image",
+              accept: { "image/png": [".png"] },
+            },
+          ],
+        });
+
+        const writableStream = await fileHandle.createWritable();
+        await writableStream.write(blob);
+        await writableStream.close();
+        console.log("Image saved successfully");
+        handleSectionMove();
+      } catch (error) {
+        console.error("Save operation was cancelled or failed:", error);
+      }
+    } else {
+      alert("Your browser does not support the File System Access API.");
+    }
   };
+  useEffect(() => {
+    if (section7FormData && Object.keys(section7FormData).length > 0) {
+      Object.keys(section7FormData).forEach((field) => {
+        setValue(field, section7FormData[field]);
+      });
+    }
+  }, [setSection7FormData, setValue]);
+
+  useEffect(() => {
+    setSection7FormData(watchedFields);
+  }, [watchedFields, setSection7FormData]);
 
   return (
-    <div className="form-section">
+    <div className="form-section" id="section7-form">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="section-title">
           Raise Directions - CAM Sequence - Before End Tap
@@ -53,7 +108,13 @@ export default function Section7() {
               <label htmlFor="field1" className="field-label">
                 Activated Division
               </label>
-              <input type="text" name="" id="field1" className="user-value" />
+              <input
+                type="text"
+                name=""
+                id="field1"
+                className="user-value"
+                {...register("fieldG1")}
+              />
             </div>
           </div>
           <div className="form-row">
@@ -81,7 +142,13 @@ export default function Section7() {
               <label htmlFor="field1" className="field-label">
                 Activated Division
               </label>
-              <input type="text" name="" id="field1" className="user-value" />
+              <input
+                type="text"
+                name=""
+                id="field1"
+                className="user-value"
+                {...register("fieldG2")}
+              />
             </div>
           </div>
           <div className="form-info  form-row">
@@ -91,7 +158,8 @@ export default function Section7() {
               </label>
               <input
                 type="text"
-                value="Difference between S14 and S13 should be more than 0.25Div"
+                defaultValue={"Difference between S14 and S13 should be more than 0.25Div"}
+                {...register("fieldG3")}
               />
             </div>
           </div>
@@ -122,7 +190,8 @@ export default function Section7() {
               <label htmlFor="field1" className="field-label">
                 Activated Division
               </label>
-              <input type="text" name="" id="field1" className="user-value" />
+              <input type="text" name="" id="field1" className="user-value"  {...register("fieldG4")}/>
+             
             </div>
           </div>
         </div>
@@ -153,7 +222,13 @@ export default function Section7() {
               <label htmlFor="field1" className="field-label">
                 Activated Division
               </label>
-              <input type="text" name="" id="field1" className="user-value" />
+              <input
+                type="text"
+                name=""
+                id="field1"
+                className="user-value"
+                {...register("fieldG5")}
+              />
             </div>
           </div>
         </div>
@@ -183,7 +258,13 @@ export default function Section7() {
               <label htmlFor="field1" className="field-label">
                 Activated Division
               </label>
-              <input type="text" name="" id="field1" className="user-value" />
+              <input
+                type="text"
+                name=""
+                id="field1"
+                className="user-value"
+                {...register("fieldG6")}
+              />
             </div>
           </div>
           <div className="form-row">
@@ -211,7 +292,13 @@ export default function Section7() {
               <label htmlFor="field1" className="field-label">
                 Activated Division
               </label>
-              <input type="text" name="" id="field1" className="user-value" />
+              <input
+                type="text"
+                name=""
+                id="field1"
+                className="user-value"
+                {...register("fieldG7")}
+              />
             </div>
           </div>
           <div className="form-info form-row">
@@ -221,7 +308,8 @@ export default function Section7() {
               </label>
               <input
                 type="text"
-                value="Difference between S14 and S13 should be more than 0.25Div"
+                defaultValue="Difference between S14 and S13 should be more than 0.25Div"
+                {...register("fieldG8")}
               />
             </div>
           </div>
@@ -255,7 +343,13 @@ export default function Section7() {
               <label htmlFor="field1" className="field-label">
                 Activated Division
               </label>
-              <input type="text" name="" id="field1" className="user-value" />
+              <input
+                type="text"
+                name=""
+                id="field1"
+                className="user-value"
+                {...register("fieldG9")}
+              />
             </div>
           </div>
           <div className="form-row">
@@ -283,7 +377,13 @@ export default function Section7() {
               <label htmlFor="field1" className="field-label">
                 Activated Division
               </label>
-              <input type="text" name="" id="field1" className="user-value" />
+              <input
+                type="text"
+                name=""
+                id="field1"
+                className="user-value"
+                {...register("fieldG10")}
+              />
             </div>
           </div>
           <div className="form-info form-row">
@@ -293,7 +393,8 @@ export default function Section7() {
               </label>
               <input
                 type="text"
-                value="Difference between S12 and S13 should be more than 0.25Div"
+                defaultValue="Difference between S12 and S13 should be more than 0.25Div"
+                {...register("fieldG11")}
               />
             </div>
           </div>
@@ -324,7 +425,13 @@ export default function Section7() {
               <label htmlFor="field1" className="field-label">
                 Activated Division
               </label>
-              <input type="text" name="" id="field1" className="user-value" />
+              <input
+                type="text"
+                name=""
+                id="field1"
+                className="user-value"
+                {...register("fieldG12")}
+              />
             </div>
           </div>
         </div>
@@ -354,7 +461,13 @@ export default function Section7() {
               <label htmlFor="field1" className="field-label">
                 Activated Division
               </label>
-              <input type="text" name="" id="field1" className="user-value" />
+              <input
+                type="text"
+                name=""
+                id="field1"
+                className="user-value"
+                {...register("fieldG13")}
+              />
             </div>
           </div>
         </div>
@@ -384,7 +497,13 @@ export default function Section7() {
               <label htmlFor="field1" className="field-label">
                 Activated Division
               </label>
-              <input type="text" name="" id="field1" className="user-value" />
+              <input
+                type="text"
+                name=""
+                id="field1"
+                className="user-value"
+                {...register("fieldG14")}
+              />
             </div>
           </div>
           <div className="form-row">
@@ -412,7 +531,13 @@ export default function Section7() {
               <label htmlFor="field1" className="field-label">
                 Activated Division
               </label>
-              <input type="text" name="" id="field1" className="user-value" />
+              <input
+                type="text"
+                name=""
+                id="field1"
+                className="user-value"
+                {...register("fieldG15")}
+              />
             </div>
           </div>
           <div className="form-info form-row">
@@ -422,12 +547,13 @@ export default function Section7() {
               </label>
               <input
                 type="text"
-                value="Difference between S13 and S17- Power should be more than 0.25Div"
+                defaultValue="Difference between S13 and S17- Power should be more than 0.25Div"
+                {...register("fieldG16")}
               />
             </div>
           </div>
         </div>
-        <button onClick={() => handleSectionMove()} className="action-button">
+        <button type="submit" className="action-button">
           Save & Next
         </button>
       </form>

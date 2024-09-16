@@ -47,3 +47,19 @@ export const Section4DataStore = atom({
   key: "Section4DataStore",
   default: {},
 });
+export const Section5DataStore = atom({
+  key: "Section5DataStore",
+  default: {},
+});
+export const Section6DataStore = atom({
+  key: "Section6DataStore",
+  default: {},
+});
+export const Section7DataStore = atom({
+  key: "Section7DataStore",
+  default: {},
+});
+export const Section8DataStore = atom({
+  key: "Section8DataStore",
+  default: {},
+});

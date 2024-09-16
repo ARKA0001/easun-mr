@@ -1,4 +1,4 @@
-import React, {useEff} from "react";
+import React, {useEffect} from "react";
 import { useRecoilState } from "recoil";
 import { activeSection, savedSection, testId } from "@/store/Section";
 import { useForm, useWatch } from "react-hook-form";
@@ -74,7 +74,7 @@ export default function Section4() {
   }, [watchedFields, setSection4FormData]);
 
   return (
-    <div className="form-section">
+    <div className="form-section" id="section4-form">
       <form onSubmit={handleSubmit(onSubmit)}>
         <table className="toggle-table">
           <tbody>

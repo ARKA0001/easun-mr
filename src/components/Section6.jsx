@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import moveSection from "@/utils/SectionMove";
 import { useRecoilState } from "recoil";
-import { activeSection, savedSection } from "@/store/Section";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
+import { activeSection, savedSection, testId } from "@/store/Section";
+import html2canvas from "html2canvas";
+import { Section6DataStore } from "@/store/FormData";
 
 export default function Section6() {
   const [currentActiveSection, setCurrentActiveSection] =
@@ -16,13 +18,63 @@ export default function Section6() {
     setSavedSectionCount(7);
   };
 
-  const { required, handleSubmit } = useForm();
-  const onSubmit = () => {
-    handleSectionMove();
+  const [section6FormData, setSection6FormData] =
+    useRecoilState(Section6DataStore);
+
+  const [testIdResponse, setTestIdResponse] = useRecoilState(testId);
+
+  const { register, handleSubmit, setValue, control } = useForm();
+  const watchedFields = useWatch({ control });
+
+  const onSubmit = async (data) => {
+    console.log("This is section 1 data");
+    console.log(section6FormData);
+    const section = document.getElementById("section6-form");
+    const canvas = await html2canvas(section);
+    const imgData = canvas.toDataURL("image/png");
+
+    // Convert the base64 image data to a blob
+    const blob = await (await fetch(imgData)).blob();
+
+    // Use the File System Access API to save the file
+    if ("showSaveFilePicker" in window) {
+      try {
+        const fileHandle = await window.showSaveFilePicker({
+          suggestedName: testId + "" + "section6-form.png",
+          types: [
+            {
+              description: "PNG Image",
+              accept: { "image/png": [".png"] },
+            },
+          ],
+        });
+
+        const writableStream = await fileHandle.createWritable();
+        await writableStream.write(blob);
+        await writableStream.close();
+        console.log("Image saved successfully");
+        handleSectionMove();
+      } catch (error) {
+        console.error("Save operation was cancelled or failed:", error);
+      }
+    } else {
+      alert("Your browser does not support the File System Access API.");
+    }
   };
 
+  useEffect(() => {
+    if (section6FormData && Object.keys(section6FormData).length > 0) {
+      Object.keys(section6FormData).forEach((field) => {
+        setValue(field, section6FormData[field]);
+      });
+    }
+  }, [setSection6FormData, setValue]);
+
+  useEffect(() => {
+    setSection6FormData(watchedFields);
+  }, [watchedFields, setSection6FormData]);
   return (
-    <div className="form-section">
+    <div className="form-section" id="section6-form">
       <form onSubmit={handleSubmit(onSubmit)}>
         <table className="toggle-table">
           <tbody>
@@ -37,7 +89,12 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-1" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-1"
+                  className="toggle-input"
+                  {...register("fieldA1")}
+                />
                 <label htmlFor="toggle-1" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -52,7 +109,12 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-2" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-2"
+                  className="toggle-input"
+                  {...register("fieldA2")}
+                />
                 <label htmlFor="toggle-2" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -71,7 +133,12 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-3" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-3"
+                  className="toggle-input"
+                  {...register("fieldA3")}
+                />
                 <label htmlFor="toggle-3" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -86,7 +153,12 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-4" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-4"
+                  className="toggle-input"
+                  {...register("fieldA4")}
+                />
                 <label htmlFor="toggle-4" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -107,7 +179,12 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-4" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-4"
+                  className="toggle-input"
+                  {...register("fieldA5")}
+                />
                 <label htmlFor="toggle-4" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -125,7 +202,12 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-7" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-7"
+                  className="toggle-input"
+                  {...register("fieldA6")}
+                />
                 <label htmlFor="toggle-7" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -144,7 +226,12 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-8" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-8"
+                  className="toggle-input"
+                  {...register("fieldA7")}
+                />
                 <label htmlFor="toggle-8" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -163,7 +250,12 @@ export default function Section6() {
                 </label>
               </td>
               <td className="toggle-container">
-                <input type="checkbox" id="toggle-9" className="toggle-input" />
+                <input
+                  type="checkbox"
+                  id="toggle-9"
+                  className="toggle-input"
+                  {...register("fieldA8")}
+                />
                 <label htmlFor="toggle-9" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
@@ -183,6 +275,7 @@ export default function Section6() {
                   type="checkbox"
                   id="toggle-10"
                   className="toggle-input"
+                  {...register("fieldA9")}
                 />
                 <label htmlFor="toggle-10" className="toggle-label">
                   <span className="toggle-switch"></span>
@@ -206,6 +299,7 @@ export default function Section6() {
                   type="checkbox"
                   id="toggle-11"
                   className="toggle-input"
+                  {...register("fieldA10")}
                 />
                 <label htmlFor="toggle-11" className="toggle-label">
                   <span className="toggle-switch"></span>
@@ -225,6 +319,7 @@ export default function Section6() {
                   type="checkbox"
                   id="toggle-12"
                   className="toggle-input"
+                  {...register("fieldA11")}
                 />
                 <label htmlFor="toggle-12" className="toggle-label">
                   <span className="toggle-switch"></span>
@@ -244,6 +339,7 @@ export default function Section6() {
                   type="checkbox"
                   id="toggle-12"
                   className="toggle-input"
+                  {...register("fieldA12")}
                 />
                 <label htmlFor="toggle-12" className="toggle-label">
                   <span className="toggle-switch"></span>
@@ -267,6 +363,7 @@ export default function Section6() {
                   type="checkbox"
                   id="toggle-12"
                   className="toggle-input"
+                  {...register("fieldA13")}
                 />
                 <label htmlFor="toggle-12" className="toggle-label">
                   <span className="toggle-switch"></span>
@@ -291,6 +388,7 @@ export default function Section6() {
                   type="checkbox"
                   id="toggle-13"
                   className="toggle-input"
+                  {...register("field14")}
                 />
                 <label htmlFor="toggle-13" className="toggle-label">
                   <span className="toggle-switch"></span>
@@ -315,6 +413,7 @@ export default function Section6() {
                   type="checkbox"
                   id="toggle-14"
                   className="toggle-input"
+                  {...register("fieldA15")}
                 />
                 <label htmlFor="toggle-14" className="toggle-label">
                   <span className="toggle-switch"></span>
@@ -359,6 +458,7 @@ export default function Section6() {
                   type="checkbox"
                   id="toggle-16"
                   className="toggle-input"
+                  {...register("fieldA16")}
                 />
                 <label htmlFor="toggle-16" className="toggle-label">
                   <span className="toggle-switch"></span>
@@ -383,6 +483,7 @@ export default function Section6() {
                   type="checkbox"
                   id="toggle-17"
                   className="toggle-input"
+                  {...register("fieldA17")}
                 />
                 <label htmlFor="toggle-17" className="toggle-label">
                   <span className="toggle-switch"></span>
@@ -407,6 +508,7 @@ export default function Section6() {
                   type="checkbox"
                   id="toggle-18"
                   className="toggle-input"
+                  {...register("fieldA18")}
                 />
                 <label htmlFor="toggle-18" className="toggle-label">
                   <span className="toggle-switch"></span>
@@ -427,6 +529,7 @@ export default function Section6() {
                   type="checkbox"
                   id="toggle-19"
                   className="toggle-input"
+                  {...register("fieldA19")}
                 />
                 <label htmlFor="toggle-19" className="toggle-label">
                   <span className="toggle-switch"></span>
@@ -451,6 +554,7 @@ export default function Section6() {
                   type="checkbox"
                   id="toggle-20"
                   className="toggle-input"
+                  {...register("fieldA20")}
                 />
                 <label htmlFor="toggle-20" className="toggle-label">
                   <span className="toggle-switch"></span>
@@ -474,6 +578,7 @@ export default function Section6() {
                   type="checkbox"
                   id="toggle-21"
                   className="toggle-input"
+                  {...register("fieldA21")}
                 />
                 <label htmlFor="toggle-21" className="toggle-label">
                   <span className="toggle-switch"></span>
@@ -484,10 +589,7 @@ export default function Section6() {
             </tr>
           </tbody>
         </table>
-        <button
-          onClick={() => handleSectionMove()}
-          className="action-button"
-        >
+        <button type="submit" className="action-button">
           Save & Next
         </button>
       </form>
