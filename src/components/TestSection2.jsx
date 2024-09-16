@@ -592,7 +592,7 @@ export default function TestSection2() {
                 <tr>
                   <td>1</td>
                   <td>
-                    O <sub>MD</sub>- C <sub>s13</sub>
+                    O <sub>MD</sub>- C <sub>s12</sub>
                   </td>
                   <td>620 to 775 ms</td>
                   <td className="width-auto">
@@ -609,7 +609,7 @@ export default function TestSection2() {
                 <tr>
                   <td>2</td>
                   <td>
-                    O <sub>MD</sub>- C <sub>s12</sub>
+                    O <sub>MD</sub>- C <sub>s13</sub>
                   </td>
                   <td>656 to 853 ms</td>
                   <td>{lowerValues[1]}</td>

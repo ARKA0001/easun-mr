@@ -818,6 +818,8 @@ export default function Section5() {
                     name="section5-field-make-lower"
                     id="section5-lower-field1"
                     className="user-value"
+                    value="sx112"
+                    {...register("fieldE25")}
                   />
                   <label htmlFor="section5-lower-field1">Kaycee SX 112</label>
                 </label>
@@ -827,6 +829,8 @@ export default function Section5() {
                     name="section5-field-make-lower"
                     id="section5-field1"
                     className="user-value"
+                    {...register("fieldE25")}
+                    value="114"
                   />
                   <label htmlFor="section5-field1">SX 114 A</label>
                 </label>
@@ -836,6 +840,8 @@ export default function Section5() {
                     name="section5-field-make-lower"
                     id="section5-field1"
                     className="user-value"
+                    {...register("fieldE25")}
+                    value="114c"
                   />
                   <label htmlFor="section5-field1">SX 114 C</label>
                 </label>
@@ -845,6 +851,8 @@ export default function Section5() {
                     name="section5-field-make-lower"
                     id="section5-field1"
                     className="user-value"
+                    {...register("fieldE25")}
+                    value="61197"
                   />
                   <label htmlFor="section5-field1">SALZER - 61197</label>
                 </label>
