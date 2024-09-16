@@ -864,6 +864,7 @@ export default function Section5() {
               <label
                 htmlFor="section5-field-lower-observation"
                 className="field-label"
+                {...register("fieldE26")}
               >
                 Actual Observation with label identification
               </label>
@@ -888,6 +889,8 @@ export default function Section5() {
                     name="section5-field-make-lower"
                     id="section5-lower-field1"
                     className="user-value"
+                    {...register("fieldE28")}
+                    value="remi"
                   />
                   <label htmlFor="section5-lower-field1">Remi</label>
                 </label>
@@ -897,6 +900,8 @@ export default function Section5() {
                     name="section5-field-make-lower"
                     id="section5-field1"
                     className="user-value"
+                    {...register("fieldE28")}
+                    value="bbl"
                   />
                   <label htmlFor="section5-field1">BBL</label>
                 </label>
@@ -906,6 +911,8 @@ export default function Section5() {
                     name="section5-field-make-lower"
                     id="section5-field1"
                     className="user-value"
+                    {...register("fieldE28")}
+                    value="rotomac"
                   />
                   <label htmlFor="section5-field1">Rotomac</label>
                 </label>
@@ -915,6 +922,8 @@ export default function Section5() {
                     name="section5-field-make-lower"
                     id="section5-field1"
                     className="user-value"
+                    {...register("fieldE28")}
+                    value="dharani"
                   />
                   <label htmlFor="section5-field1">Dharani</label>
                 </label>
@@ -924,6 +933,8 @@ export default function Section5() {
                     name="section5-field-make-lower"
                     id="section5-field1"
                     className="user-value"
+                    {...register("fieldE28")}
+                    value="kec"
                   />
                   <label htmlFor="section5-field1">KEC</label>
                 </label>
@@ -942,6 +953,8 @@ export default function Section5() {
                     name="section5-field-lower"
                     id="section5-lower-field2"
                     className="user-value"
+                    {...register("fieldE29")}
+                    value="230"
                   />
                   <label htmlFor="section5-lower-field2">230V</label>
                 </label>
@@ -951,6 +964,8 @@ export default function Section5() {
                     name="section5-field-lower"
                     id="section5-lower-field4"
                     className="user-value"
+                    {...register("fieldE29")}
+                    value="380"
                   />
                   <label htmlFor="section5-lower-field4">380V</label>
                 </label>
@@ -960,6 +975,8 @@ export default function Section5() {
                     name="section5-field-lower"
                     id="section5-lower-field4"
                     className="user-value"
+                    {...register("fieldE29")}
+                    value="400"
                   />
                   <label htmlFor="section5-lower-field4">400V</label>
                 </label>
@@ -969,6 +986,8 @@ export default function Section5() {
                     name="section5-field-lower"
                     id="section5-lower-field4"
                     className="user-value"
+                    {...register("fieldE29")}
+                    value="415"
                   />
                   <label htmlFor="section5-lower-field4">415V</label>
                 </label>
@@ -978,6 +997,8 @@ export default function Section5() {
                     name="section5-field-lower"
                     id="section5-lower-field4"
                     className="user-value"
+                    {...register("fieldE29")}
+                    value="430"
                   />
                   <label htmlFor="section5-lower-field4">430V</label>
                 </label>
@@ -996,6 +1017,8 @@ export default function Section5() {
                     name="section5-field-lower"
                     id="section5-lower-field2"
                     className="user-value"
+                    {...register("fieldE30")}
+                    value="55"
                   />
                   <label htmlFor="section5-lower-field2">55-0-55v</label>
                 </label>
@@ -1005,6 +1028,8 @@ export default function Section5() {
                     name="section5-field-lower"
                     id="section5-lower-field4"
                     className="user-value"
+                    {...register("fieldE30")}
+                    value="110"
                   />
                   <label htmlFor="section5-lower-field4">110-0-110v</label>
                 </label>
@@ -1016,12 +1041,15 @@ export default function Section5() {
               <label
                 htmlFor="section5-field-lower-observation"
                 className="field-label"
+
               >
                 Serial No
               </label>
               <textarea
                 id="section5-field-lower-observation"
                 className="user-value"
+                {...register("fieldE31")}
+                  
               ></textarea>
             </div>
           </div>
@@ -1040,6 +1068,8 @@ export default function Section5() {
                     name="section5-field-make-lower"
                     id="section5-lower-field1"
                     className="user-value"
+                    {...register("fieldE32")}
+                    value="ampitron"
                   />
                   <label htmlFor="section5-lower-field1">Ampitron</label>
                 </label>
@@ -1049,6 +1079,8 @@ export default function Section5() {
                     name="section5-field-make-lower"
                     id="section5-field1"
                     className="user-value"
+                    {...register("fieldE32")}
+                    value="ashoka"
                   />
                   <label htmlFor="section5-field1">Ashoka</label>
                 </label>
@@ -1058,6 +1090,8 @@ export default function Section5() {
                     name="section5-field-make-lower"
                     id="section5-field1"
                     className="user-value"
+                    {...register("fieldE32")}
+                    value="saraswathi"
                   />
                   <label htmlFor="section5-field1">Saraswathi</label>
                 </label>
@@ -1067,6 +1101,8 @@ export default function Section5() {
                     name="section5-field-make-lower"
                     id="section5-field1"
                     className="user-value"
+                    {...register("fieldE32")}
+                    value="quantum"
                   />
                   <label htmlFor="section5-field1">Quantum</label>
                 </label>
@@ -1085,6 +1121,8 @@ export default function Section5() {
                     name="section5-field-lower"
                     id="section5-lower-field2"
                     className="user-value"
+                    {...register("fieldE33")}
+                    value="230"
                   />
                   <label htmlFor="section5-lower-field2">230V</label>
                 </label>
@@ -1094,6 +1132,8 @@ export default function Section5() {
                     name="section5-field-lower"
                     id="section5-lower-field4"
                     className="user-value"
+                     {...register("fieldE33")}
+                    value="380"
                   />
                   <label htmlFor="section5-lower-field4">380V</label>
                 </label>
@@ -1103,6 +1143,8 @@ export default function Section5() {
                     name="section5-field-lower"
                     id="section5-lower-field4"
                     className="user-value"
+                     {...register("fieldE33")}
+                    value="400"
                   />
                   <label htmlFor="section5-lower-field4">400V</label>
                 </label>
@@ -1112,6 +1154,8 @@ export default function Section5() {
                     name="section5-field-lower"
                     id="section5-lower-field4"
                     className="user-value"
+                     {...register("fieldE33")}
+                    value="415"
                   />
                   <label htmlFor="section5-lower-field4">415V</label>
                 </label>
@@ -1121,6 +1165,8 @@ export default function Section5() {
                     name="section5-field-lower"
                     id="section5-lower-field4"
                     className="user-value"
+                     {...register("fieldE33")}
+                    value="430"
                   />
                   <label htmlFor="section5-lower-field4">430V</label>
                 </label>
@@ -1139,6 +1185,8 @@ export default function Section5() {
                     name="section5-field-lower"
                     id="section5-lower-field2"
                     className="user-value"
+                     {...register("fieldE34")}
+                    value="55"
                   />
                   <label htmlFor="section5-lower-field2">55-0-55v</label>
                 </label>
@@ -1148,6 +1196,8 @@ export default function Section5() {
                     name="section5-field-lower"
                     id="section5-lower-field4"
                     className="user-value"
+                    {...register("fieldE34")}
+                    value="110"
                   />
                   <label htmlFor="section5-lower-field4">110-0-110v</label>
                 </label>
@@ -1165,6 +1215,7 @@ export default function Section5() {
               <textarea
                 id="section5-field-lower-observation"
                 className="user-value"
+                {...register("fieldE35")}
               ></textarea>
             </div>
           </div>

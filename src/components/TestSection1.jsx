@@ -91,10 +91,10 @@ export default function TestSection1() {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
       const result = await res.json();
-      console.log("Form Id from response", result);
+      console.log("Form Id from response", result.data);
       setFormId(result.data);
 
-      if (takeScreenshort("testSection1", result)) {
+      if (takeScreenshort("testSection1", result.data)) {
         handleTestDataMove();
       } else {
         alert(
