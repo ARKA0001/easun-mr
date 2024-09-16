@@ -23,23 +23,23 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
     // }
     else if (modalMessage === "DONE_NV") {
       setInfoMessage("DONE_NV");
-      setModalText(
-        "Insert Hand Cranck."
-      );
-    }
-    else if (modalMessage === "DONE_HC") {
+      setModalText("Insert Hand Cranck.");
+    } else if (modalMessage === "ERROR_HC") {
+      setInfoMessage("DONE_NV");
+      setModalText("Error Hand Cranck.");
+    } else if (modalMessage === "ERROR_IL") {
+      setInfoMessage("DONE_HC");
+      setModalText("Error Interlocking.");
+    } else if (modalMessage === "ERROR_PR") {
       setInfoMessage("DONE_IL");
-      setModalText(
-        "Insert InterLocking."
-      );
-    }
-    else if (modalMessage === "DONE_IL") {
+      setModalText("Error Proximity.");
+    } else if (modalMessage === "DONE_HC") {
+      setInfoMessage("DONE_IL");
+      setModalText("Insert InterLocking.");
+    } else if (modalMessage === "DONE_IL") {
       setInfoMessage("DONE_PR");
-      setModalText(
-        "Insert Proximity."
-      );
-    }
-    else if (modalMessage === "DONE_PR") {
+      setModalText("Insert Proximity.");
+    } else if (modalMessage === "DONE_PR") {
       setInfoMessage("DONE");
       setModalText(
         "Testing completed. Please Download report from report section"

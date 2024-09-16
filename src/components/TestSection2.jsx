@@ -606,6 +606,7 @@ export default function TestSection2() {
                       id=""
                       value={lowerValues[0]}
                       disabled
+                      className="cms-input"
                     />
                   </td>
                 </tr>
@@ -622,6 +623,7 @@ export default function TestSection2() {
                       id=""
                       value={lowerValues[1]}
                       disabled
+                      className="cms-input"
                     />
                   </td>
                 </tr>
@@ -638,6 +640,7 @@ export default function TestSection2() {
                       id=""
                       value={lowerValues[2]}
                       disabled
+                      className="cms-input"
                     />
                   </td>
                 </tr>
@@ -654,6 +657,7 @@ export default function TestSection2() {
                       id=""
                       value={lowerValues[3]}
                       disabled
+                      className="cms-input"
                     />
                   </td>
                 </tr>
@@ -670,6 +674,7 @@ export default function TestSection2() {
                       id=""
                       value={lowerValues[4]}
                       disabled
+                      className="cms-input"
                     />
                   </td>
                 </tr>
@@ -686,6 +691,7 @@ export default function TestSection2() {
                       id=""
                       value={lowerValues[5]}
                       disabled
+                      className="cms-input"
                     />
                   </td>
                 </tr>
@@ -709,7 +715,7 @@ export default function TestSection2() {
                   </td>
                   <td>620 to 775 ms</td>
                   <td>
-                    <input type="text" name="" id="" value={raiseValues[0]} disabled/>
+                    <input type="text" name="" id="" value={raiseValues[0]} disabled className="cms-input"/>
                   </td>
                 </tr>
                 <tr>
@@ -719,7 +725,7 @@ export default function TestSection2() {
                   </td>
                   <td>656 to 853 ms</td>
                   <td>
-                    <input type="text" name="" id="" value={raiseValues[1]} disabled />
+                    <input type="text" name="" id="" value={raiseValues[1]} disabled className="cms-input"/>
                   </td>
                 </tr>
                 <tr>
@@ -729,7 +735,7 @@ export default function TestSection2() {
                   </td>
                   <td>4.5 to 5.0 sec</td>
                   <td>
-                    <input type="text" name="" id="" value={raiseValues[2]} disabled />
+                    <input type="text" name="" id="" value={raiseValues[2]} disabled className="cms-input"/>
                   </td>
                 </tr>
                 <tr>
@@ -739,7 +745,7 @@ export default function TestSection2() {
                   </td>
                   <td>5.1 to 5.3 sec</td>
                   <td>
-                    <input type="text" name="" id="" value={raiseValues[3]} disabled/>
+                    <input type="text" name="" id="" value={raiseValues[3]} disabled className="cms-input"/>
                   </td>
                 </tr>
                 <tr>
@@ -749,7 +755,7 @@ export default function TestSection2() {
                   </td>
                   <td>36 to 75 ms</td>
                   <td>
-                    <input type="text" name="" id="" value={raiseValues[4]} disabled/>
+                    <input type="text" name="" id="" value={raiseValues[4]} disabled className="cms-input"/>
                   </td>
                 </tr>
                 <tr>
@@ -759,7 +765,7 @@ export default function TestSection2() {
                   </td>
                   <td>Min 10ms</td>
                   <td>
-                    <input type="text" name="" id="" value={raiseValues[5]} disabled/>
+                    <input type="text" name="" id="" value={raiseValues[5]} disabled className="cms-input"/>
                   </td>
                 </tr>
               </tbody>
