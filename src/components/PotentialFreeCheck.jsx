@@ -152,46 +152,130 @@ export default function PotentialFreeCheck() {
               />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-2" id="check-tap-2" />
+              <input
+                type="checkbox"
+                name="check-tap-2"
+                id="check-tap-2"
+                checked={checkBoxData.checkboxes["check-tap-2"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-3" id="check-tap-3" />
+              <input
+                type="checkbox"
+                name="check-tap-3"
+                id="check-tap-3"
+                checked={checkBoxData.checkboxes["check-tap-3"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-4" id="check-tap-4" />
+              <input
+                type="checkbox"
+                name="check-tap-4"
+                id="check-tap-4"
+                checked={checkBoxData.checkboxes["check-tap-4"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-5" id="check-tap-5" />
+              <input
+                type="checkbox"
+                name="check-tap-5"
+                id="check-tap-5"
+                checked={checkBoxData.checkboxes["check-tap-5"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-6" id="check-tap-6" />
+              <input
+                type="checkbox"
+                name="check-tap-6"
+                id="check-tap-6"
+                checked={checkBoxData.checkboxes["check-tap-6"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-7" id="check-tap-7" />
+              <input
+                type="checkbox"
+                name="check-tap-7"
+                id="check-tap-7"
+                checked={checkBoxData.checkboxes["check-tap-7"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-8" id="check-tap-8" />
+              <input
+                type="checkbox"
+                name="check-tap-8"
+                id="check-tap-8"
+                checked={checkBoxData.checkboxes["check-tap-8"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-9" id="check-tap-9" />
+              <input
+                type="checkbox"
+                name="check-tap-9"
+                id="check-tap-9"
+                checked={checkBoxData.checkboxes["check-tap-9"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-10" id="check-tap-10" />
+              <input
+                type="checkbox"
+                name="check-tap-10"
+                id="check-tap-10"
+                checked={checkBoxData.checkboxes["check-tap-10"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-11" id="check-tap-11" />
+              <input
+                type="checkbox"
+                name="check-tap-11"
+                id="check-tap-11"
+                checked={checkBoxData.checkboxes["check-tap-11"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-12" id="check-tap-12" />
+              <input
+                type="checkbox"
+                name="check-tap-12"
+                id="check-tap-12"
+                checked={checkBoxData.checkboxes["check-tap-12"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-13" id="check-tap-13" />
+              <input
+                type="checkbox"
+                name="check-tap-13"
+                id="check-tap-13"
+                checked={checkBoxData.checkboxes["check-tap-13"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-14" id="check-tap-14" />
+              <input
+                type="checkbox"
+                name="check-tap-14"
+                id="check-tap-14"
+                checked={checkBoxData.checkboxes["check-tap-14"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-15" id="check-tap-15" />
+              <input
+                type="checkbox"
+                name="check-tap-15"
+                id="check-tap-15"
+                checked={checkBoxData.checkboxes["check-tap-15"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
           </tr>
           <tr>
@@ -275,49 +359,139 @@ export default function PotentialFreeCheck() {
           <tr>
             <td>LED Indiacation Actual Tap</td>
             <td>
-              <input type="checkbox" name="check-tap-16" id="check-tap-16" />
+              <input
+                type="checkbox"
+                name="check-tap-16"
+                id="check-tap-16"
+                checked={checkBoxData.checkboxes["check-tap-16"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-17" id="check-tap-17" />
+              <input
+                type="checkbox"
+                name="check-tap-17"
+                id="check-tap-17"
+                checked={checkBoxData.checkboxes["check-tap-17"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-18" id="check-tap-18" />
+              <input
+                type="checkbox"
+                name="check-tap-18"
+                id="check-tap-18"
+                checked={checkBoxData.checkboxes["check-tap-18"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-19" id="check-tap-19" />
+              <input
+                type="checkbox"
+                name="check-tap-19"
+                id="check-tap-19"
+                checked={checkBoxData.checkboxes["check-tap-19"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-20" id="check-tap-20" />
+              <input
+                type="checkbox"
+                name="check-tap-20"
+                id="check-tap-20"
+                checked={checkBoxData.checkboxes["check-tap-20"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-21" id="check-tap-21" />
+              <input
+                type="checkbox"
+                name="check-tap-21"
+                id="check-tap-21"
+                checked={checkBoxData.checkboxes["check-tap-21"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-22" id="check-tap-22" />
+              <input
+                type="checkbox"
+                name="check-tap-22"
+                id="check-tap-22"
+                checked={checkBoxData.checkboxes["check-tap-22"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-23" id="check-tap-23" />
+              <input
+                type="checkbox"
+                name="check-tap-23"
+                id="check-tap-23"
+                checked={checkBoxData.checkboxes["check-tap-23"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-24" id="check-tap-24" />
+              <input
+                type="checkbox"
+                name="check-tap-24"
+                id="check-tap-24"
+                checked={checkBoxData.checkboxes["check-tap-24"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-25" id="check-tap-25" />
+              <input
+                type="checkbox"
+                name="check-tap-25"
+                id="check-tap-25"
+                checked={checkBoxData.checkboxes["check-tap-25"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-26" id="check-tap-26" />
+              <input
+                type="checkbox"
+                name="check-tap-26"
+                id="check-tap-26"
+                checked={checkBoxData.checkboxes["check-tap-26"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-27" id="check-tap-27" />
+              <input
+                type="checkbox"
+                name="check-tap-27"
+                id="check-tap-27"
+                checked={checkBoxData.checkboxes["check-tap-27"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-28" id="check-tap-28" />
+              <input
+                type="checkbox"
+                name="check-tap-28"
+                id="check-tap-28"
+                checked={checkBoxData.checkboxes["check-tap-28"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-29" id="check-tap-29" />
+              <input
+                type="checkbox"
+                name="check-tap-29"
+                id="check-tap-29"
+                checked={checkBoxData.checkboxes["check-tap-29"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-30" id="check-tap-30" />
+              <input
+                type="checkbox"
+                name="check-tap-30"
+                id="check-tap-30"
+                checked={checkBoxData.checkboxes["check-tap-30"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
           </tr>
           <tr>
@@ -351,19 +525,49 @@ export default function PotentialFreeCheck() {
           <tr>
             <td>LED Indiacation Actual Tap</td>
             <td>
-              <input type="checkbox" name="check-tap-31" id="check-tap-31" />
+              <input
+                type="checkbox"
+                name="check-tap-31"
+                id="check-tap-31"
+                checked={checkBoxData.checkboxes["check-tap-31"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-32" id="check-tap-32" />
+              <input
+                type="checkbox"
+                name="check-tap-32"
+                id="check-tap-32"
+                checked={checkBoxData.checkboxes["check-tap-32"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-33" id="check-tap-33" />
+              <input
+                type="checkbox"
+                name="check-tap-33"
+                id="check-tap-33"
+                checked={checkBoxData.checkboxes["check-tap-33"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-34" id="check-tap-34" />
+              <input
+                type="checkbox"
+                name="check-tap-34"
+                id="check-tap-34"
+                checked={checkBoxData.checkboxes["check-tap-34"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
             <td>
-              <input type="checkbox" name="check-tap-35" id="check-tap-35" />
+              <input
+                type="checkbox"
+                name="check-tap-35"
+                id="check-tap-35"
+                checked={checkBoxData.checkboxes["check-tap-35"] || false}
+                onChange={handleCheckboxChange}
+              />
             </td>
           </tr>
         </tbody>

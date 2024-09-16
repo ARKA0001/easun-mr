@@ -1,8 +1,17 @@
-import React, { useState } from "react";
-import moveSection from "@/utils/SectionMove";
+import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { activeSection, savedSection } from "@/store/Section";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
+import html2canvas from "html2canvas";
+import {
+  backSideOptionsStore,
+  bottomSideOptionsStore,
+  frontSideOptionsStore,
+  leftSideOptionsStore,
+  rightSideOptionsStore,
+  Section2DataStore,
+  topSideOptionsStore,
+} from "@/store/FormData";
 
 export default function Section2() {
   const [currentActiveSection, setCurrentActiveSection] =
@@ -16,12 +25,21 @@ export default function Section2() {
     setSavedSectionCount(3);
   };
 
-  const [frontSideOptions, setFrontSideOptions] = useState([]);
-  const [backSideOptions, setBackSideOptions] = useState([]);
-  const [leftSideOptions, setLeftSideOptions] = useState([]);
-  const [rightSideOptions, setRightSideOptions] = useState([]);
-  const [topSideOptions, setTopSideOptions] = useState([]);
-  const [bottomSideOptions, setBottomSideOptions] = useState([]);
+  const [frontSideOptions, setFrontSideOptions] = useRecoilState(
+    frontSideOptionsStore
+  );
+  const [backSideOptions, setBackSideOptions] =
+    useRecoilState(backSideOptionsStore);
+  const [leftSideOptions, setLeftSideOptions] =
+    useRecoilState(leftSideOptionsStore);
+  const [rightSideOptions, setRightSideOptions] = useRecoilState(
+    rightSideOptionsStore
+  );
+  const [topSideOptions, setTopSideOptions] =
+    useRecoilState(topSideOptionsStore);
+  const [bottomSideOptions, setBottomSideOptions] = useRecoilState(
+    bottomSideOptionsStore
+  );
 
   const handleFrontSideOptions = (event) => {
     const { value, checked } = event.target;
@@ -84,60 +102,61 @@ export default function Section2() {
     });
   };
 
-  const { register, handleSubmit } = useForm();
+  const [section2FormData, setSection2FormData] =
+    useRecoilState(Section2DataStore);
+
+  const { register, handleSubmit, setValue, control } = useForm();
+  const watchedFields = useWatch({ control });
+
   const onSubmit = async (data) => {
-    console.log("This is section 1 data");
-    const section2Data = {
-      field18: data.field18,
-      field19: data.field19,
-      field20: data.field20,
-      field21: data.field21,
-      field22: data.field22,
-      field23: data.field23,
-      field24: data.field24,
-      field25: data.field25,
-      field26: data.field26,
-      field27: data.field27,
-      field28: data.field28,
-      field29: frontSideOptions,
-      field30: backSideOptions,
-      field31: leftSideOptions,
-      field32: rightSideOptions,
-      field33: topSideOptions,
-      field34: bottomSideOptions,
-      field35: data.field35,
-      field36: data.field36,
-      field37: data.field37,
-      field38: data.field38,
-      field39: data.field39,
-      field40: data.field40,
-      field41: data.field41,
-      field42: data.field42,
-    };
+    console.log("This is section 2 data");
+    console.log(section2FormData);
+    // Take screenshort
+    const section = document.getElementById("section2-form");
+    const canvas = await html2canvas(section);
+    const imgData = canvas.toDataURL("image/png");
 
-    console.log(section2Data);
+    // Convert the base64 image data to a blob
+    const blob = await (await fetch(imgData)).blob();
+
+    // Use the File System Access API to save the file
+    if ("showSaveFilePicker" in window) {
+      try {
+        const fileHandle = await window.showSaveFilePicker({
+          suggestedName: testId + "" + "section2-form.png",
+          types: [
+            {
+              description: "PNG Image",
+              accept: { "image/png": [".png"] },
+            },
+          ],
+        });
+
+        const writableStream = await fileHandle.createWritable();
+        await writableStream.write(blob);
+        await writableStream.close();
+        console.log("Image saved successfully");
+        handleSectionMove();
+      } catch (error) {
+        console.error("Save operation was cancelled or failed:", error);
+      }
+    } else {
+      alert("Your browser does not support the File System Access API.");
+    }
     handleSectionMove();
-
-    // try {
-    //   const res = await fetch("http://localhost:8080/device/testData/1/"+{testIdResponse}, {
-    //     method: "PUT",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(section1Data),
-    //   });
-
-    //   if (!res.ok) {
-    //     throw new Error(`HTTP error! status: ${res.status}`);
-    //   }
-    //   setResponse(null);
-    //   handleSectionMove(1,1)
-    // } catch (error) {
-    //   setResponse({ error: error.message });
-    // } finally {
-    //   setLoading(false);
-    // }
   };
+
+  useEffect(() => {
+    if (section2FormData && Object.keys(section2FormData).length > 0) {
+      Object.keys(section2FormData).forEach((field) => {
+        setValue(field, section2FormData[field]);
+      });
+    }
+  }, [setSection2FormData, setValue]);
+
+  useEffect(() => {
+    setSection2FormData(watchedFields);
+  }, [watchedFields, setSection2FormData]);
 
   return (
     <div className="form-section">

@@ -1,9 +1,9 @@
-import React from "react";
-import moveSection from "@/utils/SectionMove";
+import React, {useEffect} from "react";
 import { useRecoilState } from "recoil";
 import { activeSection, savedSection } from "@/store/Section";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import html2canvas from "html2canvas";
+import { Section3DataStore } from "@/store/FormData";
 
 export default function Section3() {
   const [currentActiveSection, setCurrentActiveSection] =
@@ -17,67 +17,58 @@ export default function Section3() {
     setSavedSectionCount(4);
   };
 
-  const { register, handleSubmit } = useForm();
+  const [section3FormData, setSection3FormData] =
+    useRecoilState(Section3DataStore);
+  const { register, handleSubmit, setValue, control } = useForm();
+  const watchedFields = useWatch({ control });
 
   const onSubmit = async (data) => {
     console.log("This is section 3 data");
-    const section3Data = {
-      field43: data.field43,
-      field44: data.field44,
-      field45: data.field45,
-      field46: data.field46,
-      field47: data.field47,
-      field48: data.field48,
-      field49: data.field49,
-      field50: data.field50,
-      field51: data.field51,
-      field52: data.field52,
-      field53: data.field53,
-      field54: data.field54,
-      field55: data.field55,
-      field56: data.field56,
-    };
+    console.log(section3FormData);
+    const section = document.getElementById("section3-form");
+    const canvas = await html2canvas(section);
+    const imgData = canvas.toDataURL("image/png");
 
-    console.log(section3Data);
+    // Convert the base64 image data to a blob
+    const blob = await (await fetch(imgData)).blob();
 
-    handleCapture();
+    // Use the File System Access API to save the file
+    if ("showSaveFilePicker" in window) {
+      try {
+        const fileHandle = await window.showSaveFilePicker({
+          suggestedName: testId + "" + "section3-form.png",
+          types: [
+            {
+              description: "PNG Image",
+              accept: { "image/png": [".png"] },
+            },
+          ],
+        });
 
-    const handleCapture = async () => {
-      const section = document.getElementById("section3-form");
-      const canvas = await html2canvas(section);
-      const imgData = canvas.toDataURL("image/png");
-
-      // Convert the base64 image data to a blob
-      const blob = await (await fetch(imgData)).blob();
-
-      // Use the File System Access API to save the file
-      if ("showSaveFilePicker" in window) {
-        try {
-          const fileHandle = await window.showSaveFilePicker({
-            suggestedName: "section3-form.png",
-            types: [
-              {
-                description: "PNG Image",
-                accept: { "image/png": [".png"] },
-              },
-            ],
-          });
-
-          const writableStream = await fileHandle.createWritable();
-          await writableStream.write(blob);
-          await writableStream.close();
-          console.log("Image saved successfully");
-          handleSectionMove();
-        } catch (error) {
-          console.error("Save operation was cancelled or failed:", error);
-        }
-      } else {
-        alert("Your browser does not support the File System Access API.");
+        const writableStream = await fileHandle.createWritable();
+        await writableStream.write(blob);
+        await writableStream.close();
+        console.log("Image saved successfully");
+        handleSectionMove();
+      } catch (error) {
+        console.error("Save operation was cancelled or failed:", error);
       }
-    };
-
-    // handleSectionMove();
+    } else {
+      alert("Your browser does not support the File System Access API.");
+    }
   };
+
+  useEffect(() => {
+    if (section3FormData && Object.keys(section3FormData).length > 0) {
+      Object.keys(section3FormData).forEach((field) => {
+        setValue(field, section3FormData[field]);
+      });
+    }
+  }, [setSection3FormData, setValue]);
+
+  useEffect(() => {
+    setSection3FormData(watchedFields);
+  }, [watchedFields, setSection3FormData]);
 
   return (
     <div className="form-section" id="section3-form">

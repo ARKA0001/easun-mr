@@ -1,12 +1,11 @@
 "use client";
 
-import React from "react";
-import moveSection from "@/utils/SectionMove";
+import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { activeSection, savedSection, testId } from "@/store/Section";
-import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useForm, useWatch } from "react-hook-form";
 import html2canvas from "html2canvas";
+import { Section1DataStore } from "@/store/FormData";
 
 export default function Section1() {
   const [currentActiveSection, setCurrentActiveSection] =
@@ -20,37 +19,17 @@ export default function Section1() {
     setSavedSectionCount(2);
   };
 
-  const [loading, setLoading] = useState(true);
-  const [response, setResponse] = useState(null);
+  const [section1FormData, setSection1FormData] =
+    useRecoilState(Section1DataStore);
 
   const [testIdResponse, setTestIdResponse] = useRecoilState(testId);
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue, control } = useForm();
+  const watchedFields = useWatch({ control });
 
   const onSubmit = async (data) => {
     console.log("This is section 1 data");
-    const section1Data = {
-      field1: data.field1,
-      field2: data.field2,
-      field3: data.field3,
-      field4: data.field4,
-      field5: data.field5,
-      field6: data.field6,
-      field7: data.field7,
-      field8: data.field8,
-      field9: data.field9,
-      field10: data.field10,
-      field11: data.field11,
-      field12: data.field12,
-      field13: data.field13,
-      field14: data.field14,
-      field15: data.field15,
-      field16: data.field16,
-      field17: data.field17,
-    };
-
-    console.log(section1Data);
-
+    console.log(section1FormData);
     const section = document.getElementById("section1-form");
     const canvas = await html2canvas(section);
     const imgData = canvas.toDataURL("image/png");
@@ -84,6 +63,18 @@ export default function Section1() {
     }
   };
 
+  useEffect(() => {
+    if (section1FormData && Object.keys(section1FormData).length > 0) {
+      Object.keys(section1FormData).forEach((field) => {
+        setValue(field, section1FormData[field]);
+      });
+    }
+  }, [setSection1FormData, setValue]);
+
+  useEffect(() => {
+    setSection1FormData(watchedFields);
+  }, [watchedFields, setSection1FormData]);
+
   return (
     <div className="form-section" id="section1-form">
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -94,7 +85,7 @@ export default function Section1() {
             </label>
             <input
               type="text"
-              name=""
+              name="field1"
               id="field1"
               className="user-value"
               {...register("field1")}

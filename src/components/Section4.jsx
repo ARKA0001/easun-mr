@@ -1,8 +1,9 @@
-import React from "react";
-import moveSection from "@/utils/SectionMove";
+import React, {useEff} from "react";
 import { useRecoilState } from "recoil";
-import { activeSection, savedSection } from "@/store/Section";
-import { useForm } from "react-hook-form";
+import { activeSection, savedSection, testId } from "@/store/Section";
+import { useForm, useWatch } from "react-hook-form";
+import html2canvas from "html2canvas";
+import { Section4DataStore } from "@/store/FormData";
 
 export default function Section4() {
   const [currentActiveSection, setCurrentActiveSection] =
@@ -16,47 +17,61 @@ export default function Section4() {
     setSavedSectionCount(5);
   };
 
-  const { register, handleSubmit } = useForm();
+  const [section4FormData, setSection4FormData] =
+    useRecoilState(Section4DataStore);
+
+  const [testIdResponse, setTestIdResponse] = useRecoilState(testId);
+
+  const { register, handleSubmit, setValue, control } = useForm();
+
+  const watchedFields = useWatch({ control });
   const onSubmit = async (data) => {
     console.log("This is section 4 data");
-    const section4Data = {
-      field57: data.field57,
-      field58: data.field58,
-      field59: data.field59,
-      field60: data.field60,
-      field61: data.field61,
-      field62: data.field62,
-      field63: data.field63,
-      field64: data.field64,
-      field65: data.field65,
-      field66: data.field66,
-      field67: data.field67,
-      field68: data.field68,
-    };
+    console.log(section4FormData);
+    const section = document.getElementById("section4-form");
+    const canvas = await html2canvas(section);
+    const imgData = canvas.toDataURL("image/png");
 
-    console.log(section4Data);
-    handleSectionMove();
+    // Convert the base64 image data to a blob
+    const blob = await (await fetch(imgData)).blob();
 
-    // try {
-    //   const res = await fetch("http://localhost:8080/device/testData/1/"+{testIdResponse}, {
-    //     method: "PUT",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(section1Data),
-    //   });
+    // Use the File System Access API to save the file
+    if ("showSaveFilePicker" in window) {
+      try {
+        const fileHandle = await window.showSaveFilePicker({
+          suggestedName: testId + "" + "section4-form.png",
+          types: [
+            {
+              description: "PNG Image",
+              accept: { "image/png": [".png"] },
+            },
+          ],
+        });
 
-    //   if (!res.ok) {
-    //     throw new Error(`HTTP error! status: ${res.status}`);
-    //   }
-    //   setResponse(null);
-    //   handleSectionMove(1,1)
-    // } catch (error) {
-    //   setResponse({ error: error.message });
-    // } finally {
-    //   setLoading(false);
-    // }
+        const writableStream = await fileHandle.createWritable();
+        await writableStream.write(blob);
+        await writableStream.close();
+        console.log("Image saved successfully");
+        handleSectionMove();
+      } catch (error) {
+        console.error("Save operation was cancelled or failed:", error);
+      }
+    } else {
+      alert("Your browser does not support the File System Access API.");
+    }
   };
+
+  useEffect(() => {
+    if (section4FormData && Object.keys(section4FormData).length > 0) {
+      Object.keys(section4FormData).forEach((field) => {
+        setValue(field, section4FormData[field]);
+      });
+    }
+  }, [setSection4FormData, setValue]);
+
+  useEffect(() => {
+    setSection4FormData(watchedFields);
+  }, [watchedFields, setSection4FormData]);
 
   return (
     <div className="form-section">
