@@ -545,7 +545,7 @@ button {
   overflow-x: auto;
   display: flex;
   justify-content: space-evenly;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 .cms-table {
   width: 750px !important;
