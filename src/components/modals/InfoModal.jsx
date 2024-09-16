@@ -22,7 +22,7 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
     //   );
     // }
     else if (modalMessage === "DONE_NV") {
-      setInfoMessage("START_HC");
+      setInfoMessage("DONE_NV");
       setModalText(
         "Insert Hand Cranck."
       );
