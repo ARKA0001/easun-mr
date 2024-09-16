@@ -549,6 +549,7 @@ button {
 }
 .cms-table {
   width: 750px !important;
+  table-layout: auto !important;
 }
 /* Basic Table Styling */
 table.lower-check-table,
@@ -572,6 +573,11 @@ table.raise-check-table {
 .cms-table td {
   padding: 12px; /* Padding inside cells */
   border: 1px solid #ddd; /* Light gray border */
+
+}
+
+.cms-input{
+  width: 50% !important;
 }
 
 /* Alternate Row Colors */

@@ -459,7 +459,6 @@ export default function TestSection2() {
           </tr>
 
           <tr>
-          
             <td
               className={
                 trueCheck.includes("b40002_5")
@@ -575,11 +574,8 @@ export default function TestSection2() {
             >
               <label htmlFor="check-field27">TDR Switch</label>
             </td>
-            
           </tr>
-          <tr>
-            
-          </tr>
+          <tr></tr>
         </table>
 
         <div className="cam-table">
@@ -599,15 +595,15 @@ export default function TestSection2() {
                     O <sub>MD</sub>- C <sub>s13</sub>
                   </td>
                   <td>620 to 775 ms</td>
-                  <td>
-                    <input
+                  <td className="width-auto">
+                    {/* <input
                       type="text"
                       name=""
                       id=""
                       value={lowerValues[0]}
                       disabled
                       className="cms-input"
-                    />
+                    /> */}
                   </td>
                 </tr>
                 <tr>
@@ -616,16 +612,7 @@ export default function TestSection2() {
                     O <sub>MD</sub>- C <sub>s12</sub>
                   </td>
                   <td>656 to 853 ms</td>
-                  <td>
-                    <input
-                      type="text"
-                      name=""
-                      id=""
-                      value={lowerValues[1]}
-                      disabled
-                      className="cms-input"
-                    />
-                  </td>
+                  <td>{lowerValues[1]}</td>
                 </tr>
                 <tr>
                   <td>3</td>
@@ -633,16 +620,7 @@ export default function TestSection2() {
                     O <sub>MD</sub>- C <sub>LLS</sub>
                   </td>
                   <td>4.5 to 5.0 sec</td>
-                  <td>
-                    <input
-                      type="text"
-                      name=""
-                      id=""
-                      value={lowerValues[2]}
-                      disabled
-                      className="cms-input"
-                    />
-                  </td>
+                  <td>{lowerValues[2]}</td>
                 </tr>
                 <tr>
                   <td>4</td>
@@ -650,16 +628,7 @@ export default function TestSection2() {
                     O <sub>MD</sub>- C <sub>s12</sub>
                   </td>
                   <td>5.1 to 5.3 sec</td>
-                  <td>
-                    <input
-                      type="text"
-                      name=""
-                      id=""
-                      value={lowerValues[3]}
-                      disabled
-                      className="cms-input"
-                    />
-                  </td>
+                  <td>{lowerValues[3]}</td>
                 </tr>
                 <tr>
                   <td>5</td>
@@ -667,16 +636,7 @@ export default function TestSection2() {
                     C <sub>s12</sub>- C <sub>s13</sub>
                   </td>
                   <td>620 to 775 ms</td>
-                  <td>
-                    <input
-                      type="text"
-                      name=""
-                      id=""
-                      value={lowerValues[4]}
-                      disabled
-                      className="cms-input"
-                    />
-                  </td>
+                  <td>{lowerValues[4]}</td>
                 </tr>
                 <tr>
                   <td>6</td>
@@ -684,16 +644,7 @@ export default function TestSection2() {
                     O <sub>S12</sub>- O <sub>S13</sub>
                   </td>
                   <td>Min 10ms</td>
-                  <td>
-                    <input
-                      type="text"
-                      name=""
-                      id=""
-                      value={lowerValues[5]}
-                      disabled
-                      className="cms-input"
-                    />
-                  </td>
+                  <td>{lowerValues[5]}</td>
                 </tr>
               </tbody>
             </table>
@@ -714,9 +665,7 @@ export default function TestSection2() {
                     O <sub>MD</sub>- C <sub>S14</sub>
                   </td>
                   <td>620 to 775 ms</td>
-                  <td>
-                    <input type="text" name="" id="" value={raiseValues[0]} disabled className="cms-input"/>
-                  </td>
+                  <td>{raiseValues[0]}</td>
                 </tr>
                 <tr>
                   <td>2</td>
@@ -724,9 +673,7 @@ export default function TestSection2() {
                     O <sub>MD</sub>- C <sub>S13</sub>
                   </td>
                   <td>656 to 853 ms</td>
-                  <td>
-                    <input type="text" name="" id="" value={raiseValues[1]} disabled className="cms-input"/>
-                  </td>
+                  <td>{raiseValues[1]}</td>
                 </tr>
                 <tr>
                   <td>3</td>
@@ -734,9 +681,7 @@ export default function TestSection2() {
                     O <sub>MD</sub>- C <sub>RLS</sub>(Control)
                   </td>
                   <td>4.5 to 5.0 sec</td>
-                  <td>
-                    <input type="text" name="" id="" value={raiseValues[2]} disabled className="cms-input"/>
-                  </td>
+                  <td>{raiseValues[2]}</td>
                 </tr>
                 <tr>
                   <td>4</td>
@@ -744,9 +689,7 @@ export default function TestSection2() {
                     O <sub>MD</sub>- C <sub>S14</sub>
                   </td>
                   <td>5.1 to 5.3 sec</td>
-                  <td>
-                    <input type="text" name="" id="" value={raiseValues[3]} disabled className="cms-input"/>
-                  </td>
+                  <td>{raiseValues[3]}</td>
                 </tr>
                 <tr>
                   <td>5</td>
@@ -754,9 +697,7 @@ export default function TestSection2() {
                     C <sub>S14</sub>- C <sub>S13</sub>
                   </td>
                   <td>36 to 75 ms</td>
-                  <td>
-                    <input type="text" name="" id="" value={raiseValues[4]} disabled className="cms-input"/>
-                  </td>
+                  <td>{raiseValues[4]}</td>
                 </tr>
                 <tr>
                   <td>6</td>
@@ -764,9 +705,7 @@ export default function TestSection2() {
                     O <sub>S14</sub>- O <sub>S13</sub>
                   </td>
                   <td>Min 10ms</td>
-                  <td>
-                    <input type="text" name="" id="" value={raiseValues[5]} disabled className="cms-input"/>
-                  </td>
+                  <td>{raiseValues[5]}</td>
                 </tr>
               </tbody>
             </table>
