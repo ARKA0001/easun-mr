@@ -92,7 +92,7 @@ export default function TestSection1() {
       }
       const result = await res.json();
       console.log("Form Id from response", result);
-      setFormId(result);
+      setFormId(result.data);
 
       if (takeScreenshort("testSection1", result)) {
         handleTestDataMove();
