@@ -22,8 +22,13 @@ body {
   margin: 2rem;
   padding: 1rem 0;
   border-radius: 15px;
-}
+  width: 100%;
 
+}
+.form-main-group{
+  display: flex;
+  flex-direction: row;
+}
 .form-group .form-row {
   padding: 2rem 0 0 0;
 }
@@ -548,8 +553,7 @@ button {
   /* flex-wrap: wrap; */
 }
 .cms-table {
-  width: 750px !important;
-  table-layout: auto !important;
+  width: 700px !important;
 }
 /* Basic Table Styling */
 table.lower-check-table,
@@ -574,10 +578,6 @@ table.raise-check-table {
   padding: 12px; /* Padding inside cells */
   border: 1px solid #ddd; /* Light gray border */
 
-}
-
-.cms-input{
-  width: 50% !important;
 }
 
 /* Alternate Row Colors */

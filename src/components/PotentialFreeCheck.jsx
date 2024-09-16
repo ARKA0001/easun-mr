@@ -35,7 +35,7 @@ export default function PotentialFreeCheck() {
         await writableStream.write(blob);
         await writableStream.close();
         console.log("Image saved successfully");
-        return true;
+        downloadReport();
       } catch (error) {
         console.error("Save operation was cancelled or failed:", error);
       }
@@ -54,7 +54,36 @@ export default function PotentialFreeCheck() {
     }));
     console.log(checkBoxData);
   };
+  const downloadReport = async () => {
+    setLoading(true);
+    console.log("Download Report is pressed");
+    try {
+      const res = await fetch("http://localhost:8080/device/runTest", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      const result = await res.json();
+      // const result = "IN PROGRESS";
+      console.log(result.data);
+      setLoading(false);
+      if (result.data != "IN PROGRESS") {
+        setResponseMessage(result);
+      } else {
+        setActionMessage("IN PROGRESS");
+        setActionModal(true);
+      }
+    } catch (error) {
+      throw new Error(`HTTP error! status:`, error);
+    } finally {
+      console.log("Download Process completed");
+    }
+  };
   return (
     <div className="check-box-check form-section">
       <h4>
@@ -577,7 +606,7 @@ export default function PotentialFreeCheck() {
         className="action-button"
         onClick={() => takeScreenshort("potentialFreeCheck", null)}
       >
-        Save Data
+        Download Report
       </button>
     </div>
   );

@@ -4,18 +4,17 @@ import React from "react";
 import { FiLogOut } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 import { IoMenu } from "react-icons/io5";
+import Cookies from "js-cookie";
 
 export default function FormNavbar() {
   const router = useRouter();
 
   const handleLogOut = async () => {
     console.log("Log out is pressed");
-    const response = await fetch("/api/easun/Login");
-    const result = await response.json();
-    if (result.message === "OK") {
-      console.log("Logged out");
-      router.push("/auth/Login");
-    }
+    Cookies.remove("easun-mr-user");
+
+    console.log("Logged out");
+    router.push("/auth/Login");
   };
 
   return (

@@ -580,7 +580,7 @@ export default function TestSection2() {
 
         <div className="cam-table">
           <div>
-            <h5>Lower Check through Oscilloscope</h5>
+            <h2>Lower Check through Oscilloscope</h2>
             <table className="lower-check-table cms-table">
               <thead>
                 <th>Sl No</th>
@@ -643,7 +643,7 @@ export default function TestSection2() {
             </table>
           </div>
           <div>
-            <h5>Raise Check through Oscilloscope</h5>
+            <h2>Raise Check through Oscilloscope</h2>
             <table className="raise-check-table cms-table">
               <thead>
                 <th>Sl No</th>

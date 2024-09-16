@@ -96,8 +96,6 @@ export default function Page() {
         return <Section8 />;
       case 10:
         return <DownloadReport />;
-      case 11:
-        return <PotentialFreeCheck />;
       default:
         return null;
     }
