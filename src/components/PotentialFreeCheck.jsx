@@ -7,12 +7,13 @@ export default function PotentialFreeCheck() {
   const [checkBoxData, setCheckBoxData] = useRecoilState(
     potentialFreeCheckStore
   );
+  const [loading, setLoading] = useState(false);
   const takeScreenshort = async (sectionId, testId) => {
     console.log(sectionId + "started screenshort processing");
     const section = document.getElementById(sectionId);
     const canvas = await html2canvas(section);
     const imgData = canvas.toDataURL("image/png");
-    const [loading, setLoading] = useState(false);
+
 
     // Convert the base64 image data to a blob
     const blob = await (await fetch(imgData)).blob();

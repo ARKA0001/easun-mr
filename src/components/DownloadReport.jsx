@@ -9,13 +9,13 @@ export default function DownloadReport() {
   const [actionModal, setActionModal] = useRecoilState(actionModalStore);
   const [actionMessage, setActionMessage] = useRecoilState(actionMessageStore);
 
-
-
   return (
     <div className="form-section data-section dowload-section">
       {responseMessage && (
         <div className="success-container">{responseMessage}</div>
       )}
+
+      <PotentialFreeCheck />
 
       {loading && (
         <div className="progress-container">
@@ -25,8 +25,6 @@ export default function DownloadReport() {
           <div className="progress-bar"></div>
         </div>
       )}
-
-      <PotentialFreeCheck />
       {/* <button className="download-report" onClick={downloadReport}>
         Download Report
       </button> */}
