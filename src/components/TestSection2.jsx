@@ -1,7 +1,7 @@
 import React from "react";
 import {
   testDataSection1,
-  testId,
+  testIdStore,
   savedSection,
   tapPositionStore,
   directionStore,
@@ -39,7 +39,7 @@ export default function TestSection2() {
   const [startActive, setStartActive] = useRecoilState(startActiveStore);
   const [currentActiveSection, setCurrentActiveSection] =
     useRecoilState(activeSection);
-  const [tesIdResponse, setTestIdResponse] = useRecoilState(testId);
+    const [testId, setTestId] = useRecoilState(testIdStore)
   const [checks, setChecks] = useState([]);
   const [savedSectionCount, setSavedSectionCount] =
     useRecoilState(savedSection);
