@@ -7,6 +7,7 @@ import {
   savedSection,
   testDataSection1,
   testId,
+  testIdStore,
 } from "@/store/Section";
 import { useForm, setValue } from "react-hook-form";
 import "./style/ComponentStyles.css";
@@ -22,7 +23,7 @@ export default function TestSection1() {
   const [savedSectionCount, setSavedSectionCount] =
     useRecoilState(savedSection);
 
-  const [formId, setFormId] = useRecoilState(testId);
+  const [formId, setFormId] = useRecoilState(testIdStore);
 
   const handleTestDataMove = () => {
     console.log("Section is going to be moved from 0 to 1");

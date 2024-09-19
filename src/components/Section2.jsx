@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { activeSection, savedSection } from "@/store/Section";
+import { activeSection, savedSection, testIdStore } from "@/store/Section";
 import { useForm, useWatch } from "react-hook-form";
 import html2canvas from "html2canvas";
 import {
@@ -40,6 +40,9 @@ export default function Section2() {
   const [bottomSideOptions, setBottomSideOptions] = useRecoilState(
     bottomSideOptionsStore
   );
+
+
+  const [testId, setTestId] = useRecoilState(testIdStore)
 
   const handleFrontSideOptions = (event) => {
     const { value, checked } = event.target;

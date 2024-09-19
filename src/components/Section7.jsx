@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { activeSection, savedSection, testId } from "@/store/Section";
+import { activeSection, savedSection, testIdStore } from "@/store/Section";
 import { useForm, useWatch } from "react-hook-form";
 import html2canvas from "html2canvas";
 import {
@@ -24,7 +24,7 @@ export default function Section7() {
   const [section7FormData, setSection7FormData] =
     useRecoilState(Section7DataStore);
 
-  const [testIdResponse, setTestIdResponse] = useRecoilState(testId);
+    const [testId, setTestId] = useRecoilState(testIdStore)
 
   const { register, handleSubmit, setValue, control } = useForm();
   const watchedFields = useWatch({ control });

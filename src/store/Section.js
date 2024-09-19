@@ -10,8 +10,8 @@ export const testDataSection1 = atom({
   default: null,
 });
 
-export const testId = atom({
-  key: "testId",
+export const testIdStore = atom({
+  key: "testIdStore",
   default: null,
 });
 

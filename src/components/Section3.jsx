@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import { useRecoilState } from "recoil";
-import { activeSection, savedSection } from "@/store/Section";
+import { activeSection, savedSection, testIdStore } from "@/store/Section";
 import { useForm, useWatch } from "react-hook-form";
 import html2canvas from "html2canvas";
 import { Section3DataStore } from "@/store/FormData";
@@ -21,6 +21,8 @@ export default function Section3() {
     useRecoilState(Section3DataStore);
   const { register, handleSubmit, setValue, control } = useForm();
   const watchedFields = useWatch({ control });
+
+  const [testId, setTestId] = useRecoilState(testIdStore)
 
   const onSubmit = async (data) => {
     console.log("This is section 3 data");
