@@ -149,19 +149,17 @@ export default function Page() {
   const messageAction = (value) => {
     console.log(value);
     setInfoModal(false);
-    if (value == "SKIP_HC") {
+    setInfo(null);
+    if (value === "SKIP_HC") {
       setInfo("DONE_HC");
       setInfoModal(true);
-    }
-    if (value == "SKIP_IL") {
+    } else if (value === "SKIP_IL") {
       setInfo("DONE_IL");
       setInfoModal(true);
-    }
-    if (value == "SKIP_PR") {
+    } else if (value === "SKIP_PR") {
       setInfo("DONE_PR");
       setInfoModal(false);
-    }
-    if (value === "DONE") {
+    } else if (value === "DONE") {
       // handleSectionMove();
       setManualButtonState(false);
       setInfo(null);
