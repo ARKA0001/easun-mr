@@ -20,6 +20,11 @@ export const savedSection = atom({
   default: 0,
 });
 
+export const responseMessageStore = atom({
+  key: "responseMessageStore",
+  default: "",
+});
+
 // Modals
 
 export const errorModalStore = atom({

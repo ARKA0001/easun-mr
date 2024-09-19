@@ -1,10 +1,10 @@
-import { actionModalStore, actionMessageStore } from "@/store/Section";
+import { actionModalStore, actionMessageStore, responseMessageStore } from "@/store/Section";
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import PotentialFreeCheck from "./PotentialFreeCheck";
 
 export default function DownloadReport() {
-  const [responseMessage, setResponseMessage] = useState();
+  const [responseMessage, setResponseMessage] = useRecoilState(responseMessageStore);
   const [loading, setLoading] = useState(false);
   const [actionModal, setActionModal] = useRecoilState(actionModalStore);
   const [actionMessage, setActionMessage] = useRecoilState(actionMessageStore);

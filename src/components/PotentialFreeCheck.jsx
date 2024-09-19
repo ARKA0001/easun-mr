@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { potentialFreeCheckStore } from "@/store/FormData";
 import html2canvas from "html2canvas";
+import { responseMessageStore } from "@/store/Section";
 
 export default function PotentialFreeCheck() {
   const [checkBoxData, setCheckBoxData] = useRecoilState(
     potentialFreeCheckStore
   );
+
+
+
+  const [responseMessage, setResponseMessage] = useRecoilState(responseMessageStore)
   const [loading, setLoading] = useState(false);
   const takeScreenshort = async (sectionId, testId) => {
     console.log(sectionId + "started screenshort processing");
