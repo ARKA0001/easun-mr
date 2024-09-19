@@ -36,6 +36,9 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
     } else if (modalMessage === "DONE_HC") {
       setInfoMessage("DONE_PR");
       setModalText("Check Proximity.");
+    } else if (modalMessage === "DONE_PR") {
+      setInfoMessage("DONE_PR");
+      setModalText("Insert Interlocking");
     } else if (modalMessage === "DONE_IL" || modalMessage === "DONE") {
       setInfoMessage("DONE");
       setModalText(
