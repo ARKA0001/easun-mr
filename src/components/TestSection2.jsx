@@ -24,6 +24,7 @@ import {
   socketStore,
   manualButtonStateStore,
   transmissionStore,
+  startActiveStore,
 } from "@/store/Section";
 import { useRecoilState } from "recoil";
 import { useState, useEffect } from "react";
@@ -35,7 +36,7 @@ export default function TestSection2() {
   const [lowerValues, setLowerValues] = useState([]);
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
-  const [startActive, setStartActive] = useState(true);
+  const [startActive, setStartActive] = useRecoilState(startActiveStore);
   const [currentActiveSection, setCurrentActiveSection] =
     useRecoilState(activeSection);
   const [tesIdResponse, setTestIdResponse] = useRecoilState(testId);

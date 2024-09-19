@@ -114,3 +114,10 @@ export const manualButtonStateStore = atom({
   key: "manualButtonStateStore",
   default: false,
 });
+
+
+export const startActiveStore = atom({
+  key: "startActiveStore",
+  default: false,
+});
+
