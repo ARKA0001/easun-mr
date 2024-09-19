@@ -9,9 +9,8 @@ export default function PotentialFreeCheck() {
     potentialFreeCheckStore
   );
 
-
-
-  const [responseMessage, setResponseMessage] = useRecoilState(responseMessageStore)
+  const [responseMessage, setResponseMessage] =
+    useRecoilState(responseMessageStore);
   const [loading, setLoading] = useState(false);
   const takeScreenshort = async (sectionId, testId) => {
     console.log(sectionId + "started screenshort processing");
@@ -21,7 +20,7 @@ export default function PotentialFreeCheck() {
     const blob = await (await fetch(imgData)).blob();
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = `${testId ? testId : 'default'}-potentialFreeCheck.png`;
+    link.download = `${testId ? testId : "default"}-potentialFreeCheck.png`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -592,7 +591,7 @@ export default function PotentialFreeCheck() {
         className="action-button"
         onClick={() => takeScreenshort("potentialFreeCheck", null)}
       >
-        Save
+        Download Report
       </button>
     </div>
   );

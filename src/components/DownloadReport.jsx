@@ -11,11 +11,13 @@ export default function DownloadReport() {
 
   return (
     <div className="form-section data-section dowload-section">
+     
+
+      <PotentialFreeCheck />
+
       {responseMessage && (
         <div className="success-container">{responseMessage}</div>
       )}
-
-      <PotentialFreeCheck />
 
       {loading && (
         <div className="progress-container">
@@ -25,9 +27,7 @@ export default function DownloadReport() {
           <div className="progress-bar"></div>
         </div>
       )}
-      {/* <button className="download-report" onClick={downloadReport}>
-        Download Report
-      </button> */}
+      
     </div>
   );
 }
