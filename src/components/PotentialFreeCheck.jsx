@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { potentialFreeCheckStore } from "@/store/FormData";
 import html2canvas from "html2canvas";
@@ -12,6 +12,7 @@ export default function PotentialFreeCheck() {
     const section = document.getElementById(sectionId);
     const canvas = await html2canvas(section);
     const imgData = canvas.toDataURL("image/png");
+    const [loading, setLoading] = useState(false);
 
     // Convert the base64 image data to a blob
     const blob = await (await fetch(imgData)).blob();
