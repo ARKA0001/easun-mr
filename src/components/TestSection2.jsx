@@ -621,7 +621,7 @@ export default function TestSection2() {
                 <tr>
                   <td>4</td>
                   <td>
-                    O <sub>MD</sub>- C <sub>s12</sub>
+                    O <sub>MD</sub>- O <sub>s12</sub>
                   </td>
                   <td>5.1 to 5.3 sec</td>
                   <td>{lowerValues[3]}</td>
@@ -682,7 +682,7 @@ export default function TestSection2() {
                 <tr>
                   <td>4</td>
                   <td>
-                    O <sub>MD</sub>- C <sub>S14</sub>
+                    O <sub>MD</sub>- O <sub>S14</sub>
                   </td>
                   <td>5.1 to 5.3 sec</td>
                   <td>{raiseValues[3]}</td>

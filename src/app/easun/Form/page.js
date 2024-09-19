@@ -157,7 +157,7 @@ export default function Page() {
       setInfo("DONE_IL");
       setInfoModal(true);
     } else if (value === "SKIP_PR") {
-      setInfo("DONE_PR");
+      setInfo("DONE");
       setInfoModal(false);
     } else if (value === "DONE") {
       // handleSectionMove();
