@@ -148,7 +148,7 @@ export default function Page() {
 
   const messageAction = (value) => {
     console.log(value);
-
+    setInfoModal(false);
     if (value == "SKIP_HC") {
       setInfo("DONE_HC");
       setInfoModal(true);
