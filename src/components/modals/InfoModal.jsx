@@ -34,7 +34,7 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
       setInfoMessage("DONE_HC");
       setModalText("Error Proximity.");
     } else if (modalMessage === "DONE_HC") {
-      setInfoMessage("DONE_PR");
+      setInfoMessage("DONE_HC");
       setModalText("Check Proximity.");
     } else if (modalMessage === "DONE_PR") {
       setInfoMessage("DONE_PR");
