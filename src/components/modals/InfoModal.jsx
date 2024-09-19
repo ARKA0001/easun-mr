@@ -98,13 +98,13 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
             {infoMessage === "DONE_PR" && (
               <>
                 <button
-                  onClick={() => messageAction("SKIP_PR")}
+                  onClick={() => messageAction("SKIP_IL")}
                   className="resume-button"
                 >
                   Skip
                 </button>
                 <button
-                  onClick={() => messageAction("START_PR")}
+                  onClick={() => messageAction("START_IL")}
                   className="resume-button"
                 >
                   Proceed Next
