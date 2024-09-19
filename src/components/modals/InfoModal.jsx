@@ -28,18 +28,15 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
       setInfoMessage("DONE_NV");
       setModalText("Error Hand Cranck.");
     } else if (modalMessage === "ERROR_IL") {
-      setInfoMessage("DONE_HC");
+      setInfoMessage("DONE_PR");
       setModalText("Error Interlocking.");
     } else if (modalMessage === "ERROR_PR") {
-      setInfoMessage("DONE_IL");
+      setInfoMessage("DONE_HC");
       setModalText("Error Proximity.");
     } else if (modalMessage === "DONE_HC") {
-      setInfoMessage("DONE_IL");
-      setModalText("Check InterLocking.");
-    } else if (modalMessage === "DONE_IL") {
       setInfoMessage("DONE_PR");
       setModalText("Check Proximity.");
-    } else if (modalMessage === "DONE_PR") {
+    } else if (modalMessage === "DONE_IL" || modalMessage === "DONE") {
       setInfoMessage("DONE");
       setModalText(
         "Testing completed. Please Download report from report section"
@@ -85,13 +82,13 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
             {infoMessage === "DONE_HC" && (
               <>
                 <button
-                  onClick={() => messageAction("SKIP_IL")}
+                  onClick={() => messageAction("SKIP_PR")}
                   className="resume-button"
                 >
                   Skip
                 </button>
                 <button
-                  onClick={() => messageAction("START_IL")}
+                  onClick={() => messageAction("START_PR")}
                   className="resume-button"
                 >
                   Proceed Next

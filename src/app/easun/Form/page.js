@@ -153,10 +153,10 @@ export default function Page() {
     if (value === "SKIP_HC") {
       setInfo("DONE_HC");
       setInfoModal(true);
-    } else if (value === "SKIP_IL") {
-      setInfo("DONE_IL");
-      setInfoModal(true);
     } else if (value === "SKIP_PR") {
+      setInfo("DONE_PR");
+      setInfoModal(true);
+    } else if (value === "SKIP_IL") {
       setInfo("DONE");
       setInfoModal(false);
     } else if (value === "DONE") {
