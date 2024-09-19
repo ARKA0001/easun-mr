@@ -11,6 +11,7 @@ export default function PotentialFreeCheck() {
 
   const [responseMessage, setResponseMessage] =
     useRecoilState(responseMessageStore);
+    const [testId, setTestId] = useRecoilState(testIdStore)
   const [loading, setLoading] = useState(false);
   const takeScreenshort = async (sectionId, testId) => {
     console.log(sectionId + "started screenshort processing");
