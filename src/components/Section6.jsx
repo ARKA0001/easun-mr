@@ -105,7 +105,6 @@ export default function Section6() {
                 </label>
               </td>
             </tr>
-
             <tr className="section-title">
               <td className="user-input user-toggle">HV Test</td>
             </tr>
@@ -149,7 +148,6 @@ export default function Section6() {
                 </label>
               </td>
             </tr>
-
             <tr className="section-title">
               <td className="user-toggle user-input">Revolution</td>
               <td className="user-toggle user-input"></td>
@@ -270,7 +268,6 @@ export default function Section6() {
             <tr className="section-title">
               <td className="user-toggle user-input">Pulse</td>
             </tr>
-
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-11" className="field-label">
@@ -334,7 +331,6 @@ export default function Section6() {
             <tr className="section-title">
               <td className="user-toggle user-input">Path sequence</td>
             </tr>
-
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-12" className="field-label">
@@ -358,7 +354,6 @@ export default function Section6() {
             <tr className="section-title">
               <td className="user-toggle user-input">Counter Pulse</td>
             </tr>
-
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-13" className="field-label">
@@ -383,7 +378,6 @@ export default function Section6() {
             <tr className="section-title">
               <td className="user-toggle user-input">Electrical Limit lower</td>
             </tr>
-
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-14" className="field-label">
@@ -408,7 +402,6 @@ export default function Section6() {
             <tr className="section-title">
               <td className="user-toggle user-input">Mechanical End Limit</td>
             </tr>
-
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-15" className="field-label">
@@ -453,7 +446,6 @@ export default function Section6() {
             <tr className="section-title">
               <td className="user-toggle user-input">Electrical Limit Raise</td>
             </tr>
-
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-17" className="field-label">
@@ -478,7 +470,6 @@ export default function Section6() {
             <tr className="section-title">
               <td className="user-toggle user-input">TBs Check</td>
             </tr>
-
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-18" className="field-label">
@@ -524,7 +515,6 @@ export default function Section6() {
             <tr className="section-title">
               <td className="user-toggle user-input">Door Switch</td>
             </tr>
-
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-21" className="field-label">
@@ -549,7 +539,6 @@ export default function Section6() {
             <tr className="section-title">
               <td className="user-toggle user-input">Raise</td>
             </tr>
-
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-21" className="field-label">
