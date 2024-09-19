@@ -38,7 +38,7 @@ export default function Section7() {
     const blob = await (await fetch(imgData)).blob();
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = `${testId}-section7-form.png`;
+    link.download = `${testId ? testId : 'default'}-section7-form.png`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
