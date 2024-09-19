@@ -43,6 +43,7 @@ export default function Section5() {
     URL.revokeObjectURL(link.href);
 
     console.log("Image saved successfully");
+    handleSectionMove()
   };
 
   useEffect(() => {

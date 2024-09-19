@@ -22,6 +22,11 @@ export default function Section8() {
   const { register, handleSubmit, setValue, control } = useForm();
   const watchedFields = useWatch({ control });
 
+  const handleSectionMove = () => {
+    setCurrentActiveSection(10);
+    setSavedSectionCount(9);
+  };
+
   const onSubmit = async (data) => {
     console.log("This is section 8 data");
     console.log(section8FormData);
@@ -31,13 +36,14 @@ export default function Section8() {
     const blob = await (await fetch(imgData)).blob();
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = `${testId ? testId : 'default'}-section8-form.png`;
+    link.download = `${testId ? testId : "default"}-section8-form.png`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(link.href);
 
     console.log("Image saved successfully");
+    handleSectionMove();
   };
 
   useEffect(() => {

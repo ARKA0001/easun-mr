@@ -45,6 +45,7 @@ export default function Section7() {
     URL.revokeObjectURL(link.href);
 
     console.log("Image saved successfully");
+    handleSectionMove()
   };
   useEffect(() => {
     if (section7FormData && Object.keys(section7FormData).length > 0) {
