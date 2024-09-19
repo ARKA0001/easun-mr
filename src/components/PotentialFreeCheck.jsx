@@ -608,7 +608,7 @@ export default function PotentialFreeCheck() {
         className="action-button"
         onClick={() => takeScreenshort("potentialFreeCheck", null)}
       >
-        Download Report
+        Save
       </button>
     </div>
   );
