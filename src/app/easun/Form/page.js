@@ -158,7 +158,7 @@ export default function Page() {
       setInfoModal(true);
     } else if (value === "SKIP_IL") {
       setInfo("DONE");
-      setInfoModal(false);
+      setInfoModal(true);
     } else if (value === "DONE") {
       // handleSectionMove();
       setManualButtonState(false);
