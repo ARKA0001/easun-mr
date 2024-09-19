@@ -259,7 +259,7 @@ export default function TestSection2() {
                 >
                   Start
                 </button>
-                <button
+                {/* <button
                   className="pause"
                   // disabled={startActive}
                   disabled={true}
@@ -273,7 +273,7 @@ export default function TestSection2() {
                   onClick={restartTest}
                 >
                   Restart
-                </button>
+                </button> */}
               </div>
             )}
             {transmission === "Manual" && (

@@ -118,6 +118,6 @@ export const manualButtonStateStore = atom({
 
 export const startActiveStore = atom({
   key: "startActiveStore",
-  default: false,
+  default: true,
 });
 

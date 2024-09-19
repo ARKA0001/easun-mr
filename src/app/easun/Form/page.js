@@ -150,11 +150,11 @@ export default function Page() {
     console.log(value);
 
     if (value == "SKIP_HC") {
-      setInfo("START_IL");
+      setInfo("DONE_HC");
       setInfoModal(true);
     }
     if (value == "SKIP_IL") {
-      setInfo("START_PR");
+      setInfo("DONE_IL");
       setInfoModal(true);
     }
     if (value == "SKIP_PR") {

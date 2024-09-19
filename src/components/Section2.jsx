@@ -115,34 +115,15 @@ export default function Section2() {
     const section = document.getElementById("section2-form");
     const canvas = await html2canvas(section);
     const imgData = canvas.toDataURL("image/png");
-
-    // Convert the base64 image data to a blob
     const blob = await (await fetch(imgData)).blob();
-
-    // Use the File System Access API to save the file
-    if ("showSaveFilePicker" in window) {
-      try {
-        const fileHandle = await window.showSaveFilePicker({
-          suggestedName: testId + "" + "section2-form.png",
-          types: [
-            {
-              description: "PNG Image",
-              accept: { "image/png": [".png"] },
-            },
-          ],
-        });
-
-        const writableStream = await fileHandle.createWritable();
-        await writableStream.write(blob);
-        await writableStream.close();
-        console.log("Image saved successfully");
-        handleSectionMove();
-      } catch (error) {
-        console.error("Save operation was cancelled or failed:", error);
-      }
-    } else {
-      alert("Your browser does not support the File System Access API.");
-    }
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `${testId}-section2-form.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(link.href);
+    console.log("Image saved successfully");
     handleSectionMove();
   };
 
