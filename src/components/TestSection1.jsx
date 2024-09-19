@@ -23,7 +23,7 @@ export default function TestSection1() {
   const [savedSectionCount, setSavedSectionCount] =
     useRecoilState(savedSection);
 
-  const [formId, setFormId] = useRecoilState(testIdStore);
+    const [testId, setTestId] = useRecoilState(testIdStore)
 
   const handleTestDataMove = () => {
     console.log("Section is going to be moved from 0 to 1");
@@ -75,7 +75,7 @@ export default function TestSection1() {
       }
       const result = await res.json();
       console.log("Form Id from response", result.data);
-      setFormId(result.data);
+      setTestId(result.data);
 
       if (takeScreenshort("testSection1", result.data)) {
         handleTestDataMove();
