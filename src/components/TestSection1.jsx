@@ -33,14 +33,14 @@ export default function TestSection1() {
 
   const { register, handleSubmit } = useForm();
 
-  const takeScreenshort = async (sectionId, testId) => {
+  const takeScreenshort = async (sectionId, testIdInfo) => {
     const section = document.getElementById(sectionId);
     const canvas = await html2canvas(section);
     const imgData = canvas.toDataURL("image/png");
     const blob = await (await fetch(imgData)).blob();
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = `${testId ? testId : 'default'}-testSection1.png`;
+    link.download = `${testIdInfo}-testSection1.png`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
