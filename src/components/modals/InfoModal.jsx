@@ -35,10 +35,10 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
       setModalText("Error Proximity.");
     } else if (modalMessage === "DONE_HC") {
       setInfoMessage("DONE_IL");
-      setModalText("Insert InterLocking.");
+      setModalText("Check InterLocking.");
     } else if (modalMessage === "DONE_IL") {
       setInfoMessage("DONE_PR");
-      setModalText("Insert Proximity.");
+      setModalText("Check Proximity.");
     } else if (modalMessage === "DONE_PR") {
       setInfoMessage("DONE");
       setModalText(
