@@ -20,9 +20,8 @@ export default function Section4() {
   const [section4FormData, setSection4FormData] =
     useRecoilState(Section4DataStore);
 
-    const [testId, setTestId] = useRecoilState(testIdStore)
 
-  const [testIdResponse, setTestIdResponse] = useRecoilState(testId);
+    const [testId, setTestId] = useRecoilState(testIdStore)
 
   const { register, handleSubmit, setValue, control } = useForm();
 
