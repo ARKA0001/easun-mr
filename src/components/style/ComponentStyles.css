@@ -23,7 +23,9 @@ body {
   border-radius: 15px;
   width: 100%;
 }
-
+.download-button{
+  margin-top:10rem !important;
+}
 #section7-form .form-group {
   background-color: var(--secondary-white);
   margin: 2rem;

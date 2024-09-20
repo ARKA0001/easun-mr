@@ -593,7 +593,7 @@ export default function PotentialFreeCheck() {
       </table>
       <button
         type="submit"
-        className="action-button"
+        className="action-button download-button"
         onClick={() => takeScreenshort("potentialFreeCheck")}
       >
         Download Report
