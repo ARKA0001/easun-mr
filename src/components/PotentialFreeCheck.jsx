@@ -54,7 +54,7 @@ export default function PotentialFreeCheck() {
           "Content-Type": "application/json",
         },
       });
-
+      console.log("This is res",res);
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
