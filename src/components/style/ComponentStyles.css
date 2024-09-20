@@ -23,9 +23,16 @@ body {
   padding: 1rem 0;
   border-radius: 15px;
   width: 100%;
-
 }
-.form-main-group{
+
+#section7-form .form-group {
+  background-color: var(--secondary-white);
+  margin: 2rem;
+  padding: 1rem 0;
+  border-radius: 15px;
+  width: auto;
+}
+.form-main-group {
   display: flex;
   flex-direction: row;
 }
@@ -173,6 +180,10 @@ input[type="checkbox"] {
   font-weight: bold;
 }
 
+.table-row-info .section-title {
+  padding: 2rem 0 0 0;
+}
+
 .toggle-table {
   table-layout: auto;
   width: 100%;
@@ -180,6 +191,16 @@ input[type="checkbox"] {
 }
 .toggle-table tr {
   width: 100%;
+}
+.table-row-info {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+}
+
+.table-row-info tr {
+  display: flex;
+  justify-content: space-between;
 }
 .toggle-table tr td {
   padding: 8px;
@@ -577,7 +598,6 @@ table.raise-check-table {
 .cms-table td {
   padding: 12px; /* Padding inside cells */
   border: 1px solid #ddd; /* Light gray border */
-
 }
 
 /* Alternate Row Colors */
@@ -649,5 +669,4 @@ table.checkbox-table {
 
 .tap-no {
   display: flex;
-  
 }
