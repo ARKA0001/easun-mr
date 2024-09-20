@@ -3,11 +3,7 @@ import { useRecoilState } from "recoil";
 import { activeSection, savedSection, testIdStore } from "@/store/Section";
 import { useForm, useWatch } from "react-hook-form";
 import html2canvas from "html2canvas";
-import {
-  Section1DataStore,
-  Section2DataStore,
-  Section7DataStore,
-} from "@/store/FormData";
+import { Section7DataStore } from "@/store/FormData";
 
 export default function Section7() {
   const [currentActiveSection, setCurrentActiveSection] =
@@ -24,7 +20,7 @@ export default function Section7() {
   const [section7FormData, setSection7FormData] =
     useRecoilState(Section7DataStore);
 
-    const [testId, setTestId] = useRecoilState(testIdStore)
+  const [testId, setTestId] = useRecoilState(testIdStore);
 
   const { register, handleSubmit, setValue, control } = useForm();
   const watchedFields = useWatch({ control });
@@ -32,20 +28,42 @@ export default function Section7() {
   const onSubmit = async (data) => {
     console.log("This is section 1 data");
     console.log(section7FormData);
-    const section = document.getElementById("section7-form");
+    const section = document.getElementById("section7-form-1");
     const canvas = await html2canvas(section);
     const imgData = canvas.toDataURL("image/png");
     const blob = await (await fetch(imgData)).blob();
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = `${testId ? testId : 'default'}-section7-form.png`;
+    link.download = `${testId ? testId : "default"}-section7-form-1.png`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(link.href);
-
     console.log("Image saved successfully");
-    handleSectionMove()
+    takeSectionScreenshot("section7-form-2",true);
+    takeSectionScreenshot("section7-form-3",false);
+  };
+
+
+  const takeSectionScreenshot = async (fileName, hasNextSection) => {
+    console.log("This is section 7 data");
+    console.log(section5FormData);
+    const section = document.getElementById(fileName);
+    const canvas = await html2canvas(section);
+    const imgData = canvas.toDataURL("image/png");
+    const blob = await (await fetch(imgData)).blob();
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `${testId ? testId : "default"}-${fileName}.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(link.href);
+    console.log("Image saved successfully");
+
+    if (!hasNextSection) {
+      handleSectionMove();
+    }
   };
   useEffect(() => {
     if (section7FormData && Object.keys(section7FormData).length > 0) {
@@ -62,477 +80,490 @@ export default function Section7() {
   return (
     <div className="form-section" id="section7-form">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="section-title">
-          Raise Directions - CAM Sequence - Before End Tap
-        </div>
-        <div className="form-group">
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch
-              </label>
-              <p>S14 (3-3.5)</p>
+        <div className="form-section-info" id="section7-form-1">
+          <div className="section-title">
+            Raise Directions - CAM Sequence - Before End Tap
+          </div>
+          <div className="form-group">
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch
+                </label>
+                <p>S14 (3-3.5)</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Red DIV Status
+                </label>
+                <p>Close-C-NC</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Sequence Status
+                </label>
+                <p>Open-C-NC</p>
+              </div>
             </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Red DIV Status
-              </label>
-              <p>Close-C-NC</p>
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="field1" className="field-label">
+                  Activated Division
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  id="field1"
+                  className="user-value"
+                  {...register("fieldG1")}
+                />
+              </div>
             </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Sequence Status
-              </label>
-              <p>Open-C-NC</p>
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch
+                </label>
+                <p>S13 (3-5.4)</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Red DIV Status
+                </label>
+                <p>Close-C-NC</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Sequence Status
+                </label>
+                <p>Open-C-NC</p>
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="field1" className="field-label">
+                  Activated Division
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  id="field1"
+                  className="user-value"
+                  {...register("fieldG2")}
+                />
+              </div>
+            </div>
+            <div className="form-info  form-row">
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Acceptance Criteria
+                </label>
+                <input
+                  type="text"
+                  defaultValue={
+                    "Difference between S14 and S13 should be more than 0.25Div"
+                  }
+                  {...register("fieldG3")}
+                />
+              </div>
             </div>
           </div>
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="field1" className="field-label">
-                Activated Division
-              </label>
-              <input
-                type="text"
-                name=""
-                id="field1"
-                className="user-value"
-                {...register("fieldG1")}
-              />
+          <div className="form-group">
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch
+                </label>
+                <p>S6-Control(28-30)</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Red DIV Status
+                </label>
+                <p>Close-C-NC</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Sequence Status
+                </label>
+                <p>Open-C-NC</p>
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="field1" className="field-label">
+                  Activated Division
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  id="field1"
+                  className="user-value"
+                  {...register("fieldG4")}
+                />
+              </div>
             </div>
           </div>
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch
-              </label>
-              <p>S13 (3-5.4)</p>
+          <div className="form-group">
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch
+                </label>
+                <p>S14 (31.5-32)</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Red DIV Status
+                </label>
+                <p>-</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  {" "}
+                  Switch Sequence Status
+                </label>
+                <p>Close-C-NC</p>
+              </div>
             </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Red DIV Status
-              </label>
-              <p>Close-C-NC</p>
-            </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Sequence Status
-              </label>
-              <p>Open-C-NC</p>
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="field1" className="field-label">
-                Activated Division
-              </label>
-              <input
-                type="text"
-                name=""
-                id="field1"
-                className="user-value"
-                {...register("fieldG2")}
-              />
-            </div>
-          </div>
-          <div className="form-info  form-row">
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Acceptance Criteria
-              </label>
-              <input
-                type="text"
-                defaultValue={"Difference between S14 and S13 should be more than 0.25Div"}
-                {...register("fieldG3")}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="form-group">
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch
-              </label>
-              <p>S6-Control(28-30)</p>
-            </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Red DIV Status
-              </label>
-              <p>Close-C-NC</p>
-            </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Sequence Status
-              </label>
-              <p>Open-C-NC</p>
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="field1" className="field-label">
-                Activated Division
-              </label>
-              <input type="text" name="" id="field1" className="user-value"  {...register("fieldG4")}/>
-             
-            </div>
-          </div>
-        </div>
-        <div className="form-group">
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch
-              </label>
-              <p>S14 (31.5-32)</p>
-            </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Red DIV Status
-              </label>
-              <p>-</p>
-            </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                {" "}
-                Switch Sequence Status
-              </label>
-              <p>Close-C-NC</p>
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="field1" className="field-label">
-                Activated Division
-              </label>
-              <input
-                type="text"
-                name=""
-                id="field1"
-                className="user-value"
-                {...register("fieldG5")}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="form-group">
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch
-              </label>
-              <p>S13 (31.5-32)</p>
-            </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Red DIV Status
-              </label>
-              <p>-</p>
-            </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Sequence Status
-              </label>
-              <p>Close-C-NC</p>
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="field1" className="field-label">
-                Activated Division
-              </label>
-              <input
-                type="text"
-                name=""
-                id="field1"
-                className="user-value"
-                {...register("fieldG6")}
-              />
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch
-              </label>
-              <p>S6 - Power (33-33.5)</p>
-            </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Red DIV Status
-              </label>
-              <p>Close-C-NC</p>
-            </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Sequence Status
-              </label>
-              <p>Open-C-NC</p>
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="field1" className="field-label">
-                Activated Division
-              </label>
-              <input
-                type="text"
-                name=""
-                id="field1"
-                className="user-value"
-                {...register("fieldG7")}
-              />
-            </div>
-          </div>
-          <div className="form-info form-row">
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Acceptance Criteria
-              </label>
-              <input
-                type="text"
-                defaultValue="Difference between S14 and S13 should be more than 0.25Div"
-                {...register("fieldG8")}
-              />
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="field1" className="field-label">
+                  Activated Division
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  id="field1"
+                  className="user-value"
+                  {...register("fieldG5")}
+                />
+              </div>
             </div>
           </div>
         </div>
-        <div className="section-title">
-          Lower Directions CAM Sequence - Before end tap (2 to 1)
+        <div className="form-section-info" id="section7-form-2">
+          <div className="form-group">
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch
+                </label>
+                <p>S13 (31.5-32)</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Red DIV Status
+                </label>
+                <p>-</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Sequence Status
+                </label>
+                <p>Close-C-NC</p>
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="field1" className="field-label">
+                  Activated Division
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  id="field1"
+                  className="user-value"
+                  {...register("fieldG6")}
+                />
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch
+                </label>
+                <p>S6 - Power (33-33.5)</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Red DIV Status
+                </label>
+                <p>Close-C-NC</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Sequence Status
+                </label>
+                <p>Open-C-NC</p>
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="field1" className="field-label">
+                  Activated Division
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  id="field1"
+                  className="user-value"
+                  {...register("fieldG7")}
+                />
+              </div>
+            </div>
+            <div className="form-info form-row">
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Acceptance Criteria
+                </label>
+                <input
+                  type="text"
+                  defaultValue="Difference between S14 and S13 should be more than 0.25Div"
+                  {...register("fieldG8")}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="section-title">
+            Lower Directions CAM Sequence - Before end tap (2 to 1)
+          </div>
+          <div className="form-group">
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch
+                </label>
+                <p>S12 (3-3.5)</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Red DIV Status
+                </label>
+                <p>Close-C-NC</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Sequence Status
+                </label>
+                <p>Open-C-NC</p>
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="field1" className="field-label">
+                  Activated Division
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  id="field1"
+                  className="user-value"
+                  {...register("fieldG9")}
+                />
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch
+                </label>
+                <p>S13 (3-5.4)</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Red DIV Status
+                </label>
+                <p>Close-C-NC</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Sequence Status
+                </label>
+                <p>Open-C-NC</p>
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="field1" className="field-label">
+                  Activated Division
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  id="field1"
+                  className="user-value"
+                  {...register("fieldG10")}
+                />
+              </div>
+            </div>
+            <div className="form-info form-row">
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Acceptance Criteria
+                </label>
+                <input
+                  type="text"
+                  defaultValue="Difference between S12 and S13 should be more than 0.25Div"
+                  {...register("fieldG11")}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="form-group">
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch
+                </label>
+                <p>S7-Control(28-30)</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Red DIV Status
+                </label>
+                <p>Close-C-NC</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Sequence Status
+                </label>
+                <p>Open-C-NC</p>
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="field1" className="field-label">
+                  Activated Division
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  id="field1"
+                  className="user-value"
+                  {...register("fieldG12")}
+                />
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="form-group">
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch
-              </label>
-              <p>S12 (3-3.5)</p>
+        <div className="form-section-info" id="section7-form-3">
+          <div className="form-group">
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch
+                </label>
+                <p>S12 (31.5-32)</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Red DIV Status
+                </label>
+                <p>-</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Sequence Status
+                </label>
+                <p>Close-C-NC</p>
+              </div>
             </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Red DIV Status
-              </label>
-              <p>Close-C-NC</p>
-            </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Sequence Status
-              </label>
-              <p>Open-C-NC</p>
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="field1" className="field-label">
-                Activated Division
-              </label>
-              <input
-                type="text"
-                name=""
-                id="field1"
-                className="user-value"
-                {...register("fieldG9")}
-              />
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch
-              </label>
-              <p>S13 (3-5.4)</p>
-            </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Red DIV Status
-              </label>
-              <p>Close-C-NC</p>
-            </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Sequence Status
-              </label>
-              <p>Open-C-NC</p>
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="field1" className="field-label">
+                  Activated Division
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  id="field1"
+                  className="user-value"
+                  {...register("fieldG13")}
+                />
+              </div>
             </div>
           </div>
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="field1" className="field-label">
-                Activated Division
-              </label>
-              <input
-                type="text"
-                name=""
-                id="field1"
-                className="user-value"
-                {...register("fieldG10")}
-              />
+          <div className="form-group">
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch
+                </label>
+                <p>S13</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Red DIV Status
+                </label>
+                <p>-</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Sequence Status
+                </label>
+                <p>Open-C-NC</p>
+              </div>
             </div>
-          </div>
-          <div className="form-info form-row">
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Acceptance Criteria
-              </label>
-              <input
-                type="text"
-                defaultValue="Difference between S12 and S13 should be more than 0.25Div"
-                {...register("fieldG11")}
-              />
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="field1" className="field-label">
+                  Activated Division
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  id="field1"
+                  className="user-value"
+                  {...register("fieldG14")}
+                />
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="form-group">
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch
-              </label>
-              <p>S7-Control(28-30)</p>
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch
+                </label>
+                <p>S7 Power (33-33.5)</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Red DIV Status
+                </label>
+                <p>Close-C-NC</p>
+              </div>
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Switch Sequence Status
+                </label>
+                <p>Open-C-NC</p>
+              </div>
             </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Red DIV Status
-              </label>
-              <p>Close-C-NC</p>
+            <div className="form-row">
+              <div className="user-input">
+                <label htmlFor="field1" className="field-label">
+                  Activated Division
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  id="field1"
+                  className="user-value"
+                  {...register("fieldG15")}
+                />
+              </div>
             </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Sequence Status
-              </label>
-              <p>Open-C-NC</p>
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="field1" className="field-label">
-                Activated Division
-              </label>
-              <input
-                type="text"
-                name=""
-                id="field1"
-                className="user-value"
-                {...register("fieldG12")}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="form-group">
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch
-              </label>
-              <p>S12 (31.5-32)</p>
-            </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Red DIV Status
-              </label>
-              <p>-</p>
-            </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Sequence Status
-              </label>
-              <p>Close-C-NC</p>
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="field1" className="field-label">
-                Activated Division
-              </label>
-              <input
-                type="text"
-                name=""
-                id="field1"
-                className="user-value"
-                {...register("fieldG13")}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="form-group">
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch
-              </label>
-              <p>S13</p>
-            </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Red DIV Status
-              </label>
-              <p>-</p>
-            </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Sequence Status
-              </label>
-              <p>Open-C-NC</p>
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="field1" className="field-label">
-                Activated Division
-              </label>
-              <input
-                type="text"
-                name=""
-                id="field1"
-                className="user-value"
-                {...register("fieldG14")}
-              />
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch
-              </label>
-              <p>S7 Power (33-33.5)</p>
-            </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Red DIV Status
-              </label>
-              <p>Close-C-NC</p>
-            </div>
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Switch Sequence Status
-              </label>
-              <p>Open-C-NC</p>
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="field1" className="field-label">
-                Activated Division
-              </label>
-              <input
-                type="text"
-                name=""
-                id="field1"
-                className="user-value"
-                {...register("fieldG15")}
-              />
-            </div>
-          </div>
-          <div className="form-info form-row">
-            <div className="user-input">
-              <label htmlFor="" className="field-label">
-                Acceptance Criteria
-              </label>
-              <input
-                type="text"
-                defaultValue="Difference between S13 and S17- Power should be more than 0.25Div"
-                {...register("fieldG16")}
-              />
+            <div className="form-info form-row">
+              <div className="user-input">
+                <label htmlFor="" className="field-label">
+                  Acceptance Criteria
+                </label>
+                <input
+                  type="text"
+                  defaultValue="Difference between S13 and S17- Power should be more than 0.25Div"
+                  {...register("fieldG16")}
+                />
+              </div>
             </div>
           </div>
         </div>
