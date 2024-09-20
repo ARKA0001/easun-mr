@@ -155,7 +155,6 @@ export default function Section6() {
                 </td>
               </tr>
             </div>
-
             <div className="table-row-info" id="section6-form-2">
               <tr>
                 <td className="user-input user-toggle">
@@ -227,7 +226,6 @@ export default function Section6() {
                 </td>
               </tr>
             </div>
-
             <div className="table-row-info" id="section6-form-3">
               <tr className="section-title">
                 <td className="user-toggle user-input">HC Safety Switch</td>
@@ -367,7 +365,6 @@ export default function Section6() {
                 <td className="user-toggle user-input">Path sequence</td>
               </tr>
             </div>
-
             <div className="table-row-info" id="section6-form-5">
               <tr>
                 <td className="user-input user-toggle">
