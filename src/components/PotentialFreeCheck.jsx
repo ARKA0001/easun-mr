@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { potentialFreeCheckStore } from "@/store/FormData";
-import { actionModalStore, actionMessageStore, testIdStore } from "@/store/Section";
+import { actionModalStore, actionMessageStore, testIdStore, responseMessageStore } from "@/store/Section";
 import html2canvas from "html2canvas";
 
 
