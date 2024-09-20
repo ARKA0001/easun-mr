@@ -47,7 +47,6 @@ export default function Section7() {
 
   const takeSectionScreenshot = async (fileName, hasNextSection) => {
     console.log("This is section 7 data");
-    console.log(section5FormData);
     const section = document.getElementById(fileName);
     const canvas = await html2canvas(section);
     const imgData = canvas.toDataURL("image/png");
