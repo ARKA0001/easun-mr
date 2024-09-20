@@ -73,9 +73,7 @@ export default function PotentialFreeCheck() {
       }
     } catch (error) {
       throw new Error(`HTTP error! status:`, error);
-    } finally {
-      console.log("Download Process completed");
-    }
+    } 
   };
   return (
     <div className="check-box-check form-section">
