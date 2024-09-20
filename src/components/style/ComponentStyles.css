@@ -18,7 +18,7 @@ body {
   padding: 1rem 0 0 0;
 }
 .form-group {
-  background-color: var(--secondary-white);
+  background-color: var(--territary-white);
   margin: 2rem;
   padding: 1rem 0;
   border-radius: 15px;
@@ -31,7 +31,7 @@ body {
   padding: 1rem 0;
   border-radius: 15px;
   width: auto;
-  
+  border:2px solid var(--dark-grey)
 }
 .form-main-group {
   display: flex;
