@@ -47,7 +47,7 @@ export default function Section6() {
     takeSectionScreenshot("section6-form-4", true);
     takeSectionScreenshot("section6-form-5", true);
     takeSectionScreenshot("section6-form-6", true);
-    takeSectionScreenshot("section6-form-7", true);
+    takeSectionScreenshot("section6-form-7", false);
 
   };
 
