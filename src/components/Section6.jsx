@@ -190,7 +190,7 @@ export default function Section6() {
               </tr>
               <tr>
                 <td className="user-input user-toggle">
-                  <label htmlFor="toggle-4" className="field-label">
+                  <label htmlFor="toggle-4A" className="field-label">
                     Insert hand cranck and check the manual revolution on both
                     the direction two taps
                   </label>
@@ -198,11 +198,11 @@ export default function Section6() {
                 <td className="toggle-container">
                   <input
                     type="checkbox"
-                    id="toggle-4"
+                    id="toggle-4A"
                     className="toggle-input"
-                    {...register("fieldA5")}
+                    {...register("fieldA5A")}
                   />
-                  <label htmlFor="toggle-4" className="toggle-label">
+                  <label htmlFor="toggle-4A" className="toggle-label">
                     <span className="toggle-switch"></span>
                     <span className="toggle-text on">Yes</span>
                     <span className="toggle-text off">No</span>
@@ -329,20 +329,21 @@ export default function Section6() {
                   </label>
                 </td>
               </tr>
+
               <tr>
                 <td className="user-input user-toggle">
-                  <label htmlFor="toggle-12" className="field-label">
+                  <label htmlFor="toggle-1B" className="field-label">
                     Continous pulse via pushbutton raise or lower
                   </label>
                 </td>
                 <td className="toggle-container">
                   <input
                     type="checkbox"
-                    id="toggle-12"
+                    id="toggle-1B"
                     className="toggle-input"
-                    {...register("fieldA11")}
+                    {...register("fieldA11B")}
                   />
-                  <label htmlFor="toggle-12" className="toggle-label">
+                  <label htmlFor="toggle-1B" className="toggle-label">
                     <span className="toggle-switch"></span>
                     <span className="toggle-text on">Yes</span>
                     <span className="toggle-text off">No</span>
@@ -351,18 +352,18 @@ export default function Section6() {
               </tr>
               <tr>
                 <td className="user-input user-toggle">
-                  <label htmlFor="toggle-12" className="field-label">
-                    press and hold the push button either raise
+                  <label htmlFor="toggle-1A" className="field-label">
+                    Press and hold the push button either raise
                   </label>
                 </td>
                 <td className="toggle-container">
                   <input
                     type="checkbox"
-                    id="toggle-12"
+                    id="toggle-1A"
                     className="toggle-input"
                     {...register("fieldA12")}
                   />
-                  <label htmlFor="toggle-12" className="toggle-label">
+                  <label htmlFor="toggle-1A" className="toggle-label">
                     <span className="toggle-switch"></span>
                     <span className="toggle-text on">Yes</span>
                     <span className="toggle-text off">No</span>
