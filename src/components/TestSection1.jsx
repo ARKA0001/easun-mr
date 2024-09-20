@@ -23,7 +23,7 @@ export default function TestSection1() {
   const [savedSectionCount, setSavedSectionCount] =
     useRecoilState(savedSection);
 
-    const [testId, setTestId] = useRecoilState(testIdStore)
+  const [testId, setTestId] = useRecoilState(testIdStore);
 
   const handleTestDataMove = () => {
     console.log("Section is going to be moved from 0 to 1");
@@ -36,9 +36,9 @@ export default function TestSection1() {
   const takeScreenshort = async (sectionId, testIdInfo) => {
     const section = document.getElementById(sectionId);
     const canvas = await html2canvas(section, {
-      scale: 2,             
-      backgroundColor: "#FFFFFF", 
-      useCORS: true          
+      scale: 2,
+      backgroundColor: "#FFFFFF",
+      useCORS: true,
     });
     const imgData = canvas.toDataURL("image/png");
     const blob = await (await fetch(imgData)).blob();
@@ -90,16 +90,17 @@ export default function TestSection1() {
       }
     } catch (error) {
       throw new Error(`HTTP error! status:`, error);
-    } finally {
-      console.log("Sending process completed");
-      if (takeScreenshort("testSection1", null)) {
-        handleTestDataMove();
-      } else {
-        alert(
-          "There is an error while saving the image. Please contact support team"
-        );
-      }
-    }
+    } 
+    // finally {
+    //   console.log("Sending process completed");
+    //   if (takeScreenshort("testSection1", null)) {
+    //     handleTestDataMove();
+    //   } else {
+    //     alert(
+    //       "There is an error while saving the image. Please contact support team"
+    //     );
+    //   }
+    // }
   };
 
   return (
