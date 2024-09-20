@@ -31,7 +31,11 @@ export default function Section5() {
     console.log("This is section 5 data");
     console.log(section5FormData);
     const section = document.getElementById("section5-form-1");
-    const canvas = await html2canvas(section);
+    const canvas = await html2canvas(section, {
+      scale: 2,             
+      backgroundColor: "#FFFFFF", 
+      useCORS: true          
+    });
     const imgData = canvas.toDataURL("image/png");
     const blob = await (await fetch(imgData)).blob();
     const link = document.createElement("a");
@@ -55,7 +59,11 @@ export default function Section5() {
     console.log("This is section 5 data");
     console.log(section5FormData);
     const section = document.getElementById(fileName);
-    const canvas = await html2canvas(section);
+    const canvas = await html2canvas(section, {
+      scale: 2,             
+      backgroundColor: "#FFFFFF", 
+      useCORS: true          
+    });
     const imgData = canvas.toDataURL("image/png");
     const blob = await (await fetch(imgData)).blob();
     const link = document.createElement("a");
@@ -2813,7 +2821,7 @@ export default function Section5() {
                     name=""
                     id="field1"
                     className="user-value"
-                    {...register("fieldE83")}
+                    {...register("fieldEX83")}
                   />
                 </div>
                 <div className="user-input">

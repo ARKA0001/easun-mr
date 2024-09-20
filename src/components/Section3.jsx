@@ -28,7 +28,11 @@ export default function Section3() {
     console.log("This is section 3 data");
     console.log(section3FormData);
     const section = document.getElementById("section3-form");
-    const canvas = await html2canvas(section);
+    const canvas = await html2canvas(section, {
+      scale: 2,             
+      backgroundColor: "#FFFFFF", 
+      useCORS: true          
+    });
     const imgData = canvas.toDataURL("image/png");
     const blob = await (await fetch(imgData)).blob();
     const link = document.createElement("a");

@@ -16,7 +16,11 @@ export default function PotentialFreeCheck() {
   const takeScreenshort = async (sectionId) => {
     console.log(sectionId + "started screenshort processing");
     const section = document.getElementById(sectionId);
-    const canvas = await html2canvas(section);
+    const canvas = await html2canvas(section, {
+      scale: 2,             
+      backgroundColor: "#FFFFFF", 
+      useCORS: true          
+    });
     const imgData = canvas.toDataURL("image/png");
     const blob = await (await fetch(imgData)).blob();
     const link = document.createElement("a");

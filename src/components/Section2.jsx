@@ -115,7 +115,11 @@ export default function Section2() {
     console.log(section2FormData);
     // Take screenshort
     const section = document.getElementById("section2-form-1");
-    const canvas = await html2canvas(section);
+    const canvas = await html2canvas(section, {
+      scale: 2,             
+      backgroundColor: "#FFFFFF", 
+      useCORS: true          
+    });
     const imgData = canvas.toDataURL("image/png");
     const blob = await (await fetch(imgData)).blob();
     const link = document.createElement("a");
@@ -133,7 +137,11 @@ export default function Section2() {
 
   const takeSectionScreenShot = async (fileName, hasNextSection) => {
     const section = document.getElementById(fileName);
-    const canvas = await html2canvas(section);
+    const canvas = await html2canvas(section, {
+      scale: 2,             
+      backgroundColor: "#FFFFFF", 
+      useCORS: true          
+    });
     const imgData = canvas.toDataURL("image/png");
     const blob = await (await fetch(imgData)).blob();
     const link = document.createElement("a");

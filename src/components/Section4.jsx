@@ -30,7 +30,11 @@ export default function Section4() {
     console.log("This is section 4 data");
     console.log(section4FormData);
     const section = document.getElementById("section4-form");
-    const canvas = await html2canvas(section);
+    const canvas = await html2canvas(section, {
+      scale: 2,             
+      backgroundColor: "#FFFFFF", 
+      useCORS: true          
+    });
     const imgData = canvas.toDataURL("image/png");
     const blob = await (await fetch(imgData)).blob();
     const link = document.createElement("a");

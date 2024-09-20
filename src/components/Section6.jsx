@@ -30,7 +30,11 @@ export default function Section6() {
     console.log("This is section 6 data");
     console.log(section6FormData);
     const section = document.getElementById("section6-form-1");
-    const canvas = await html2canvas(section);
+    const canvas = await html2canvas(section, {
+      scale: 2,             
+      backgroundColor: "#FFFFFF", 
+      useCORS: true          
+    });
     const imgData = canvas.toDataURL("image/png");
     const blob = await (await fetch(imgData)).blob();
     const link = document.createElement("a");
@@ -54,7 +58,11 @@ export default function Section6() {
   const takeSectionScreenshot = async (fileName, hasNextSection) => {
     console.log("This is section 6 data");
     const section = document.getElementById(fileName);
-    const canvas = await html2canvas(section);
+    const canvas = await html2canvas(section, {
+      scale: 2,             
+      backgroundColor: "#FFFFFF", 
+      useCORS: true          
+    });
     const imgData = canvas.toDataURL("image/png");
     const blob = await (await fetch(imgData)).blob();
     const link = document.createElement("a");
