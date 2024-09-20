@@ -59,6 +59,7 @@ export default function PotentialFreeCheck() {
       console.log(result.data);
       setLoading(false);
       if (result.data != "IN PROGRESS") {
+        window.open(result.data, '_blank');
         setResponseMessage(result);
       } else {
         setActionMessage("IN PROGRESS");
