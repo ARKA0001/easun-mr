@@ -64,7 +64,7 @@ export default function PotentialFreeCheck() {
       setLoading(false);
       if (result.data != "IN PROGRESS") {
         window.open(result.data, '_blank');
-        setResponseMessage(result);
+        setResponseMessage(result.data);
       } else {
         setActionMessage("IN PROGRESS");
         setActionModal(true);
