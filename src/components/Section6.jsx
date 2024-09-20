@@ -27,7 +27,7 @@ export default function Section6() {
   const watchedFields = useWatch({ control });
 
   const onSubmit = async (data) => {
-    console.log("This is section 1 data");
+    console.log("This is section 6 data");
     console.log(section6FormData);
     const section = document.getElementById("section6-form-1");
     const canvas = await html2canvas(section);

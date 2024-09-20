@@ -13,7 +13,7 @@ export default function PotentialFreeCheck() {
     useRecoilState(responseMessageStore);
     const [testId, setTestId] = useRecoilState(testIdStore)
   const [loading, setLoading] = useState(false);
-  const takeScreenshort = async (sectionId, testId) => {
+  const takeScreenshort = async (sectionId) => {
     console.log(sectionId + "started screenshort processing");
     const section = document.getElementById(sectionId);
     const canvas = await html2canvas(section);
@@ -590,7 +590,7 @@ export default function PotentialFreeCheck() {
       <button
         type="submit"
         className="action-button"
-        onClick={() => takeScreenshort("potentialFreeCheck", null)}
+        onClick={() => takeScreenshort("potentialFreeCheck")}
       >
         Download Report
       </button>

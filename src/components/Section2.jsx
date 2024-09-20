@@ -114,7 +114,7 @@ export default function Section2() {
     console.log("This is section 2 data");
     console.log(section2FormData);
     // Take screenshort
-    const section = document.getElementById("section2-form");
+    const section = document.getElementById("section2-form-1");
     const canvas = await html2canvas(section);
     const imgData = canvas.toDataURL("image/png");
     const blob = await (await fetch(imgData)).blob();
