@@ -40,10 +40,9 @@ export default function Section7() {
     document.body.removeChild(link);
     URL.revokeObjectURL(link.href);
     console.log("Image saved successfully");
-    takeSectionScreenshot("section7-form-2",true);
-    takeSectionScreenshot("section7-form-3",false);
+    takeSectionScreenshot("section7-form-2", true);
+    takeSectionScreenshot("section7-form-3", false);
   };
-
 
   const takeSectionScreenshot = async (fileName, hasNextSection) => {
     console.log("This is section 7 data");
