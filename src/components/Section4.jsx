@@ -58,9 +58,9 @@ export default function Section4() {
   }, [watchedFields, setSection4FormData]);
 
   return (
-    <div className="form-section" id="section4-form">
+    <div className="form-section" >
       <form onSubmit={handleSubmit(onSubmit)}>
-        <table className="toggle-table">
+        <table className="toggle-table" id="section4-form">
           <tbody>
             <tr>
               <td className="user-input user-toggle">

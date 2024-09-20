@@ -44,8 +44,11 @@ export default function Section5() {
     console.log("Image saved successfully");
 
     takePartImage("section5-form-2", true);
-    takePartImage("section5-form-3", false);
-    handleSectionMove();
+    takePartImage("section5-form-3", true);
+    takePartImage("section5-form-4", true);
+    takePartImage("section5-form-5", true);
+    takePartImage("section5-form-6", true);
+    takePartImage("section5-form-7", false);
   };
 
   const takePartImage = async (fileName, hasNextSection) => {
@@ -55,7 +58,7 @@ export default function Section5() {
     const canvas = await html2canvas(section);
     const imgData = canvas.toDataURL("image/png");
     const blob = await (await fetch(imgData)).blob();
-    const link = document.createElement("a"); 
+    const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
     link.download = `${testId ? testId : "default"}-${fileName}.png`;
     document.body.appendChild(link);
@@ -438,6 +441,9 @@ export default function Section5() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="section5-form-2" id="section5-form-2">
           <div className="form-main-group">
             <div className="form-group">
               <div className="section-title">Additional Contractor</div>
@@ -819,6 +825,9 @@ export default function Section5() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="section5-form-3" id="section5-form-3">
           <div className="form-main-group">
             <div className="form-group">
               <div className="section-title">Heather Switch</div>
@@ -1071,9 +1080,6 @@ export default function Section5() {
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="section5-form-2" id="section5-form-2">
           <div className="form-main-group">
             {" "}
             <div className="form-group">
@@ -1387,6 +1393,9 @@ export default function Section5() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="section5-form-4" id="section5-form-4">
           <div className="form-main-group">
             <div className="form-group">
               <div className="section-title">Thermostat</div>
@@ -1652,6 +1661,9 @@ export default function Section5() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="section5-form-5" id="section5-form-5">
           <div className="form-main-group">
             <div className="form-group">
               <div className="section-title">Terminal Blocks 3</div>
@@ -2027,7 +2039,7 @@ export default function Section5() {
           </div>
         </div>
 
-        <div className="section5-form-3" id="section5-form-3">
+        <div className="section5-form-6" id="section5-form-6">
           <div className="form-main-group">
             <div className="form-group">
               <div className="section-title">MCB2 Pole</div>
@@ -2604,6 +2616,9 @@ export default function Section5() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="section5-form-7" id="section5-form-7">
           <div className="form-main-group">
             {" "}
             <div className="form-group">

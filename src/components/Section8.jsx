@@ -59,8 +59,9 @@ export default function Section8() {
   }, [watchedFields, setSection8FormData]);
 
   return (
-    <div className="form-section" id="section8-form">
+    <div className="form-section">
       <form onSubmit={handleSubmit(onSubmit)}>
+        <div id="section8-form">
         <div className="form-row">
           <div className="user-input">
             <label htmlFor="field1" className="field-label">
@@ -114,6 +115,7 @@ export default function Section8() {
               V
             </div>
           </div>
+        </div>
         </div>
         <button type="submit" className="action-button">
           Save & Next
