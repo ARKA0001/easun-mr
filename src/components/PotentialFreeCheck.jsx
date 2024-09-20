@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { potentialFreeCheckStore } from "@/store/FormData";
 import html2canvas from "html2canvas";
-import { responseMessageStore } from "@/store/Section";
+import { responseMessageStore, testIdStore } from "@/store/Section";
 
 export default function PotentialFreeCheck() {
   const [checkBoxData, setCheckBoxData] = useRecoilState(
