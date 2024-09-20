@@ -44,7 +44,7 @@ export default function PotentialFreeCheck() {
     setLoading(true);
     console.log("Download Report is pressed");
     try {
-      const res = await fetch("http://localhost:8080/device/runTest", {
+      const res = await fetch("http://localhost:8080/device/generateReport", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
