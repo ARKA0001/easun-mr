@@ -53,7 +53,7 @@ export default function ActionModal({ showModal, modalMessage, resumeAction }) {
                   No
                 </button>
                 <button
-                  onClick={() => messageAction("YES_MA_CNF")}
+                  onClick={() => handleResumeAction("YES_MA_CNF")}
                   className="resume-button"
                 >
                   Yes

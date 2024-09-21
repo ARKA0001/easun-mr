@@ -135,9 +135,10 @@ export default function Page() {
       setAction(null);
       setActionModal(false);
     } else if (value === "YES_MA_CNF") {
-      setMainMessage("YES_MA_CNF");
       setAction(null);
       setActionModal(false);
+      setMainMessage("YES_MA_CNF");
+
     } else {
       sendMessage(value);
     }
