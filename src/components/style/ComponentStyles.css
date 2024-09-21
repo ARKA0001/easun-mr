@@ -32,7 +32,10 @@ body {
   padding: 1rem 0;
   border-radius: 15px;
   width: auto;
-  border:2px solid var(--dark-grey)
+}
+.form-group{
+  border:2px solid var(--dark-grey) !important;
+  background-color: transparent !important;
 }
 .form-main-group {
   display: flex;
