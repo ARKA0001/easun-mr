@@ -24,6 +24,10 @@ export const responseMessageStore = atom({
   key: "responseMessageStore",
   default: "",
 });
+export const mainMessageStore = atom({
+  key: "mainMessageStore",
+  default: "",
+});
 
 // Modals
 

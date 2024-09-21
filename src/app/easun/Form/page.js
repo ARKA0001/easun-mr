@@ -34,6 +34,7 @@ import {
   testDataSection1,
   testVoltageStore,
   manualButtonStateStore,
+  mainMessageStore,
 } from "@/store/Section";
 import TestSection1 from "@/components/TestSection1";
 import TestSection2 from "@/components/TestSection2";
@@ -123,10 +124,21 @@ export default function Page() {
   const [action, setAction] = useRecoilState(actionMessageStore);
   const [start, setStart] = useRecoilState(startMessageStore);
   const [testData, setTestData] = useRecoilState(testDataSection1);
+  const [mainMessage, setMainMessage] = useRecoilState(mainMessageStore);
 
   const resumeAction = (value) => {
     console.log(value);
-    if (value != "CLOSE") {
+    if (value === "CLOSE") {
+      setAction(null);
+      setActionModal(false);
+    } else if (value === "NO_MA_CNF") {
+      setAction(null);
+      setActionModal(false);
+    } else if (value === "YES_MA_CNF") {
+      setMainMessage("YES_MA_CNF");
+      setAction(null);
+      setActionModal(false);
+    } else {
       sendMessage(value);
     }
     setAction(null);
@@ -138,12 +150,6 @@ export default function Page() {
     console.log("START_LV");
     sendInitialMessage("START_LV");
     setStartModal(false);
-  };
-
-  const handleSectionMove = () => {
-    console.log("Section is going to be moved from 1 to 2");
-    setCurrentActiveSection(2);
-    setSavedSectionCount(1);
   };
 
   const messageAction = (value) => {

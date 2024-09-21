@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { potentialFreeCheckStore } from "@/store/FormData";
-import { actionModalStore, actionMessageStore, testIdStore, responseMessageStore } from "@/store/Section";
+import {
+  actionModalStore,
+  actionMessageStore,
+  testIdStore,
+  responseMessageStore,
+  mainMessageStore,
+} from "@/store/Section";
 import html2canvas from "html2canvas";
-
 
 export default function PotentialFreeCheck() {
   const [checkBoxData, setCheckBoxData] = useRecoilState(
@@ -12,17 +17,18 @@ export default function PotentialFreeCheck() {
 
   const [responseMessage, setResponseMessage] =
     useRecoilState(responseMessageStore);
-    const [testId, setTestId] = useRecoilState(testIdStore)
-    const [actionModal, setActionModal] = useRecoilState(actionModalStore);
-    const [actionMessage, setActionMessage] = useRecoilState(actionMessageStore);
+  const [testId, setTestId] = useRecoilState(testIdStore);
+  const [actionModal, setActionModal] = useRecoilState(actionModalStore);
+  const [actionMessage, setActionMessage] = useRecoilState(actionMessageStore);
+  const [mainMessage, setMainMessage] = useRecoilState(mainMessageStore);
   const [loading, setLoading] = useState(false);
   const takeScreenshort = async (sectionId) => {
     console.log(sectionId + "started screenshort processing");
     const section = document.getElementById(sectionId);
     const canvas = await html2canvas(section, {
-      scale: 2,             
-      backgroundColor: "#FFFFFF", 
-      useCORS: true          
+      scale: 2,
+      backgroundColor: "#FFFFFF",
+      useCORS: true,
     });
     const imgData = canvas.toDataURL("image/png");
     const blob = await (await fetch(imgData)).blob();
@@ -34,7 +40,9 @@ export default function PotentialFreeCheck() {
     document.body.removeChild(link);
     URL.revokeObjectURL(link.href);
     console.log("Image saved successfully");
-    downloadReport();
+    // Manual section confirmation
+    setActionMessage("MANUAL_CONFIRMATION");
+    setActionModal(true);
   };
   const handleCheckboxChange = (e) => {
     const { name, checked } = e.target;
@@ -47,6 +55,14 @@ export default function PotentialFreeCheck() {
     }));
     console.log(checkBoxData);
   };
+
+  useEffect(() => {
+    if (mainMessage === "YES_MA_CNF") {
+      downloadReport();
+      setMainMessage(null);
+    }
+  }, [mainMessage]);
+
   const downloadReport = async () => {
     setLoading(true);
     console.log("Download Report is pressed");
@@ -57,7 +73,7 @@ export default function PotentialFreeCheck() {
           "Content-Type": "application/json",
         },
       });
-      console.log("This is res",res);
+      console.log("This is res", res);
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
@@ -73,7 +89,7 @@ export default function PotentialFreeCheck() {
       }
     } catch (error) {
       throw new Error(`HTTP error! status:`, error);
-    } 
+    }
   };
   return (
     <div className="check-box-check form-section">

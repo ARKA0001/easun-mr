@@ -7,15 +7,12 @@ export default function ActionModal({ showModal, modalMessage, resumeAction }) {
   useEffect(() => {
     // Determine the message to display and the action to take based on `modalMessage`
     const getModalMessage = (message) => {
-      if (message === "DONE_LV") {
-        setActionMessage("START_HV");
-        return "Set High Voltage and click Run";
-      } else if (message === "DONE_HV") {
-        setActionMessage("START_NV");
-        return "Set Nominal Voltage and click Run";
-      } else if (message === "IN PROGRESS") {
+      if (message === "IN PROGRESS") {
         setActionMessage("CLOSE");
         return "Report cannot be downloaded as testing is in progress";
+      } else if (message === "MANUAL_CONFIRMATION") {
+        setActionMessage("MA_CNF");
+        return "Are all manual sections completed?";
       } else {
         setActionMessage("RESUME");
         return message;
@@ -25,10 +22,8 @@ export default function ActionModal({ showModal, modalMessage, resumeAction }) {
     setDisplayMessage(getModalMessage(modalMessage));
   }, [modalMessage]);
 
-  const handleResumeAction = () => {
-    if (actionMessage) {
-      resumeAction(actionMessage);
-    }
+  const handleResumeAction = (value) => {
+    resumeAction(value);
   };
 
   return (
@@ -38,15 +33,32 @@ export default function ActionModal({ showModal, modalMessage, resumeAction }) {
           <div className="message">Action</div>
           <div className="info">{displayMessage}</div>
           <div className="actions">
-            {/* <button onClick={closeModal}>Restart</button> */}
-            {actionMessage && (
-              <button onClick={handleResumeAction} className="resume-button">
-                {actionMessage === "START_HV" || actionMessage === "START_NV"
-                  ? "Run"
-                  : actionMessage === "CLOSE"
-                  ? "CLOSE"
-                  : "Resume"}
-              </button>
+            {actionMessage === "CLOSE" && (
+              <>
+                <button
+                  onClick={() => handleResumeAction("CLOSE")}
+                  className="resume-button"
+                >
+                  CLOSE
+                </button>
+              </>
+            )}
+
+            {actionMessage === "MA_CNF" && (
+              <>
+                <button
+                  onClick={() => handleResumeAction("NO_MA_CNF")}
+                  className="resume-button"
+                >
+                  No
+                </button>
+                <button
+                  onClick={() => messageAction("YES_MA_CNF")}
+                  className="resume-button"
+                >
+                  Yes
+                </button>
+              </>
             )}
           </div>
         </div>
