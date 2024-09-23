@@ -78,7 +78,7 @@ export default function SectionNav() {
             }
             onClick={() => handleSectionMove(2)}
           >
-            Test Order Details Observation
+            1-Test Order Details Observation
           </button>
           <button
             className={
@@ -88,7 +88,7 @@ export default function SectionNav() {
             }
             onClick={() => handleSectionMove(3)}
           >
-            Observation on Visual /Aesthetic Requirements Checks - Manual Entry
+            2-Observation on Visual /Aesthetic Requirements Checks - Manual Entry
           </button>
           <button
             className={
@@ -98,7 +98,7 @@ export default function SectionNav() {
             }
             onClick={() => handleSectionMove(4)}
           >
-            General / Standard Requirements
+            3-General / Standard Requirements
           </button>
           <button
             className={
@@ -108,7 +108,7 @@ export default function SectionNav() {
             }
             onClick={() => handleSectionMove(5)}
           >
-            General / Stickers / Caution / Attention Requirements
+            4-General / Stickers / Caution / Attention Requirements
           </button>
           <button
             className={
@@ -118,7 +118,7 @@ export default function SectionNav() {
             }
             onClick={() => handleSectionMove(6)}
           >
-            Legend EBOM Requirements
+            5-Legend EBOM Requirements
           </button>
           <button
             className={
@@ -128,7 +128,7 @@ export default function SectionNav() {
             }
             onClick={() => handleSectionMove(7)}
           >
-            Performance and Application Test Requirements
+            6-Performance and Application Test Requirements
           </button>
           <button
             className={
@@ -138,7 +138,7 @@ export default function SectionNav() {
             }
             onClick={() => handleSectionMove(8)}
           >
-            CAM Sequence Test Requirements
+            7-CAM Sequence Test Requirements
           </button>
           <button
             className={
@@ -148,7 +148,7 @@ export default function SectionNav() {
             }
             onClick={() => handleSectionMove(9)}
           >
-            Application Test Requirements
+            8-Application Test Requirements
           </button>
         </ul>
       )}
