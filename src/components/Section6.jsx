@@ -371,7 +371,7 @@ export default function Section6() {
                 </td>
               </tr>
               <tr className="section-title">
-                <td className="user-toggle user-input">Path sequence</td>
+                <td className="user-toggle user-input">Phase sequence</td>
               </tr>
             </div>
             <div className="table-row-info" id="section6-form-5">
