@@ -120,7 +120,7 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
                   onClick={() => messageAction("DONE")}
                   className="resume-button"
                 >
-                  Download Report
+                  OK
                 </button>
               </>
             )}
