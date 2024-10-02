@@ -91,16 +91,16 @@ export default function TestSection1() {
     } catch (error) {
       throw new Error(`HTTP error! status:`, error);
     } 
-    // finally {
-    //   console.log("Sending process completed");
-    //   if (takeScreenshort("testSection1", null)) {
-    //     handleTestDataMove();
-    //   } else {
-    //     alert(
-    //       "There is an error while saving the image. Please contact support team"
-    //     );
-    //   }
-    // }
+    finally {
+      console.log("Sending process completed");
+      if (takeScreenshort("testSection1", null)) {
+        handleTestDataMove();
+      } else {
+        alert(
+          "There is an error while saving the image. Please contact support team"
+        );
+      }
+    }
   };
 
   return (

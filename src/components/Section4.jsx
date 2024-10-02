@@ -17,17 +17,15 @@ export default function Section4() {
     setSavedSectionCount(5);
   };
 
-  const [section4FormData, setSection4FormData] =
+  const [section4FormData, setsection4FormData] =
     useRecoilState(Section4DataStore);
-
-
-    const [testId, setTestId] = useRecoilState(testIdStore)
-
   const { register, handleSubmit, setValue, control } = useForm();
-
   const watchedFields = useWatch({ control });
+
+  const [testId, setTestId] = useRecoilState(testIdStore)
+
   const onSubmit = async (data) => {
-    console.log("This is section 4 data");
+    console.log("This is section 3 data");
     console.log(section4FormData);
     const section = document.getElementById("section4-form");
     const canvas = await html2canvas(section, {
@@ -44,7 +42,6 @@ export default function Section4() {
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(link.href);
-
     console.log("Image saved successfully");
     handleSectionMove()
   };
@@ -55,11 +52,11 @@ export default function Section4() {
         setValue(field, section4FormData[field]);
       });
     }
-  }, [setSection4FormData, setValue]);
+  }, [setsection4FormData, setValue]);
 
   useEffect(() => {
-    setSection4FormData(watchedFields);
-  }, [watchedFields, setSection4FormData]);
+    setsection4FormData(watchedFields);
+  }, [watchedFields, setsection4FormData]);
 
   return (
     <div className="form-section" >
@@ -68,18 +65,19 @@ export default function Section4() {
           <tbody>
             <tr>
               <td className="user-input user-toggle">
-                <label htmlFor="toggle-1-1" className="field-label">
-                  IPX5 sticket with QA Sign
+                <label htmlFor="toggle-1" className="field-label">
+                  DM Counter reading minimum 500 endurance operation before
+                  start
                 </label>
               </td>
               <td className="toggle-container">
                 <input
                   type="checkbox"
-                  id="toggle-1-1"
+                  id="toggle-1"
                   className="toggle-input"
-                  {...register("field57")}
+                  {...register("field43")}
                 />
-                <label htmlFor="toggle-1-1" className="toggle-label">
+                <label htmlFor="toggle-1" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
                   <span className="toggle-text off">No</span>
@@ -88,18 +86,18 @@ export default function Section4() {
             </tr>
             <tr>
               <td className="user-input user-toggle">
-                <label htmlFor="toggle-1-2" className="field-label">
-                  HV test availability
+                <label htmlFor="toggle-2" className="field-label">
+                  Hand crank provided inside the DM with paint shade matching
                 </label>
               </td>
               <td className="toggle-container">
                 <input
                   type="checkbox"
-                  id="toggle-1-2"
+                  id="toggle-2"
                   className="toggle-input"
-                  {...register("field58")}
+                  {...register("field44")}
                 />
-                <label htmlFor="toggle-1-2" className="toggle-label">
+                <label htmlFor="toggle-2" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
                   <span className="toggle-text off">No</span>
@@ -108,18 +106,18 @@ export default function Section4() {
             </tr>
             <tr>
               <td className="user-input user-toggle">
-                <label htmlFor="toggle-1-3" className="field-label">
-                  DANGER STICKER as per the Motor Voltage
+                <label htmlFor="toggle-3" className="field-label">
+                  Earth bride provided between DM & DOOR
                 </label>
               </td>
               <td className="toggle-container">
                 <input
                   type="checkbox"
-                  id="toggle-1-3"
+                  id="toggle-3"
                   className="toggle-input"
-                  {...register("field59")}
+                  {...register("field45")}
                 />
-                <label htmlFor="toggle-1-3" className="toggle-label">
+                <label htmlFor="toggle-3" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
                   <span className="toggle-text off">No</span>
@@ -128,19 +126,18 @@ export default function Section4() {
             </tr>
             <tr>
               <td className="user-input user-toggle">
-                <label htmlFor="toggle-1-4" className="field-label">
-                  Rotate the hand crank and check the raise and lower direction
-                  symbol
+                <label htmlFor="toggle-4" className="field-label">
+                  Availablity of Scheme and Pouch
                 </label>
               </td>
               <td className="toggle-container">
                 <input
                   type="checkbox"
-                  id="toggle-1-4"
+                  id="toggle-4"
                   className="toggle-input"
-                  {...register("field60")}
+                  {...register("field46")}
                 />
-                <label htmlFor="toggle-1-4" className="toggle-label">
+                <label htmlFor="toggle-4" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
                   <span className="toggle-text off">No</span>
@@ -149,18 +146,18 @@ export default function Section4() {
             </tr>
             <tr>
               <td className="user-input user-toggle">
-                <label htmlFor="toggle-1-5" className="field-label">
-                  Phase sequences attention sticker
+                <label htmlFor="toggle-4" className="field-label">
+                  Availablity of Hand crank with Spring dowel
                 </label>
               </td>
               <td className="toggle-container">
                 <input
                   type="checkbox"
-                  id="toggle-1-5"
+                  id="toggle-5"
                   className="toggle-input"
-                  {...register("field61")}
+                  {...register("field47")}
                 />
-                <label htmlFor="toggle-1-5" className="toggle-label">
+                <label htmlFor="toggle-5" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
                   <span className="toggle-text off">No</span>
@@ -169,18 +166,18 @@ export default function Section4() {
             </tr>
             <tr>
               <td className="user-input user-toggle">
-                <label htmlFor="toggle-1-6" className="field-label">
-                  Proximity wiring shorting stickers
+                <label htmlFor="toggle-6" className="field-label">
+                  Function of DOOR lock with PAD
                 </label>
               </td>
               <td className="toggle-container">
                 <input
                   type="checkbox"
-                  id="toggle-1-6"
+                  id="toggle-6"
                   className="toggle-input"
-                  {...register("field62")}
+                  {...register("field48")}
                 />
-                <label htmlFor="toggle-1-6" className="toggle-label">
+                <label htmlFor="toggle-6" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
                   <span className="toggle-text off">No</span>
@@ -189,18 +186,18 @@ export default function Section4() {
             </tr>
             <tr>
               <td className="user-input user-toggle">
-                <label htmlFor="toggle-1-7" className="field-label">
-                  Hand revolution sticker
+                <label htmlFor="toggle-7" className="field-label">
+                  Avalability of top flange shaft "o" Ring, Gaurd, Pouch
                 </label>
               </td>
               <td className="toggle-container">
                 <input
                   type="checkbox"
-                  id="toggle-1-7"
+                  id="toggle-7"
                   className="toggle-input"
-                  {...register("field63")}
+                  {...register("field49")}
                 />
-                <label htmlFor="toggle-1-7" className="toggle-label">
+                <label htmlFor="toggle-7" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
                   <span className="toggle-text off">No</span>
@@ -209,18 +206,19 @@ export default function Section4() {
             </tr>
             <tr>
               <td className="user-input user-toggle">
-                <label htmlFor="toggle-1-8" className="field-label">
-                  CAM switch stickers as per legend
+                <label htmlFor="toggle-8" className="field-label">
+                  No any spillage of wire sleeve, copper strings and dust,
+                  uellow paint and any
                 </label>
               </td>
               <td className="toggle-container">
                 <input
                   type="checkbox"
-                  id="toggle-1-8"
+                  id="toggle-8"
                   className="toggle-input"
-                  {...register("field64")}
+                  {...register("field50")}
                 />
-                <label htmlFor="toggle-1-8" className="toggle-label">
+                <label htmlFor="toggle-8" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
                   <span className="toggle-text off">No</span>
@@ -229,18 +227,18 @@ export default function Section4() {
             </tr>
             <tr>
               <td className="user-input user-toggle">
-                <label htmlFor="toggle-1-9" className="field-label">
-                  ADS wire stickers/labels
+                <label htmlFor="toggle-9" className="field-label">
+                  Earth bolt provided on both directions
                 </label>
               </td>
               <td className="toggle-container">
                 <input
                   type="checkbox"
-                  id="toggle-1-9"
+                  id="toggle-9"
                   className="toggle-input"
-                  {...register("field65")}
+                  {...register("field51")}
                 />
-                <label htmlFor="toggle-1-9" className="toggle-label">
+                <label htmlFor="toggle-9" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
                   <span className="toggle-text off">No</span>
@@ -249,18 +247,18 @@ export default function Section4() {
             </tr>
             <tr>
               <td className="user-input user-toggle">
-                <label htmlFor="toggle-1-10" className="field-label">
-                  Electrical Limit switch stickets
+                <label htmlFor="toggle-10" className="field-label">
+                  Gland plate matching with uniform paint
                 </label>
               </td>
               <td className="toggle-container">
                 <input
                   type="checkbox"
-                  id="toggle-1-10"
+                  id="toggle-10"
                   className="toggle-input"
-                  {...register("field66")}
+                  {...register("field52")}
                 />
-                <label htmlFor="toggle-1-10" className="toggle-label">
+                <label htmlFor="toggle-10" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
                   <span className="toggle-text off">No</span>
@@ -269,18 +267,19 @@ export default function Section4() {
             </tr>
             <tr>
               <td className="user-input user-toggle">
-                <label htmlFor="toggle-1-11" className="field-label">
-                  Mechanical limit switch stickers
+                <label htmlFor="toggle-11" className="field-label">
+                  Terminal block transparent protection cover provided for Stud
+                  and Nut Type
                 </label>
               </td>
               <td className="toggle-container">
                 <input
                   type="checkbox"
-                  id="toggle-1-11"
+                  id="toggle-11"
                   className="toggle-input"
-                  {...register("field67")}
+                  {...register("field53")}
                 />
-                <label htmlFor="toggle-1-11" className="toggle-label">
+                <label htmlFor="toggle-11" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
                   <span className="toggle-text off">No</span>
@@ -289,18 +288,58 @@ export default function Section4() {
             </tr>
             <tr>
               <td className="user-input user-toggle">
-                <label htmlFor="toggle-1-12" className="field-label">
-                  Earthling sticker at both the sides near earth bolt
+                <label htmlFor="toggle-12" className="field-label">
+                  Push button alignment
                 </label>
               </td>
               <td className="toggle-container">
                 <input
                   type="checkbox"
-                  id="toggle-1-12"
+                  id="toggle-12"
                   className="toggle-input"
-                  {...register("field68")}
+                  {...register("field54")}
                 />
-                <label htmlFor="toggle-1-12" className="toggle-label">
+                <label htmlFor="toggle-12" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td className="user-input user-toggle">
+                <label htmlFor="toggle-13" className="field-label">
+                  Window glass & gasket seated properrly
+                </label>
+              </td>
+              <td className="toggle-container">
+                <input
+                  type="checkbox"
+                  id="toggle-13"
+                  className="toggle-input"
+                  {...register("field55")}
+                />
+                <label htmlFor="toggle-13" className="toggle-label">
+                  <span className="toggle-switch"></span>
+                  <span className="toggle-text on">Yes</span>
+                  <span className="toggle-text off">No</span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td className="user-input user-toggle">
+                <label htmlFor="toggle-14" className="field-label">
+                  Whote spiral sleeves provided on all the wire bunches
+                </label>
+              </td>
+              <td className="toggle-container">
+                <input
+                  type="checkbox"
+                  id="toggle-14"
+                  className="toggle-input"
+                  {...register("field56")}
+                />
+                <label htmlFor="toggle-14" className="toggle-label">
                   <span className="toggle-switch"></span>
                   <span className="toggle-text on">Yes</span>
                   <span className="toggle-text off">No</span>

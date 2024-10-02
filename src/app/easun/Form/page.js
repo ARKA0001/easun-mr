@@ -201,6 +201,18 @@ export default function Page() {
     }
   };
 
+  const DisplayText = ({ text }) => {
+    // Split the text into the two parts around '>>'
+    const [firstPart, secondPart] = text.split('>>');
+  
+    return (
+      <div>
+        <span style={{ fontSize: '24px', color: 'red' }}>{firstPart}</span>
+        <span>{">>"}{secondPart}</span>
+      </div>
+    );
+  };
+
   return (
     <>
       {infoModal && (
@@ -258,7 +270,9 @@ export default function Page() {
                     <table>
                       <tr>
                         <td>Tap Position</td>
-                        <td>{tapPosition}</td>
+                        <td>
+                        <DisplayText text={tapPosition} />
+                        </td>
                       </tr>
                       <tr>
                         <td>Direction</td>

@@ -69,7 +69,7 @@ export const startMessageStore = atom({
 
 export const tapPositionStore = atom({
   key: "tapPositionStore",
-  default: [],
+  default: "",
 });
 export const directionStore = atom({
   key: "directionStore",
