@@ -103,7 +103,7 @@ export default function Section2() {
               <tr>
                 <td className="user-input user-toggle">
                   <label htmlFor="toggle-1" className="field-label">
-                    Perform IR test before HV test and Note down the value
+                    Perform HV test and note down the value
                   </label>
                 </td>
                 <td className="toggle-container">
@@ -120,26 +120,7 @@ export default function Section2() {
                   </label>
                 </td>
               </tr>
-              <tr>
-                <td className="user-input user-toggle">
-                  <label htmlFor="toggle-2" className="field-label">
-                    Perform IR test after HV test and Note down the value
-                  </label>
-                </td>
-                <td className="toggle-container">
-                  <input
-                    type="checkbox"
-                    id="toggle-2"
-                    className="toggle-input"
-                    {...register("fieldA2")}
-                  />
-                  <label htmlFor="toggle-2" className="toggle-label">
-                    <span className="toggle-switch"></span>
-                    <span className="toggle-text on">Yes</span>
-                    <span className="toggle-text off">No</span>
-                  </label>
-                </td>
-              </tr>
+
               <tr className="section-title">
                 <td className="user-input user-toggle">HV Test</td>
               </tr>
@@ -243,7 +224,7 @@ export default function Section2() {
                 <td className="user-input user-toggle">
                   <label htmlFor="toggle-8" className="field-label">
                     Insert the hand crank in S8 or B8 switch give pulse via S1
-                    or S2 raise
+                    and S2 raise / lower
                   </label>
                 </td>
                 <td className="toggle-container">
@@ -574,7 +555,7 @@ export default function Section2() {
                 <td className="user-input user-toggle">
                   <label htmlFor="toggle-19" className="field-label">
                     All the lugs should be uniformly crimped with same color
-                    code except 1.5
+                    code
                   </label>
                 </td>
                 <td className="toggle-container">

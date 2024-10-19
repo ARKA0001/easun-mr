@@ -329,7 +329,7 @@ export default function Section4() {
             <tr>
               <td className="user-input user-toggle">
                 <label htmlFor="toggle-14" className="field-label">
-                  Whote spiral sleeves provided on all the wire bunches
+                  Whole spiral sleeves provided on all the wire bunches
                 </label>
               </td>
               <td className="toggle-container">

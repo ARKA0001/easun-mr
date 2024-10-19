@@ -90,7 +90,7 @@ export default function Section8() {
               Perform over voltage test for one complete cycle
             </label>
             <div className="row-input">
-              UV
+              OV
               <input
                 type="text"
                 name=""
@@ -108,7 +108,7 @@ export default function Section8() {
               Perform normal voltage test for 8 complete cycle of operation
             </label>
             <div className="row-input">
-              UV
+              NV
               <input
                 type="text"
                 name=""

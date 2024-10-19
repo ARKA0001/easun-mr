@@ -345,11 +345,11 @@ export default function Section3() {
                   name="front-2"
                   id="front-2"
                   className="user-value"
-                  value="Line Mark"
-                  checked={frontSideOptions.includes("Line Mark")}
+                  value="No Line Mark"
+                  checked={frontSideOptions.includes("No Line Mark")}
                   onChange={handleFrontSideOptions}
                 />
-                <label htmlFor="front-2">Line Mark</label>
+                <label htmlFor="front-2">No Line Mark</label>
               </label>
               <label htmlFor="" className="check">
                 <input
@@ -357,11 +357,11 @@ export default function Section3() {
                   name="front-3"
                   id="front-3"
                   className="user-value"
-                  value="Painting Peel Off"
-                  checked={frontSideOptions.includes("Painting Peel Off")}
+                  value="No Painting Peel Off"
+                  checked={frontSideOptions.includes("No Painting Peel Off")}
                   onChange={handleFrontSideOptions}
                 />
-                <label htmlFor="front-3">Painting Peel Off</label>
+                <label htmlFor="front-3">No Painting Peel Off</label>
               </label>
               <label htmlFor="" className="check">
                 <input
@@ -369,11 +369,11 @@ export default function Section3() {
                   name="front-4"
                   id="front-4"
                   className="user-value"
-                  value="Paint Fade"
-                  checked={frontSideOptions.includes("Paint Fade")}
+                  value="No Paint Fade"
+                  checked={frontSideOptions.includes("No Paint Fade")}
                   onChange={handleFrontSideOptions}
                 />
-                <label htmlFor="front-4">Paint Fade</label>
+                <label htmlFor="front-4">No Paint Fade</label>
               </label>
             </div>
           </div>
@@ -400,11 +400,11 @@ export default function Section3() {
                   name="back-2"
                   id="back-2"
                   className="user-value"
-                  value="Line Mark"
-                  checked={backSideOptions.includes("Line Mark")}
+                  value="No Line Mark"
+                  checked={backSideOptions.includes("No Line Mark")}
                   onChange={handleBackSideOptions}
                 />
-                <label htmlFor="back-2">Line Mark</label>
+                <label htmlFor="back-2">No Line Mark</label>
               </label>
               <label htmlFor="" className="check">
                 <input
@@ -412,11 +412,11 @@ export default function Section3() {
                   name="back-3"
                   id="back-3"
                   className="user-value"
-                  value="Painting Peel Off"
-                  checked={backSideOptions.includes("Painting Peel Off")}
+                  value="No Painting Peel Off"
+                  checked={backSideOptions.includes("No Painting Peel Off")}
                   onChange={handleBackSideOptions}
                 />
-                <label htmlFor="back-3">Painting Peel Off</label>
+                <label htmlFor="back-3">No Painting Peel Off</label>
               </label>
               <label htmlFor="" className="check">
                 <input
@@ -424,11 +424,11 @@ export default function Section3() {
                   name="back-4"
                   id="back-4"
                   className="user-value"
-                  value="Paint Fade"
-                  checked={backSideOptions.includes("Paint Fade")}
+                  value="No Paint Fade"
+                  checked={backSideOptions.includes("No Paint Fade")}
                   onChange={handleBackSideOptions}
                 />
-                <label htmlFor="back-4">Paint Fade</label>
+                <label htmlFor="back-4">No Paint Fade</label>
               </label>
             </div>
           </div>
@@ -455,11 +455,11 @@ export default function Section3() {
                   name="left-2"
                   id="left-2"
                   className="user-value"
-                  value="Line Mark"
-                  checked={leftSideOptions.includes("Line Mark")}
+                  value="No Line Mark"
+                  checked={leftSideOptions.includes("No Line Mark")}
                   onChange={handleLeftSideOptions}
                 />
-                <label htmlFor="left-2">Line Mark</label>
+                <label htmlFor="left-2">No Line Mark</label>
               </label>
               <label htmlFor="" className="check">
                 <input
@@ -467,11 +467,11 @@ export default function Section3() {
                   name="left-3"
                   id="left-3"
                   className="user-value"
-                  value="Painting Peel Off"
-                  checked={leftSideOptions.includes("Painting Peel Off")}
+                  value="No Painting Peel Off"
+                  checked={leftSideOptions.includes("No Painting Peel Off")}
                   onChange={handleLeftSideOptions}
                 />
-                <label htmlFor="left-3">Painting Peel Off</label>
+                <label htmlFor="left-3">No Painting Peel Off</label>
               </label>
               <label htmlFor="" className="check">
                 <input
@@ -479,11 +479,11 @@ export default function Section3() {
                   name="left-4"
                   id="left-4"
                   className="user-value"
-                  value="Paint Fade"
-                  checked={leftSideOptions.includes("Paint Fade")}
+                  value="No Paint Fade"
+                  checked={leftSideOptions.includes("No Paint Fade")}
                   onChange={handleLeftSideOptions}
                 />
-                <label htmlFor="left-4">Paint Fade</label>
+                <label htmlFor="left-4">No Paint Fade</label>
               </label>
             </div>
           </div>
@@ -510,11 +510,11 @@ export default function Section3() {
                   name="right-2"
                   id="right-2"
                   className="user-value"
-                  value="Line Mark"
-                  checked={rightSideOptions.includes("Line Mark")}
+                  value="No Line Mark"
+                  checked={rightSideOptions.includes("No Line Mark")}
                   onChange={handleRightSideOptions}
                 />
-                <label htmlFor="right-2">Line Mark</label>
+                <label htmlFor="right-2">No Line Mark</label>
               </label>
               <label htmlFor="" className="check">
                 <input
@@ -522,11 +522,11 @@ export default function Section3() {
                   name="right-3"
                   id="right-3"
                   className="user-value"
-                  value="Painting Peel Off"
-                  checked={rightSideOptions.includes("Painting Peel Off")}
+                  value="No Painting Peel Off"
+                  checked={rightSideOptions.includes("No Painting Peel Off")}
                   onChange={handleRightSideOptions}
                 />
-                <label htmlFor="right-3">Painting Peel Off</label>
+                <label htmlFor="right-3">No Painting Peel Off</label>
               </label>
               <label htmlFor="" className="check">
                 <input
@@ -534,11 +534,11 @@ export default function Section3() {
                   name="right-4"
                   id="right-4"
                   className="user-value"
-                  value="Paint Fade"
-                  checked={rightSideOptions.includes("Paint Fade")}
+                  value="No Paint Fade"
+                  checked={rightSideOptions.includes("No Paint Fade")}
                   onChange={handleRightSideOptions}
                 />
-                <label htmlFor="check-16">Paint Fade</label>
+                <label htmlFor="check-16">No Paint Fade</label>
               </label>
             </div>
           </div>
@@ -565,11 +565,11 @@ export default function Section3() {
                   name="top-2"
                   id="top-2"
                   className="user-value"
-                  value="Line Mark"
-                  checked={topSideOptions.includes("Line Mark")}
+                  value="No Line Mark"
+                  checked={topSideOptions.includes("No Line Mark")}
                   onChange={handleTopSideOptions}
                 />
-                <label htmlFor="top-2">Line Mark</label>
+                <label htmlFor="top-2">No Line Mark</label>
               </label>
               <label htmlFor="" className="check">
                 <input
@@ -577,11 +577,11 @@ export default function Section3() {
                   name="top-3"
                   id="top-3"
                   className="user-value"
-                  value="Painting Peel Off"
-                  checked={topSideOptions.includes("Painting Peel Off")}
+                  value="No Painting Peel Off"
+                  checked={topSideOptions.includes("No Painting Peel Off")}
                   onChange={handleTopSideOptions}
                 />
-                <label htmlFor="top-3">Painting Peel Off</label>
+                <label htmlFor="top-3">No Painting Peel Off</label>
               </label>
               <label htmlFor="" className="check">
                 <input
@@ -589,11 +589,11 @@ export default function Section3() {
                   name="top-4"
                   id="top-4"
                   className="user-value"
-                  value="Paint Fade"
-                  checked={topSideOptions.includes("Paint Fade")}
+                  value="No Paint Fade"
+                  checked={topSideOptions.includes("No Paint Fade")}
                   onChange={handleTopSideOptions}
                 />
-                <label htmlFor="top-4">Paint Fade</label>
+                <label htmlFor="top-4">No Paint Fade</label>
               </label>
             </div>
           </div>
@@ -622,11 +622,11 @@ export default function Section3() {
                   name="bottom-2"
                   id="bottom-2"
                   className="user-value"
-                  value="Line Mark"
-                  checked={bottomSideOptions.includes("Line Mark")}
+                  value="No Line Mark"
+                  checked={bottomSideOptions.includes("No Line Mark")}
                   onChange={handleBottomSideOptions}
                 />
-                <label htmlFor="bottom-2">Line Mark</label>
+                <label htmlFor="bottom-2">No Line Mark</label>
               </label>
               <label htmlFor="" className="check">
                 <input
@@ -634,11 +634,11 @@ export default function Section3() {
                   name="bottom-3"
                   id="bottom-3"
                   className="user-value"
-                  value="Painting Peel Off"
-                  checked={bottomSideOptions.includes("Painting Peel Off")}
+                  value="No Painting Peel Off"
+                  checked={bottomSideOptions.includes("No Painting Peel Off")}
                   onChange={handleBottomSideOptions}
                 />
-                <label htmlFor="bottom-3">Painting Peel Off</label>
+                <label htmlFor="bottom-3">No Painting Peel Off</label>
               </label>
               <label htmlFor="" className="check">
                 <input
@@ -646,11 +646,11 @@ export default function Section3() {
                   name="bottom-4"
                   id="bottom-4"
                   className="user-value"
-                  value="Paint Fade"
-                  checked={bottomSideOptions.includes("Paint Fade")}
+                  value="No Paint Fade"
+                  checked={bottomSideOptions.includes("No Paint Fade")}
                   onChange={handleBottomSideOptions}
                 />
-                <label htmlFor="bottom-4">Paint Fade</label>
+                <label htmlFor="bottom-4">No Paint Fade</label>
               </label>
             </div>
           </div>
@@ -928,10 +928,10 @@ export default function Section3() {
                     name="section3-tpi"
                     id="section3-tpi-2"
                     className="user-value"
-                    value="100K Ohms"
+                    value="100 Ohms"
                     {...register("field41")}
                   />
-                  <label htmlFor="section3-tpi-2">100K Ohms</label>
+                  <label htmlFor="section3-tpi-2">100 Ohms</label>
                 </label>
               </div>
             </div>
