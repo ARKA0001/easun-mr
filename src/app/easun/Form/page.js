@@ -35,6 +35,7 @@ import {
   testVoltageStore,
   manualButtonStateStore,
   mainMessageStore,
+  extraLabelStore,
 } from "@/store/Section";
 import TestSection1 from "@/components/TestSection1";
 import TestSection2 from "@/components/TestSection2";
@@ -118,6 +119,7 @@ export default function Page() {
   const [ma1, setMa1] = useRecoilState(maSignal1Store);
   const [ma2, setMa2] = useRecoilState(maSignal2Store);
   const [mCurrent, setMCurrent] = useRecoilState(motorCurrentStore);
+  const [extraLabel, setExtraLabel] = useRecoilState(extraLabelStore);
 
   const [info, setInfo] = useRecoilState(infoMessageStore);
   const [error, setError] = useRecoilState(errorMessageStore);
@@ -321,6 +323,10 @@ export default function Page() {
                       <tr>
                         <td>Motor Current</td>
                         <td>{mCurrent}</td>
+                      </tr>
+                      <tr>
+                        <td>Extra Label</td>
+                        <td>{extraLabel}</td>
                       </tr>
                     </table>
                   </div>

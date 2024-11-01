@@ -25,6 +25,7 @@ import {
   manualButtonStateStore,
   transmissionStore,
   startActiveStore,
+  extraLabelStore,
 } from "@/store/Section";
 import { useRecoilState } from "recoil";
 import { useState, useEffect } from "react";
@@ -39,7 +40,7 @@ export default function TestSection2() {
   const [startActive, setStartActive] = useRecoilState(startActiveStore);
   const [currentActiveSection, setCurrentActiveSection] =
     useRecoilState(activeSection);
-    const [testId, setTestId] = useRecoilState(testIdStore)
+  const [testId, setTestId] = useRecoilState(testIdStore);
   const [checks, setChecks] = useState([]);
   const [savedSectionCount, setSavedSectionCount] =
     useRecoilState(savedSection);
@@ -67,6 +68,7 @@ export default function TestSection2() {
   const [disableDropdown, setDisableDropdown] = useState(false);
   const [transmission, setTransmission] = useState("Automatic");
   const [testType, setTestType] = useState();
+  const [extraLabel, setExtraLabel] = useRecoilState(extraLabelStore);
 
   // Default data display
   const [tapPosition, setTapPosition] = useRecoilState(tapPositionStore);
@@ -193,6 +195,7 @@ export default function TestSection2() {
     setMa1(powerList[0]);
     setMa2(powerList[1]);
     setMotorCurrent(powerList[2]);
+    setExtraLabel(powerList[3]);
   };
 
   const handleTransmission = (event) => {
@@ -227,6 +230,20 @@ export default function TestSection2() {
     if (socket) {
       console.log("Data is sent", value);
       socket.send(value);
+    }
+  };
+
+  const callMethodForOscilloscopeReport = async () => {
+    try {
+      const res = await fetch("/api/your-endpoint");
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      else{
+        console.log("Successfully called the report print API")
+      }
+    } catch (error) {
+      throw new Error(`HTTP error! status:`, error);
     }
   };
 
@@ -598,9 +615,7 @@ export default function TestSection2() {
                     O <sub>MD</sub>- C <sub>s12</sub>
                   </td>
                   <td>620 to 775 ms</td>
-                  <td className="width-auto">
-                    {lowerValues[0]}
-                  </td>
+                  <td className="width-auto">{lowerValues[0]}</td>
                 </tr>
                 <tr>
                   <td>2</td>
@@ -706,7 +721,11 @@ export default function TestSection2() {
               </tbody>
             </table>
           </div>
+          
         </div>
+        <button onClick={callMethodForOscilloscopeReport} className="action-button">
+          Save Report
+        </button>
       </div>
     </>
   );

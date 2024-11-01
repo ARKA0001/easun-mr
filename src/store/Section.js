@@ -111,6 +111,10 @@ export const powerInfoStore = atom({
   key: "powerInfoStore",
   default: [],
 });
+export const extraLabelStore = atom({
+  key: "extraLabelStore",
+  default: "",
+});
 
 // Socket Data
 export const socketStore = atom({
