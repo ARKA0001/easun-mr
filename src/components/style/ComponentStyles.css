@@ -123,7 +123,15 @@ select:focus {
   padding: 15px 30px;
   color: var(--primary-white);
   margin: 4rem;
-  float: right;
+  float: right !important;
+}
+
+.button-space{
+  width: 100%;
+}
+
+.action-button-right{
+  display: flex;
 }
 
 input[type="date"] {
@@ -562,6 +570,7 @@ button:disabled {
 .dropdown-menu li a:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
+
 
 .raise:disabled,
 .lower:disabled {

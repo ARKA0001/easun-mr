@@ -134,3 +134,8 @@ export const startActiveStore = atom({
   default: true,
 });
 
+export const camPicCountStore = atom({
+  key: "camPicCountStore",
+  default: 1,
+});
+

@@ -1,4 +1,5 @@
 import React from "react";
+import html2canvas from "html2canvas";
 import {
   testDataSection1,
   testIdStore,
@@ -26,6 +27,7 @@ import {
   transmissionStore,
   startActiveStore,
   extraLabelStore,
+  camPicCountStore,
 } from "@/store/Section";
 import { useRecoilState } from "recoil";
 import { useState, useEffect } from "react";
@@ -81,6 +83,7 @@ export default function TestSection2() {
   const [ma1, setMa1] = useRecoilState(maSignal1Store);
   const [ma2, setMa2] = useRecoilState(maSignal2Store);
   const [motorCurrent, setMotorCurrent] = useRecoilState(motorCurrentStore);
+  const [camPicCount,  setCamPicCount] = useRecoilState(camPicCountStore);
 
   useEffect(() => {
     setSerialNo(testDataSection1.serialNumber);
@@ -233,18 +236,29 @@ export default function TestSection2() {
     }
   };
 
-  const callMethodForOscilloscopeReport = async () => {
-    try {
-      const res = await fetch("/api/your-endpoint");
-      if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
+  const callMethodForOscilloscopeReport = async (sectionName, retake) => {
+      const section = document.getElementById(sectionName);
+      const canvas = await html2canvas(section, {
+        scale: 2,             
+        backgroundColor: "#FFFFFF", 
+        useCORS: true          
+      });
+      const imgData = canvas.toDataURL("image/png");
+      const blob = await (await fetch(imgData)).blob();
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `${testId ? testId : "default"}-${sectionName}-${camPicCount}.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(link.href);
+  
+      console.log("Image cam saved successfully");
+      if(retake){
+        setCamPicCount(camPicCount+1);
+        callMethodForOscilloscopeReport("cam-2", false);
       }
-      else{
-        console.log("Successfully called the report print API")
-      }
-    } catch (error) {
-      throw new Error(`HTTP error! status:`, error);
-    }
+      
   };
 
   return (
@@ -599,7 +613,7 @@ export default function TestSection2() {
         </table>
 
         <div className="cam-table">
-          <div>
+          <div id="cam-1">
             <h2>Lower Check through Oscilloscope</h2>
             <table className="lower-check-table cms-table">
               <thead>
@@ -660,7 +674,7 @@ export default function TestSection2() {
               </tbody>
             </table>
           </div>
-          <div>
+          <div id="cam-2">
             <h2>Raise Check through Oscilloscope</h2>
             <table className="raise-check-table cms-table">
               <thead>
@@ -723,9 +737,16 @@ export default function TestSection2() {
           </div>
           
         </div>
-        <button onClick={callMethodForOscilloscopeReport} className="action-button">
-          Save Report
-        </button>
+
+
+        {transmission === "Manual" && (
+        <div className="button-space">
+          <button onClick={()=>{callMethodForOscilloscopeReport("cam-1",true)}} className="action-button action-button-right">
+            Save Report
+          </button>
+        </div>
+        )}
+        
       </div>
     </>
   );
