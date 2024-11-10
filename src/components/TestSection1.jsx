@@ -91,16 +91,16 @@ export default function TestSection1() {
     } catch (error) {
       throw new Error(`HTTP error! status:`, error);
     } 
-    // finally {
-    //   console.log("Sending process completed");
-    //   if (takeScreenshort("testSection1", null)) {
-    //     handleTestDataMove();
-    //   } else {
-    //     alert(
-    //       "There is an error while saving the image. Please contact support team"
-    //     );
-    //   }
-    // }
+    finally {
+      console.log("Sending process completed");
+      if (takeScreenshort("testSection1", null)) {
+        handleTestDataMove();
+      } else {
+        alert(
+          "There is an error while saving the image. Please contact support team"
+        );
+      }
+    }
   };
 
   return (
@@ -121,21 +121,19 @@ export default function TestSection1() {
             />
           </div>
           <div className="user-input">
-            <label htmlFor="field2" className="field-label">
-              Test Type
+            <label htmlFor="field1" className="field-label">
+              Inspector Name
             </label>
-            <select name="field2" id="field2" {...register("field2")} required>
-              <option value="" disabled>
-                Select Variant
-              </option>
-              <option value="1-5-9">Variant 1-5-9</option>
-              <option value="1-9b-17">Variant 1-9b-17</option>
-              <option value="1-9-17">Variant 1-9-17</option>
-              <option value="1-11b-21">Variant 1-11b-21</option>
-              <option value="1-14b-27">Variant 1-14b-27</option>
-              <option value="1-17b-35">Variant 1-17b-35</option>
-            </select>
+            <input
+              type="text"
+              name="field1"
+              id="field1"
+              className="user-value"
+              {...register("field1b")}
+              required
+            />
           </div>
+         
         </div>
 
         <div className="form-row">
@@ -187,6 +185,24 @@ export default function TestSection1() {
             <select className="user-value" {...register("field6")} required>
               <option value="Standard">Standard</option>
               <option value="Short">Short</option>
+            </select>
+          </div>
+        </div>
+        <div className="form-row">
+        <div className="user-input">
+            <label htmlFor="field2" className="field-label">
+              Test Type
+            </label>
+            <select name="field2" id="field2" {...register("field2")} required>
+              <option value="" disabled>
+                Select Variant
+              </option>
+              <option value="1-5-9">Variant 1-5-9</option>
+              <option value="1-9b-17">Variant 1-9b-17</option>
+              <option value="1-9-17">Variant 1-9-17</option>
+              <option value="1-11b-21">Variant 1-11b-21</option>
+              <option value="1-14b-27">Variant 1-14b-27</option>
+              <option value="1-17b-35">Variant 1-17b-35</option>
             </select>
           </div>
         </div>
