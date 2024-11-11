@@ -169,7 +169,7 @@ export default function TestSection1() {
         <div className="form-row">
           <div className="user-input">
             <label htmlFor="field5" className="field-label">
-              No. Tap Change in progress indications
+              No. Tap Change in progress/struck indications
             </label>
             <input
               type="number"
