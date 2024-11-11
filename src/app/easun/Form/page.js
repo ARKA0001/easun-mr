@@ -209,7 +209,7 @@ export default function Page() {
   
     return (
       <div>
-        <span style={{ fontSize: '24px', color: 'red' }}>{firstPart}</span>
+        <span style={{ fontSize: '24px', color: 'white' }}>{firstPart}</span>
         <span>{">>"}{secondPart}</span>
       </div>
     );
