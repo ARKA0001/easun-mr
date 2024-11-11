@@ -567,6 +567,11 @@ button:disabled {
   flex-direction: column;
 }
 
+.power-select{
+  width:50%;
+  margin:0 5rem 0 0;
+}
+
 .dropdown-menu .section-label{
   color: var(--primary-black) !important;
 }

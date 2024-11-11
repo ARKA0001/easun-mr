@@ -663,50 +663,17 @@ export default function Section3() {
                 Power Voltage (motor)
               </label>
               <div className="radio-input">
-                <label htmlFor="" className="radio">
-                  <input
-                    type="radio"
-                    name="section3-power"
-                    id="section3-power-1"
-                    className="user-value"
-                    value="380 AC/DC"
-                    {...register("field35")}
-                  />
-                  <label htmlFor="section3-power-1">380 AC/DC</label>
-                </label>
-                <label htmlFor="" className="radio">
-                  <input
-                    type="radio"
-                    name="section3-power"
-                    id="section3-power-2"
-                    className="user-value"
-                    value="400 AC/DC"
-                    {...register("field35")}
-                  />
-                  <label htmlFor="section3-power-2">400 AC/DC</label>
-                </label>
-                <label htmlFor="" className="radio">
-                  <input
-                    type="radio"
-                    name="section3-power"
-                    id="section3-power-3"
-                    className="user-value"
-                    value="415 AC/DC"
-                    {...register("field35")}
-                  />
-                  <label htmlFor="section3-power-3">415 AC/DC</label>
-                </label>
-                <label htmlFor="" className="radio">
-                  <input
-                    type="radio"
-                    name="section3-power"
-                    id="section3-power-4"
-                    className="user-value"
-                    value="430 AC/DC"
-                    {...register("field35")}
-                  />
-                  <label htmlFor="section3-power-4">430 AC/DC</label>
-                </label>
+                <select name="power-type" id="" {...register("field35")} className="power-select">
+                  <option value="">AC</option>
+                  <option value="">DC</option>
+                </select>
+                <select name="power" id="" {...register("field35-a")} className="power-select">
+                  <option value="">380</option>
+                  <option value="">400</option>
+                  <option value="">415</option>
+                  <option value="">430</option>
+                </select>
+                
               </div>
             </div>
           </div>
