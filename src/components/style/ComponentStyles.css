@@ -558,13 +558,17 @@ button:disabled {
 }
 
 .dropdown-menu {
-  background-color: #34495e;
+  background-color: #ecf0f1;
   list-style: none;
   padding: 0;
   margin: 0;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
+}
+
+.dropdown-menu .section-label{
+  color: var(--primary-black) !important;
 }
 
 .dropdown-menu li a:hover {
