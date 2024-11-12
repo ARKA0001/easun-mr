@@ -61,6 +61,7 @@ export default function TestSection1() {
       endLimits: data.field4,
       progressIndicators: data.field5,
       testingCycle: data.field6,
+      inspectorName: data.field1b
     };
     console.log(testDataPayload);
     setTestSectionData(testDataPayload);
