@@ -26,7 +26,7 @@ import {
   manualButtonStateStore,
   transmissionStore,
   startActiveStore,
-  extraLabelStore,
+  tapPositionByCurrentStore,
   camPicCountStore,
 } from "@/store/Section";
 import { useRecoilState } from "recoil";
@@ -70,7 +70,7 @@ export default function TestSection2() {
   const [disableDropdown, setDisableDropdown] = useState(false);
   const [transmission, setTransmission] = useState("Automatic");
   const [testType, setTestType] = useState();
-  const [extraLabel, setExtraLabel] = useRecoilState(extraLabelStore);
+  const [tapPositionByCurrent, setTapPositionByCurrent] = useRecoilState(tapPositionByCurrentStore);
 
   // Default data display
   const [tapPosition, setTapPosition] = useRecoilState(tapPositionStore);
@@ -198,7 +198,7 @@ export default function TestSection2() {
     setMa1(powerList[0]);
     setMa2(powerList[1]);
     setMotorCurrent(powerList[2]);
-    setExtraLabel(powerList[3]);
+    setTapPositionByCurrent(powerList[3]);
   };
 
   const handleTransmission = (event) => {
