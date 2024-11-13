@@ -566,7 +566,9 @@ button:disabled {
   display: flex;
   flex-direction: column;
 }
-
+.section-label.active{
+  font-weight: bold;
+}
 .power-select{
   width:50%;
   margin:0 5rem 0 0;
