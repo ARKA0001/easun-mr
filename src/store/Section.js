@@ -110,7 +110,11 @@ export const motorCurrentStore = atom({
 export const tapPositionByCurrentStore = atom({
   key: "tapPositionByCurrent",
   default: 0,
-})
+});
+export const tapPositionByCurrentStore2 = atom({
+  key: "tapPositionByCurrent2",
+  default: 0,
+});
 export const powerInfoStore = atom({
   key: "powerInfoStore",
   default: [],

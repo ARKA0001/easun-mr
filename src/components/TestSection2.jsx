@@ -27,6 +27,7 @@ import {
   transmissionStore,
   startActiveStore,
   tapPositionByCurrentStore,
+  tapPositionByCurrentStore2,
   camPicCountStore,
 } from "@/store/Section";
 import { useRecoilState } from "recoil";
@@ -71,6 +72,7 @@ export default function TestSection2() {
   const [transmission, setTransmission] = useState("Automatic");
   const [testType, setTestType] = useState();
   const [tapPositionByCurrent, setTapPositionByCurrent] = useRecoilState(tapPositionByCurrentStore);
+  const [tapPositionByCurrent2, setTapPositionByCurrent2] = useRecoilState(tapPositionByCurrentStore2);
 
   // Default data display
   const [tapPosition, setTapPosition] = useRecoilState(tapPositionStore);
@@ -199,6 +201,7 @@ export default function TestSection2() {
     setMa2(powerList[1]);
     setMotorCurrent(powerList[2]);
     setTapPositionByCurrent(powerList[3]);
+    setTapPositionByCurrent2(powerList[4]);
   };
 
   const handleTransmission = (event) => {
@@ -742,7 +745,7 @@ export default function TestSection2() {
         {transmission === "Manual" && (
         <div className="button-space">
           <button onClick={()=>{callMethodForOscilloscopeReport("cam-1",true)}} className="action-button action-button-right">
-            Save Report
+            Capture CAM
           </button>
         </div>
         )}
