@@ -70,7 +70,9 @@ export default function TestSection2() {
   const [disableDropdown, setDisableDropdown] = useState(false);
   const [transmission, setTransmission] = useState("Automatic");
   const [testType, setTestType] = useState();
-  const [tapPositionByCurrent, setTapPositionByCurrent] = useRecoilState(tapPositionByCurrentStore);
+  const [tapPositionByCurrent, setTapPositionByCurrent] = useRecoilState(
+    tapPositionByCurrentStore
+  );
 
   // Default data display
   const [tapPosition, setTapPosition] = useRecoilState(tapPositionStore);
@@ -83,58 +85,63 @@ export default function TestSection2() {
   const [ma1, setMa1] = useRecoilState(maSignal1Store);
   const [ma2, setMa2] = useRecoilState(maSignal2Store);
   const [motorCurrent, setMotorCurrent] = useRecoilState(motorCurrentStore);
-  const [camPicCount,  setCamPicCount] = useRecoilState(camPicCountStore);
+  const [camPicCount, setCamPicCount] = useRecoilState(camPicCountStore);
 
   useEffect(() => {
     setSerialNo(testDataSection1.serialNumber);
     setOVariant(testDataSection1.testType);
-    const ws = new WebSocket("ws://localhost:8080/controller-test");
+  });
 
-    ws.onopen = () => {
-      console.log("Connected to Controller Test WebSocket server");
-    };
+  useEffect(() => {
+    if (socket == null) {
+      const ws = new WebSocket("ws://localhost:8080/controller-test");
 
-    ws.onmessage = (event) => {
-      const message = event.data;
-      const [key, value] = message.split(":").map((str) => str.trim());
-      console.log("This is key", key);
-      console.log("This is value", value);
-      switch (key) {
-        case "tapPosition":
-          handleTapPositionChange(value);
-          break;
-        case "checks":
-          handleChecks(value);
-          break;
-        case "errors":
-          handleError(value);
-          break;
-        case "info":
-          handleInfo(value);
-          break;
-        case "action":
-          setAction(value);
-          break;
-        case "powerInfo":
-          handlePowerInfoChange(value);
-          break;
-        case "raise":
-          handleRaiseTableValues(value);
-          break;
-        case "lower":
-          handleLowerTableValues(value);
-          break;
-        default:
-          console.log("Unknown message type:", key);
-      }
-    };
+      ws.onopen = () => {
+        console.log("Connected to Controller Test WebSocket server");
+      };
 
-    ws.onclose = () => {
-      console.log("Disconnected from WebSocket server");
-    };
+      ws.onmessage = (event) => {
+        const message = event.data;
+        const [key, value] = message.split(":").map((str) => str.trim());
+        console.log("This is key", key);
+        console.log("This is value", value);
+        switch (key) {
+          case "tapPosition":
+            handleTapPositionChange(value);
+            break;
+          case "checks":
+            handleChecks(value);
+            break;
+          case "errors":
+            handleError(value);
+            break;
+          case "info":
+            handleInfo(value);
+            break;
+          case "action":
+            setAction(value);
+            break;
+          case "powerInfo":
+            handlePowerInfoChange(value);
+            break;
+          case "raise":
+            handleRaiseTableValues(value);
+            break;
+          case "lower":
+            handleLowerTableValues(value);
+            break;
+          default:
+            console.log("Unknown message type:", key);
+        }
+      };
 
-    setSocket(ws);
-  }, []);
+      ws.onclose = () => {
+        console.log("Disconnected from WebSocket server");
+      };
+
+      setSocket(ws);
+    }
+  }, [socket]);
 
   useEffect(() => {
     setTrueCheck([]);
@@ -237,28 +244,29 @@ export default function TestSection2() {
   };
 
   const callMethodForOscilloscopeReport = async (sectionName, retake) => {
-      const section = document.getElementById(sectionName);
-      const canvas = await html2canvas(section, {
-        scale: 2,             
-        backgroundColor: "#FFFFFF", 
-        useCORS: true          
-      });
-      const imgData = canvas.toDataURL("image/png");
-      const blob = await (await fetch(imgData)).blob();
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = `${testId ? testId : "default"}-${sectionName}-${camPicCount}.png`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(link.href);
-  
-      console.log("Image cam saved successfully");
-      if(retake){
-        setCamPicCount(camPicCount+1);
-        callMethodForOscilloscopeReport("cam-2", false);
-      }
-      
+    const section = document.getElementById(sectionName);
+    const canvas = await html2canvas(section, {
+      scale: 2,
+      backgroundColor: "#FFFFFF",
+      useCORS: true,
+    });
+    const imgData = canvas.toDataURL("image/png");
+    const blob = await (await fetch(imgData)).blob();
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `${
+      testId ? testId : "default"
+    }-${sectionName}-${camPicCount}.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(link.href);
+
+    console.log("Image cam saved successfully");
+    if (retake) {
+      setCamPicCount(camPicCount + 1);
+      callMethodForOscilloscopeReport("cam-2", false);
+    }
   };
 
   return (
@@ -735,18 +743,20 @@ export default function TestSection2() {
               </tbody>
             </table>
           </div>
-          
         </div>
-
 
         {transmission === "Manual" && (
-        <div className="button-space">
-          <button onClick={()=>{callMethodForOscilloscopeReport("cam-1",true)}} className="action-button action-button-right">
-            Save Report
-          </button>
-        </div>
+          <div className="button-space">
+            <button
+              onClick={() => {
+                callMethodForOscilloscopeReport("cam-1", true);
+              }}
+              className="action-button action-button-right"
+            >
+              Save Report
+            </button>
+          </div>
         )}
-        
       </div>
     </>
   );
