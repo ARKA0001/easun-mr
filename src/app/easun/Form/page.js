@@ -36,6 +36,7 @@ import {
   manualButtonStateStore,
   mainMessageStore,
   tapPositionByCurrentStore,
+  tapPositionByCurrentStore2,
 } from "@/store/Section";
 import TestSection1 from "@/components/TestSection1";
 import TestSection2 from "@/components/TestSection2";
@@ -120,6 +121,7 @@ export default function Page() {
   const [ma2, setMa2] = useRecoilState(maSignal2Store);
   const [mCurrent, setMCurrent] = useRecoilState(motorCurrentStore);
   const [tapPositionByCurrent, setTapPositionByCurrent] = useRecoilState(tapPositionByCurrentStore);
+  const [tapPositionByCurrent2, setTapPositionByCurrent2] = useRecoilState(tapPositionByCurrentStore2);
 
   const [info, setInfo] = useRecoilState(infoMessageStore);
   const [error, setError] = useRecoilState(errorMessageStore);
@@ -325,8 +327,12 @@ export default function Page() {
                         <td>{mCurrent}</td>
                       </tr>
                       <tr>
-                        <td>TP(420 mA)</td>
+                        <td>TP(4-20 mA Signal1)</td>
                         <td>{tapPositionByCurrent}</td>
+                      </tr>
+                      <tr>
+                        <td>TP(4-20 mA Signal2)</td>
+                        <td>{tapPositionByCurrent2}</td>
                       </tr>
                     </table>
                   </div>
