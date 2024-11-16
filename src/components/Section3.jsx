@@ -678,33 +678,23 @@ export default function Section3() {
             </div>
           </div>
           <div className="form-row">
-            <div className="user-input">
-              <label htmlFor="" className="field-label radio-label">
+          <div className="user-input">
+              <label
+                htmlFor="section3-radio-1"
+                className="field-label radio-label"
+              >
                 Control Voltage
               </label>
               <div className="radio-input">
-                <label htmlFor="" className="radio">
-                  <input
-                    type="radio"
-                    name="section3-voltage"
-                    id="section3-voltage-1"
-                    className="user-value"
-                    value="110 VAC/DC"
-                    {...register("field36")}
-                  />
-                  <label htmlFor="section3-voltage-1">110 VAC/DC</label>
-                </label>
-                <label htmlFor="" className="radio">
-                  <input
-                    type="radio"
-                    name="section3-voltage"
-                    id="section3-voltage-2"
-                    className="user-value"
-                    value="230 VAC/DC"
-                    {...register("field36")}
-                  />
-                  <label htmlFor="section3-voltage-2">230 VAC/DC</label>
-                </label>
+                <select name="power-type" id="" {...register("field36")} className="power-select">
+                  <option value="">AC</option>
+                  <option value="">DC</option>
+                </select>
+                <select name="power" id="" {...register("field36-a")} className="power-select">
+                  <option value="">110</option>
+                  <option value="">230</option>
+                </select>
+                
               </div>
             </div>
           </div>
