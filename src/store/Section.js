@@ -65,6 +65,16 @@ export const startMessageStore = atom({
   default: "",
 });
 
+export const trueCheckStore = atom({
+  key: "trueCheckStore",
+  default: [],
+});
+export const falseCheckStore = atom({
+  key: "falseCheckStore",
+  default: [],
+});
+
+
 // Default Data Display
 
 export const tapPositionStore = atom({

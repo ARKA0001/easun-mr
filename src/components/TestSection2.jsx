@@ -27,8 +27,9 @@ import {
   transmissionStore,
   startActiveStore,
   tapPositionByCurrentStore,
-  tapPositionByCurrentStore2,
   camPicCountStore,
+  trueCheckStore,
+  falseCheckStore,
 } from "@/store/Section";
 import { useRecoilState } from "recoil";
 import { useState, useEffect } from "react";
@@ -66,13 +67,14 @@ export default function TestSection2() {
   const [action, setAction] = useRecoilState(actionMessageStore);
   const [start, setStart] = useRecoilState(startMessageStore);
   const [input, setInput] = useState();
-  const [trueCheck, setTrueCheck] = useState([]);
-  const [falseCheck, setFalseCheck] = useState([]);
+  const [trueCheck, setTrueCheck] = useRecoilState(trueCheckStore);
+  const [falseCheck, setFalseCheck] = useRecoilState(falseCheckStore);
   const [disableDropdown, setDisableDropdown] = useState(false);
   const [transmission, setTransmission] = useState("Automatic");
   const [testType, setTestType] = useState();
-  const [tapPositionByCurrent, setTapPositionByCurrent] = useRecoilState(tapPositionByCurrentStore);
-  const [tapPositionByCurrent2, setTapPositionByCurrent2] = useRecoilState(tapPositionByCurrentStore2);
+  const [tapPositionByCurrent, setTapPositionByCurrent] = useRecoilState(
+    tapPositionByCurrentStore
+  );
 
   // Default data display
   const [tapPosition, setTapPosition] = useRecoilState(tapPositionStore);
@@ -93,8 +95,12 @@ export default function TestSection2() {
   });
 
   useEffect(() => {
-    if (socket == null) {
+
+    if(socket) return;
+
       const ws = new WebSocket("ws://localhost:8080/controller-test");
+      
+      setSocket(ws);
 
       ws.onopen = () => {
         console.log("Connected to Controller Test WebSocket server");
@@ -135,12 +141,15 @@ export default function TestSection2() {
         }
       };
 
+      ws.onerror = (error) => {
+        console.error('WebSocket Error:', error);
+      };
+  
+
       ws.onclose = () => {
         console.log("Disconnected from WebSocket server");
       };
-
-      setSocket(ws);
-    }
+    
   }, [socket]);
 
   useEffect(() => {
@@ -206,7 +215,6 @@ export default function TestSection2() {
     setMa2(powerList[1]);
     setMotorCurrent(powerList[2]);
     setTapPositionByCurrent(powerList[3]);
-    setTapPositionByCurrent2(powerList[4]);
   };
 
   const handleTransmission = (event) => {
@@ -747,11 +755,16 @@ export default function TestSection2() {
         </div>
 
         {transmission === "Manual" && (
-        <div className="button-space">
-          <button onClick={()=>{callMethodForOscilloscopeReport("cam-1",true)}} className="action-button action-button-right">
-            Capture CAM
-          </button>
-        </div>
+          <div className="button-space">
+            <button
+              onClick={() => {
+                callMethodForOscilloscopeReport("cam-1", true);
+              }}
+              className="action-button action-button-right"
+            >
+              Save Report
+            </button>
+          </div>
         )}
       </div>
     </>
