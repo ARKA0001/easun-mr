@@ -12,7 +12,7 @@ export default function ActionModal({ showModal, modalMessage, resumeAction }) {
         return "Report cannot be downloaded as testing is in progress";
       } else if (message === "MANUAL_CONFIRMATION") {
         setActionMessage("MA_CNF");
-        return "Are all manual sections completed?";
+        return "Are all Manual Sections & CAM Capture taken?";
       } else {
         setActionMessage("RESUME");
         return message;

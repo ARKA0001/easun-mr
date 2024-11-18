@@ -130,7 +130,7 @@ export default function Section7() {
                 <label htmlFor="" className="field-label">
                   Switch
                 </label>
-                <p>S13 (3-5.4)</p>
+                <p>S13 (3.5-4)</p>
               </div>
               <div className="user-input">
                 <label htmlFor="" className="field-label">
@@ -374,7 +374,7 @@ export default function Section7() {
                 <label htmlFor="" className="field-label">
                   Switch
                 </label>
-                <p>S13 (3-5.4)</p>
+                <p>S13 (3.5-4)</p>
               </div>
               <div className="user-input">
                 <label htmlFor="" className="field-label">
