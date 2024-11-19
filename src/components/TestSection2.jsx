@@ -27,6 +27,7 @@ import {
   transmissionStore,
   startActiveStore,
   tapPositionByCurrentStore,
+  tapPositionByCurrentStore2,
   camPicCountStore,
   trueCheckStore,
   falseCheckStore,
@@ -75,6 +76,7 @@ export default function TestSection2() {
   const [tapPositionByCurrent, setTapPositionByCurrent] = useRecoilState(
     tapPositionByCurrentStore
   );
+  const [tapPositionByCurrent2, setTapPositionByCurrent2] = useRecoilState(tapPositionByCurrentStore2);
 
   // Default data display
   const [tapPosition, setTapPosition] = useRecoilState(tapPositionStore);
@@ -762,7 +764,7 @@ export default function TestSection2() {
               }}
               className="action-button action-button-right"
             >
-              Save Report
+              Capture CAM
             </button>
           </div>
         )}
