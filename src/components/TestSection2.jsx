@@ -217,6 +217,7 @@ export default function TestSection2() {
     setMa2(powerList[1]);
     setMotorCurrent(powerList[2]);
     setTapPositionByCurrent(powerList[3]);
+    setTapPositionByCurrent2(powerList[4]);
   };
 
   const handleTransmission = (event) => {
