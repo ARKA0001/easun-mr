@@ -664,14 +664,14 @@ export default function Section3() {
               </label>
               <div className="radio-input">
                 <select name="power-type" id="" {...register("field35")} className="power-select">
-                  <option value="">AC</option>
-                  <option value="">DC</option>
+                  <option value="AC">AC</option>
+                  <option value="DC">DC</option>
                 </select>
                 <select name="power" id="" {...register("field35-a")} className="power-select">
-                  <option value="">380</option>
-                  <option value="">400</option>
-                  <option value="">415</option>
-                  <option value="">430</option>
+                  <option value="380">380</option>
+                  <option value="400">400</option>
+                  <option value="415">415</option>
+                  <option value="430">430</option>
                 </select>
                 
               </div>
@@ -687,12 +687,12 @@ export default function Section3() {
               </label>
               <div className="radio-input">
                 <select name="power-type" id="" {...register("field36")} className="power-select">
-                  <option value="">AC</option>
-                  <option value="">DC</option>
+                  <option value="AC">AC</option>
+                  <option value="DC">DC</option>
                 </select>
                 <select name="power" id="" {...register("field36-a")} className="power-select">
-                  <option value="">110</option>
-                  <option value="">230</option>
+                  <option value="110">110</option>
+                  <option value="230">230</option>
                 </select>
                 
               </div>
