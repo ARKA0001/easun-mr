@@ -2078,21 +2078,21 @@ export default function Section6() {
                   </div>
                 </div>
                 <div className="user-input">
-                  <label htmlFor="field2" className="field-label">
+                  <label htmlFor="field2-reg-1" className="field-label">
                     Part Name
                   </label>
-                  <select name="field2" id="field2" {...register("fieldE46")}>
+                  <select name="field2-reg-1" id="field2-reg-1" {...register("fieldE46")}>
                     <option value="" disabled>
                       Select Part No
                     </option>
-                    <option value="">CAT-M3</option>
-                    <option value="">CAT-M4</option>
-                    <option value="">CBT-M4</option>
-                    <option value="">KLTDM4</option>
-                    <option value="">STH4</option>
-                    <option value="">CSTSB3</option>
-                    <option value="">CSTSB4</option>
-                    <option value="">CST 4UN</option>
+                    <option value="a1">CAT-M3</option>
+                    <option value="b1">CAT-M4</option>
+                    <option value="c1">CBT-M4</option>
+                    <option value="d1">KLTDM4</option>
+                    <option value="e1">STH4</option>
+                    <option value="f1">CSTSB3</option>
+                    <option value="g1">CSTSB4</option>
+                    <option value="h1">CST 4UN</option>
                   </select>
                 </div>
               </div>
@@ -2170,21 +2170,21 @@ export default function Section6() {
                   </div>
                 </div>
                 <div className="user-input">
-                  <label htmlFor="field2" className="field-label">
+                  <label htmlFor="field2-reg" className="field-label">
                     Part Name
                   </label>
-                  <select name="field2" id="field2" {...register("fieldE49")}>
+                  <select name="field2-reg" id="field2-reg" {...register("fieldE49")}>
                     <option value="" disabled>
                       Select Part No
                     </option>
-                    <option value="">CAT-M3</option>
-                    <option value="">CAT-M4</option>
-                    <option value="">CBT-M4</option>
-                    <option value="">KLTDM4</option>
-                    <option value="">STH4</option>
-                    <option value="">CSTSB3</option>
-                    <option value="">CSTSB4</option>
-                    <option value="">CST 4UN</option>
+                    <option value="a1">CAT-M3</option>
+                    <option value="b1">CAT-M4</option>
+                    <option value="c1">CBT-M4</option>
+                    <option value="d1">KLTDM4</option>
+                    <option value="e1">STH4</option>
+                    <option value="f1">CSTSB3</option>
+                    <option value="g1">CSTSB4</option>
+                    <option value="h1">CST 4UN</option>
                   </select>
                 </div>
               </div>
@@ -2274,14 +2274,14 @@ export default function Section6() {
                     <option value="" disabled>
                       Select Part No
                     </option>
-                    <option value="">CAT-M3</option>
-                    <option value="">CAT-M4</option>
-                    <option value="">CBT-M4</option>
-                    <option value="">KLTDM4</option>
-                    <option value="">STH4</option>
-                    <option value="">CSTSB3</option>
-                    <option value="">CSTSB4</option>
-                    <option value="">CST 4UN</option>
+                    <option value="a1">CAT-M3</option>
+                    <option value="b1">CAT-M4</option>
+                    <option value="c1">CBT-M4</option>
+                    <option value="d1">KLTDM4</option>
+                    <option value="e1">STH4</option>
+                    <option value="f1">CSTSB3</option>
+                    <option value="g1">CSTSB4</option>
+                    <option value="h1">CST 4UN</option>
                   </select>
                 </div>
               </div>
