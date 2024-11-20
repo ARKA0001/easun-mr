@@ -1,9 +1,12 @@
+import { disableDropdownStore } from "@/store/Section";
 import React from "react";
 import { useState, useEffect } from "react";
+import { useRecoilState } from "recoil";
 
 export default function InfoModal({ showModal, modalMessage, messageAction }) {
   const [infoMessage, setInfoMessage] = useState(null);
   const [modalText, setModalText] = useState("");
+  const [retrigger,setRetrigger] = useRecoilState(disableDropdownStore)
 
   useEffect(() => {
     if (modalMessage === "DONE_LV") {
@@ -15,12 +18,6 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
         "Set Nominal Voltage and Tap position 2 in TPI switch (if present) and click Run"
       );
     }
-    // else if (modalMessage === "DONE_NV" || modalMessage === "DONE") {
-    //   setInfoMessage("DONE_NV");
-    //   setModalText(
-    //     "Testing completed. Please Download report from report section"
-    //   );
-    // }
     else if (modalMessage === "DONE_NV") {
       setInfoMessage("DONE_NV");
       setModalText("Insert Hand Cranck.");
@@ -41,6 +38,7 @@ export default function InfoModal({ showModal, modalMessage, messageAction }) {
       setModalText("Insert Interlocking");
     } else if (modalMessage === "DONE_IL" || modalMessage === "DONE") {
       setInfoMessage("DONE");
+      setRetrigger(false);
       setModalText(
         "Testing completed. Please Download report from report section"
       );

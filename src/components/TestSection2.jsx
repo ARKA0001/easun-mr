@@ -31,6 +31,9 @@ import {
   camPicCountStore,
   trueCheckStore,
   falseCheckStore,
+  disableDropdownStore,
+  lowerValuesStore,
+  upperValuesStore,
 } from "@/store/Section";
 import { useRecoilState } from "recoil";
 import { useState, useEffect } from "react";
@@ -38,8 +41,8 @@ import { activeSection } from "@/store/Section";
 
 export default function TestSection2() {
   const [testData, setTestData] = useRecoilState(testDataSection1);
-  const [raiseValues, setRaiseValues] = useState([]);
-  const [lowerValues, setLowerValues] = useState([]);
+  const [raiseValues, setRaiseValues] = useRecoilState(lowerValuesStore);
+  const [lowerValues, setLowerValues] = useRecoilState(upperValuesStore);
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
   const [startActive, setStartActive] = useRecoilState(startActiveStore);
@@ -70,7 +73,7 @@ export default function TestSection2() {
   const [input, setInput] = useState();
   const [trueCheck, setTrueCheck] = useRecoilState(trueCheckStore);
   const [falseCheck, setFalseCheck] = useRecoilState(falseCheckStore);
-  const [disableDropdown, setDisableDropdown] = useState(false);
+  const [disableDropdown, setDisableDropdown] = useRecoilState(disableDropdownStore);
   const [transmission, setTransmission] = useState("Automatic");
   const [testType, setTestType] = useState();
   const [tapPositionByCurrent, setTapPositionByCurrent] = useRecoilState(
@@ -310,21 +313,6 @@ export default function TestSection2() {
                 >
                   Start
                 </button>
-                {/* <button
-                  className="pause"
-                  // disabled={startActive}
-                  disabled={true}
-                >
-                  Pause
-                </button>
-                <button
-                  className="restart"
-                  // disabled={startActive}
-                  disabled={true}
-                  onClick={restartTest}
-                >
-                  Restart
-                </button> */}
               </div>
             )}
             {transmission === "Manual" && (

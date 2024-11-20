@@ -73,6 +73,19 @@ export const falseCheckStore = atom({
   key: "falseCheckStore",
   default: [],
 });
+export const disableDropdownStore = atom({
+  key: "disableDropdownStore",
+  default: false,
+});
+export const lowerValuesStore = atom({
+  key: "lowerValuesStore",
+  default: [],
+});
+export const upperValuesStore = atom({
+  key: "upperValuesStore",
+  default: [],
+});
+
 
 
 // Default Data Display
